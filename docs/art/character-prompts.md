@@ -59,6 +59,7 @@ Appearance details below follow the screenplays in `docs/story/` (canon). Anythi
 - **Prompt:** Full-body silhouette reference for 3D modelling: a tall man in a long dark wool coat, standing still, hands at his sides, front, side and back views, the face completely in shadow, no features visible. Plain mid-grey background, flat light, 16:9.
 - Same coat and height as Mark Hayden in Part 2 — he is the same man. No hat *(the screenplay only says "a long coat")*.
 - Sheets: TURNAROUND (silhouette only).
+- **Approved:** `sheets/hades/hades_p1_silhouette.png` (2026-10-20). Modelling note: the sheet's head outline has short curly hair; model it as Mark Hayden's swept-back hair instead, so the Part 2 reveal matches the Part 1 shape. Coat, length and build are right.
 
 ### Ruth Vane (64) · priority A
 **Identity:** White woman, age 64, short cropped grey hair, weathered face, sharp eyes, gruff, sturdy, 165 cm.
