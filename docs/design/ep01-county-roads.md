@@ -154,8 +154,40 @@ Saves follow the GDD: auto-save at every scene start.
 | **G5** Greyhaven | Main Street, motel office (Ruth trust), flat search, cliffhanger. |
 | **G6** Full run | Start to "END OF EPISODE 1" in one session with saves, 30–40 minutes. |
 
-## 10. Open design questions
+## 10. Design decisions (2026-10-20)
 
-1. **Inner voice.** Alan Wake narrates his own story. Mani has no narration in canon. Keep it that way (my recommendation: Mani speaks only to people; Nila's voice is the narrator through the voicemail and radio).
-2. **Driving control.** Full manual driving, or "cruise" with steering only so the player can play with the radio? Recommendation: manual with a gentle auto-cruise when the phone or radio is open.
-3. **Minor NPC sheets.** Generate proper sheets for Harold, June and Priya, or build them from a shared base body with face variants? Recommendation: shared base for teens and ambient customers; sheets for Harold, June and Priya.
+1. **Driving: manual with auto-cruise.** The player steers and controls speed; while the phone or the radio is open, the car holds its lane and speed.
+2. **Minor characters: mix.** Proper face and turnaround sheets for Harold, June and Priya; a shared base body with face and clothing variants for the two teens and the ambient customers.
+3. **Mani's inner voice: proposed, not narration.** See section 11.
+
+## 11. Mani's inner voice (proposal)
+
+Alan Wake narrates his own story. Mani doesn't narrate; he **notices**. His inner voice is short, dry, and only ever reacts to what the player is looking at or has just worked out. It never tells the story, never explains feelings, never says more than the screenplay knows.
+
+**When it plays**
+- **Inspect:** one line when an object is inspected for the first time (optional objects only get one line; key clues can get a second on a closer look).
+- **Pattern moments:** when two clues in the journal connect, the screen dims slightly, the two clues link on the journal page, and Mani says the deduction. This is how mysteries unlock their accuse step. It fits his canon line: "I'm a data guy. It's just logs."
+- **Afterthoughts:** rarely, a line a beat after a scene ends, when canon gives him a realisation (e.g. Victor knowing his name).
+
+**How it sounds and looks**
+- Close, quiet voice-over, no radio processing. Subtitle in italics with no speaker frame, so it reads as thought, not speech.
+- **English by default** (his working, analytical voice); **Tanglish when the thought is about family**, with an English subtitle as always.
+- One sentence, two at most. Never a question to the player. Never a hint that solves the puzzle outright.
+- In Part 1 the deduction voice is Mani's. In Part 2, Nila takes over deductions on the radio with her criminology voice (as in the GDD evidence board), and Mani's inner voice gets rarer.
+
+**Example lines for Episode 1** *(draft, to be story-checked)*
+
+| Trigger | Line | Subtitle |
+| --- | --- | --- |
+| Inspect the job whiteboard | Eleven applications. Two callbacks. One Thursday. | (same) |
+| Inspect the graduation photo | Amma azhudhaanga. Appa azhala-nu nadichaar. | Amma cried. Appa pretended he didn't. |
+| Inspect Nila's broadcast photo | First night on air. She called me after, couldn't stop talking. | (same) |
+| Pattern: receipts + drive-thru log | Two orders, same name, two minutes apart. Someone orders ahead of him. | (same) |
+| Pattern: cat profile picture + Harold's phone case | Same cat. Someone who shares his phone. | (same) |
+| Inspect the wet prints | Sneakers. Small. Not Gus. | (same) |
+| Afterthought, leaving the staff room | Bait doesn't need a heat pack. | (same) |
+| Afterthought, back in the car | I never told him my name. (beat) It was on the cup. | (same) |
+| Inspect the rangoli boot print | Too big for Tess. Too big for Nila. | (same) |
+| Inspect the suspension notice | "Sponsor complaints." Nila doesn't get complaints. She gets callers. | (same) |
+
+**Cost:** about 40–60 short lines per episode, all new writing, which need a `/story-check` pass and VO in two languages. They live in the story data like every other line (a new channel, `thought`), not hard-coded.
