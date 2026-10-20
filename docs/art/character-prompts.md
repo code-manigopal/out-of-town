@@ -51,6 +51,7 @@ Appearance details below follow the screenplays in `docs/story/` (canon). Anythi
 - **Main outfit:** tailored charcoal wool coat over a quarter-zip sweater, dark trousers, polished shoes, a silver watch, leather gloves.
 - **Tower variant (finale):** the same coat with mud on it, a pistol in one hand.
 - **Prop sheet:** Midas, a large golden lancehead snake, coiled (separate image, no person).
+- **Approved:** `sheets/victor/victor_p1_face.png`, `victor_p1_turnaround.png`, `victor_p1_expressions.png`, and `sheets/midas/midas_snake.png` (2026-10-20). Modelling notes: Victor's warmth must stay on the mouth while the eyes stay cold (use the "cold stare" eyes with the "charming smile" mouth). Midas: drop the upturned horn on the snout and the spiky brow ridges in the head close-ups; a real golden lancehead has a smooth, flat, arrow-shaped head. Keep the colour and scale pattern.
 - Sheets: FACE, TURNAROUND, OUTFIT ×2, EXPRESSIONS.
 
 ### Hades, silhouette (Part 1) · priority A
