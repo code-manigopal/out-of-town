@@ -42,6 +42,7 @@ Appearance details below follow the screenplays in `docs/story/` (canon). Anythi
 ### Nila (25) · priority A
 **Identity:** South Indian Tamil woman, age 25, medium-brown skin, long black hair, small nose stud, expressive eyes, quick wide smile, slim, 160 cm, Mani's younger sister (same family resemblance: similar eyes and nose).
 - **Main outfit (photos, flashbacks, Ep 1 video):** oversized mustard knit sweater, black jeans, a denim jacket with radio-station pins, over-ear headphones around her neck *(design)*, hair in a loose braid.
+- **Approved:** `sheets/nila/nila_p1_face.png`, `nila_p1_turnaround.png`, `nila_p1_expressions.png` (2026-10-20). Modelling notes: nose stud on her **right** nostril (the front views; the profile shows it on the left, ignore that); braid over her **left** shoulder; plain white sneakers, no logo (the side view shows one).
 - **Found at the Pike Point tower:** thinner, hair tied back, a scrape across one cheek, the same denim jacket dirty and torn, holding a flare gun.
 - Sheets: FACE, TURNAROUND, OUTFIT ×2, EXPRESSIONS.
 
