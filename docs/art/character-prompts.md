@@ -84,6 +84,7 @@ Appearance details below follow the screenplays in `docs/story/` (canon). Anythi
 **Identity:** White man, age 26, fisherman, short dark-blond hair, short beard, weathered hands, guilty eyes, 183 cm. Tess's brother (family resemblance).
 - **Main outfit:** orange rain bib over a sweater, knit cap, rubber boots.
 - Sheets: FACE, TURNAROUND, OUTFIT.
+- **Approved:** `sheets/eli/eli_p1_face.png`, `eli_p1_turnaround.png` (2026-10-20). Freckles like Tess's: keep them, they tie the siblings together. No fixes needed.
 
 ### Walter Marsh (72) · priority B
 **Identity:** White man, age 72, stooped, white beard, haunted look, 175 cm, father of Eli and Tess.
