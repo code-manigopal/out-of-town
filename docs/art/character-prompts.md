@@ -64,6 +64,7 @@ Appearance details below follow the screenplays in `docs/story/` (canon). Anythi
 ### Ruth Vane (64) · priority A
 **Identity:** White woman, age 64, short cropped grey hair, weathered face, sharp eyes, gruff, sturdy, 165 cm.
 - **Main outfit:** flannel shirt under a quilted vest, work jeans, boots, reading glasses on a chain. Props (separate callout): a police scanner, a pump shotgun.
+- **Approved:** `sheets/ruth/ruth_p1_face.png`, `ruth_p1_turnaround.png` (2026-10-20). Modelling note: plain back pockets on the jeans (the sheet shows a brand-style stitch and tab). Expression sheet not needed yet.
 - **Rescue variant (the skiff in the fog):** soaked, grey hair loose, shotgun at her shoulder.
 - Sheets: FACE, TURNAROUND, OUTFIT ×2, EXPRESSIONS.
 
