@@ -3,7 +3,7 @@
 ## Series
 - **Out of Town** is a story-driven thriller series. Each part is named after its place.
 - Part 1: **Greyhaven** (8 episodes, 5 endings). Part 2: **Red Lake** (8 episodes, two playable characters). Part 3: hooked (Robert Hayden).
-- PC, Steam. A browser prototype of both parts exists (`prototype/browser`). The 3D game is built in Unreal Engine 5.
+- PC, Steam. A browser prototype of both parts exists (`prototype/browser`). The 3D game is built in Godot 4.
 - Family dialogue (Mani, Nila, Amma, Appa, Preethi) is in **Tanglish**. Every line shows an English subtitle.
 
 ## Fictional replacements

@@ -5,17 +5,17 @@ Priority: **A** = needed for the vertical slice (Part 1 Ep 1), **B** = Part 1, *
 ## Characters
 | Character | Type | Priority |
 | --- | --- | --- |
-| Mani | MetaHuman, playable | A |
-| Nila (voice + photos in Ep 1) | MetaHuman | A |
-| Victor Kessler | MetaHuman | A |
-| Hades silhouette | Simple skeletal mesh + coat | A |
-| Tom Portons staff, motel guests | MetaHuman crowd variants | A |
-| Ruth, Tess, Gus | MetaHuman | A |
-| Corbin, Ortiz, Holt, Eli, Walter, Rao, Reid, Jonah | MetaHuman | B |
-| Victor's men (3 variants) | MetaHuman, AI | B |
-| Preethi | MetaHuman, playable | C |
-| Hades (face), Kane, Ivy, Marchetti, Keeper, Bev, Sully, Dunn, Rocco | MetaHuman | C |
-| Kane's men, Northstar staff | MetaHuman, AI | C |
+| Mani | CC4 → .glb, playable | A |
+| Nila (voice + photos in Ep 1) | CC4 → .glb | A |
+| Victor Kessler | CC4 → .glb | A |
+| Hades silhouette | Simple rigged mesh (.glb) + coat | A |
+| Tom Portons staff, motel guests | CC4 → .glb crowd variants (shared rig) | A |
+| Ruth, Tess, Gus | CC4 → .glb | A |
+| Corbin, Ortiz, Holt, Eli, Walter, Rao, Reid, Jonah | CC4/Blender → .glb | B |
+| Victor's men (3 variants) | CC4/Blender → .glb, AI | B |
+| Preethi | CC4 → .glb, playable | C |
+| Hades (face), Kane, Ivy, Marchetti, Keeper, Bev, Sully, Dunn, Rocco | CC4/Blender → .glb | C |
+| Kane's men, Northstar staff | CC4/Blender → .glb, AI | C |
 
 ## Environments
 | Level | Priority |
@@ -50,3 +50,8 @@ Golden lancehead vipers (Midas), poison dart frogs, slow lorises, tortoises (Par
 
 ## Audio
 Generated radio static and tuning, lake ambience, mill machinery, fog horn, St. Brendan's bell, snow wind, mine drips, animal sounds, music (piano and synth, with Tamil instruments for family themes).
+
+## Sourcing and licences
+- Characters: Character Creator 4 for A-priority (exported as .glb with a shared humanoid skeleton); Blender for the rest. Check the CC4 licence for commercial game use.
+- Environment scans, textures and HDRIs: Poly Haven and ambientCG (CC0), plus Fab assets whose licence allows use outside Unreal (check each listing). Megascans/Quixel content is Unreal-only now and is not used.
+- Keep a licence note beside each imported asset pack.

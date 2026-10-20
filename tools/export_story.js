@@ -1,14 +1,19 @@
-/* Exports prototype scenes to data/story/ for Unreal.
- * Writes, per part:  <pid>_scenes.json  (full static structure)
- *                    <pid>_lines.csv    (DataTable rows for FOOTDialogueLine)
- *                    <pid>_choices.csv  (DataTable rows for FOOTChoice)
- * Lines, choices or targets computed at runtime from story state are marked "dynamic": true
- * and exported using a default state; implement them in Blueprint/C++ from the prototype source. */
+/* Exports prototype scenes for the Godot game and for spreadsheet / VO-script use.
+ * Writes, per part:  game/data/story/<pid>_scenes.json  (full static structure; read by the game via StoryDB)
+ *                    data/story/<pid>_lines.csv         (one row per line, for spreadsheets / VO scripts)
+ *                    data/story/<pid>_choices.csv       (one row per choice, same use)
+ * Choices carry declarative "req" (flags, notFlags, clues, proofs) and "fx" (flag, unflag, clue, trust,
+ * danger, health, set, add...) objects when the prototype defines them as plain data.
+ * Lines, choices, conditions or effects computed at runtime from story state are marked "dynamic": true
+ * (or hasCondition / hasEffects / reqDynamic / fxDynamic) and exported using a default state;
+ * implement them in GDScript from the prototype source. */
 const fs = require('fs'), vm = require('vm'), path = require('path');
 const root = path.join(__dirname, '..');
 const dir = path.join(root, 'prototype', 'browser');
-const out = path.join(root, 'data', 'story');
+const out = path.join(root, 'data', 'story');            // CSVs (not read by the game)
+const gameOut = path.join(root, 'game', 'data', 'story'); // JSON (inside the Godot project)
 fs.mkdirSync(out, { recursive: true });
+fs.mkdirSync(gameOut, { recursive: true });
 
 const ctx = { window: {} }; vm.createContext(ctx);
 const files = ['part1.js', ...[1,2,3,4,5,6,7,8].map(i => `p1e${i}.js`), 'part2.js', ...[1,2,3,4,5,6,7,8].map(i => `p2e${i}.js`)];
@@ -36,6 +41,20 @@ function parseLine(raw) {
 }
 
 const csv = v => { const s = String(v ?? ''); return /[",\n\r]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
+// Declarative requirement / effect objects only; functions are flagged, not serialized.
+function reqData(r) {
+  if (!r) return null;
+  if (isFn(r)) return { dynamic: true };
+  const o = {};
+  for (const k of ['flags', 'notFlags', 'clues', 'proofs']) if (r[k] != null) o[k] = r[k];
+  if (isFn(r.fn)) o.dynamic = true;
+  return o;
+}
+function fxData(f) {
+  if (!f) return null;
+  if (isFn(f)) return { dynamic: true };
+  return JSON.parse(JSON.stringify(f));
+}
 const arr = a => a && a.length ? '(' + a.map(x => '"' + x + '"').join(',') + ')' : '()';
 
 for (const pid of Object.keys(PARTS)) {
@@ -57,19 +76,24 @@ for (const pid of Object.keys(PARTS)) {
       if (isFn(c.to)) ch.dynamicTarget = true;
       if (c.req) ch.hasCondition = true;
       if (c.fx) ch.hasEffects = true;
-      if (c.once) ch.once = true;
+      if (c.req) ch.req = reqData(c.req);
+      if (c.fx) ch.fx = fxData(c.fx);
+      if (c.lock) ch.lock = val(c.lock, S);
+      if (isFn(c.show)) ch.showDynamic = true;
+      if (c.once) ch.once = c.once;
       rec.choices.push(ch);
       choiceRows.push([`${id}_c${i}`, id, ch.label, ch.sub, ch.to, arr([]), arr([]), c.lock ? val(c.lock, S) : '', sc.timer ? val(sc.timer.secs, S) : 0]);
     });
-    if (sc.timer) rec.timer = { secs: val(sc.timer.secs, S), to: val(sc.timer.to, S) };
-    const pz = val(sc.puzzle, S); if (pz) rec.puzzle = { type: pz.type, title: pz.title || '', to: val(pz.to, S) };
+    if (sc.fx) rec.fx = fxData(sc.fx);
+    if (sc.timer) rec.timer = { secs: val(sc.timer.secs, S), to: val(sc.timer.to, S), ...(sc.timer.fx ? { fx: fxData(sc.timer.fx) } : {}) };
+    const pz = val(sc.puzzle, S); if (pz) rec.puzzle = { type: pz.type, title: pz.title || '', to: val(pz.to, S), ...(pz.fx ? { fx: fxData(pz.fx) } : {}) };
     const cb = val(sc.combat, S); if (cb) rec.combat = { to: cb.to, cleanTo: cb.cleanTo || null };
     if (sc.epEnd) rec.episodeEnd = true;
     if (sc.ending) rec.ending = val(sc.ending, S);
     scenes[id] = rec;
   }
   const meta = { id: P.id, name: P.name, episodes: P.episodes, people: P.people, clues: P.clues };
-  fs.writeFileSync(path.join(out, `${pid}_scenes.json`), JSON.stringify({ part: meta, scenes }, null, 2));
+  fs.writeFileSync(path.join(gameOut, `${pid}_scenes.json`), JSON.stringify({ part: meta, scenes }, null, 2));
   fs.writeFileSync(path.join(out, `${pid}_lines.csv`), '﻿' + [['Name', 'SceneId', 'Order', 'Speaker', 'Channel', 'Text', 'Subtitle', 'bIsNarration'], ...lineRows].map(r => r.map(csv).join(',')).join('\n'));
   fs.writeFileSync(path.join(out, `${pid}_choices.csv`), '﻿' + [['Name', 'SceneId', 'Label', 'SubLabel', 'TargetScene', 'RequiredFlags', 'RequiredClues', 'LockedReason', 'TimerSeconds'], ...choiceRows].map(r => r.map(csv).join(',')).join('\n'));
   console.log(pid, 'scenes', Object.keys(scenes).length, 'lines', lineRows.length, 'choices', choiceRows.length);

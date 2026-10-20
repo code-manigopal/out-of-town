@@ -21,12 +21,12 @@ out-of-town/
 │   ├── tech/               Engine decision, technical design, coding standards
 │   ├── art/                Art direction, character sheet prompts, asset list
 │   └── production/         Roadmap and milestones
-├── game/                   Unreal Engine 5 project (OutOfTown.uproject)
-│   ├── Config/
-│   ├── Source/OutOfTown/   C++ gameplay code (story state, dialogue types)
-│   └── Content/OutOfTown/  Assets (tracked with Git LFS)
+├── game/                   Godot 4.7 project (project.godot)
+│   ├── scripts/story/      StoryState and StoryDB autoloads (GDScript)
+│   ├── data/story/         Story JSON exported from the prototype, read by the game
+│   └── ...                 Assets by type: characters/, environments/, audio/ (Git LFS)
 ├── prototype/browser/      Playable HTML prototype of Parts 1 and 2 (the story reference build)
-├── data/story/             Story data exported from the prototype, for import into the engine
+├── data/story/             Lines and choices as CSV, for spreadsheets and the VO script
 ├── tools/                  Validation and export scripts
 └── .github/                Issue templates, PR template, CI
 ```
@@ -35,7 +35,7 @@ out-of-town/
 
 ### 1. Clone with Git LFS
 
-Game assets (`.uasset`, `.umap`, textures, audio, video) are stored with [Git LFS](https://git-lfs.com).
+Game assets (models, textures, audio, video) are stored with [Git LFS](https://git-lfs.com).
 
 ```bash
 git lfs install
@@ -60,14 +60,13 @@ Validate every scene link and dynamic condition:
 node tools/validate_prototype.js
 ```
 
-### 3. Open the Unreal project
+### 3. Open the Godot project
 
-1. Install **Unreal Engine 5.5 or newer** from the Epic Games Launcher, and **Visual Studio 2022** with the "Game development with C++" workload.
-2. Right-click `game/OutOfTown.uproject` → **Generate Visual Studio project files**.
-3. Open `game/OutOfTown.sln`, build **Development Editor / Win64**, then run.
-4. If you use a different engine version, change `EngineAssociation` in `OutOfTown.uproject` (or right-click → Switch Unreal Engine version).
+1. Install **Godot 4.7 or newer** (standard build, not .NET). On macOS: `brew install --cask godot`.
+2. Open the editor with `godot --path game -e`, or run the game with `godot --path game`.
+3. Run the story tests: `godot --headless --path game --script res://tests/run_tests.gd`.
 
-See [`docs/tech/engine-decision.md`](docs/tech/engine-decision.md) for why Unreal Engine 5.
+See [`docs/tech/engine-decision.md`](docs/tech/engine-decision.md) for why Godot.
 
 ## Working with Claude Code
 
@@ -77,7 +76,7 @@ Open the repository root in Claude Code. It reads [`CLAUDE.md`](CLAUDE.md) autom
 | --- | --- |
 | `/story-check` | Checks a change against the canon in `docs/story/` (names, timeline, Tanglish and subtitles, Hades rules) |
 | `/new-scene` | Adds a new scene to the prototype in the existing data format and validates it |
-| `/export-story` | Exports prototype scenes to `data/story/*.json` for Unreal DataTables |
+| `/export-story` | Exports prototype scenes to `game/data/story/*.json` for the Godot game |
 
 ## Language
 

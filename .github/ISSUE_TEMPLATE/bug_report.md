@@ -14,6 +14,6 @@ labels: bug
 1.
 2.
 
-**Build / version:** (prototype commit, or Unreal build)
+**Build / version:** (prototype commit, or Godot build / commit)
 
 **Screenshot or video:**

@@ -19,7 +19,7 @@ A realistic, cinematic third-person thriller about an ordinary man (and later hi
 Explore → talk → investigate (find clues) → solve (puzzle) → set piece (stealth / chase / fight / dive) → choice → cliffhanger.
 
 ## 5. Systems
-All state mirrors the browser prototype (`prototype/browser/engine.js`) and lives in `UOOTStorySubsystem`.
+All state mirrors the browser prototype (`prototype/browser/engine.js`) and lives in the `StoryState` autoload.
 
 | System | Rules |
 | --- | --- |
@@ -58,7 +58,7 @@ All state mirrors the browser prototype (`prototype/browser/engine.js`) and live
 - Weather as a character: fog in Greyhaven, snow and −30 °C in Red Lake (cold affects stamina and aim if exposed too long).
 
 ## 6. Camera and controls
-- Third-person over-the-shoulder, cinematic camera in key scenes (Sequencer).
+- Third-person over-the-shoulder, cinematic camera in key scenes (AnimationPlayer cutscenes).
 - Driving sections in Part 1 Ep 1 and Part 2 Ep 1–2: simple third-person car, radio in the car, stops at Tom Portons.
 - Walk, jog, crouch; no sprint-everywhere. Interactions on one button.
 

@@ -16,7 +16,7 @@ Grounded realism, filmic. Think late-night radio, wet asphalt, sodium lamps, bre
 - **Places:** northern highway motels, a gold-mining town, ice roads, a ghost town, a dense burned-and-regrown forest, a stone-and-glass mansion.
 
 ## Characters
-Realistic, modern, everyday clothes. MetaHumans as the base, customised to the character sheets. South Indian features for the family, accurate and respectful. No glamour lighting: people look tired, cold, scared.
+Realistic, modern, everyday clothes. Characters built in Character Creator 4 (or Blender) and exported as glTF, customised to the character sheets. South Indian features for the family, accurate and respectful. No glamour lighting: people look tired, cold, scared.
 
 ## UI
 Minimal, diegetic where possible: phone screen, radio dial, Nila's notebook as the journal. Subtitles clean, with speaker name and a small channel icon (radio, phone, tape).

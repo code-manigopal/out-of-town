@@ -2,6 +2,24 @@
 
 Instructions for Claude Code working in this repository. Read this before making changes.
 
+## Working rules (read first)
+
+The goal is the best result for the fewest usage credits and tokens.
+
+1. Delegate large, parallel, or search-heavy work to sub-agents (broad codebase sweeps, independent
+   multi-file changes, long research). Do small, targeted edits directly. A sub-agent starts cold and
+   re-reads context, so it costs more than it saves on a small task.
+2. Give sub-agents the lightest model that can do the job: Haiku for simple lookups, searches, and
+   mechanical edits; Sonnet for routine coding; the main model only for design and hard debugging.
+3. Keep context lean: read only the parts of files you need, give sub-agents a self-contained brief,
+   and ask them to return conclusions, not file dumps.
+4. Run independent sub-agents in parallel: launch them all in one message, and never let two of them
+   edit the same file. Shared files (config, catalogs, docs) are edited only by the main agent.
+5. Each brief says: the goal, the files it may edit, what it must not touch (no commits, no secrets,
+   no real external APIs), and what to return (changes made, test result, open questions, in a few lines).
+6. The main agent checks every sub-agent's result itself, runs the full tests once at the end, and
+   makes the single commit. A sub-agent's report is a claim, not proof.
+
 ## What this project is
 
 **Out of Town** is a realistic, cinematic third-person thriller for PC (Steam), episodic like *Alan Wake* and with sandbox stealth/aggression like *Hitman*. Two parts are written (8 episodes each); a third is hooked.
@@ -28,33 +46,30 @@ Instructions for Claude Code working in this repository. Read this before making
 
 ## Engine and code
 
-- **Unreal Engine 5.5+**, C++ for systems, Blueprints for level scripting and UI. Project at `game/OutOfTown.uproject`.
-- C++ classes use the `OOT` prefix (`UOOTStorySubsystem`, `FOOTDialogueLine`). Module API macro: `OUTOFTOWN_API`.
-- Follow Epic's coding standard and the asset naming table in `docs/tech/coding-standards.md` (`BP_`, `SM_`, `SK_`, `T_`, `M_`, `MI_`, `ABP_`, `WBP_`, `DT_`, `LS_`, `L_`).
-- Story state (flags, trust, danger, clues/proof) lives in `UOOTStorySubsystem` (a GameInstance subsystem). Mirror the prototype's state model; don't invent a parallel one.
-- Dialogue and scene data come from DataTables built from `data/story/*.json`. Don't hard-code dialogue in Blueprints.
-- **Never hand-edit `.uasset` or `.umap` files as text.** They are binary and tracked with Git LFS.
-- Don't commit `Binaries/`, `Intermediate/`, `Saved/`, `DerivedDataCache/`, `.vs/` (see `.gitignore`).
+- **Godot 4.7+, GDScript** with static typing. Project at `game/project.godot`. (Switched from Unreal Engine 5 on 2026-10-20; see `docs/tech/engine-decision.md`.)
+- Follow the Godot style guide and `docs/tech/coding-standards.md`: snake_case files, folders, functions and variables; PascalCase node names and `class_name`; global `class_name`s use the `OOT` prefix (`OOTDialogueLine`).
+- Story state (flags, trust, danger, clues/proof, Nila's health) lives in the `StoryState` autoload (`res://scripts/story/story_state.gd`). Mirror the prototype's state model; don't invent a parallel one.
+- Dialogue and scene data are read directly from `game/data/story/pN_scenes.json` by the `StoryDB` autoload. Don't hard-code dialogue in scenes or scripts.
+- `.tscn` and `.tres` are text and may be edited carefully. **Never hand-edit binary assets** (`.glb`, textures, audio); they are tracked with Git LFS. Commit `*.import` files.
+- Don't commit `game/.godot/` or export builds (see `.gitignore`).
 
-## Build commands (Windows)
+## Game commands
 
-```bat
-:: Generate project files
-"%UE5_ROOT%\Engine\Build\BatchFiles\Build.bat" -projectfiles -project="%CD%\game\OutOfTown.uproject" -game -engine
-
-:: Build the editor target
-"%UE5_ROOT%\Engine\Build\BatchFiles\Build.bat" OutOfTownEditor Win64 Development -Project="%CD%\game\OutOfTown.uproject" -WaitMutex
+```bash
+godot --path game -e                                              # open the editor
+godot --headless --path game --import                             # import assets; must finish without script errors
+godot --headless --path game --script res://tests/run_tests.gd    # story/state tests (exit 1 on failure)
 ```
 
 ## Prototype commands
 
 ```bash
 node tools/validate_prototype.js        # every scene link, condition and puzzle target must resolve (exit 1 on error)
-node tools/export_story.js              # writes data/story/pN_scenes.json, pN_lines.csv, pN_choices.csv
+node tools/export_story.js              # writes game/data/story/pN_scenes.json and data/story/pN_lines.csv, pN_choices.csv
 cd prototype/browser && python3 -m http.server 8000
 ```
 
-After changing anything under `prototype/browser/`, run the validator. It must report `errors 0`.
+After changing anything under `prototype/browser/`, run the validator (it must report `errors 0`), then re-export the story and run the game tests.
 
 ## How to work here
 

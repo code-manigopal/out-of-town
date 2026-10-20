@@ -1,43 +1,59 @@
 # Technical design
 
 ## Project layout
-- `game/OutOfTown.uproject` — single runtime module `OutOfTown`.
-- `game/Source/OutOfTown/` — C++ by feature folder:
+- `game/project.godot` — Godot 4.7 project, GDScript only.
+- `game/scripts/` — code by feature folder:
 
 | Folder | Contents (now / planned) |
 | --- | --- |
-| `Story/` | `UOOTStorySubsystem` (state), `OOTDialogueTypes.h` (DataTable rows) — **exists** |
-| `Dialogue/` | Dialogue player component, subtitle widget data, radio audio processing — planned |
-| `Investigation/` | Inspectable component, journal, evidence board, puzzle base class — planned |
-| `Characters/` | `AOOTCharacter` base, Mani/Preethi, AI enemies — planned |
-| `Stealth/` | Perception, suspicion meter, disguises, takedowns — planned |
-| `Combat/` | Weapons, ammo, grenades, health, medkits — planned |
-| `Save/` | `UOOTSaveGame`, checkpoint system — planned |
-| `UI/` | CommonUI widgets base classes — planned |
+| `scripts/story/` | `story_state.gd` (autoload `StoryState`), `story_db.gd` (autoload `StoryDB`), `OOTDialogueLine` and other data classes |
+| `scripts/dialogue/` | Dialogue player, subtitle data, radio audio processing — planned |
+| `scripts/investigation/` | Inspectable node, journal, evidence board, puzzle base class — planned |
+| `scripts/characters/` | Character base (`CharacterBody3D`), Mani/Preethi, AI enemies — planned |
+| `scripts/stealth/` | Perception, suspicion meter, disguises, takedowns — planned |
+| `scripts/combat/` | Weapons, ammo, grenades, health, medkits — planned |
+| `scripts/save/` | Save and checkpoint helpers — planned |
+| `ui/` | Control scenes and themes (`ui/dialogue/dialogue_test.tscn` is the dialogue test scene) |
+
+Gameplay is built from scenes and nodes: one scene per character, level, prop and UI panel, with a script on the root node. Nodes talk through signals, not hard references.
 
 ## Story data pipeline
 ```
-prototype/browser/*.js  ──node tools/export_story.js──▶  data/story/*.json + *.csv  ──import──▶  DT_P1_Lines, DT_P1_Choices …
+prototype/browser/*.js  ──node tools/export_story.js──▶  game/data/story/pN_scenes.json   (read by the game)
+                                                         data/story/pN_lines.csv, pN_choices.csv   (spreadsheets / VO script only)
 ```
 1. The browser prototype is the reference implementation of every scene.
 2. `tools/export_story.js` writes, per part:
-   - `pN_scenes.json`: every scene with place, time, lines, choices, puzzle, combat, episode-end, ending. Runtime-computed values are marked `dynamic`.
-   - `pN_lines.csv` → DataTable of `FOOTDialogueLine`.
-   - `pN_choices.csv` → DataTable of `FOOTChoice`.
-3. Dynamic logic (conditions, effects, computed targets) is implemented in C++/Blueprint by reading the matching JS in the prototype.
-4. Later: a `UOOTSceneAsset` (Primary Data Asset) per scene, or a dialogue plugin, if DataTables become limiting.
+   - `game/data/story/pN_scenes.json`: every scene with place, time, lines, choices, puzzle, combat, episode-end, ending. Runtime-computed values are marked `dynamic`.
+   - `data/story/pN_lines.csv` and `pN_choices.csv`: for spreadsheets and the VO script, not loaded by the game.
+3. `StoryDB` reads `res://data/story/pN_scenes.json` directly. There is no import step.
+4. Dynamic logic (conditions, effects, computed targets) is implemented in GDScript by reading the matching JS in the prototype.
+5. Later: one `Resource` (`.tres`) per scene, or a dialogue plugin, if JSON becomes limiting.
 
 ## Story state
-`UOOTStorySubsystem` (GameInstance subsystem) holds part id, flags, trust, danger, clues, Nila's health. It broadcasts `OnClueAdded` and `OnDangerChanged` for UI. A save game serialises this struct plus current scene and level.
+`StoryState` (autoload, `res://scripts/story/story_state.gd`) holds part id, flags, trust, danger, clues/proof and Nila's health. It mirrors the browser prototype's state model; do not invent a parallel one. It emits `clue_added` and `danger_changed` signals for UI. Saves are JSON written to `user://save_<slot>.json` containing this state plus the current scene and level.
+
+## Engine systems
+| Need | Godot approach |
+| --- | --- |
+| Level scripting | Scenes + nodes, signals, `Area3D` triggers, GDScript |
+| Player and enemy movement | `CharacterBody3D` |
+| Character animation | `AnimationTree` with state machine and blend spaces; locomotion clips shared via a common skeleton |
+| Cinematics and cutscenes | `AnimationPlayer` (camera, character, audio, method-call tracks) |
+| AI navigation | `NavigationServer3D` / `NavigationAgent3D`; perception via `Area3D` and raycasts |
+| Abilities and stats | Plain GDScript components and `Resource` data, no framework |
+| UI | `Control` nodes with themes |
+| VFX | `GPUParticles3D`, shaders, `FogVolume` |
+| Audio | Audio buses (radio, phone and tape get effect buses) |
 
 ## Localisation
-- All player-facing text is `FText` in DataTables (gatherable by the Localization Dashboard).
-- Spoken language: Tanglish (family) and English (others). Subtitles in English first; more languages later.
-- Voice-over folders: `Audio/VO_Tanglish`, `Audio/VO_English`.
+- All player-facing text lives in the JSON data and is shown via Godot's translation system (`tr()` / CSV or PO files) when more languages are added.
+- Spoken language: Tanglish (family) and English (others). Every line has an English subtitle. Subtitles in English first; more languages later.
+- Voice-over folders: `res://audio/vo_tanglish/`, `res://audio/vo_english/`.
 
 ## Rendering defaults
-Lumen GI and reflections, Virtual Shadow Maps, Nanite, DX12 (see `game/Config/DefaultEngine.ini`). Volumetric fog for Greyhaven; snow and breath VFX for Red Lake.
+Forward+ renderer, SDFGI or VoxelGI for global illumination, volumetric fog for Greyhaven, shadow-mapped directional and spot lights, SSR and SSAO. Snow and breath VFX for Red Lake. See `docs/tech/engine-decision.md` for the realism plan.
 
 ## Testing
 - `node tools/validate_prototype.js` in CI on every push and PR (`.github/workflows/prototype-check.yml`).
-- Later: UE automation tests for the story subsystem (`Story.*`), run from the editor's Session Frontend.
+- Game tests: `godot --headless --path game --script res://tests/run_tests.gd` (story state, scene data links, saves).

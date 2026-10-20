@@ -1,26 +1,38 @@
-# Engine decision: Unreal Engine 5
+# Engine decision: Godot 4.7 + GDScript
 
-**Decision:** Unreal Engine 5.5 or newer, C++ plus Blueprints.
+**Decision:** Godot 4.7 (Forward+ renderer), GDScript for all game code.
 
 ## Why
-| Need | Unreal Engine 5 | Unity 6 (HDRP) | Godot 4 |
+| Need | Godot 4.7 | Unreal Engine 5 | Unity 6 (HDRP) |
 | --- | --- | --- | --- |
-| Realistic look like *Alan Wake 2* / *Hitman* | Lumen GI, Nanite, Virtual Shadow Maps, volumetric fog out of the box | Possible with HDRP, more setup | Not at this level yet |
-| Realistic humans | **MetaHuman** (free) + MetaHuman Animator from an iPhone | Third-party | Third-party |
-| Environments | Quixel Megascans free with UE, PCG for forests | Asset Store | Manual |
-| Cinematics | Sequencer, Movie Render Queue | Timeline | Basic |
-| Third-person stealth/shooter base | Third Person template, Motion Matching, GAS | Starter assets | Manual |
-| Language | C++ (close to Java/C#) + Blueprints | C# (easiest for you) | GDScript / C# |
-| Cost | Free until $1M gross revenue, then 5% | Free tier / seats | Free |
+| Works well on a Mac (Apple Silicon) | Native editor, light, fast start | Heavy on Mac; long shader and build times | Good, HDRP is heavy |
+| Cost | Free, MIT licence, no revenue share | Free until $1M gross, then 5% | Free tier / seats |
+| Iteration speed | Seconds; scripts and scenes reload instantly | Slow compiles and shader builds | Moderate |
+| Files Claude Code can edit | `.tscn`, `.tres`, `.gd` are text and diff well | `.uasset`/`.umap` are binary | Scenes are YAML, noisy diffs |
+| Realistic look like *Alan Wake 2* / *Hitman* | Possible with effort: SDFGI/VoxelGI, volumetric fog, SSR | Lumen, Nanite, Virtual Shadow Maps out of the box | Possible with HDRP, more setup |
+| Realistic humans | No MetaHuman; Character Creator 4 or Blender, imported as glTF | MetaHuman (free) | Third-party |
+| Environments | Poly Haven, ambientCG, Fab (licence permitting) | Megascans, PCG | Asset Store |
+| Cinematics | AnimationPlayer, cameras, `Marker`/call tracks | Sequencer, Movie Render Queue | Timeline |
+| Language | GDScript (Python-like, quick to learn) | C++ + Blueprints | C# |
 
-Unity would be easier to code (C#), but the target look and realistic people point to Unreal. Your Java/C# background transfers to UE C++ well, and Claude Code can write most of the boilerplate.
+## Honest trade-offs
+- **Gained:** a smooth Mac workflow, no royalty, very fast iteration, and a project that is almost all text, so Claude Code can write and review scenes, scripts and data directly.
+- **Lost:** the out-of-the-box realism ceiling of Unreal (no MetaHuman, Nanite or Megascans). The realistic target in `docs/art/art-direction.md` stays; reaching it takes more lighting and asset work.
+
+## Mitigation for the realistic look
+Forward+ renderer; SDFGI or baked VoxelGI/LightmapGI for indirect light; volumetric fog (central to Greyhaven); careful lighting and colour grading per `docs/art/art-direction.md`; good photo-scanned assets from Poly Haven/ambientCG/Fab; tight, small levels instead of open worlds; film grain and depth of field used sparingly.
+
+## Previous decision
+Unreal Engine 5.5 (C++ plus Blueprints) was chosen first. We switched on 2026-10-20 because development happens on a Mac and Godot iterates faster. The Unreal skeleton is kept in git history (first commit `656f514`).
 
 ## Hardware guide
-- GPU: RTX 3060 12 GB minimum for development, RTX 4070 or better recommended.
-- 32 GB RAM (64 GB for big forest levels), NVMe SSD with 300 GB free.
-- Windows 10/11, Visual Studio 2022 with "Game development with C++".
+- Development: Apple Silicon Mac (M1 Pro or better, M2/M3 recommended), 16 GB RAM minimum (32 GB for big scenes), 100 GB free SSD.
+- Export testing: a Windows 10/11 PC with an RTX 3060 or better (the Steam target), and optionally a Linux box or the Steam Deck for the Linux build.
+- Godot 4.7 stable from godotengine.org; no IDE required (the built-in editor or VS Code with a GDScript extension).
 
 ## Risks
-- Large repo size: use Git LFS (set up in `.gitattributes`) and keep raw source art outside the repo if it gets big.
-- C++ build times: keep gameplay code in one module until it hurts.
-- Learning curve: start with the vertical slice in `docs/production/roadmap.md`, not the whole game.
+- **Realism ceiling:** test the look early with the vertical slice; keep the option of upgrading rendering as Godot improves.
+- **Character pipeline:** no MetaHuman equivalent. Facial animation and lip-sync need a CC4 or Blender workflow and a shared skeleton so animations can be retargeted.
+- **Large repo:** keep using Git LFS for binary assets (`.gitattributes`); do not commit `.godot/`.
+- **Smaller ecosystem:** fewer ready-made stealth/combat systems; we build them in GDScript.
+- **Learning curve:** start with the vertical slice in `docs/production/roadmap.md`, not the whole game.

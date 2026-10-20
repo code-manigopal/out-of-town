@@ -231,7 +231,10 @@
         }
       ],
       "choices": [],
-      "next": "e1_apt"
+      "next": "e1_apt",
+      "fx": {
+        "clue": "voicemail"
+      }
     },
     "e1_apt": {
       "id": "e1_apt",
@@ -322,13 +325,24 @@
           "label": "\"Avalukku work busy, Amma.\"",
           "sub": "She's busy with work, Amma. (Reassure them.)",
           "to": "e1_call2",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "set": {
+              "call1": "reassure"
+            }
+          }
         },
         {
           "label": "\"Inniki avala paakka poren, ippo dhaan kilambaren.\"",
           "sub": "I'm going to see her today, I'm leaving now. (A half-truth.)",
           "to": "e1_call2",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "flag": "honest1",
+            "set": {
+              "call1": "half"
+            }
+          }
         }
       ]
     },
@@ -655,6 +669,9 @@
         }
       ],
       "choices": [],
+      "fx": {
+        "flag": "met_gus"
+      },
       "puzzle": {
         "type": "search",
         "title": "The Missing Cooler",
@@ -711,7 +728,10 @@
         }
       ],
       "choices": [],
-      "next": "e1_victor"
+      "next": "e1_victor",
+      "fx": {
+        "clue": "cooler"
+      }
     },
     "e1_victor": {
       "id": "e1_victor",
@@ -746,7 +766,10 @@
           "label": "\"Greyhaven. Visiting my sister for Diwali.\"",
           "sub": "",
           "to": "e1_victor2",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "flag": "toldVictor"
+          }
         },
         {
           "label": "\"North. Visiting family.\"",
@@ -827,7 +850,10 @@
         }
       ],
       "choices": [],
-      "next": "e1_main"
+      "next": "e1_main",
+      "fx": {
+        "clue": "victorCard"
+      }
     },
     "e1_main": {
       "id": "e1_main",
@@ -867,7 +893,7 @@
           "label": "Look at the radio station first",
           "sub": "",
           "to": "e1_station",
-          "once": true
+          "once": "e1st"
         }
       ]
     },
@@ -942,20 +968,33 @@
           "label": "\"She told me to talk to you and nobody else.\"",
           "sub": "The truth.",
           "to": "e1_ruth2",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "trust": {
+              "ruth": 2
+            }
+          }
         },
         {
           "label": "\"I'm here for Diwali. Is she around?\"",
           "sub": "Casual.",
           "to": "e1_ruth2",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "trust": {
+              "ruth": 1
+            }
+          }
         },
         {
           "label": "\"Has the sheriff been asking about her?\"",
           "sub": "Too direct.",
           "to": "e1_ruth2b"
         }
-      ]
+      ],
+      "fx": {
+        "flag": "met_ruth"
+      }
     },
     "e1_ruth2": {
       "id": "e1_ruth2",
@@ -1090,6 +1129,12 @@
         }
       ],
       "choices": [],
+      "fx": {
+        "flag": "met_tess",
+        "trust": {
+          "tess": 1
+        }
+      },
       "puzzle": {
         "type": "search",
         "title": "Nila's flat",
@@ -1136,7 +1181,12 @@
           "label": "\"I will. Thank you, Tess.\"",
           "sub": "",
           "to": "e1_cliff",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "trust": {
+              "tess": 1
+            }
+          }
         },
         {
           "label": "\"Who do you think came in here?\"",
@@ -1410,6 +1460,9 @@
         }
       ],
       "choices": [],
+      "fx": {
+        "clue": "email"
+      },
       "puzzle": {
         "type": "pick",
         "title": "Plot the callers",
@@ -1445,7 +1498,10 @@
         }
       ],
       "choices": [],
-      "next": "e2_hall"
+      "next": "e2_hall",
+      "fx": {
+        "clue": "callers"
+      }
     },
     "e2_hall": {
       "id": "e2_hall",
@@ -1478,18 +1534,35 @@
           "label": "Climb out the window",
           "sub": "",
           "to": "e2_hall_window",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "danger": 1
+          }
         },
         {
           "label": "Open the door",
           "sub": "",
           "to": "e2_hall_door",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "danger": 2,
+            "flag": [
+              "met_corbin",
+              "corbinSaw"
+            ]
+          }
         }
       ],
       "timer": {
         "secs": 8,
-        "to": "e2_hall_door"
+        "to": "e2_hall_door",
+        "fx": {
+          "danger": 2,
+          "flag": [
+            "met_corbin",
+            "corbinSaw"
+          ]
+        }
       }
     },
     "e2_hall_closet": {
@@ -1528,7 +1601,10 @@
         }
       ],
       "choices": [],
-      "next": "e2_diner"
+      "next": "e2_diner",
+      "fx": {
+        "flag": "met_corbin"
+      }
     },
     "e2_hall_window": {
       "id": "e2_hall_window",
@@ -1552,7 +1628,10 @@
         }
       ],
       "choices": [],
-      "next": "e2_diner"
+      "next": "e2_diner",
+      "fx": {
+        "flag": "met_corbin"
+      }
     },
     "e2_hall_door": {
       "id": "e2_hall_door",
@@ -1646,13 +1725,21 @@
           "label": "\"How was the fishing? With that bait?\"",
           "sub": "Let him know you remember the cooler.",
           "to": "e2_gus_a",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "danger": 1
+          }
         },
         {
           "label": "\"Thanks for breakfast.\"",
           "sub": "Say nothing.",
           "to": "e2_gus_b",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "trust": {
+              "gus": 1
+            }
+          }
         }
       ]
     },
@@ -1754,7 +1841,12 @@
         }
       ],
       "choices": [],
-      "next": "e2_brian1"
+      "next": "e2_brian1",
+      "fx": {
+        "set": {
+          "brian": 0
+        }
+      }
     },
     "e2_brian1": {
       "id": "e2_brian1",
@@ -1776,7 +1868,18 @@
           "sub": "",
           "to": "e2_brian2",
           "hasCondition": true,
-          "hasEffects": true
+          "hasEffects": true,
+          "req": {
+            "clues": [
+              "callers"
+            ]
+          },
+          "fx": {
+            "add": {
+              "brian": 1
+            }
+          },
+          "lock": "You'd need the callers' data"
         },
         {
           "label": "\"I want to hear her last show. Now.\"",
@@ -1818,7 +1921,18 @@
           "sub": "",
           "to": "e2_brian3",
           "hasCondition": true,
-          "hasEffects": true
+          "hasEffects": true,
+          "req": {
+            "clues": [
+              "cable"
+            ]
+          },
+          "fx": {
+            "add": {
+              "brian": 1
+            }
+          },
+          "lock": "You'd need the cable"
         },
         {
           "label": "\"Please. She's my sister.\"",
@@ -1858,7 +1972,12 @@
           "label": "\"The reason she disappeared. And if she turns up dead, I'll tell everyone you had it.\"",
           "sub": "",
           "to": "e2_brian_end",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "add": {
+              "brian": 1
+            }
+          }
         },
         {
           "label": "\"Nothing. I just want to hear her voice.\"",
@@ -2012,7 +2131,13 @@
         }
       ],
       "choices": [],
-      "next": "e2_lot"
+      "next": "e2_lot",
+      "fx": {
+        "clue": [
+          "tape",
+          "sponsor"
+        ]
+      }
     },
     "e2_lot": {
       "id": "e2_lot",
@@ -2055,21 +2180,35 @@
           "label": "\"Do you know a Victor Kessler?\"",
           "sub": "",
           "to": "e2_lot_v",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "danger": 1
+          }
         },
         {
           "label": "\"I heard Nila's last show.\"",
           "sub": "",
           "to": "e2_lot_t",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "danger": 1
+          }
         },
         {
           "label": "\"Of course, Sheriff. Thank you.\"",
           "sub": "Stay polite.",
           "to": "e2_lot_p",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "trust": {
+              "corbin": 1
+            }
+          }
         }
-      ]
+      ],
+      "fx": {
+        "flag": "met_corbin"
+      }
     },
     "e2_lot_v": {
       "id": "e2_lot_v",
@@ -2221,7 +2360,11 @@
         }
       ],
       "choices": [],
-      "next": "e2_end"
+      "next": "e2_end",
+      "fx": {
+        "clue": "memo",
+        "flag": "met_eli"
+      }
     },
     "e2_end": {
       "id": "e2_end",
@@ -2287,21 +2430,39 @@
           "label": "\"You did what you had to. Help me now.\"",
           "sub": "Forgive him.",
           "to": "e3_bucket",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "trust": {
+              "eli": 2
+            }
+          }
         },
         {
           "label": "\"You sold her out.\"",
           "sub": "Anger.",
           "to": "e3_bucket",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "trust": {
+              "eli": -1
+            }
+          }
         },
         {
           "label": "\"Nila said you'd know about the dock. Show me.\"",
           "sub": "Stay focused.",
           "to": "e3_bucket",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "trust": {
+              "eli": 1
+            }
+          }
         }
-      ]
+      ],
+      "fx": {
+        "flag": "met_eli"
+      }
     },
     "e3_bucket": {
       "id": "e3_bucket",
@@ -2381,7 +2542,10 @@
         }
       ],
       "choices": [],
-      "next": "e3_dinner"
+      "next": "e3_dinner",
+      "fx": {
+        "clue": "lancehead"
+      }
     },
     "e3_dinner": {
       "id": "e3_dinner",
@@ -2416,15 +2580,28 @@
           "label": "\"You called Nila's show. The night before it was cut.\"",
           "sub": "Confront him now.",
           "to": "e3_walter",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "trust": {
+              "walter": -1
+            }
+          }
         },
         {
           "label": "Say nothing and eat",
           "sub": "Wait for him to tell it.",
           "to": "e3_walter",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "trust": {
+              "walter": 1
+            }
+          }
         }
-      ]
+      ],
+      "fx": {
+        "flag": "met_walter"
+      }
     },
     "e3_walter": {
       "id": "e3_walter",
@@ -2584,7 +2761,10 @@
         }
       ],
       "choices": [],
-      "next": "e3_porch"
+      "next": "e3_porch",
+      "fx": {
+        "clue": "map"
+      }
     },
     "e3_porch": {
       "id": "e3_porch",
@@ -2619,7 +2799,14 @@
           "label": "\"Nobody's going to touch you. I promise.\"",
           "sub": "Promise to protect her.",
           "to": "e3_porch_a",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "flag": "protectTess",
+            "trust": {
+              "tess": 1,
+              "eli": 1
+            }
+          }
         },
         {
           "label": "\"Then tell me everything Corbin asked you.\"",
@@ -2681,7 +2868,10 @@
         }
       ],
       "choices": [],
-      "next": "e3_boat"
+      "next": "e3_boat",
+      "fx": {
+        "flag": "corbinKnowsPP"
+      }
     },
     "e3_boat": {
       "id": "e3_boat",
@@ -2812,18 +3002,27 @@
           "label": "Row hard into the fog",
           "sub": "",
           "to": "e3_light_b",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "danger": 1
+          }
         },
         {
           "label": "Drift and hope",
           "sub": "",
           "to": "e3_light_c",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "danger": 2
+          }
         }
       ],
       "timer": {
         "secs": 7,
-        "to": "e3_light_c"
+        "to": "e3_light_c",
+        "fx": {
+          "danger": 2
+        }
       }
     },
     "e3_light_a": {
@@ -2927,7 +3126,11 @@
         }
       ],
       "choices": [],
-      "next": "e3_end"
+      "next": "e3_end",
+      "fx": {
+        "clue": "knifephoto",
+        "danger": 1
+      }
     },
     "e3_end": {
       "id": "e3_end",
@@ -2986,7 +3189,11 @@
           "label": "Show Corbin the knife and photo",
           "sub": "",
           "to": "e4_open_a",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "danger": 1,
+            "flag": "photoTaken"
+          }
         },
         {
           "label": "Keep them hidden in your jacket",
@@ -3077,20 +3284,41 @@
           "sub": "",
           "to": "e4_int2",
           "hasCondition": true,
-          "hasEffects": true
+          "hasEffects": true,
+          "req": {
+            "clues": [
+              "callers"
+            ]
+          },
+          "fx": {
+            "add": {
+              "interview": 1
+            }
+          },
+          "lock": "You haven't plotted the callers"
         },
         {
           "label": "\"At Auragle I optimised a billing pipeline and cut processing time by forty percent.\"",
           "sub": "",
           "to": "e4_int2",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "add": {
+              "interview": 1
+            }
+          }
         },
         {
           "label": "\"Honestly, I'm having a strange week. Can we reschedule?\"",
           "sub": "",
           "to": "e4_int2"
         }
-      ]
+      ],
+      "fx": {
+        "set": {
+          "interview": 0
+        }
+      }
     },
     "e4_int2": {
       "id": "e4_int2",
@@ -3111,7 +3339,12 @@
           "label": "\"I start with what I can verify, label everything I'm assuming, and test the assumptions first.\"",
           "sub": "",
           "to": "e4_int3",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "add": {
+              "interview": 1
+            }
+          }
         },
         {
           "label": "\"I clean it until it's perfect, then I start.\"",
@@ -3151,7 +3384,12 @@
           "label": "\"Because data is just people, written down. I like finding them in it.\"",
           "sub": "",
           "to": "e4_int_end",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "add": {
+              "interview": 1
+            }
+          }
         },
         {
           "label": "\"The salary.\"",
@@ -3162,7 +3400,12 @@
           "label": "\"I've been out of work for a while and I'm good at this.\"",
           "sub": "",
           "to": "e4_int_end",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "add": {
+              "interview": 1
+            }
+          }
         }
       ]
     },
@@ -3199,7 +3442,10 @@
       ],
       "choices": [],
       "dynamicLines": true,
-      "next": "e4_ruth"
+      "next": "e4_ruth",
+      "fx": {
+        "dynamic": true
+      }
     },
     "e4_ruth": {
       "id": "e4_ruth",
@@ -3226,7 +3472,10 @@
       ],
       "choices": [],
       "dynamicLines": true,
-      "next": "e4_ruth_p1"
+      "next": "e4_ruth_p1",
+      "fx": {
+        "clue": "notebooks"
+      }
     },
     "e4_ruth_p1": {
       "id": "e4_ruth_p1",
@@ -3360,7 +3609,11 @@
           "label": "Straight across the gravel",
           "sub": "",
           "to": "e4_fence2",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "danger": 1,
+            "toast": "Gravel crunches. A guard looks your way."
+          }
         }
       ]
     },
@@ -3388,12 +3641,18 @@
           "label": "Slip into the shed",
           "sub": "",
           "to": "e4_hall",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "toast": "Dark, dusty, safe."
+          }
         }
       ],
       "timer": {
         "secs": 6,
-        "to": "e4_hall"
+        "to": "e4_hall",
+        "fx": {
+          "danger": 1
+        }
       }
     },
     "e4_hall": {
@@ -3477,18 +3736,27 @@
           "label": "Grab it NOW, between thumps",
           "sub": "",
           "to": "e4_pills_ok",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "clue": "pills"
+          }
         },
         {
           "label": "Wait for him to turn away",
           "sub": "",
           "to": "e4_pills_seen",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "danger": 2
+          }
         }
       ],
       "timer": {
         "secs": 4,
-        "to": "e4_pills_seen"
+        "to": "e4_pills_seen",
+        "fx": {
+          "danger": 2
+        }
       }
     },
     "e4_pills_ok": {
@@ -3561,7 +3829,12 @@
         }
       ],
       "choices": [],
-      "next": "e4_snake1"
+      "next": "e4_snake1",
+      "fx": {
+        "set": {
+          "bites": 0
+        }
+      }
     },
     "e4_snake1": {
       "id": "e4_snake1",
@@ -3587,12 +3860,22 @@
           "label": "Step back",
           "sub": "",
           "to": "e4_snake2",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "add": {
+              "bites": 1
+            }
+          }
         }
       ],
       "timer": {
         "secs": 5,
-        "to": "e4_snake2"
+        "to": "e4_snake2",
+        "fx": {
+          "add": {
+            "bites": 1
+          }
+        }
       }
     },
     "e4_snake2": {
@@ -3619,12 +3902,22 @@
           "label": "Turn and shine the light on it",
           "sub": "",
           "to": "e4_snake3",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "add": {
+              "bites": 1
+            }
+          }
         }
       ],
       "timer": {
         "secs": 5,
-        "to": "e4_snake3"
+        "to": "e4_snake3",
+        "fx": {
+          "add": {
+            "bites": 1
+          }
+        }
       }
     },
     "e4_snake3": {
@@ -3651,12 +3944,22 @@
           "label": "Run for the door",
           "sub": "",
           "to": "e4_snake_end",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "add": {
+              "bites": 1
+            }
+          }
         }
       ],
       "timer": {
         "secs": 5,
-        "to": "e4_snake_end"
+        "to": "e4_snake_end",
+        "fx": {
+          "add": {
+            "bites": 1
+          }
+        }
       }
     },
     "e4_snake_end": {
@@ -3684,7 +3987,10 @@
       ],
       "choices": [],
       "dynamicLines": true,
-      "next": "e4_keypad"
+      "next": "e4_keypad",
+      "fx": {
+        "dynamic": true
+      }
     },
     "e4_keypad": {
       "id": "e4_keypad",
@@ -3844,7 +4150,12 @@
         }
       ],
       "choices": [],
-      "next": "e4_ch1"
+      "next": "e4_ch1",
+      "fx": {
+        "set": {
+          "chase": 0
+        }
+      }
     },
     "e4_ch1": {
       "id": "e4_ch1",
@@ -3870,12 +4181,22 @@
           "label": "Stairs",
           "sub": "",
           "to": "e4_ch2",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "add": {
+              "chase": 1
+            }
+          }
         }
       ],
       "timer": {
         "secs": 4,
-        "to": "e4_ch2"
+        "to": "e4_ch2",
+        "fx": {
+          "add": {
+            "chase": 1
+          }
+        }
       }
     },
     "e4_ch2": {
@@ -3897,7 +4218,12 @@
           "label": "The barrels",
           "sub": "",
           "to": "e4_ch3",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "add": {
+              "chase": 1
+            }
+          }
         },
         {
           "label": "The truck",
@@ -3907,7 +4233,12 @@
       ],
       "timer": {
         "secs": 4,
-        "to": "e4_ch3"
+        "to": "e4_ch3",
+        "fx": {
+          "add": {
+            "chase": 1
+          }
+        }
       }
     },
     "e4_ch3": {
@@ -3934,12 +4265,22 @@
           "label": "Over",
           "sub": "",
           "to": "e4_ch4",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "add": {
+              "chase": 1
+            }
+          }
         }
       ],
       "timer": {
         "secs": 4,
-        "to": "e4_ch4"
+        "to": "e4_ch4",
+        "fx": {
+          "add": {
+            "chase": 1
+          }
+        }
       }
     },
     "e4_ch4": {
@@ -3966,12 +4307,22 @@
           "label": "The outflow ditch",
           "sub": "",
           "to": "e4_ch_end",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "add": {
+              "chase": 1
+            }
+          }
         }
       ],
       "timer": {
         "secs": 4,
-        "to": "e4_ch_end"
+        "to": "e4_ch_end",
+        "fx": {
+          "add": {
+            "chase": 1
+          }
+        }
       }
     },
     "e4_ch_end": {
@@ -3991,7 +4342,10 @@
       ],
       "choices": [],
       "dynamicLines": true,
-      "next": "e4_ditch"
+      "next": "e4_ditch",
+      "fx": {
+        "dynamic": true
+      }
     },
     "e4_ditch": {
       "id": "e4_ditch",
@@ -4105,7 +4459,13 @@
           "label": "Tell Tess the truth about the mill",
           "sub": "",
           "to": "e5_clinic",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "trust": {
+              "tess": 1
+            },
+            "flag": "tessKnows"
+          }
         },
         {
           "label": "\"I slipped on the dock.\"",
@@ -4164,7 +4524,13 @@
       ],
       "choices": [],
       "dynamicLines": true,
-      "next": "e5_rao1"
+      "next": "e5_rao1",
+      "fx": {
+        "flag": "met_rao",
+        "set": {
+          "rao": 0
+        }
+      }
     },
     "e5_rao1": {
       "id": "e5_rao1",
@@ -4186,7 +4552,18 @@
           "sub": "",
           "to": "e5_rao2",
           "hasCondition": true,
-          "hasEffects": true
+          "hasEffects": true,
+          "req": {
+            "clues": [
+              "callers"
+            ]
+          },
+          "fx": {
+            "add": {
+              "rao": 1
+            }
+          },
+          "lock": "You'd need the callers' data"
         },
         {
           "label": "\"You took an oath.\"",
@@ -4229,14 +4606,36 @@
           "sub": "",
           "to": "e5_rao3",
           "hasCondition": true,
-          "hasEffects": true
+          "hasEffects": true,
+          "req": {
+            "clues": [
+              "lab"
+            ]
+          },
+          "fx": {
+            "add": {
+              "rao": 1
+            }
+          },
+          "lock": "You'd need the lab photos"
         },
         {
           "label": "Show her the bag of pills",
           "sub": "",
           "to": "e5_rao3",
           "hasCondition": true,
-          "hasEffects": true
+          "hasEffects": true,
+          "req": {
+            "clues": [
+              "pills"
+            ]
+          },
+          "fx": {
+            "add": {
+              "rao": 2
+            }
+          },
+          "lock": "You didn't take the pills"
         },
         {
           "label": "\"I'll go to the newspapers.\"",
@@ -4303,7 +4702,10 @@
       ],
       "choices": [],
       "dynamicLines": true,
-      "next": "e5_station"
+      "next": "e5_station",
+      "fx": {
+        "dynamic": true
+      }
     },
     "e5_station": {
       "id": "e5_station",
@@ -4341,7 +4743,13 @@
         }
       ],
       "choices": [],
-      "next": "e5_cb1"
+      "next": "e5_cb1",
+      "fx": {
+        "flag": "met_ortiz",
+        "set": {
+          "cb": 0
+        }
+      }
     },
     "e5_cb1": {
       "id": "e5_cb1",
@@ -4367,13 +4775,23 @@
           "label": "\"Sunday. She sounded scared of someone.\"",
           "sub": "",
           "to": "e5_cb2",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "add": {
+              "cb": 1
+            }
+          }
         },
         {
           "label": "\"Why don't you tell me, Sheriff?\"",
           "sub": "",
           "to": "e5_cb2",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "add": {
+              "cb": 2
+            }
+          }
         }
       ]
     },
@@ -4401,13 +4819,23 @@
           "label": "\"Asking around.\"",
           "sub": "",
           "to": "e5_cb3",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "add": {
+              "cb": 1
+            }
+          }
         },
         {
           "label": "\"Looking into the mill.\"",
           "sub": "",
           "to": "e5_cb3",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "add": {
+              "cb": 2
+            }
+          }
         }
       ]
     },
@@ -4435,13 +4863,23 @@
           "label": "\"A burning boat.\"",
           "sub": "",
           "to": "e5_cb_end",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "add": {
+              "cb": 1
+            }
+          }
         },
         {
           "label": "\"Trucks on the mill road at two in the morning.\"",
           "sub": "",
           "to": "e5_cb_end",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "add": {
+              "cb": 2
+            }
+          }
         }
       ]
     },
@@ -4481,6 +4919,9 @@
         }
       ],
       "dynamicLines": true,
+      "fx": {
+        "dynamic": true
+      },
       "timer": {
         "secs": 6,
         "to": "e5_stay"
@@ -4508,7 +4949,10 @@
         }
       ],
       "choices": [],
-      "next": "e5_ortiz"
+      "next": "e5_ortiz",
+      "fx": {
+        "clue": "payroll"
+      }
     },
     "e5_stay": {
       "id": "e5_stay",
@@ -4525,7 +4969,10 @@
         }
       ],
       "choices": [],
-      "next": "e5_ortiz"
+      "next": "e5_ortiz",
+      "fx": {
+        "flag": "missedDrawer"
+      }
     },
     "e5_ortiz": {
       "id": "e5_ortiz",
@@ -4553,13 +5000,23 @@
           "label": "\"No. But she said someone at the station was decent.\"",
           "sub": "Honest.",
           "to": "e5_ortiz2",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "trust": {
+              "ortiz": 2
+            }
+          }
         },
         {
           "label": "\"Yes. She trusted you.\"",
           "sub": "A kind lie.",
           "to": "e5_ortiz2",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "trust": {
+              "ortiz": 1
+            }
+          }
         }
       ]
     },
@@ -4612,7 +5069,10 @@
       ],
       "choices": [],
       "dynamicLines": true,
-      "next": "e5_range"
+      "next": "e5_range",
+      "fx": {
+        "dynamic": true
+      }
     },
     "e5_range": {
       "id": "e5_range",
@@ -4713,15 +5173,29 @@
           "label": "\"Then you'll talk to the police. Today.\"",
           "sub": "Threaten him.",
           "to": "e5_gus_a",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "danger": 1
+          }
         },
         {
           "label": "\"Help me, and I'll tell them you did.\"",
           "sub": "Offer him a way out.",
           "to": "e5_gus_b",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "flag": "gusInformant",
+            "trust": {
+              "gus": 2
+            }
+          }
         }
-      ]
+      ],
+      "fx": {
+        "trust": {
+          "gus": 0
+        }
+      }
     },
     "e5_gus_a": {
       "id": "e5_gus_a",
@@ -4870,7 +5344,10 @@
         }
       ],
       "choices": [],
-      "next": "e5_motel"
+      "next": "e5_motel",
+      "fx": {
+        "clue": "medical"
+      }
     },
     "e5_motel": {
       "id": "e5_motel",
@@ -4922,7 +5399,10 @@
         }
       ],
       "choices": [],
-      "next": "e5_end"
+      "next": "e5_end",
+      "fx": {
+        "danger": 1
+      }
     },
     "e5_end": {
       "id": "e5_end",
@@ -4981,7 +5461,10 @@
           "label": "\"Amma, Nila-va kaanom. Naan thedittu irukken. Promise-aa kandupidipen.\"",
           "sub": "Amma, Nila's missing. I'm searching for her. I promise I'll find her. (The truth.)",
           "to": "e6_truth",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "flag": "honest6"
+          }
         },
         {
           "label": "\"Ava kulichittu irukka, Amma, naalaiku call pannuva.\"",
@@ -5179,13 +5662,26 @@
           "label": "\"You were nineteen. Help me now and it counts.\"",
           "sub": "Forgive him.",
           "to": "e6_prep",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "flag": "forgaveWalter",
+            "trust": {
+              "walter": 2,
+              "eli": 1
+            }
+          }
         },
         {
           "label": "\"You let this whole town get sick.\"",
           "sub": "Hold it against him.",
           "to": "e6_prep",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "trust": {
+              "walter": -1,
+              "eli": -1
+            }
+          }
         }
       ]
     },
@@ -5225,7 +5721,12 @@
         }
       ],
       "choices": [],
-      "next": "e6_dive"
+      "next": "e6_dive",
+      "fx": {
+        "set": {
+          "air": 100
+        }
+      }
     },
     "e6_dive": {
       "id": "e6_dive",
@@ -5284,7 +5785,10 @@
         }
       ],
       "choices": [],
-      "next": "e6_silt1"
+      "next": "e6_silt1",
+      "fx": {
+        "flag": "camera"
+      }
     },
     "e6_silt1": {
       "id": "e6_silt1",
@@ -5350,7 +5854,12 @@
         }
       ],
       "choices": [],
-      "next": "e6_silt2"
+      "next": "e6_silt2",
+      "fx": {
+        "add": {
+          "air": -20
+        }
+      }
     },
     "e6_silt_bad2": {
       "id": "e6_silt_bad2",
@@ -5374,7 +5883,12 @@
         }
       ],
       "choices": [],
-      "next": "e6_silt2"
+      "next": "e6_silt2",
+      "fx": {
+        "add": {
+          "air": -20
+        }
+      }
     },
     "e6_silt2": {
       "id": "e6_silt2",
@@ -5518,7 +6032,13 @@
         }
       ],
       "choices": [],
-      "next": "e7_skiff"
+      "next": "e7_skiff",
+      "fx": {
+        "trust": {
+          "ruth": 1,
+          "eli": 1
+        }
+      }
     },
     "e7_skiff": {
       "id": "e7_skiff",
@@ -5657,7 +6177,10 @@
         }
       ],
       "choices": [],
-      "next": "e7_trail"
+      "next": "e7_trail",
+      "fx": {
+        "clue": "footage"
+      }
     },
     "e7_trail": {
       "id": "e7_trail",
@@ -5695,7 +6218,12 @@
         }
       ],
       "choices": [],
-      "next": "e7_trip1"
+      "next": "e7_trip1",
+      "fx": {
+        "set": {
+          "trips": 0
+        }
+      }
     },
     "e7_trip1": {
       "id": "e7_trip1",
@@ -5721,7 +6249,13 @@
           "label": "Brush it aside with your boot",
           "sub": "",
           "to": "e7_trip2",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "add": {
+              "trips": 1
+            },
+            "toast": "Tin cans rattle in the trees."
+          }
         }
       ]
     },
@@ -5744,7 +6278,13 @@
           "label": "Step on the middle",
           "sub": "",
           "to": "e7_trip3",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "add": {
+              "trips": 1
+            },
+            "toast": "Cans clatter. Somewhere a bird explodes from a tree."
+          }
         },
         {
           "label": "Climb over at the root end",
@@ -5777,7 +6317,12 @@
           "label": "Hurry through",
           "sub": "",
           "to": "e7_trip_end",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "add": {
+              "trips": 2
+            }
+          }
         }
       ]
     },
@@ -5798,7 +6343,10 @@
       ],
       "choices": [],
       "dynamicLines": true,
-      "next": "e7_reunion"
+      "next": "e7_reunion",
+      "fx": {
+        "dynamic": true
+      }
     },
     "e7_reunion": {
       "id": "e7_reunion",
@@ -5894,30 +6442,31 @@
           "label": "\"Amma and Appa.\"",
           "sub": "",
           "to": "e7_t1",
-          "once": true
+          "once": "t1"
         },
         {
           "label": "\"What happened Sunday?\"",
           "sub": "",
           "to": "e7_t2",
-          "once": true
+          "once": "t2"
         },
         {
           "label": "\"The voice.\"",
           "sub": "",
           "to": "e7_t3",
-          "once": true
+          "once": "t3"
         },
         {
           "label": "\"Eli.\"",
           "sub": "",
           "to": "e7_t4",
-          "once": true
+          "once": "t4"
         },
         {
           "label": "Give her the Diwali present",
           "sub": "",
-          "to": "e7_gift"
+          "to": "e7_gift",
+          "showDynamic": true
         }
       ],
       "dynamicLines": true
@@ -5963,7 +6512,10 @@
       ],
       "choices": [],
       "dynamicLines": true,
-      "next": "e7_talk"
+      "next": "e7_talk",
+      "fx": {
+        "trust": {}
+      }
     },
     "e7_t2": {
       "id": "e7_t2",
@@ -6073,7 +6625,10 @@
         }
       ],
       "choices": [],
-      "next": "e7_plan"
+      "next": "e7_plan",
+      "fx": {
+        "flag": "giftGiven"
+      }
     },
     "e7_plan": {
       "id": "e7_plan",
@@ -6151,13 +6706,25 @@
           "sub": "",
           "to": "e7_antenna",
           "hasCondition": true,
-          "hasEffects": true
+          "hasEffects": true,
+          "req": {
+            "flags": [
+              "cableKept"
+            ]
+          },
+          "fx": {
+            "flag": "strongSignal"
+          },
+          "lock": "You didn't keep the cable"
         },
         {
           "label": "Use Jonah's short spare",
           "sub": "",
           "to": "e7_antenna",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "toast": "The spare works, but the signal will be weaker."
+          }
         }
       ]
     },
@@ -6326,13 +6893,24 @@
           "label": "Believe him",
           "sub": "Eli fights beside you.",
           "to": "e8_who",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "flag": "eliBelieved",
+            "trust": {
+              "eli": 2
+            }
+          }
         },
         {
           "label": "Take the rifle away from him",
           "sub": "Eli waits in the shed.",
           "to": "e8_who",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "trust": {
+              "eli": -1
+            }
+          }
         }
       ]
     },
@@ -6416,7 +6994,12 @@
           "label": "Take the money",
           "sub": "",
           "to": "e8_fail",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "set": {
+              "failAt": "e8_offer"
+            }
+          }
         }
       ]
     },
@@ -6444,7 +7027,12 @@
           "label": "Accept, for Tess",
           "sub": "",
           "to": "e8_fail",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "set": {
+              "failAt": "e8_offer"
+            }
+          }
         }
       ]
     },
@@ -6479,7 +7067,12 @@
           "label": "Back down",
           "sub": "",
           "to": "e8_fail",
-          "hasEffects": true
+          "hasEffects": true,
+          "fx": {
+            "set": {
+              "failAt": "e8_offer"
+            }
+          }
         }
       ]
     },
@@ -6594,6 +7187,11 @@
         }
       ],
       "dynamicLines": true,
+      "fx": {
+        "set": {
+          "rounds": 6
+        }
+      },
       "timer": {
         "secs": 7,
         "to": "e8_w1b"
@@ -6624,7 +7222,12 @@
       ],
       "choices": [],
       "dynamicLines": true,
-      "next": "e8_w2"
+      "next": "e8_w2",
+      "fx": {
+        "add": {
+          "rounds": -1
+        }
+      }
     },
     "e8_w1b": {
       "id": "e8_w1b",
@@ -6648,7 +7251,13 @@
         }
       ],
       "choices": [],
-      "next": "e8_w2"
+      "next": "e8_w2",
+      "fx": {
+        "add": {
+          "rounds": -3
+        },
+        "danger": 1
+      }
     },
     "e8_w2": {
       "id": "e8_w2",
@@ -6703,7 +7312,12 @@
         }
       ],
       "choices": [],
-      "next": "e8_w3"
+      "next": "e8_w3",
+      "fx": {
+        "add": {
+          "rounds": -1
+        }
+      }
     },
     "e8_w2b": {
       "id": "e8_w2b",
@@ -6727,7 +7341,13 @@
         }
       ],
       "choices": [],
-      "next": "e8_w3"
+      "next": "e8_w3",
+      "fx": {
+        "danger": 1,
+        "add": {
+          "rounds": -1
+        }
+      }
     },
     "e8_w3": {
       "id": "e8_w3",
@@ -6799,7 +7419,10 @@
         }
       ],
       "choices": [],
-      "next": "e8_ortiz"
+      "next": "e8_ortiz",
+      "fx": {
+        "danger": 1
+      }
     },
     "e8_ortiz": {
       "id": "e8_ortiz",
@@ -6834,7 +7457,10 @@
       ],
       "choices": [],
       "dynamicLines": true,
-      "next": "e8_air"
+      "next": "e8_air",
+      "fx": {
+        "dynamic": true
+      }
     },
     "e8_air": {
       "id": "e8_air",
@@ -7111,7 +7737,10 @@
         }
       ],
       "choices": [],
-      "next": "e8_route"
+      "next": "e8_route",
+      "fx": {
+        "flag": "lostFile"
+      }
     },
     "e8_route": {
       "id": "e8_route",
