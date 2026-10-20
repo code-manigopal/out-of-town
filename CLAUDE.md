@@ -48,6 +48,7 @@ The goal is the best result for the fewest usage credits and tokens.
 
 - **Godot 4.7+, GDScript** with static typing. Project at `game/project.godot`. (Switched from Unreal Engine 5 on 2026-10-20; see `docs/tech/engine-decision.md`.)
 - Follow the Godot style guide and `docs/tech/coding-standards.md`: snake_case files, folders, functions and variables; PascalCase node names and `class_name`; global `class_name`s use the `OOT` prefix (`OOTDialogueLine`).
+- **Blender 5.2** (installed at `/opt/homebrew/bin/blender`) is the modelling tool: characters from the approved sheets in `docs/art/sheets/`, environments and props. Export glTF (`.glb`) into the matching `game/` folder; Blender source files (`.blend`) go in `art_source/` (Git LFS). Scripted work runs headless: `blender -b -P script.py`.
 - Story state (flags, trust, danger, clues/proof, Nila's health) lives in the `StoryState` autoload (`res://scripts/story/story_state.gd`). Mirror the prototype's state model; don't invent a parallel one.
 - Dialogue and scene data are read directly from `game/data/story/pN_scenes.json` by the `StoryDB` autoload. Don't hard-code dialogue in scenes or scripts.
 - `.tscn` and `.tres` are text and may be edited carefully. **Never hand-edit binary assets** (`.glb`, textures, audio); they are tracked with Git LFS. Commit `*.import` files.

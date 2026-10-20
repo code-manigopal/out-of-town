@@ -344,6 +344,21 @@
       "puzzle": {
         "type": "tune",
         "title": "Call Jonah",
+        "prompt": "Nila: \"Jonah listens on 146.52, the national calling frequency. Everybody knows it.\"",
+        "min": 144,
+        "max": 148,
+        "step": 0.01,
+        "startAt": 144,
+        "target": 146.52,
+        "tol": 0.03,
+        "decimals": 2,
+        "unit": "MHz",
+        "hints": [
+          "146.52 MHz.",
+          "Slide slowly near the middle of the dial."
+        ],
+        "giveUp": 4,
+        "answerText": "146.52.",
         "to": "p2e1_jonah"
       }
     },
@@ -598,6 +613,18 @@
       "puzzle": {
         "type": "code",
         "title": "Victor's safe",
+        "prompt": "Victor's codes always remembered \"the day it all began\": the day he took over the mill.",
+        "placeholder": "####",
+        "answer": [
+          "0314",
+          "314"
+        ],
+        "hints": [
+          "March 14, 2019.",
+          "Month and day: 0314."
+        ],
+        "giveUp": 3,
+        "answerText": "0314.",
         "to": "p2e1_safe"
       }
     },
@@ -957,7 +984,26 @@
       "puzzle": {
         "type": "pick",
         "title": "Inspect the guns",
-        "to": "p2e1_deal3"
+        "prompt": "Preethi compares the two Desert Eagles side by side. One of them is wrong. What's wrong with it?",
+        "to": "p2e1_deal3",
+        "options": [
+          {
+            "t": "The slide is scratched",
+            "why": "Scratches are cosmetic. It'll still fire."
+          },
+          {
+            "t": "The firing pin has been filed down; it won't fire",
+            "correct": true
+          },
+          {
+            "t": "The magazine is a different colour",
+            "why": "Aftermarket magazines are common. Not the problem."
+          },
+          {
+            "t": "It's heavier than the other",
+            "why": "Within a few grams. Normal."
+          }
+        ]
       }
     },
     "p2e1_deal3": {
@@ -1122,7 +1168,55 @@
       "puzzle": {
         "type": "multi",
         "title": "The shopping list",
+        "prompt": "Pick everything Nila would approve. Leave out what will get you killed or slow you down.",
+        "submit": "Check out",
         "to": "p2e1_pack",
+        "options": [
+          {
+            "t": "Parkas rated to −40°C",
+            "correct": true
+          },
+          {
+            "t": "Cotton jeans and sneakers"
+          },
+          {
+            "t": "Sleeping bags rated to −30°C",
+            "correct": true
+          },
+          {
+            "t": "Water filter and purification tablets",
+            "correct": true
+          },
+          {
+            "t": "Trauma kit: tourniquets, chest seals, clotting gauze",
+            "correct": true
+          },
+          {
+            "t": "A drone for scouting",
+            "correct": true
+          },
+          {
+            "t": "Bear spray, flares, hand warmers",
+            "correct": true
+          },
+          {
+            "t": "A big cooler of bottled water from home"
+          },
+          {
+            "t": "Paper maps and a compass",
+            "correct": true
+          },
+          {
+            "t": "Winter tyres, chains, a shovel, two jerry cans",
+            "correct": true
+          }
+        ],
+        "hints": [
+          "Cotton kills in the cold: it holds water. Bottled water freezes and isn't needed if you filter.",
+          "Everything rated for cold, plus medical, navigation, survival, and the car. Nothing cotton, no bottled water."
+        ],
+        "giveUp": 3,
+        "answerText": "Everything except the cotton clothes and the cooler of bottled water.",
         "fx": {
           "medkits": 3
         }
@@ -1146,7 +1240,21 @@
       "puzzle": {
         "type": "order",
         "title": "Pack the trunk",
-        "to": "p2e1_bye"
+        "prompt": "Load the trunk in order, from the first thing in (bottom, back) to the last thing in (top, front).",
+        "to": "p2e1_bye",
+        "items": [
+          "Long gun cases, flat on the floor",
+          "Jerry cans and tools, wedged at the sides",
+          "Sleeping bags and tent, on top of the cases",
+          "Food crate, where you can reach it",
+          "Medical kit, last in, first out"
+        ],
+        "hints": [
+          "Heavy and flat at the bottom.",
+          "The thing you need fastest goes in last."
+        ],
+        "giveUp": 3,
+        "answerText": "Guns flat, heavy at the sides, soft on top, food reachable, medical last."
       }
     },
     "p2e1_bye": {
@@ -1226,7 +1334,28 @@
       "puzzle": {
         "type": "search",
         "title": "The Missing Laptop Bag",
-        "to": "p2e1_parry2"
+        "prompt": "Find it.",
+        "need": 3,
+        "doneLabel": "Go to the parking lot",
+        "to": "p2e1_parry2",
+        "spots": [
+          {
+            "t": "Her booth",
+            "text": "A coffee, a half-eaten muffin, a notebook full of shorthand. Wet sneaker tracks lead from the booth to the side door."
+          },
+          {
+            "t": "The teen at the counter",
+            "text": "He keeps glancing out at the parking lot, then at the woman, then at his phone."
+          },
+          {
+            "t": "Her phone",
+            "text": "She shows Preethi a tracker app. Her bag's tag: moving slowly, twenty metres away, in the lot."
+          },
+          {
+            "t": "The side door",
+            "text": "Propped with a napkin. Outside, a rusty hatchback with two kids in it, laughing."
+          }
+        ]
       }
     },
     "p2e1_parry2": {
@@ -1291,7 +1420,28 @@
       "puzzle": {
         "type": "search",
         "title": "The Uninvited Passenger",
-        "to": "p2e1_tracker"
+        "prompt": "Search the car in the cold.",
+        "need": 1,
+        "doneLabel": "Decide what to do with it",
+        "to": "p2e1_tracker",
+        "spots": [
+          {
+            "t": "Front wheel wells",
+            "text": "Salt, slush, nothing."
+          },
+          {
+            "t": "Under the bumpers",
+            "text": "Your fingers go numb. Nothing."
+          },
+          {
+            "t": "Under the seats",
+            "text": "Fries. A hair tie. Nothing."
+          },
+          {
+            "t": "The spare tyre well",
+            "text": "Taped inside the spare tyre: a small black tracker the size of a coin. Someone put this here in Windsor."
+          }
+        ]
       }
     },
     "p2e1_tracker": {
@@ -1362,7 +1512,23 @@
       "puzzle": {
         "type": "pick",
         "title": "The Tip Jar",
-        "to": "p2e1_wawa"
+        "prompt": "There's a ring of coffee on the counter where the jar sat. There's a matching ring of coffee on the glove of a delivery driver unloading a crate of cups. What happened?",
+        "to": "p2e1_wawa",
+        "options": [
+          {
+            "t": "The driver stole it",
+            "why": "He's whistling and in no hurry. Thieves don't whistle."
+          },
+          {
+            "t": "The driver knocked it into his crate by accident",
+            "correct": true
+          },
+          {
+            "t": "A customer took it",
+            "why": "No customer touched that end of the counter."
+          }
+        ],
+        "okMsg": "The jar is in the crate of cups, full and unbroken. The cashier hugs Preethi."
       }
     },
     "p2e1_wawa": {
@@ -1445,7 +1611,20 @@
       "puzzle": {
         "type": "order",
         "title": "Nila's questions",
-        "to": "p2e1_ivy2"
+        "prompt": "Nila builds an interview like a trap: easy questions first, the dangerous one last. Put the questions in Nila's order.",
+        "to": "p2e1_ivy2",
+        "items": [
+          "\"What was your badge number at Northstar?\" (easy to check)",
+          "\"Who was your supervisor?\" (a name we can verify)",
+          "\"What colour is HX-7 in the vial?\" (only a real tech would know)",
+          "\"Why didn't you answer my email?\" (the emotional one, last)"
+        ],
+        "hints": [
+          "Verifiable facts first.",
+          "The emotional question goes last, when she's relaxed."
+        ],
+        "giveUp": 3,
+        "answerText": "Badge, supervisor, the vial, then the email."
       }
     },
     "p2e1_ivy2": {
@@ -1613,7 +1792,26 @@
       "puzzle": {
         "type": "pick",
         "title": "Winnie's Scarf",
-        "to": "p2e2_winnie2"
+        "prompt": "Who stole the scarf?",
+        "to": "p2e2_winnie2",
+        "options": [
+          {
+            "t": "The gas station attendant",
+            "why": "He's been inside all morning. The fibres are on the tree."
+          },
+          {
+            "t": "A tourist souvenir hunter",
+            "why": "Then why is there red wool in a nest?"
+          },
+          {
+            "t": "A crow",
+            "correct": true
+          },
+          {
+            "t": "The kids, as a prank",
+            "why": "They're genuinely upset. And they can't reach the top of that sign."
+          }
+        ]
       }
     },
     "p2e2_winnie2": {
@@ -1745,7 +1943,39 @@
       "puzzle": {
         "type": "multi",
         "title": "Build the profile",
-        "to": "p2e2_okafor2"
+        "prompt": "Which conclusions does the evidence actually support? Choose all that apply.",
+        "submit": "Give Dr. Okafor the profile",
+        "to": "p2e2_okafor2",
+        "options": [
+          {
+            "t": "He collects rare, dangerous animals → he needs control",
+            "correct": true
+          },
+          {
+            "t": "He talked to Nila on the radio for months → he needs an audience",
+            "correct": true
+          },
+          {
+            "t": "He sends gifts and taunts → he wants to seem generous, even while killing",
+            "correct": true
+          },
+          {
+            "t": "He shot Victor at 600 metres → he's patient and practised",
+            "correct": true
+          },
+          {
+            "t": "He hides in Red Lake → he's afraid of you"
+          },
+          {
+            "t": "He poisoned Nila → he's impulsive"
+          }
+        ],
+        "hints": [
+          "He planned the poisoning months in advance. Not impulsive.",
+          "He isn't hiding. He gave you his address on a shipping label."
+        ],
+        "giveUp": 3,
+        "answerText": "Control, audience, false generosity, patience. Not fear. Not impulse."
       }
     },
     "p2e2_okafor2": {
@@ -1961,7 +2191,28 @@
       "puzzle": {
         "type": "search",
         "title": "The Fuel Line",
-        "to": "p2e2_tyler"
+        "prompt": "Someone cut it. Find out who.",
+        "need": 3,
+        "doneLabel": "Confront the culprit",
+        "to": "p2e2_tyler",
+        "spots": [
+          {
+            "t": "The snow by the car",
+            "text": "Fresh boot prints. Big, new tread, crisp edges. They come from the motel office door, go to your car, and go back."
+          },
+          {
+            "t": "The fuel line",
+            "text": "Cut with a blade. Clean. Not an accident, not the cold."
+          },
+          {
+            "t": "The night clerk",
+            "text": "Tyler, twenties, wearing brand-new winter boots. There's $200 in crisp new bills in his tip cup."
+          },
+          {
+            "t": "The office trash can",
+            "text": "Under a coffee cup: a Northstar Biologics business card."
+          }
+        ]
       }
     },
     "p2e2_tyler": {
@@ -2313,7 +2564,34 @@
       "puzzle": {
         "type": "multi",
         "title": "Five blood panels",
-        "to": "p2e3_hosp2"
+        "prompt": "Preethi lays Nila's panel beside the four dead men's. Which findings do all five share? Choose all that apply.",
+        "submit": "Show Dr. Marchetti",
+        "to": "p2e3_hosp2",
+        "options": [
+          {
+            "t": "The same unnamed peptide",
+            "correct": true
+          },
+          {
+            "t": "Rising liver enzymes over three weeks",
+            "correct": true
+          },
+          {
+            "t": "Low iron"
+          },
+          {
+            "t": "The same blood type"
+          },
+          {
+            "t": "Normal white cell count"
+          }
+        ],
+        "hints": [
+          "Two things only: one compound, one pattern.",
+          "The peptide, and the liver enzymes."
+        ],
+        "giveUp": 3,
+        "answerText": "The peptide and the three-week rise in liver enzymes."
       }
     },
     "p2e3_hosp2": {
@@ -2371,7 +2649,29 @@
       "puzzle": {
         "type": "search",
         "title": "The Hayden family",
-        "to": "p2e3_museum2"
+        "prompt": "Find what you can about the Haydens.",
+        "need": 4,
+        "doneLabel": "Talk to Mrs. Lindqvist",
+        "to": "p2e3_museum2",
+        "spots": [
+          {
+            "t": "A 1934 photo",
+            "text": "Two prospectors grinning over a claim post. \"Hayden brothers, Hayden Deep claim.\""
+          },
+          {
+            "t": "A mine plaque",
+            "text": "\"Hayden Deep Mine, 1946–1991. At its peak, 300 men.\""
+          },
+          {
+            "t": "A 1974 newspaper clipping",
+            "text": "\"Engineer R. Hayden leaves for southern Ontario dam project.\" The dam at Old Merrow. You know that name from a photo in a church basement in Greyhaven."
+          },
+          {
+            "t": "The donor wall",
+            "text": "\"Northstar Biologics — Mark Hayden, 2015.\"",
+            "clue": "hayden"
+          }
+        ]
       }
     },
     "p2e3_museum2": {
@@ -2471,7 +2771,28 @@
       "puzzle": {
         "type": "search",
         "title": "The mineral collection",
-        "to": "p2e3_rocks2"
+        "prompt": "Find the Hayden Deep specimens.",
+        "need": 3,
+        "doneLabel": "Look closer at the gold",
+        "to": "p2e3_rocks2",
+        "spots": [
+          {
+            "t": "Case 4: \"Red Lake Mine\"",
+            "text": "Quartz veins, gold flecks. Not Hayden Deep."
+          },
+          {
+            "t": "Case 9: \"Hayden Deep, Level 2\"",
+            "text": "Grey rock with pyrite. 1951."
+          },
+          {
+            "t": "Case 9: \"Hayden Deep, Level 4\"",
+            "text": "A fist of quartz. 1958."
+          },
+          {
+            "t": "Case 9: \"Hayden Deep, Level 6, 1962\"",
+            "text": "A beautiful gold specimen. The label is slightly crooked. Underneath, the edge of an older tag."
+          }
+        ]
       }
     },
     "p2e3_rocks2": {
@@ -2492,6 +2813,20 @@
       "puzzle": {
         "type": "code",
         "title": "The hidden tag",
+        "prompt": "You can make out: \"HAYDEN DEEP — LEV_L _ — 1962\". The missing letter is obvious. The number is the last digit, partly scratched: it looks like a 6 with a tail, or a 9. The public maps show levels 1 to 6. What does the hidden tag say?",
+        "placeholder": "Level ?",
+        "answer": [
+          "9",
+          "level 9",
+          "level9",
+          "nine"
+        ],
+        "hints": [
+          "If it were 6, why hide it under a label that says 6?",
+          "Level 9."
+        ],
+        "giveUp": 3,
+        "answerText": "Level 9.",
         "to": "p2e3_rocks3"
       }
     },
@@ -2841,7 +3176,31 @@
       "puzzle": {
         "type": "search",
         "title": "Asking around",
-        "to": "p2e4_ice"
+        "prompt": "Ask the locals about the Hayden Deep.",
+        "need": 3,
+        "doneLabel": "Buy a bottle of rye",
+        "to": "p2e4_ice",
+        "spots": [
+          {
+            "t": "A young driller",
+            "text": "\"Nobody at Northstar talks. They fly crews in from Winnipeg. Two weeks on, two off. They don't drink here.\""
+          },
+          {
+            "t": "The bartender",
+            "text": "\"Old-timers say there's levels down there that never got mapped. Ghost stories, probably.\""
+          },
+          {
+            "t": "A woman buying ammunition",
+            "text": "\"Ask Sully. He's on McKenzie Island. He'll talk your ear off if you bring rye.\""
+          },
+          {
+            "t": "A man at the end of the bar who won't look at you",
+            "text": "You ask him about Northstar. He finishes his beer in one swallow and leaves fast. Through the window, you see him make a phone call.",
+            "fx": {
+              "danger": 1
+            }
+          }
+        ]
       }
     },
     "p2e4_ice": {
@@ -3143,7 +3502,26 @@
       "puzzle": {
         "type": "pick",
         "title": "The way in",
-        "to": "p2e4_back"
+        "prompt": "Ivy's map shows a guarded freight elevator. Sully's map shows the 1974 vent raise. Which way in is never on any modern plan?",
+        "to": "p2e4_back",
+        "options": [
+          {
+            "t": "The freight elevator",
+            "why": "It's on Ivy's map, and it's guarded."
+          },
+          {
+            "t": "The main shaft",
+            "why": "Cameras and a gatehouse."
+          },
+          {
+            "t": "The 1974 ventilation raise near Madsen",
+            "correct": true
+          },
+          {
+            "t": "The loading dock",
+            "why": "That gets you in at the surface, not to Level 9."
+          }
+        ]
       }
     },
     "p2e4_back": {
@@ -3674,7 +4052,30 @@
       "puzzle": {
         "type": "search",
         "title": "The venom farm",
-        "to": "p2e5_server"
+        "prompt": "Photograph everything.",
+        "need": 3,
+        "doneLabel": "Find the lab",
+        "to": "p2e5_server",
+        "spots": [
+          {
+            "t": "The tank rows",
+            "text": "You count one row: forty-two tanks. There are twelve rows. Five hundred snakes from one island the size of a few city blocks.",
+            "clue": "farm"
+          },
+          {
+            "t": "The milking arms",
+            "text": "A robotic arm pins a snake behind the head, presses its fangs over a membrane, and a gold drop runs into a vial. It moves to the next tank. And the next."
+          },
+          {
+            "t": "The whiteboard",
+            "text": "\"HX-7 batch 41 → trial. HX-7C batch 3 → HOUSE ONLY.\""
+          },
+          {
+            "t": "The lab fridge",
+            "text": "Rows of labelled vials. Preethi reads them fast and takes one small box: antivenom. \"One dose. If either of us gets bitten.\"",
+            "clue": "antivenom"
+          }
+        ]
       }
     },
     "p2e5_server": {
@@ -3702,7 +4103,38 @@
       "puzzle": {
         "type": "multi",
         "title": "Unlock the database",
-        "to": "p2e5_files"
+        "prompt": "Pick the three fields the key expects. They come from the batch whiteboard, Victor's ledger, and the GH-01 delivery note.",
+        "submit": "Unlock",
+        "to": "p2e5_files",
+        "options": [
+          {
+            "t": "Batch number: 41",
+            "correct": true
+          },
+          {
+            "t": "Ledger code: H — 60%",
+            "correct": true
+          },
+          {
+            "t": "Delivery note: Pike Point, the week of November 1",
+            "correct": true
+          },
+          {
+            "t": "Victor's keypad code: 0314"
+          },
+          {
+            "t": "Nila's phone password"
+          },
+          {
+            "t": "Ivy's badge number: 0417"
+          }
+        ],
+        "hints": [
+          "Whiteboard, ledger, delivery note: one field from each.",
+          "41, H — 60%, and the Pike Point delivery."
+        ],
+        "giveUp": 3,
+        "answerText": "41, H — 60%, and the Pike Point delivery date."
       }
     },
     "p2e5_files": {
@@ -4505,7 +4937,22 @@
       "puzzle": {
         "type": "order",
         "title": "Splint the leg",
-        "to": "p2e7_daniel"
+        "prompt": "Preethi talks you through it. Put the steps in order.",
+        "to": "p2e7_daniel",
+        "items": [
+          "Check the foot for pulse and feeling",
+          "Gently straighten the leg into line",
+          "Pad around the leg with a jacket",
+          "Brace it with the seat strut, above and below the break",
+          "Tie it firm with paracord, not tight",
+          "Check the foot again"
+        ],
+        "hints": [
+          "Check before and after.",
+          "Line, pad, brace, tie."
+        ],
+        "giveUp": 3,
+        "answerText": "Check, align, pad, brace, tie, check again."
       }
     },
     "p2e7_daniel": {
@@ -5332,7 +5779,23 @@
       "puzzle": {
         "type": "pick",
         "title": "The tiger",
-        "to": "p2e8_hall"
+        "prompt": "You need the guards gone. Never fight the tiger.",
+        "to": "p2e8_hall",
+        "options": [
+          {
+            "t": "Open the inner gate and walk through the yard",
+            "why": "The tiger stands up. You step back very, very slowly and close the gate. Try something else."
+          },
+          {
+            "t": "Open the outer gate as the guards pass, and let the tiger out to them",
+            "correct": true
+          },
+          {
+            "t": "Shoot the tiger",
+            "why": "No. Absolutely not. Preethi puts her hand on your gun."
+          }
+        ],
+        "okMsg": "The outer gate slides open. The guards see the tiger, and the tiger sees the guards. Everyone leaves the corridor very fast, in different directions."
       }
     },
     "p2e8_cons": {
@@ -5737,7 +6200,23 @@
       "puzzle": {
         "type": "pick",
         "title": "The three vials",
-        "to": "p2e8_usb"
+        "prompt": "Which vial is the cure?",
+        "to": "p2e8_usb",
+        "options": [
+          {
+            "t": "Vial A",
+            "why": "NILA (on radio): Anni, A failed the colour test and the crystals are wrong. Check again."
+          },
+          {
+            "t": "Vial B",
+            "correct": true
+          },
+          {
+            "t": "Vial C",
+            "why": "NILA (on radio): Anni, C has the right crystals, but no blue, and the pH is low. He made it to fool you. Check again."
+          }
+        ],
+        "okMsg": "Vial B passes all three."
       }
     },
     "p2e8_usb": {

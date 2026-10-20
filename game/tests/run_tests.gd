@@ -28,6 +28,11 @@ func _initialize() -> void:
 		_test_conditions()
 		_test_save_load()
 		_test_walk()
+		# Scene tests need nodes to be ready, which happens once the tree runs a frame.
+		await process_frame
+		_test_g1_apartment()
+		_test_g1_call()
+		_test_g1_inputs_and_flow()
 	print("%d checks, %d failures" % [_checks, _failures])
 	quit(1 if _failures > 0 else 0)
 
@@ -161,3 +166,111 @@ func _test_walk() -> void:
 				break
 		_check(reached_later or runner.finished, "%s: walk reached a later episode or an end (%d steps, at %s)" % [pid, steps, runner.scene.id])
 		_check(steps < MAX_STEPS, "%s: walk finished under step cap" % pid)
+
+
+# --- G1: Mani's apartment -----------------------------------------------------
+
+func _make_apartment() -> OOTApartment:
+	var packed: PackedScene = load("res://scenes/p1/e1/apartment.tscn")
+	var apt: OOTApartment = packed.instantiate() as OOTApartment
+	apt.play_intro = false
+	root.add_child(apt)
+	return apt
+
+
+func _test_g1_apartment() -> void:
+	StoryState.start_part("p1")
+	var apt: OOTApartment = _make_apartment()
+	_check(apt != null, "apartment.tscn instantiates")
+	if apt == null:
+		return
+	_check(apt.player != null and apt.laptop != null and apt.duffel != null, "apartment has player, laptop and duffel")
+	var puzzle: Dictionary = StoryDB.get_scene("p1", "e1_apt").puzzle
+	_check(str(puzzle.get("type")) == "search" and str(puzzle.get("title")) == "Pack for Greyhaven", "e1_apt is the Pack for Greyhaven search puzzle")
+	_check(str(puzzle.get("to")) == "e1_call", "e1_apt puzzle leads to e1_call")
+	var items: Array[OOTInteractable] = apt.get_pack_items()
+	var need: int = int(puzzle.get("need", 3))
+	_check(items.size() == 3 and items.size() == need, "3 packing targets exist (puzzle need = %d)" % need)
+	var ids: Array[String] = []
+	for it: OOTInteractable in items:
+		ids.append(it.item_id)
+		_check(it.kind == OOTInteractable.Kind.PICKUP, "%s is a pickup" % it.item_id)
+	ids.sort()
+	_check(ids == ["diyas", "radio", "sweets"], "packing targets are sweets, diyas, radio")
+	if puzzle.get("spots") is Array:
+		for it: OOTInteractable in items:
+			_check(not it.get_caption().is_empty(), "%s caption comes from e1_apt spots" % it.item_id)
+	# Packing API and the ring.
+	var rings: Array[int] = [0]
+	apt.laptop_ringing.connect(func() -> void: rings[0] += 1)
+	_check(not apt.is_ringing, "laptop is quiet before packing")
+	_check(apt.pack_item("sweets") and apt.get_packed_count() == 1, "pack sweets 1/3")
+	_check(not apt.pack_item("sweets"), "cannot pack the same item twice")
+	_check(not apt.pack_item("nothing"), "unknown item is rejected")
+	_check(apt.pack_item("diyas") and not apt.is_ringing, "pack diyas 2/3, still quiet")
+	_check(apt.pack_item("radio") and apt.get_packed_count() == 3, "pack radio 3/3")
+	_check(apt.is_ringing and rings[0] == 1, "third item makes the laptop ring (once)")
+	_check(apt.laptop.kind == OOTInteractable.Kind.USE, "ringing laptop can be answered")
+	_check(apt.auto_answer_seconds == 90.0, "laptop auto-answers after 90 s")
+	apt.queue_free()
+
+
+func _test_g1_call() -> void:
+	for option: int in [0, 1]:
+		StoryState.start_part("p1")
+		var runner: OOTStoryRunner = OOTStoryRunner.new()
+		runner.part_id = "p1"
+		runner.enter("e1_apt")
+		var trigger: OOTStoryTrigger = OOTStoryTrigger.new()
+		trigger.runner = runner
+		trigger.scene_id = "e1_call"
+		trigger.stop_scene_id = "e1_road"
+		var reached: Array[String] = []
+		trigger.target_reached.connect(func(id: String) -> void: reached.append(id))
+		_check(trigger.fire() and runner.scene.id == "e1_call", "trigger starts e1_call from the puzzle (option %d)" % option)
+		var choices: Array[OOTChoice] = runner.get_choices()
+		_check(choices.size() == 2, "e1_call offers two honesty choices")
+		_check(runner.choose(choices[option]) and runner.scene.id == "e1_call2", "choice %d leads to e1_call2" % option)
+		_check(runner.continue_story() and runner.scene.id == "e1_road", "e1_call2 continues to e1_road")
+		_check(reached == ["e1_road"], "trigger reports e1_road reached")
+		var expected: String = "reassure" if option == 0 else "half"
+		_check(str(StoryState.get_var("call1")) == expected, "call1 = %s stored" % expected)
+		_check(StoryState.has_flag("honest1") == (option == 1), "honest1 flag matches option %d" % option)
+		trigger.free()
+
+
+func _test_g1_inputs_and_flow() -> void:
+	for action: String in ["move_forward", "move_back", "move_left", "move_right", "jog", "interact", "journal", "pause"]:
+		_check(InputMap.has_action(action), "input action %s exists" % action)
+	_check(str(ProjectSettings.get_setting("application/run/main_scene")) == "res://scenes/p1/e1/episode_01.tscn", "main scene is episode_01")
+	_check(load("res://ui/dialogue/dialogue_test.tscn") != null, "dialogue_test.tscn still loads")
+	# Dialogue box drives the call to the stop scene without input.
+	StoryState.start_part("p1")
+	var runner: OOTStoryRunner = OOTStoryRunner.new()
+	runner.part_id = "p1"
+	runner.enter("e1_call")
+	var box: OOTDialogueBox = (load("res://ui/dialogue/dialogue_box.tscn") as PackedScene).instantiate() as OOTDialogueBox
+	root.add_child(box)
+	var done: Array[String] = []
+	box.finished.connect(func(id: String) -> void: done.append(id))
+	box.begin(runner, "e1_road")
+	_check(box.is_open, "dialogue box opens")
+	var guard: int = 0
+	while box.is_open and runner.scene.id == "e1_call" and guard < 50:
+		box.advance()
+		guard += 1
+	_check(runner.scene.id == "e1_call" and box.is_open, "dialogue box waits on the honesty choice")
+	runner.choose(runner.get_choices()[1])
+	guard = 0
+	while box.is_open and guard < 50:
+		box.advance()
+		guard += 1
+	_check(done == ["e1_road"] and not box.is_open, "dialogue box closes at e1_road")
+	box.queue_free()
+	# Episode flow starts on the cold open.
+	var ep: OOTEpisode01 = (load("res://scenes/p1/e1/episode_01.tscn") as PackedScene).instantiate() as OOTEpisode01
+	root.add_child(ep)
+	_check(ep.stage == "cold_open" and ep.runner.scene.id == "e1_open", "episode_01 starts at e1_open")
+	_check(ep.title_text() == "OUT OF TOWN: GREYHAVEN", "title card text")
+	_check(ep.episode_text() == "EPISODE 1 \u2014 COUNTY ROADS", "episode card text")
+	ep.queue_free()

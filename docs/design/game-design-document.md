@@ -31,6 +31,12 @@ All state mirrors the browser prototype (`prototype/browser/engine.js`) and live
 | **Choices** | Timed or untimed. Locked choices show why ("Needs: the ledger"). Some are one-time. |
 | **Saves** | Auto-save at every scene; manual checkpoints at episode starts. Failing a set piece restarts it, never an ending. |
 
+### Narration
+- **No narrator.** No third-person voice; Mani does not narrate. Story comes from five layers: Nila's voice (voicemail, broadcasts, memos, tapes; Lighthouse in Part 2), Mani's inner voice (inspect lines and deductions only), the world (notes, plaques, photos, papers), the journal (Mani's short notes and current goal), and the episode frame (place/time cards, title, "Previously on", cliffhanger).
+- **Mani's inner voice:** one or two dry sentences, English by default and Tanglish about family, italic subtitles with no speaker frame, channel `thought` in the story data. It reacts to what the player inspects or connects; it never explains the plot or solves a puzzle. In Part 2, Nila does the deductions on the radio and his inner voice gets rarer.
+- **"Previously on":** Part 1 replays real lines through radio static; Part 2 is a Lighthouse recap.
+- Details and Ep 1 examples: `docs/design/ep01-county-roads.md`, sections 11–12.
+
 ### Dialogue and subtitles
 - Speaker, channel (in person, radio, phone, voicemail, on air, tape) and English subtitle on every line.
 - Radio lines are processed (band-pass, static) and shown with a radio icon. Part 2 radio call signs: LIGHTHOUSE, ANNA, ANNI.

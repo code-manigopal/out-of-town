@@ -268,7 +268,32 @@
       "puzzle": {
         "type": "search",
         "title": "Pack for Greyhaven",
-        "to": "e1_call"
+        "prompt": "Look around. Pack what you need.",
+        "need": 3,
+        "doneLabel": "Zip the duffel",
+        "to": "e1_call",
+        "spots": [
+          {
+            "t": "The sweets box",
+            "text": "Laddu and mysore pak from the Indian sweet shop on Tecumseh Road. Nila's favourite is the mysore pak. She'll pretend she's on a diet and eat four."
+          },
+          {
+            "t": "The clay diyas",
+            "text": "Twelve little oil lamps. Amma made you promise to light them with Nila on Diwali night, \"even if it's only the two of you\"."
+          },
+          {
+            "t": "The gift radio",
+            "text": "A new handheld ham radio. Nila's old one is held together with tape. You spent more than you should have. You don't care."
+          },
+          {
+            "t": "The whiteboard",
+            "text": "\"Data Analytics Engineer — 2nd round Thurs.\" Six years leading a team at Auragle, a master's degree, and still you check your email every morning with your stomach tight."
+          },
+          {
+            "t": "Photo of Nila",
+            "text": "Nila at her first broadcast in Greyhaven, headphones crooked, grinning. She studied criminology for four years, then chose radio. Appa didn't speak to her for a week. Then he listened to every show."
+          }
+        ]
       }
     },
     "e1_call": {
@@ -512,7 +537,32 @@
       "puzzle": {
         "type": "search",
         "title": "The Decaf Problem",
-        "to": "e1_tp1acc"
+        "prompt": "Examine everything. Then decide who's behind it.",
+        "need": 4,
+        "doneLabel": "I know who did it",
+        "to": "e1_tp1acc",
+        "spots": [
+          {
+            "t": "Harold's three receipts",
+            "text": "Each order was rung up correctly: medium double-double, regular. Not decaf."
+          },
+          {
+            "t": "The drive-thru screen behind the counter",
+            "text": "Every morning at 9:28, two minutes before Harold walks in, a phone-app order for \"Harold\" comes through. Medium, decaf. Marked for counter pickup."
+          },
+          {
+            "t": "The app account picture",
+            "text": "Priya turns the screen: the account's profile picture is a fat orange cat in a Christmas sweater."
+          },
+          {
+            "t": "Harold's table",
+            "text": "His newspaper, his reading glasses, and a phone in a case printed with a fat orange cat in a Christmas sweater. It isn't his phone. His is in his shirt pocket."
+          },
+          {
+            "t": "The woman by the window",
+            "text": "Harold's wife, June. Very, very interested in her crossword. She hasn't turned a page in five minutes."
+          }
+        ]
       }
     },
     "e1_tp1acc": {
@@ -533,7 +583,26 @@
       "puzzle": {
         "type": "pick",
         "title": "Who did it?",
-        "to": "e1_tp1done"
+        "prompt": "Point at the culprit.",
+        "to": "e1_tp1done",
+        "options": [
+          {
+            "t": "Priya, the cashier",
+            "why": "Priya rings up exactly what's ordered. The app order isn't hers."
+          },
+          {
+            "t": "A stranger using Harold's name",
+            "why": "A stranger wouldn't know when Harold arrives, or own the cat phone case."
+          },
+          {
+            "t": "June, his wife",
+            "correct": true
+          },
+          {
+            "t": "Harold, pretending for attention",
+            "why": "His receipts are real. He's genuinely furious."
+          }
+        ]
       }
     },
     "e1_tp1done": {
@@ -675,7 +744,28 @@
       "puzzle": {
         "type": "search",
         "title": "The Missing Cooler",
-        "to": "e1_tp2b"
+        "prompt": "The man's blue cooler vanished from his unlocked truck. Find it.",
+        "need": 3,
+        "doneLabel": "Check the staff room",
+        "to": "e1_tp2b",
+        "spots": [
+          {
+            "t": "The truck cab",
+            "text": "Unlocked. Rain on the seat where the cooler was. Wet sneaker prints lead away, toward the back of the restaurant."
+          },
+          {
+            "t": "The back corridor",
+            "text": "The sneaker prints get fainter on the tile. They stop at a door marked STAFF ONLY, which is ajar. Giggling inside."
+          },
+          {
+            "t": "The staff room door",
+            "text": "Two teens on break. One has a backpack soaking wet and bulging at the seams. He sees you looking and goes very still."
+          },
+          {
+            "t": "The man in the wool coat",
+            "text": "He hasn't moved. But when you looked at the truck, he looked at the truck. When you looked at the staff room, he was already looking there."
+          }
+        ]
       }
     },
     "e1_tp2b": {
@@ -1138,7 +1228,30 @@
       "puzzle": {
         "type": "search",
         "title": "Nila's flat",
-        "to": "e1_tess"
+        "prompt": "Look around while Tess talks.",
+        "need": 3,
+        "doneLabel": "Talk to Tess",
+        "to": "e1_tess",
+        "spots": [
+          {
+            "t": "Nila's phone on the table",
+            "text": "Dead. You plug it in. It lights up: locked. Her lock screen is a photo of you and her at the Windsor riverfront, making faces."
+          },
+          {
+            "t": "The cork board",
+            "text": "Sticky notes from listeners. \"My dog drank lake water and died.\" \"Trucks on the mill road at 2am again.\" \"Rash on my kid's arms, doctor says eczema.\" \"Saw a GOLD snake on Marsh dock??\"",
+            "clue": "corkboard"
+          },
+          {
+            "t": "The printout in the middle of the board",
+            "text": "AFTER HOURS — SUSPENDED UNTIL FURTHER NOTICE. Brian Holt, Station Manager. Nila has circled \"further notice\" in red pen and written: \"cowards\"."
+          },
+          {
+            "t": "The half-finished rangoli",
+            "text": "Nila's careful lotus pattern, half done, the chalk box open beside it. Smudged through the middle: a muddy boot print. Big. Size 11, maybe. You photograph it.",
+            "clue": "bootprint"
+          }
+        ]
       }
     },
     "e1_tess": {
@@ -1393,7 +1506,39 @@
       "puzzle": {
         "type": "search",
         "title": "Search the flat",
-        "to": "e2_laptop"
+        "prompt": "Five places worth checking. Find at least four.",
+        "need": 4,
+        "doneLabel": "Look at the laptop",
+        "to": "e2_laptop",
+        "spots": [
+          {
+            "t": "Under the mattress",
+            "text": "Taped to the slats: a page torn from Nila's radio log. Columns of dates, times and frequencies. Every night since October 21: \"23:00, 7.185 MHz, PP\". The last line is underlined twice: \"If I'm not here, I'm there.\"",
+            "clue": "radiolog"
+          },
+          {
+            "t": "The window",
+            "text": "Her antenna cable hangs outside, cut clean. Four metres of coax. You coil it up and put it in your bag. It feels important to keep it.",
+            "clue": "cable",
+            "fx": {
+              "flag": "cableKept"
+            }
+          },
+          {
+            "t": "The bathroom mirror",
+            "text": "You run the hot tap. As the mirror fogs, letters appear where a finger once traced them, backwards, meant for whoever came next: MILL.",
+            "clue": "mirror"
+          },
+          {
+            "t": "Under the bed",
+            "text": "Her radio bag is gone. Its shape in the dust, and caught in the carpet, a single scale the size of a fingernail. Gold and brown. Not from any snake you've seen in Ontario.",
+            "clue": "scale"
+          },
+          {
+            "t": "The desk",
+            "text": "Nila's laptop, locked. A sticky note on the lid in her handwriting: \"Appa's shop + the year Anna joined Auragle.\""
+          }
+        ]
       }
     },
     "e2_laptop": {
@@ -1421,7 +1566,21 @@
       "puzzle": {
         "type": "code",
         "title": "Nila's laptop",
-        "to": "e2_laptop2"
+        "prompt": "Type the password.",
+        "placeholder": "Password",
+        "answer": [
+          "SriValli2018",
+          "Sri Valli 2018",
+          "srivalli2018"
+        ],
+        "hints": [
+          "Appa's shop is Sri Valli Leathers, in Ranipet. No spaces.",
+          "You joined Auragle as an intern in 2018."
+        ],
+        "giveUp": 4,
+        "answerText": "SriValli2018.",
+        "to": "e2_laptop2",
+        "okMsg": "Unlocked."
       }
     },
     "e2_laptop2": {
@@ -1466,7 +1625,26 @@
       "puzzle": {
         "type": "pick",
         "title": "Plot the callers",
-        "to": "e2_laptop3"
+        "prompt": "Forty-six reports: sick pets, rashes, night trucks, a cough that won't go away. When you put them on the map, where do they cluster?",
+        "to": "e2_laptop3",
+        "options": [
+          {
+            "t": "Evenly across town",
+            "why": "Look again. The dots aren't even. They bunch up."
+          },
+          {
+            "t": "Around the school and the church",
+            "why": "A few, but not most. The school is on the hill."
+          },
+          {
+            "t": "Along Lakeshore Road and the old mill road",
+            "correct": true
+          },
+          {
+            "t": "Near the highway",
+            "why": "The highway end of town has almost none."
+          }
+        ]
       }
     },
     "e2_laptop3": {
@@ -1703,7 +1881,24 @@
       "puzzle": {
         "type": "search",
         "title": "The counter",
-        "to": "e2_gus"
+        "prompt": "Talk to the regulars.",
+        "need": 2,
+        "doneLabel": "Turn back to Gus",
+        "to": "e2_gus",
+        "spots": [
+          {
+            "t": "Mrs. Abernathy, retired teacher",
+            "text": "\"My dog, Biscuit, drank from the lake in September. Dead in two days. The vet said 'toxins'. What toxins? It's a lake.\""
+          },
+          {
+            "t": "Carl, hunter",
+            "text": "\"There's a black car parks up by the old water tower some nights. Engine off. Never see anybody get out. Just sits there.\""
+          },
+          {
+            "t": "A trucker at the end",
+            "text": "\"Mill road's busier now it's closed than it ever was open. Tuesdays and Fridays, two in the morning. I don't ask.\""
+          }
+        ]
       }
     },
     "e2_gus": {
@@ -2050,6 +2245,19 @@
       "puzzle": {
         "type": "code",
         "title": "Find the tape",
+        "prompt": "What is the label on Nila's last show?",
+        "placeholder": "AH-__-__-___",
+        "answer": [
+          "AH-26-43-112",
+          "AH264312",
+          "ah 26 43 112"
+        ],
+        "hints": [
+          "Year 2026 → 26. Week 43. Show #112.",
+          "Format: AH-26-43-112"
+        ],
+        "giveUp": 3,
+        "answerText": "AH-26-43-112.",
         "to": "e2_tape"
       }
     },
@@ -2307,6 +2515,18 @@
       "puzzle": {
         "type": "code",
         "title": "Nila's phone",
+        "prompt": "Appa's shop, and something that belongs to Nila.",
+        "placeholder": "Password",
+        "answer": [
+          "SriValli2001",
+          "Sri Valli 2001"
+        ],
+        "hints": [
+          "Same shop. A different year: hers.",
+          "Nila is 25. She was born in 2001."
+        ],
+        "giveUp": 4,
+        "answerText": "SriValli2001.",
         "to": "e2_memo"
       }
     },
@@ -2503,7 +2723,26 @@
       "puzzle": {
         "type": "pick",
         "title": "Identify the snake",
-        "to": "e3_snake"
+        "prompt": "Gold-and-brown blotches. A wide, arrow-shaped head with a pit between eye and nostril. Thick body, about 70 cm. No rattle.",
+        "to": "e3_snake",
+        "options": [
+          {
+            "t": "Eastern garter snake",
+            "why": "Garter snakes have stripes and slim heads. This head is wide and arrow-shaped."
+          },
+          {
+            "t": "Massasauga rattlesnake, Ontario's only venomous snake",
+            "why": "A massasauga is grey-brown with a rattle. This one has no rattle, and it's gold."
+          },
+          {
+            "t": "Golden lancehead (Bothrops insularis)",
+            "correct": true
+          },
+          {
+            "t": "Corn snake, an escaped pet",
+            "why": "Corn snakes have narrow heads and no heat pits. This is a pit viper."
+          }
+        ]
       }
     },
     "e3_snake": {
@@ -2673,7 +2912,28 @@
       "puzzle": {
         "type": "search",
         "title": "The Marsh house",
-        "to": "e3_map"
+        "prompt": "Look around the house.",
+        "need": 2,
+        "doneLabel": "Find Eli",
+        "to": "e3_map",
+        "spots": [
+          {
+            "t": "A drawer in the hall",
+            "text": "Walter's old mill ID badge. MERROW PAPER MILL — W. MARSH — 1977. The photo shows a skinny boy with Eli's jaw."
+          },
+          {
+            "t": "A framed photo above the stove",
+            "text": "Old Merrow before the flood. A main street, a schoolhouse, a stone church with a tall spire. Children on the church steps in Sunday clothes."
+          },
+          {
+            "t": "A newspaper clipping on the fridge",
+            "text": "2011. \"Local man, 61, dies of rare lung illness.\" Harold Vane. Ruth's husband. Someone has written \"the lake\" in pencil in the margin."
+          },
+          {
+            "t": "Tess's room, door open",
+            "text": "A Toronto bus schedule taped above her bed, routes highlighted. A jar of tips with a label: \"OUT\"."
+          }
+        ]
       }
     },
     "e3_map": {
@@ -2708,7 +2968,21 @@
       "puzzle": {
         "type": "order",
         "title": "Reassemble the map",
-        "to": "e3_map2"
+        "prompt": "Put the pieces in order, from the lakeshore up the hill to the church.",
+        "to": "e3_map2",
+        "items": [
+          "Dock Lane (the shoreline)",
+          "Mill Street (the mill's loading road)",
+          "Main Street (the general store)",
+          "School Row (the schoolhouse)",
+          "Church Hill (St. Brendan's)"
+        ],
+        "hints": [
+          "Start at the water.",
+          "The church is at the top of the hill."
+        ],
+        "giveUp": 3,
+        "answerText": "Shore, mill street, main street, school, church."
       }
     },
     "e3_map2": {
@@ -2975,7 +3249,30 @@
       "puzzle": {
         "type": "search",
         "title": "Binoculars",
-        "to": "e3_light"
+        "prompt": "Photograph what you can before the light comes round.",
+        "need": 3,
+        "doneLabel": "Duck down",
+        "to": "e3_light",
+        "spots": [
+          {
+            "t": "A crate label",
+            "text": "MANIFEST 0412 — CONSIGNEE: M. HAYDEN, WINDSOR, ON. Windsor. Your city.",
+            "clue": "manifest"
+          },
+          {
+            "t": "A small cage",
+            "text": "A worker lifts a small cage into the light. Enormous round eyes blink out of it. A slow loris. You've seen them in videos people share, being tickled. You didn't know they were smuggled."
+          },
+          {
+            "t": "Victor on the phone",
+            "text": "Victor laughs into his phone, and the water carries every word: \"Tell Hades it'll be clean by Friday. The girl's the only loose end.\" A pause. \"And the brother.\"",
+            "clue": "hadesName"
+          },
+          {
+            "t": "The water tower on the hill",
+            "text": "Above the pier, on the old water tower, a tiny red light. Not a warning light. It moves, just slightly. Someone up there with a radio, watching the pier. Watching you."
+          }
+        ]
       }
     },
     "e3_light": {
@@ -3495,7 +3792,26 @@
       "puzzle": {
         "type": "pick",
         "title": "The truck log",
-        "to": "e4_ruth_p2"
+        "prompt": "When do the trucks run?",
+        "to": "e4_ruth_p2",
+        "options": [
+          {
+            "t": "Every night, at random times",
+            "why": "Count again. Some nights are empty."
+          },
+          {
+            "t": "Tuesdays and Fridays, between 01:30 and 03:00",
+            "correct": true
+          },
+          {
+            "t": "Weekends, in the afternoon",
+            "why": "Almost nothing in daylight."
+          },
+          {
+            "t": "Mondays only",
+            "why": "Mondays are nearly blank."
+          }
+        ]
       }
     },
     "e4_ruth_p2": {
@@ -3530,6 +3846,18 @@
       "puzzle": {
         "type": "code",
         "title": "The gap",
+        "prompt": "What time do the cameras go down? (24-hour clock)",
+        "placeholder": "HH:MM",
+        "answer": [
+          "23:40",
+          "2340"
+        ],
+        "hints": [
+          "It's in the scanner note: the shift change.",
+          "23:40"
+        ],
+        "giveUp": 3,
+        "answerText": "23:40.",
         "to": "e4_ruth_end"
       }
     },
@@ -3687,7 +4015,29 @@
       "puzzle": {
         "type": "search",
         "title": "The lab",
-        "to": "e4_pills"
+        "prompt": "Photograph everything. Quietly.",
+        "need": 3,
+        "doneLabel": "Move on",
+        "to": "e4_pills",
+        "spots": [
+          {
+            "t": "The pill presses",
+            "text": "Two industrial presses. Thump. Thump. Thump. A tray of blue tablets fills every few seconds."
+          },
+          {
+            "t": "The barrels",
+            "text": "Blue plastic barrels with hazard labels peeled off. One is cracked; something milky has dried down its side. The smell makes your eyes water."
+          },
+          {
+            "t": "The whiteboard",
+            "text": "Batch numbers, dates, and counts in the thousands. At the bottom: \"BOAT — TUE/FRI\".",
+            "clue": "lab"
+          },
+          {
+            "t": "The workers",
+            "text": "Respirators, gloves, hairnets. One of them is barely older than Tess."
+          }
+        ]
       }
     },
     "e4_pills": {
@@ -4024,6 +4374,18 @@
       "puzzle": {
         "type": "code",
         "title": "The keypad",
+        "prompt": "The day it all began. Four digits.",
+        "placeholder": "####",
+        "answer": [
+          "0314",
+          "314"
+        ],
+        "hints": [
+          "Month and day, two digits each.",
+          "March 14 → 0314."
+        ],
+        "giveUp": 3,
+        "answerText": "0314.",
         "to": "e4_office"
       }
     },
@@ -4052,7 +4414,26 @@
       "puzzle": {
         "type": "search",
         "title": "Victor's laptop",
-        "to": "e4_overhear"
+        "prompt": "Ninety seconds before it locks. Copy everything to your USB stick.",
+        "need": 2,
+        "doneLabel": "Pull the USB",
+        "to": "e4_overhear",
+        "spots": [
+          {
+            "t": "The ledger",
+            "text": "D.C. — \"law\": $4,000/month. G.P. — runs: $1,200 per run. B.H. — sponsorship: $30,000 per year. Venom, 6 × B.I.: $210,000. And at the bottom: H. — 60%. D.C. is Dale Corbin. G.P., Gus Pell. B.H., Brian Holt. H…?",
+            "clue": "ledger"
+          },
+          {
+            "t": "A folder called \"H\"",
+            "text": "One file: Hades_contacts.enc. Encrypted. You copy it anyway.",
+            "clue": "hadesFile"
+          },
+          {
+            "t": "The email inbox",
+            "text": "An email from a blocked sender: \"Clean before Friday. Don't make me come down there. — H\""
+          }
+        ]
       }
     },
     "e4_overhear": {
@@ -5099,7 +5480,22 @@
       "puzzle": {
         "type": "order",
         "title": "First lesson",
-        "to": "e5_range2"
+        "prompt": "Put the steps in the order Ortiz teaches them.",
+        "to": "e5_range2",
+        "items": [
+          "Check it's loaded and point it downrange",
+          "Grip high with both hands",
+          "Feet apart, weight forward",
+          "Line up the sights on the target",
+          "Breathe out",
+          "Squeeze the trigger slowly"
+        ],
+        "hints": [
+          "Safety first, then the grip.",
+          "Sights before breath, breath before trigger."
+        ],
+        "giveUp": 3,
+        "answerText": "Safety, grip, stance, sights, breath, squeeze."
       }
     },
     "e5_range2": {
@@ -5298,7 +5694,22 @@
       "puzzle": {
         "type": "pick",
         "title": "Sort by street",
-        "to": "e5_records2"
+        "prompt": "Lung illness, rashes, rare cancers. Where do the addresses cluster?",
+        "to": "e5_records2",
+        "options": [
+          {
+            "t": "Lakeshore Road and Mill Road",
+            "correct": true
+          },
+          {
+            "t": "The new subdivision by the highway",
+            "why": "Built in 2012. Almost no cases."
+          },
+          {
+            "t": "Evenly across town",
+            "why": "Not even close. Look at the street column."
+          }
+        ]
       }
     },
     "e5_records2": {
@@ -5319,7 +5730,22 @@
       "puzzle": {
         "type": "pick",
         "title": "Sort by date",
-        "to": "e5_records3"
+        "prompt": "Each of the four deaths happened…",
+        "to": "e5_records3",
+        "options": [
+          {
+            "t": "…on a Sunday",
+            "why": "Check the calendar again."
+          },
+          {
+            "t": "…within two days after a Tuesday or Friday night boat",
+            "correct": true
+          },
+          {
+            "t": "…in the same week",
+            "why": "They're months apart."
+          }
+        ]
       }
     },
     "e5_records3": {
@@ -5626,7 +6052,32 @@
       "puzzle": {
         "type": "search",
         "title": "The archive",
-        "to": "e6_walter"
+        "prompt": "Look through the boxes.",
+        "need": 3,
+        "doneLabel": "Go to Walter",
+        "to": "e6_walter",
+        "spots": [
+          {
+            "t": "A box marked 1977",
+            "text": "A photo: mill trucks parked beside the old church before the flood. Young men rolling barrels down the slope. One of them, unmistakably, is a nineteen-year-old Walter Marsh."
+          },
+          {
+            "t": "Architect's drawings",
+            "text": "A plan of the old church: main doors at the west, a side door at the north into the bell tower, a crypt beneath the altar. Useful, if you were ever inside it underwater.",
+            "fx": {
+              "flag": "churchPlan"
+            }
+          },
+          {
+            "t": "A box marked 1978",
+            "text": "The dam opening: a crowd, a ribbon, officials in hard hats. The caption: \"R. Hayden, Merrow Dam Authority, opens the gates.\" At the edge of the crowd, a figure in a long dark coat, face turned away. The same coat. The same posture. Forty-eight years ago.",
+            "clue": "photo1978"
+          },
+          {
+            "t": "A parish register",
+            "text": "Baptisms, weddings, funerals, 1842 to 1978. The last entry, in a shaking hand: \"The bell is moved to the new church. Let it ring for those below.\""
+          }
+        ]
       }
     },
     "e6_walter": {
@@ -5753,7 +6204,29 @@
       "puzzle": {
         "type": "search",
         "title": "Old Merrow",
-        "to": "e6_church_in"
+        "prompt": "Swim down the main street toward the church. Photograph what you find.",
+        "need": 4,
+        "doneLabel": "Swim to the church",
+        "to": "e6_church_in",
+        "spots": [
+          {
+            "t": "The schoolhouse",
+            "text": "A chalkboard still on the wall. Rows of rotted desks. A child's tin lunchbox on the floor, rusted shut."
+          },
+          {
+            "t": "The general store",
+            "text": "A faded sign: MERROW GENERAL — EST. 1891. A shelf of jars, still sealed, full of something dark."
+          },
+          {
+            "t": "The graveyard",
+            "text": "Headstones leaning in the silt. Some graves were never moved. \"Reid, Thomas and Agnes.\" Father Reid's grandparents."
+          },
+          {
+            "t": "The slope below the church",
+            "text": "The ground changes. Rusted 1977 barrels half-buried in silt. On top of them, dozens of newer blue barrels, some split open, leaking a slow milky cloud. Dead fish, belly up in the weeds. A sunken wire cage holding the shells of dead tortoises: animals that didn't survive the trip, dumped like rubbish. You photograph all of it.",
+            "clue": "dumping"
+          }
+        ]
       }
     },
     "e6_church_in": {
@@ -6117,7 +6590,29 @@
       "puzzle": {
         "type": "search",
         "title": "Jonah's tapes",
-        "to": "e7_footage"
+        "prompt": "Listen to the recordings.",
+        "need": 3,
+        "doneLabel": "Play Nila's camera",
+        "to": "e7_footage",
+        "spots": [
+          {
+            "t": "Tape 1 · October 23",
+            "text": "Nila broadcasting about the callers. Then, on a frequency right beside hers, a man's calm voice: \"Brave girl.\""
+          },
+          {
+            "t": "Tape 2 · October 30",
+            "text": "Nila describing the night boats. The voice again: \"You're very close now, Nila.\""
+          },
+          {
+            "t": "Tape 3 · Tuesday",
+            "text": "The voice from your car radio: \"He's already here.\" And then, on a private channel Jonah caught by luck, the same voice speaking to someone else: \"Victor, you're sloppy. Clean it before I come. Or I clean you.\"",
+            "clue": "jonahTapes"
+          },
+          {
+            "t": "Jonah's notebook",
+            "text": "\"Uses relays. Bounces off three or four repeaters. Can't fix his position. A professional. Victor is afraid of him. You can hear it.\""
+          }
+        ]
       }
     },
     "e7_footage": {
@@ -6753,6 +7248,21 @@
       "puzzle": {
         "type": "tune",
         "title": "Align the antenna",
+        "prompt": "Turn the dish until the signal meter peaks.",
+        "min": 150,
+        "max": 260,
+        "step": 1,
+        "startAt": 150,
+        "target": 208,
+        "tol": 4,
+        "unit": "°",
+        "decimals": 0,
+        "hints": [
+          "South-southwest is a little past 200°.",
+          "Try around 205° to 210°."
+        ],
+        "giveUp": 4,
+        "answerText": "208°. The meter jumps to green.",
         "to": "e7_eli"
       }
     },
@@ -7498,7 +8008,22 @@
       "puzzle": {
         "type": "order",
         "title": "The broadcast",
-        "to": "e8_jam"
+        "prompt": "Put the proof in order: from what the town suffered, to the cause, to who did it.",
+        "items": [
+          "The callers' map: what the town has been suffering",
+          "Dr. Rao's records: the illness, and four \"cardiac\" deaths that were fentanyl",
+          "The lab photos: where the fentanyl comes from",
+          "The Old Merrow photos: where the waste goes",
+          "Victor's ledger: who was paid",
+          "Nila's footage: Victor and Corbin, on camera, together"
+        ],
+        "to": "e8_jam",
+        "hints": [
+          "Start with the people: the callers, then the medical records.",
+          "Then the cause (lab, dumping). The ledger and the footage name names, so they come last."
+        ],
+        "giveUp": 3,
+        "answerText": "Suffering, cause, names."
       }
     },
     "e8_jam": {
@@ -7547,6 +8072,25 @@
       "puzzle": {
         "type": "tune",
         "title": "Beat the jamming",
+        "prompt": "Ruth reads from her 2019 notebook: \"OPP overnight dispatch, northern relay: one-five-five point four-six.\" Tune the transmitter to it.",
+        "min": 150,
+        "max": 160,
+        "step": 0.01,
+        "startAt": 150,
+        "target": 155.46,
+        "tol": 0.04,
+        "decimals": 2,
+        "unit": "MHz",
+        "hints": [
+          "Ruth's note: 155.46 MHz.",
+          "Slide slowly near 155.5 and watch the meter."
+        ],
+        "giveUp": 4,
+        "giveUpLabel": "We can't find it",
+        "answerText": "The jamming wins. The broadcast dies.",
+        "giveUpFx": {
+          "flag": "jamLost"
+        },
         "to": "e8_jam_after"
       }
     },
@@ -7845,7 +8389,48 @@
       "puzzle": {
         "type": "search",
         "title": "Goodbyes",
-        "to": "e8_drive"
+        "prompt": "Say goodbye to the people who helped you.",
+        "need": 4,
+        "doneLabel": "Get in the car",
+        "to": "e8_drive",
+        "spots": [
+          {
+            "t": "Ruth, on the motel porch",
+            "text": "She's already sweeping up the glass. \"Fourteen years of notebooks. Somebody finally read them.\" She hugs Nila hard, then you, briefly, like it embarrasses her."
+          },
+          {
+            "t": "Dr. Rao, outside the clinic",
+            "text": {
+              "dynamic": true
+            }
+          },
+          {
+            "t": "Ortiz, at the station",
+            "text": {
+              "dynamic": true
+            }
+          },
+          {
+            "t": "Walter and Eli, on the burned dock",
+            "text": {
+              "dynamic": true
+            }
+          },
+          {
+            "t": "Tess, at the bus stop",
+            "text": {
+              "dynamic": true
+            }
+          },
+          {
+            "t": "Jonah, in his cabin",
+            "text": "Arm in a sling, a radio in his lap. \"Whoever was on that water tower, he's still out there. Keep your radio on, Anna.\""
+          },
+          {
+            "t": "Father Reid, at St. Brendan's",
+            "text": "He rings the bell one last time, nine o'clock, and lets the rope go. \"I think they can rest now.\""
+          }
+        ]
       }
     },
     "e8_drive": {

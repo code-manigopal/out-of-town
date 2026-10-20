@@ -53,7 +53,7 @@ All sizes in metres. Greybox with CSG boxes in Godot first, final art later. Eac
 ### 4.1 Mani's apartment, Windsor — `apartment.tscn`
 - **Size:** one-bedroom, about 7 × 8 m: entry, living + kitchenette, bedroom, bathroom (door closed).
 - **Layout:** front door → living room with the counter on the right (sweets box, diyas packet, gift radio) → laptop on a small desk by the window → bedroom with the open duffel on the bed. Whiteboard on the living-room wall, photos on a shelf.
-- **Flow:** the duffel is the "packing" target; carrying each item to it fills a slot. When all three are packed, the laptop rings (call can't start before; *design*: if the player lingers 90 s after packing, it rings anyway).
+- **Flow:** the duffel is the "packing" target; carrying each item to it fills a slot. When all three are packed, the laptop rings; the call can't start before that. *(design)* If the ringing laptop is left unanswered for 90 s, the call starts by itself (Amma doesn't give up).
 - **Light:** bright 08:10 November sun through blinds, cool white. The safest room in the game: remember this light at the end.
 
 ### 4.2 County roads — `road_cr20.tscn`, `road_chatham.tscn`
@@ -158,9 +158,19 @@ Saves follow the GDD: auto-save at every scene start.
 
 1. **Driving: manual with auto-cruise.** The player steers and controls speed; while the phone or the radio is open, the car holds its lane and speed.
 2. **Minor characters: mix.** Proper face and turnaround sheets for Harold, June and Priya; a shared base body with face and clothing variants for the two teens and the ambient customers.
-3. **Mani's inner voice: proposed, not narration.** See section 11.
+3. **Narration: no narrator.** No third-person voice and Mani does not narrate. The story is carried by five layers (section 11). Mani's inner voice is adopted as one of them.
 
-## 11. Mani's inner voice (proposal)
+## 11. Narration (decided 2026-10-20)
+
+There is **no narrator**. Five layers carry the story, each with one job:
+
+1. **Nila's voice is the closest thing to a narrator** (Part 1: the voicemail, *After Hours* broadcasts, voice memos, tapes; Part 2: Lighthouse on the radio).
+2. **Mani's inner voice notices; it never tells the story** (see below).
+3. **The world tells the backstory:** caller notes, plaques, photos, ledgers, manifests. "Mark Hayden" appears only on paper in Part 1.
+4. **The journal keeps the player oriented:** Mani's short notes hold the current goal and clues.
+5. **The episode frame:** place and time cards, title card, "Previously on" (Part 1: a radio-dial montage of real lines from earlier scenes through static, no new writing; Part 2: Lighthouse recaps on the radio, in character), the cliffhanger and "END OF EPISODE".
+
+## 12. Mani's inner voice (adopted)
 
 Alan Wake narrates his own story. Mani doesn't narrate; he **notices**. His inner voice is short, dry, and only ever reacts to what the player is looking at or has just worked out. It never tells the story, never explains feelings, never says more than the screenplay knows.
 

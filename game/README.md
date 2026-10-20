@@ -6,7 +6,8 @@ The playable game, written in GDScript for **Godot 4.7** (Forward+ renderer).
 
 ```bash
 godot --path game -e                                            # open in the editor
-godot --path game                                               # run (Part 1 Episode 1 dialogue test)
+godot --path game                                               # run (Episode 1, G1: cold open, title, apartment, call)
+godot --path game res://ui/dialogue/dialogue_test.tscn          # run the plain dialogue test
 godot --headless --path game --import                           # import project, check scripts
 godot --headless --path game --script res://tests/run_tests.gd  # tests (exit code 1 on failure)
 ```
@@ -27,7 +28,13 @@ VO-script CSVs to the root `data/story/`, which the game does not read. Do not e
 | `scripts/story/story_db.gd` | Autoload `StoryDB`: loads the JSON; parts, episodes, scenes, lines, choices, condition checks |
 | `scripts/story/story_runner.gd` | `OOTStoryRunner`: enters scenes, takes choices, applies effects, resolves continues |
 | `scripts/story/oot_*.gd` | `OOTScene`, `OOTDialogueLine`, `OOTChoice` data classes |
-| `ui/dialogue/dialogue_test.tscn` | Main scene: plays Part 1 Episode 1 with speaker, line, English subtitle and choices |
+| `ui/dialogue/dialogue_test.tscn` | Plays Part 1 Episode 1 as plain dialogue (speaker, line, English subtitle, choices) |
+| `ui/dialogue/dialogue_box.tscn` | Reusable in-game dialogue box bound to an `OOTStoryRunner` (`begin(runner, stop_scene)`) |
+| `ui/inspect/`, `ui/hud/` | Inspect view (rotate, caption from story data) and HUD (prompt dot, "Packed n/3", toast) |
+| `scripts/player/player.gd`, `scenes/player/player.tscn` | `OOTPlayer`: walk / jog (Shift), mouse look, right-shoulder camera, input lock |
+| `scripts/interaction/` | `OOTInteractable` (pickup / inspect / use) and `OOTInteractor` (2 m, one Interact action) |
+| `scripts/story/story_trigger.gd` | `OOTStoryTrigger`: starts a scene through the runner, signals when a target scene is reached |
+| `scenes/p1/e1/` | `episode_01.tscn` (main scene: cold open, title card, apartment, end card) and `apartment.tscn` (G1 greybox) |
 | `tests/run_tests.gd` | Headless test suite |
 
 Every spoken line shows an English subtitle (the Tanglish line carries both `text` and `subtitle`; if the subtitle
@@ -42,5 +49,5 @@ is empty the text is used). Narration has none.
 ## Conventions
 
 Godot style guide: snake_case files, folders, functions and variables; PascalCase node names; CONSTANT_CASE constants;
-static typing everywhere. Global classes keep the `OOT` prefix. Never hand-edit `.tscn`/`.res` binary resources;
+static typing everywhere. Global classes keep the `OOT` prefix. `apartment.tscn` and `player.tscn` were generated with the Godot API, so edit them in the editor, not as text. Never hand-edit `.res` binary resources;
 large binary assets go through Git LFS.

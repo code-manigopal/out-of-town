@@ -55,6 +55,13 @@ function fxData(f) {
   if (isFn(f)) return { dynamic: true };
   return JSON.parse(JSON.stringify(f));
 }
+// Full puzzle data (spots, options, need, answers…); any function inside becomes { dynamic: true }.
+function plainData(v) {
+  if (isFn(v)) return { dynamic: true };
+  if (Array.isArray(v)) return v.map(plainData);
+  if (v && typeof v === 'object') { const o = {}; for (const [k, x] of Object.entries(v)) o[k] = plainData(x); return o; }
+  return v;
+}
 const arr = a => a && a.length ? '(' + a.map(x => '"' + x + '"').join(',') + ')' : '()';
 
 for (const pid of Object.keys(PARTS)) {
@@ -86,7 +93,7 @@ for (const pid of Object.keys(PARTS)) {
     });
     if (sc.fx) rec.fx = fxData(sc.fx);
     if (sc.timer) rec.timer = { secs: val(sc.timer.secs, S), to: val(sc.timer.to, S), ...(sc.timer.fx ? { fx: fxData(sc.timer.fx) } : {}) };
-    const pz = val(sc.puzzle, S); if (pz) rec.puzzle = { type: pz.type, title: pz.title || '', to: val(pz.to, S), ...(pz.fx ? { fx: fxData(pz.fx) } : {}) };
+    const pz = val(sc.puzzle, S); if (pz) rec.puzzle = { ...plainData(pz), type: pz.type, title: pz.title || '', to: val(pz.to, S), ...(pz.fx ? { fx: fxData(pz.fx) } : {}) };
     const cb = val(sc.combat, S); if (cb) rec.combat = { to: cb.to, cleanTo: cb.cleanTo || null };
     if (sc.epEnd) rec.episodeEnd = true;
     if (sc.ending) rec.ending = val(sc.ending, S);
