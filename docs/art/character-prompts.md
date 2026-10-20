@@ -78,6 +78,7 @@ Appearance details below follow the screenplays in `docs/story/` (canon). Anythi
 **Identity:** White young woman, age 19, freckles, auburn hair in a ponytail, nervous posture, 163 cm.
 - **Main outfit:** diner waitress uniform under a parka, sneakers.
 - Sheets: FACE, TURNAROUND, OUTFIT.
+- **Approved:** `sheets/tess/tess_p1_face.png`, `tess_p1_turnaround.png` (2026-10-20). Modelling notes: the uniform is the **pale blue** one with a short white waist apron from the turnaround (the face sheet shows a maroon uniform with a bib apron; use it for the face only). Neutral face is sculpted from the face sheet with the worry relaxed out. Add opaque dark tights under the uniform *(design: it's November in Ontario)*.
 
 ### Eli Marsh (26) · priority B
 **Identity:** White man, age 26, fisherman, short dark-blond hair, short beard, weathered hands, guilty eyes, 183 cm. Tess's brother (family resemblance).
