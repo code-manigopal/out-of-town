@@ -72,6 +72,7 @@ Appearance details below follow the screenplays in `docs/story/` (canon). Anythi
 **Identity:** White man, age 55, burly and heavyset, bald, friendly round face, 180 cm, a faded tattoo on one forearm *(design)*.
 - **Main outfit:** a diner apron under an open work jacket, flannel shirt, jeans, work boots.
 - Sheets: FACE, TURNAROUND, OUTFIT.
+- **Approved:** `sheets/gus/gus_p1_face.png`, `gus_p1_turnaround.png` (2026-10-20). Modelling notes: the apron ties sit under the jacket (the back view shows them over it); one faded tattoo on the right forearm only (the sheet shows both arms); plain back pockets on the jeans.
 
 ### Tess Marsh (19) · priority A
 **Identity:** White young woman, age 19, freckles, auburn hair in a ponytail, nervous posture, 163 cm.
