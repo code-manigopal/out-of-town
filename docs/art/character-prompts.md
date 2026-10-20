@@ -33,10 +33,11 @@ Appearance details below follow the screenplays in `docs/story/` (canon). Anythi
 ## Part 1 — Greyhaven
 
 ### Mani (29) · playable · priority A
-**Identity:** South Indian Tamil man from Vellore, age 29, medium-brown skin, short neat black hair, light stubble, rectangular dark-framed glasses *(design)*, average build, 175 cm, thoughtful tired eyes, a careful, quiet face.
+**Identity:** South Indian Tamil man from Vellore, age 29, medium-brown skin, thick curly black hair, short at the sides, a moustache and short goatee with light stubble, thin metal double-bridge glasses, a small black hoop earring in each ear *(design, from the approved sheet)*, average build, 175 cm, thoughtful tired eyes, a careful, quiet face.
 - **Main outfit:** dark grey hoodie under a navy winter jacket, dark jeans, brown leather boots, a backpack on one shoulder, a cheap black digital watch.
 - **Wet/night variant (lake dive):** same, soaked, hair flat, jacket open.
 - Sheets: FACE, TURNAROUND, OUTFIT ×2, EXPRESSIONS.
+- **Approved:** `sheets/mani/mani_p1_face.png`, `mani_p1_turnaround.png`, `mani_p1_expressions.png` (2026-10-20).
 
 ### Nila (25) · priority A
 **Identity:** South Indian Tamil woman, age 25, medium-brown skin, long black hair, small nose stud, expressive eyes, quick wide smile, slim, 160 cm, Mani's younger sister (same family resemblance: similar eyes and nose).
