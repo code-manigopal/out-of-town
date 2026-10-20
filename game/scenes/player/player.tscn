@@ -2,27 +2,11 @@
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_dovo2"]
 [ext_resource type="Script" path="res://scripts/interaction/interactor.gd" id="2_gmlin"]
+[ext_resource type="PackedScene" path="res://characters/mani/mani.glb" id="3_mani"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lvxji"]
-radius = 0.3
-height = 1.7
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p47bc"]
-albedo_color = Color(0.25, 0.4, 0.6, 1)
-roughness = 0.9
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_75vfm"]
-material = SubResource("StandardMaterial3D_p47bc")
-radius = 0.3
-height = 1.7
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0owmy"]
-albedo_color = Color(0.95, 0.8, 0.3, 1)
-roughness = 0.9
-
-[sub_resource type="BoxMesh" id="BoxMesh_qek5x"]
-material = SubResource("StandardMaterial3D_0owmy")
-size = Vector3(0.18, 0.12, 0.2)
+radius = 0.35
+height = 1.75
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5gtgg"]
 radius = 0.2
@@ -31,18 +15,13 @@ radius = 0.2
 script = ExtResource("1_dovo2")
 
 [node name="Collision" type="CollisionShape3D" parent="." unique_id=1227173600]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, 0)
 shape = SubResource("CapsuleShape3D_lvxji")
 
 [node name="Body" type="Node3D" parent="." unique_id=1798142081]
 
-[node name="Mesh" type="MeshInstance3D" parent="Body" unique_id=177162106]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
-mesh = SubResource("CapsuleMesh_75vfm")
-
-[node name="FacingMarker" type="MeshInstance3D" parent="Body" unique_id=2141144455]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, -0.3)
-mesh = SubResource("BoxMesh_qek5x")
+[node name="Mani" parent="Body" unique_id=1798142082 instance=ExtResource("3_mani")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
 
 [node name="CameraPivot" type="Node3D" parent="." unique_id=1829034397]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55, 0)

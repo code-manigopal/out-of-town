@@ -33,6 +33,7 @@ func _initialize() -> void:
 		_test_g1_apartment()
 		_test_g1_call()
 		_test_g1_inputs_and_flow()
+		_test_mani_model()
 	print("%d checks, %d failures" % [_checks, _failures])
 	quit(1 if _failures > 0 else 0)
 
@@ -274,3 +275,34 @@ func _test_g1_inputs_and_flow() -> void:
 	_check(ep.title_text() == "OUT OF TOWN: GREYHAVEN", "title card text")
 	_check(ep.episode_text() == "EPISODE 1 \u2014 COUNTY ROADS", "episode card text")
 	ep.queue_free()
+
+
+func _test_mani_model() -> void:
+	var packed: PackedScene = load("res://characters/mani/mani.glb") as PackedScene
+	_check(packed != null, "mani.glb loads as a PackedScene")
+	if packed == null:
+		return
+	var inst: Node3D = packed.instantiate() as Node3D
+	_check(inst != null, "mani.glb instantiates")
+	if inst == null:
+		return
+	root.add_child(inst)
+	var skel: Skeleton3D = inst.find_child("Skeleton3D", true, false) as Skeleton3D
+	_check(skel != null and skel.get_bone_count() >= 50, "mani has a skeleton (game-engine rig)")
+	var ap: AnimationPlayer = inst.find_child("AnimationPlayer", true, false) as AnimationPlayer
+	_check(ap != null, "mani has an AnimationPlayer")
+	if ap != null:
+		for clip: String in ["idle", "walk", "jog"]:
+			_check(ap.has_animation(clip), "mani has the %s animation" % clip)
+		if ap.has_animation("walk"):
+			var len: float = ap.get_animation("walk").length
+			_check(absf(len - 1.0) < 0.05, "walk loop is 1.0 s (%.3f)" % len)
+		if ap.has_animation("idle"):
+			_check(absf(ap.get_animation("idle").length - 4.0) < 0.05, "idle loop is 4 s")
+	inst.queue_free()
+	var player_scene: PackedScene = load("res://scenes/player/player.tscn") as PackedScene
+	var pl: OOTPlayer = player_scene.instantiate() as OOTPlayer
+	root.add_child(pl)
+	await process_frame
+	_check(pl.anim != null, "player finds Mani's AnimationPlayer")
+	pl.queue_free()
