@@ -160,7 +160,7 @@ Appearance details below follow the screenplays in `docs/story/` (canon). Anythi
 - Sheets: FACE ×2 (both ages).
 
 ### Kane (40s) · priority C
-**Identity:** White man, mid-40s, ex-military contractor, big and broad, shaved head, heavy beard, a scar *(see open question)*, 190 cm.
+**Identity:** White man, mid-40s, ex-military contractor, big and broad, shaved head, heavy beard, a scar through one eyebrow, 190 cm.
 - **Outfit:** white winter camouflage, tactical vest, radio on the chest, rifle.
 - Sheets: FACE, TURNAROUND.
 
@@ -210,11 +210,11 @@ Appearance details below follow the screenplays in `docs/story/` (canon). Anythi
 - **Big Lou:** trucker, grey beard, trucker cap, flannel jacket, a CB radio handset.
 - **Tyler (20s):** motel night clerk, thin, nervous, brand-new winter boots.
 - **Kane's men (3 variants):** white winter camouflage parkas, balaclavas or goggles, rifles, radios.
+- **Kane's scarred man:** big and broad, a scar on his chin, white winter camouflage. He paid Tyler at the motel and leads the three men who break into Bev's motel. Not Kane.
 - **Northstar staff:** lab coats over sweaters, ID badges (generic, no logos), safety glasses.
-- Sheets: FACE for Big Lou and Tyler, TURNAROUND for each enemy variant.
+- Sheets: FACE for Big Lou, Tyler and the scarred man, TURNAROUND for each enemy variant.
 
 ## Open questions (canon)
-- **Kane's scar.** Tyler says the man who paid him was "Big, scar on his chin", and Bev says "One with a scar". That may be Kane or one of his men. The old prompt put Kane's scar through an eyebrow. Pick one before generating Kane.
 - **Hades silhouette hat.** The old prompt gave him a wide-brimmed hat; the screenplay only says a long coat, so it has been dropped.
 
 ## Scene images
