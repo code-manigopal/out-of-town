@@ -1,0 +1,648 @@
+﻿Name,SceneId,Order,Speaker,Channel,Text,Subtitle,bIsNarration
+e1_open_000,e1_open,0,,,"Radio static. A phone voicemail, timestamped Sunday, 23:52.",,True
+e1_open_001,e1_open,1,NILA,V.O.,"Anna, naan dhaan. Station-ku call pannadha, okay? Plan panna maadhiri Tuesday vandhudu.","Anna, it's me. Don't call the station, okay? Just come Tuesday like we planned.",False
+e1_open_002,e1_open,2,NILA,V.O.,"Naan oru vishayam kandupidichiruken. Phone-la solla mudiyaadhu. Inga vandhappo edhavadhu weird-aa irundha, Ruth kitta mattum pesu.","I found something. I can't say it on the phone. If anything feels weird when you get here, talk only to Ruth.",False
+e1_open_003,e1_open,3,NILA,V.O.,"Anna, yaara venaalum nambu, aana andha—","Anna, trust anyone, but don't trust the—",False
+e1_open_004,e1_open,4,,,The message cuts. Silence.,,True
+e1_apt_000,e1_apt,0,,,"A small one-bedroom near the river. A whiteboard of job applications, half of them crossed out. A graduation photo from the University of Windsor. On the counter: a box of laddu and mysore pak, a packet of clay diyas, and a gift-wrapped ham radio with a crooked bow.",,True
+e1_apt_001,e1_apt,1,,,You play the voicemail again. You call Nila. Straight to voicemail. Again.,,True
+e1_apt_002,e1_apt,2,,,"Before you leave, you look around the flat one more time.",,True
+e1_call_000,e1_call,0,,,"Your laptop rings. A video call from Vellore. Amma and Appa, 7 pm their time, Appa still in his shop shirt from Sri Valli Leathers.",,True
+e1_call_001,e1_call,1,AMMA,,"Kanna, saaptiya? Moonji ellam ilachu pochu.","Kanna, did you eat? Your face has gone so thin.",False
+e1_call_002,e1_call,2,MANI,,"Saapten, Amma.","I ate, Amma.",False
+e1_call_003,e1_call,3,APPA,,Company-la irundhu edhavadhu news? Andha Thursday interview?,Any news from the company? That Thursday interview?,False
+e1_call_004,e1_call,4,MANI,,"Second round, Appa. Thursday dhaan.","Second round, Appa. On Thursday.",False
+e1_call_005,e1_call,5,AMMA,,Nila enga? Moonu naala phone edukkala. En mela kovama irukkaala?,And Nila? Three days she hasn't picked up. Is she angry with me?,False
+e1_call2_000,e1_call2,0,APPA,,"Sweets eduthutu po. Kadai nalla poguthu, kavala padaadhenu Appa sonnaarnu sollu. Pongal-ku veetuku vara sollu.","Take her the sweets. Tell her Appa says the shop is doing fine, she should stop worrying. Tell her to come home for Pongal.",False
+e1_call2_001,e1_call2,1,AMMA,,"Innoru vishayam, Kanna. Preethi-nu oru ponnu, Windsor-la dhaan irukkaa. Pharmacist. Photo anupparen, paaru.","One more thing, Kanna. There's a girl called Preethi, she lives in Windsor too. A pharmacist. I'm sending her photo, have a look.",False
+e1_call2_002,e1_call2,2,MANI,,Amma! Ippo venaam!,Amma! Not now!,False
+e1_call2_003,e1_call2,3,,,Amma laughs. Appa shakes his head. The call ends. Your phone buzzes: a photo from Amma. You don't open it. You pick up the gift radio and look at it for a long moment.,,True
+e1_road_000,e1_road,0,,,"You head east along Lake Erie. Greenhouses glitter outside Leamington. Flat farmland, grain silos, a hawk on a fence post. The radio plays a country station you'd never admit to liking.",,True
+e1_road_001,e1_road,1,,,"At a red light you text Nila's flatmate, a name she's mentioned a hundred times.",,True
+e1_road_002,e1_road,2,MANI,TEXT,"Hi Tess, it's Mani, Nila's brother. Is she around? Coming up today.",,False
+e1_road_003,e1_road,3,,,No reply. The light goes green. Your stomach says coffee.,,True
+e1_tp1_000,e1_tp1,0,,,"A busy coffee-and-donut shop. Red-and-cream decor, a hockey rerun on the TV, the smell of burnt sugar. You order a coffee and an apple fritter.",,True
+e1_tp1_001,e1_tp1,1,,,"At the counter, an old man in a flat cap slaps a receipt down.",,True
+e1_tp1_002,e1_tp1,2,HAROLD,,Third day running! I order a double-double and somebody gives me decaf! I've been coming here since 1974!,,False
+e1_tp1_003,e1_tp1,3,,,"The young cashier, Priya, looks helpless. Your coffee is still brewing. You have nothing better to do.",,True
+e1_tp1skip_000,e1_tp1skip,0,,,"You try. You really do. But Harold is now shouting at the menu board, and Priya looks like she might cry, and you are a person who cannot leave a broken thing alone.",,True
+e1_tp1skip_001,e1_tp1skip,1,MANI,,Can I see the receipts?,,False
+e1_tp1p_000,e1_tp1p,0,,,Small mystery: The Decaf Problem.,,True
+e1_tp1acc_000,e1_tp1acc,0,,,So who's switching Harold's coffee?,,True
+e1_tp1done_000,e1_tp1done,0,JUNE,,"The doctor said no caffeine after his heart thing, and he's a stubborn old goat!",,False
+e1_tp1done_001,e1_tp1done,1,HAROLD,,June! Fifty-two years and you're sabotaging my coffee?,,False
+e1_tp1done_002,e1_tp1done,2,JUNE,,"Fifty-two years and I'd like fifty-three, thank you.",,False
+e1_tp1done_003,e1_tp1done,3,,,"They bicker. Then they laugh. Then Harold, grumbling, drinks the decaf. Priya slides your fritter across the counter for free.",,True
+e1_tp1done_004,e1_tp1done,4,PRIYA,,You should be a detective.,,False
+e1_tp1done_005,e1_tp1done,5,MANI,,I'm a data guy. It's just logs.,,False
+e1_shoulder_000,e1_shoulder,0,,,Farmland turns to forest. The sky goes the colour of wet concrete. Your phone buzzes. Tess.,,True
+e1_shoulder_001,e1_shoulder,1,TESS,TEXT,haven't seen her since sunday night. thought she was with u?? her phone is here at the flat,,False
+e1_shoulder_002,e1_shoulder,2,,,You pull onto the gravel shoulder. You call Nila. Voicemail. You call again. Voicemail.,,True
+e1_shoulder_003,e1_shoulder,3,,,A truck blows past and rocks the car. You realise you're gripping the wheel hard enough to hurt.,,True
+e1_shoulder_004,e1_shoulder,4,MANI,,Okay. Okay. Drive.,,False
+e1_tp2_000,e1_tp2,0,,,A quieter Tom Portons beside a gas station. Rain on the windows. A refrigerated box truck outside: MERROW PALLETS & SUPPLY.,,True
+e1_tp2_001,e1_tp2,1,,,"Inside, a burly man in a diner apron under his jacket is arguing with a teenage employee.",,True
+e1_tp2_002,e1_tp2,2,GUS,,I left the cooler on the seat for two minutes. Two minutes!,,False
+e1_tp2_003,e1_tp2,3,,,"At the window table, a well-dressed man in a tailored wool coat and a silver watch sips black coffee and watches with mild amusement.",,True
+e1_tp2b_000,e1_tp2b,0,,,"As you reach the staff room, the man in the wool coat is suddenly beside you, as if this were a game you were playing together.",,True
+e1_tp2b_001,e1_tp2b,1,VICTOR,,Kids think every cooler is full of beer. Shall we?,,False
+e1_tp2b_002,e1_tp2b,2,,,The cooler is in the wet backpack. He gets to it first and lifts the lid an inch. You glimpse a heat pack and a ventilated plastic box with something coiled inside. He shuts it.,,True
+e1_tp2b_003,e1_tp2b,3,VICTOR,,"Bait. Gus fishes. Don't you, Gus?",,False
+e1_tp2b_004,e1_tp2b,4,GUS,,Yeah. Bait.,,False
+e1_tp2b_005,e1_tp2b,5,,,Gus takes the cooler without meeting your eyes and leaves fast. The truck pulls out into the rain.,,True
+e1_victor_000,e1_victor,0,VICTOR,,Sharp eyes. What do you do?,,False
+e1_victor_001,e1_victor,1,MANI,,Software. Data. Between jobs.,,False
+e1_victor_002,e1_victor,2,VICTOR,,Ah. The most dangerous kind of person. Someone who notices patterns. Where are you headed?,,False
+e1_victor2_000,e1_victor2,0,,,His eyes go to your car through the window. The sweets box on the passenger seat.,,True
+e1_victor2_001,e1_victor2,1,VICTOR,,"Diwali. Festival of lights. Good triumphs over evil, isn't it? I've always liked that story.",,False
+e1_victor2_002,e1_victor2,2,VICTOR,,"If north means the lake country, try Greyhaven. Fog, a lake, a priest who rings a bell for nobody. Lovely.",,False
+e1_victor2_003,e1_victor2,3,,,His phone buzzes. He turns half away.,,True
+e1_victor2_004,e1_victor2,4,VICTOR,ON PHONE,"Mark. Yes, I'm on the road. Tonight. It'll be clean.",,False
+e1_victor2_005,e1_victor2,5,,,"He hangs up, drops a twenty on the counter for both your coffees, and slides a card across the table: KESSLER RESTRUCTURING — Victor Kessler, Principal.",,True
+e1_victor2_006,e1_victor2,6,VICTOR,,"If you ever want work, I hire people who notice things. Drive safe, Mani. The county roads get dark early this time of year.",,False
+e1_victor2_007,e1_victor2,7,,,Only when he's gone do you realise you never told him your name. It was written on your coffee cup.,,True
+e1_victor2_008,e1_victor2,8,,,"At the far gas pump, a black car with tinted windows. A man in a long dark coat stands beside it, not pumping gas, facing the restaurant. When you walk out, the car is gone.",,True
+e1_main_000,e1_main,0,,,"Fog sits on Lake Merrow like something waiting. Three streetlights, sodium orange. A shuttered hardware store. The Merrow Diner, lit and almost empty. St. Brendan's church bell rings six times, though there is no service.",,True
+e1_main_001,e1_main,1,,,"A bronze plaque at the lakeside: OLD MERROW, 1842–1978. A village given to the water so the valley could prosper.",,True
+e1_main_002,e1_main,2,,,"Through the diner window, a young woman in an apron sees your car's Windsor plates and waves at you to wait. Across the street, a small brick building with a dark sign: LAKE MERROW 94.1 FM.",,True
+e1_station_000,e1_station,0,,,"The station is locked. Through the glass door: gold records on the wall, a dark studio, a red ON AIR bulb, unlit. Taped inside the door, a printed notice.",,True
+e1_station_001,e1_station,1,,,"""AFTER HOURS with Nila is suspended until further notice. — Brian Holt, Station Manager.""",,True
+e1_station_002,e1_station,2,,,Nila never told you her show was suspended.,,True
+e1_ruth_000,e1_ruth,0,,,"The Lakeview's neon sign has two dead letters. Behind the desk, a woman in her sixties, reading glasses on a chain, a police scanner murmuring, a shotgun leaning within easy reach.",,True
+e1_ruth_001,e1_ruth,1,RUTH,,Rooms are forty a night.,,False
+e1_ruth_002,e1_ruth,2,MANI,,I'm Nila's brother. Mani. She lives upstairs.,,False
+e1_ruth_003,e1_ruth,3,,,She looks up slowly. Studies your face like she's checking it against one she knows.,,True
+e1_ruth2_000,e1_ruth2,0,RUTH,,You've got her eyes.,,False
+e1_ruth2_001,e1_ruth2,1,,,She takes off her glasses.,,True
+e1_ruth2_002,e1_ruth2,2,RUTH,,She hasn't been home since Sunday. Her car's in the lot. I called Corbin Monday. Sheriff Corbin. He said she's a grown woman and probably ran off with somebody.,,False
+e1_ruth2_003,e1_ruth2,3,,,She slides a key across the counter.,,True
+e1_ruth2_004,e1_ruth2,4,RUTH,,"Flat's up the back stairs. Tess has the other key. And Mani. I sleep light, and I keep this on all night.",,False
+e1_ruth2_005,e1_ruth2,5,,,She taps the scanner.,,True
+e1_ruth2b_000,e1_ruth2b,0,,,Her face closes like a door.,,True
+e1_ruth2b_001,e1_ruth2b,1,RUTH,,I don't talk about the sheriff to strangers.,,False
+e1_ruth2b_002,e1_ruth2b,2,MANI,,I'm not a stranger. I'm her brother.,,False
+e1_ruth2b_003,e1_ruth2b,3,,,A long pause. She slides a key across the counter without looking at you.,,True
+e1_ruth2b_004,e1_ruth2b,4,RUTH,,Flat's up the back stairs. She hasn't been home since Sunday. That's all I know.,,False
+e1_flat_000,e1_flat,0,,,"A small two-bedroom. Fairy lights half-strung along the window. A rangoli of coloured chalk on the floor by the door, half-finished, a muddy footprint smudged through it. Posters of old radio stations. A cork board covered in notes.",,True
+e1_flat_001,e1_flat,1,,,"The door bangs open behind you. The young woman from the diner, breathless, still in her apron.",,True
+e1_flat_002,e1_flat,2,TESS,,"You're Mani. She talks about you, like, constantly. ""Anna would know what to do.""",,False
+e1_flat_003,e1_flat,3,TESS,,She left Sunday night with her radio bag. She said she'd be back by two. She wasn't.,,False
+e1_tess_000,e1_tess,0,TESS,,"They pulled her show two weeks ago. Brian said ""sponsor complaints"". The mill's the sponsor. There's a mill? It's been closed my whole life.",,False
+e1_tess_001,e1_tess,1,TESS,,"She got weird after that. Out every night with that radio bag. She said she was ""finishing a story"". She said, ""Tess, if my brother comes, give him the spare key and tell him I'm sorry about Diwali.""",,False
+e1_tess_002,e1_tess,2,,,Tess has to go back for the end of her shift. At the door she hesitates.,,True
+e1_tess_003,e1_tess,3,TESS,,Lock this. Please.,,False
+e1_tess2_000,e1_tess2,0,,,Tess looks at the boot print. Something passes across her face and is gone.,,True
+e1_tess2_001,e1_tess2,1,TESS,,Lots of guys in this town wear size eleven.,,False
+e1_tess2_002,e1_tess2,2,,,She leaves fast.,,True
+e1_cliff_000,e1_cliff,0,,,"You sit in the car to warm up, the gift radio in its wrapping on the passenger seat. Out of habit, you tune the car radio to 94.1, Nila's station. Dead air. A faint hiss.",,True
+e1_cliff_001,e1_cliff,1,,,The dashboard clock turns 23:00.,,True
+e1_cliff_002,e1_cliff,2,,,"The hiss shifts. A voice, live, close, tired.",,True
+e1_cliff_003,e1_cliff,3,NILA,ON AIR,This is After Hours. If anyone's still listening—,,False
+e1_cliff_004,e1_cliff,4,NILA,ON AIR,"Anna, parking-la irukkiradhu nee dhaana? Ennai thedi varaadha. Veetuku po. Please.","Anna, is that you in the lot? Don't come looking for me. Go home. Please.",False
+e1_cliff_005,e1_cliff,5,MANI,,Nila? NILA!,,False
+e1_cliff_006,e1_cliff,6,,,"Silence. Then a second voice on the same frequency. A man. Calm, unhurried, almost kind.",,True
+e1_cliff_007,e1_cliff,7,MAN'S VOICE,ON AIR,"He's already here, Nila.",,False
+e1_cliff_008,e1_cliff,8,,,"The signal dies. Far out on the fogged lake, a single red light blinks twice, then goes dark.",,True
+e1_end_000,e1_end,0,,,End of Episode 1.,,True
+e2_open_000,e2_open,0,,,You stumble out of the car to the edge of the lot and shout her name across the fog. Nothing comes back. Not even an echo.,,True
+e2_open_001,e2_open,1,,,"Ruth's office light snaps on. She comes out in a cardigan, the scanner in her hand.",,True
+e2_open_002,e2_open,2,RUTH,,I heard it. Both voices.,,False
+e2_open_003,e2_open,3,MANI,,Where did it come from?,,False
+e2_open_004,e2_open,4,RUTH,,"Somewhere on the lake. A boat, a cabin, anywhere. (beat) That man's voice. I've heard it before, on the scanner, late. Never says a name. Just listens. And every so often, he answers.",,False
+e2_open_005,e2_open,5,,,She looks at you for a long moment.,,True
+e2_open_006,e2_open,6,RUTH,,Go upstairs. Lock the door. Don't sleep in the car again.,,False
+e2_search_000,e2_search,0,,,"You can't sleep. You decide to search the flat properly, the way Nila would. Methodically. Every surface.",,True
+e2_laptop_000,e2_laptop,0,,,"The sticky note. Nila always made her passwords into little riddles, so she could tell you over the phone without saying them.",,True
+e2_laptop_001,e2_laptop,1,,,"""Appa's shop + the year Anna joined Auragle.""",,True
+e2_laptop2_000,e2_laptop2,0,,,Her desktop is a mess of folders. Three things stand out.,,True
+e2_laptop2_001,e2_laptop2,1,,,"An unsent email draft to a journalist in Toronto: ""I have callers, photos, and a dive planned. Not just dumping. Something alive is moving through this town.""",,True
+e2_laptop2_002,e2_laptop2,2,,,"An audio folder of After Hours calls. The last file, dated October 20, won't play: ""File stored at station.""",,True
+e2_laptop2_003,e2_laptop2,3,,,"And a spreadsheet: Callers.xlsx. Forty-six listener reports, each with a date and an address. Nila never sorted them. You open the town map beside it and start plotting.",,True
+e2_laptop3_000,e2_laptop3,0,,,"Forty of forty-six dots sit along one line: the lakeshore, and the road up to the closed paper mill.",,True
+e2_laptop3_001,e2_laptop3,1,MANI,,Nobody connected them because nobody plotted them.,,False
+e2_laptop3_002,e2_laptop3,2,,,Somewhere a floorboard creaks. Then another. Out in the hallway.,,True
+e2_hall_000,e2_hall,0,,,A flashlight beam slides under the door and stops. A key scrapes in the lock.,,True
+e2_hall_001,e2_hall,1,MAN,,Ruth said nobody's up here.,,False
+e2_hall_closet_000,e2_hall_closet,0,,,Through the slats you watch a heavy man in a sheriff's jacket step inside. He doesn't search. He looks at the window where the cable was. Then at the laptop on the desk. He lays his palm on its lid. Still warm.,,True
+e2_hall_closet_001,e2_hall_closet,1,,,A long pause. You don't breathe.,,True
+e2_hall_closet_002,e2_hall_closet,2,SHERIFF,,Stubborn family.,,False
+e2_hall_closet_003,e2_hall_closet,3,,,"He leaves, locking the door behind him.",,True
+e2_hall_window_000,e2_hall_window,0,,,"You drop into the wet grass and press yourself against the wall. Above you, the door opens. A flashlight sweeps the room. A man's shape at the window, looking out at the fog.",,True
+e2_hall_window_001,e2_hall_window,1,,,"After a long minute, he's gone. You climb back up the drainpipe, shaking.",,True
+e2_hall_door_000,e2_hall_door,0,,,A heavy man in a sheriff's jacket fills the doorway. He smiles like a man who has already decided what you are.,,True
+e2_hall_door_001,e2_hall_door,1,CORBIN,,Sheriff Dale Corbin. And you'd be the brother. Long way from Windsor.,,False
+e2_hall_door_002,e2_hall_door,2,CORBIN,,"Your sister's an adult. Adults leave. I'd start driving early, before the fog gets thick.",,False
+e2_hall_door_003,e2_hall_door,3,,,He writes your licence plate in a little notebook and leaves the door open behind him.,,True
+e2_diner_000,e2_diner,0,,,"Vinyl booths, a pie case, and a bulletin board of lost-pet posters. Far too many lost-pet posters. The locals stop talking when you walk in.",,True
+e2_diner_001,e2_diner,1,,,Tess pours your coffee and slips you extra jam without being asked. Then the kitchen door swings open and a burly man in an apron comes out wiping his hands. He stops dead.,,True
+e2_diner_002,e2_diner,2,GUS,,Truck stop guy. Small world. Breakfast's on me.,,False
+e2_gus_000,e2_gus,0,,,Gus refills your coffee. His hand is very steady. His eyes are not.,,True
+e2_gus_a_000,e2_gus_a,0,,,Gus spills coffee across the counter. He mops it with a rag for far too long.,,True
+e2_gus_a_001,e2_gus_a,1,GUS,,Fine. It was fine.,,False
+e2_gus_a_002,e2_gus_a,2,,,He goes back into the kitchen and doesn't come out again.,,True
+e2_gus_b_000,e2_gus_b,0,,,Gus relaxes a little.,,True
+e2_gus_b_001,e2_gus_b,1,GUS,,Any time. You tell your sister Gus says hi when she turns up. She always tips.,,False
+e2_station_000,e2_station,0,,,A small brick station. Gold records from the eighties. A brass plaque at reception: STUDIO RENEWAL 2024 MADE POSSIBLE BY THE HAYDEN FAMILY FOUNDATION.,,True
+e2_station_001,e2_station,1,,,"The station manager, Brian Holt, polo shirt, too much cologne, meets you in the lobby and tries very hard to keep you there.",,True
+e2_station_002,e2_station,2,BRIAN,,"Look, I'm sorry about Nila, I am. But her show was suspended for content reasons. She was making accusations on air.",,False
+e2_station_003,e2_station,3,MANI,,Accusations against who?,,False
+e2_station_004,e2_station,4,BRIAN,,Our sponsor. Merrow Mill Holdings keeps this station alive. Without them we're a guy with a playlist.,,False
+e2_brian1_000,e2_brian1,0,BRIAN,,"So, what is it you want?",,False
+e2_brian2_000,e2_brian2,0,BRIAN,,Forty-six? (He swallows.) People call in about all kinds of things.,,False
+e2_brian2_001,e2_brian2,1,BRIAN,,"Even if I wanted to help, I can't just let people into the archive.",,False
+e2_brian3_000,e2_brian3,0,,,"Brian looks at the front door, then at the clock, then at you.",,True
+e2_brian3_001,e2_brian3,1,BRIAN,,What do you even think is on that tape?,,False
+e2_brian_end_000,e2_brian_end,0,,,Brian deflates like a punctured tyre.,,True
+e2_brian_end_001,e2_brian_end,1,BRIAN,,"Ten minutes. The archive's at the back. If anyone asks, you were fixing the Wi-Fi.",,False
+e2_archive_000,e2_archive,0,,,"A cramped room of shelves. Hundreds of boxed tapes, all with labels in the same format. A laminated note on the wall: ""ARCHIVE CODES: AH – year (2 digits) – week of year – show number.""",,True
+e2_archive_001,e2_archive,1,,,"On the wall calendar, someone has written week numbers down the side. The week of Mon Oct 19 to Sun Oct 25 is marked ""43"".",,True
+e2_archive_002,e2_archive,2,,,"You check Nila's radio log page. Her last After Hours: ""Tue Oct 20 — show #112.""",,True
+e2_tape_000,e2_tape,0,,,"You load the tape. Nila's voice, warm and quick. Then a caller: an old man, whispering.",,True
+e2_tape_001,e2_tape,1,CALLER,ON TAPE,"I won't give my name. My son fishes. In seventy-seven I loaded barrels for the mill, down where the village was, before they flooded it. I was nineteen.",,False
+e2_tape_002,e2_tape,2,CALLER,ON TAPE,"And they're doing it again, miss. Every week. New barrels, new trucks. And the other thing. The animals.",,False
+e2_tape_003,e2_tape,3,NILA,ON TAPE,Animals?,,False
+e2_tape_004,e2_tape,4,CALLER,ON TAPE,In crates. Some of them alive. I hear them at night from the dock. Hissing.,,False
+e2_tape_005,e2_tape,5,NILA,ON TAPE,"Listeners, I'm going to the mill myself, and I'll tell you everything I find. Right here, right—",,False
+e2_tape_006,e2_tape,6,,,"A station jingle cuts across her. Brian is in the doorway, rubbing his face.",,True
+e2_tape_007,e2_tape,7,BRIAN,,I cut the feed. Five minutes later I got a phone call. Not from the mill. From a consultant who'd just signed a two-year sponsorship. Paid in advance.,,False
+e2_tape_008,e2_tape,8,BRIAN,,Kessler. Victor Kessler.,,False
+e2_tape_009,e2_tape,9,,,You take Victor's business card from your wallet and look at it for a long time.,,True
+e2_lot_000,e2_lot,0,,,"A sheriff's cruiser is parked across the back of your car. Corbin leans on it, eating a donut from a Tom Portons bag.",,True
+e2_lot_001,e2_lot,1,CORBIN,,Sheriff Dale Corbin. You'd be the brother.,,False
+e2_lot_002,e2_lot,2,CORBIN,,Filing a missing persons report? Good. Come by the station Friday and we'll do it properly.,,False
+e2_lot_003,e2_lot,3,CORBIN,,"Today, I'd stay out of folks' business. Folks here are private.",,False
+e2_lot_v_000,e2_lot_v,0,,,Corbin's jaw tightens. Just for a second.,,True
+e2_lot_v_001,e2_lot_v,1,CORBIN,,Never heard of him. (He folds the donut bag very neatly.) Drive safe.,,False
+e2_lot_t_000,e2_lot_t,0,,,Corbin goes very quiet. He looks at the station's back door. Then at you.,,True
+e2_lot_t_001,e2_lot_t,1,CORBIN,,Brian should be more careful with his archive. (He gets into the cruiser.) Drive safe.,,False
+e2_lot_p_000,e2_lot_p,0,,,"Corbin smiles, satisfied.",,True
+e2_lot_p_001,e2_lot_p,1,CORBIN,,Good man. (He moves the cruiser.) Friday.,,False
+e2_phone_000,e2_phone,0,,,"Back at the flat. Nila's phone is charged. The lock screen asks for a password. Same riddle-maker, same family.",,True
+e2_phone_001,e2_phone,1,,,You try the laptop password. Wrong. You think about what Nila would use for herself.,,True
+e2_memo_000,e2_memo,0,,,"The last voice memo, recorded Sunday 23:40. Wind. Water. Nila whispering in the dark.",,True
+e2_memo_001,e2_memo,1,NILA,VOICE MEMO,"Anna, idha nee kettuttu irundha, naan unkitta nerla solla mudiyala. Eli-ku theriyum. Dock pathi Eli kitta kelu, avan mela kovapadaadha. Tess-ku bayandhu dhaan avan ipdi pannaan.","Anna, if you're hearing this, I couldn't tell you in person. Eli knows. Ask Eli about the dock, and don't be angry with him. He did it because he's scared for Tess.",False
+e2_memo_002,e2_memo,2,NILA,VOICE MEMO,Andha coat potta aal thirumba vandhuttaan. Naan broadcast panra ovvoru raathiriyum avan inga irukkaan. Pakkathula varradhilla. Kettuttu mattum irukkaan.,"The man in the coat is back. Every night I broadcast, he's here. He never comes closer. He just listens.",False
+e2_memo_003,e2_memo,3,,,A knock at the door.,,True
+e2_memo_004,e2_memo,4,,,"You open it. A broad young man in muddy fisherman's boots, size eleven, eyes red from no sleep.",,True
+e2_memo_005,e2_memo,5,ELI,,You're her brother. (He looks over his shoulder at the street.) I'm Eli. We need to talk. Not here. Come to the dock.,,False
+e2_end_000,e2_end,0,,,End of Episode 2.,,True
+e3_open_000,e3_open,0,,,"A weathered dock below a clapboard house. Two boats: the family's old trawler, Margaret, and Eli's smaller skiff. Nets, crab traps, a single bulb on a pole.",,True
+e3_open_001,e3_open,1,,,Eli doesn't look at you. He talks to the water.,,True
+e3_open_002,e3_open,2,ELI,,Sunday night I stood under her window for an hour. I wanted to tell her to stop. To leave. I didn't have the guts to knock.,,False
+e3_open_003,e3_open,3,ELI,,"Corbin came to our house two weeks ago. He said if I didn't tell him when Nila went out at night, Tess would get arrested for stealing from the diner till. He had a video. It wasn't her. But it looked like her.",,False
+e3_open_004,e3_open,4,ELI,,So I told him. I told him she goes out at night with the radio. And three days later she was gone.,,False
+e3_bucket_000,e3_bucket,0,,,"Eli leads you to a white bucket behind the crab traps, its lid weighted with a brick.",,True
+e3_bucket_001,e3_bucket,1,ELI,,Found it under the dock Saturday. Nila photographed it. Nobody here knows what it is.,,False
+e3_bucket_002,e3_bucket,2,,,"He lifts the lid with a boat hook. Inside, coiled and still: a thick snake, gold and brown, with a broad, arrow-shaped head. It lifts that head toward the light. Its tongue tastes the air.",,True
+e3_bucket_003,e3_bucket,3,,,You pull out your phone and start comparing photos.,,True
+e3_snake_000,e3_snake,0,,,"Golden lancehead. Bothrops insularis. Found in exactly one place on Earth: Ilha da Queimada Grande, ""Snake Island"", off the coast of Brazil. Critically endangered. Venom several times stronger than its mainland cousins. On the black market, one can sell for tens of thousands of dollars.",,True
+e3_snake_001,e3_snake,1,MANI,,This isn't from Ontario. Someone brought it here. On purpose.,,False
+e3_snake_002,e3_snake,2,ELI,,The night boats. Tuesdays and Fridays. They come in to the old mill pier around two in the morning. Dad says he can hear the crates hissing.,,False
+e3_snake_003,e3_snake,3,,,"Something about the way he says ""Dad"" makes you turn and look up at the house.",,True
+e3_dinner_000,e3_dinner,0,,,"A warm, cramped kitchen. Fish stew, fresh bread, a wood stove ticking. Walter Marsh, seventy-two, big scarred hands and a cough he tries to hide in his sleeve. Tess sets the table and squeezes your arm as she passes.",,True
+e3_dinner_001,e3_dinner,1,WALTER,,Eli says you're Nila's brother. She ate at this table every Sunday. Told terrible jokes.,,False
+e3_dinner_002,e3_dinner,2,,,"His voice. You've heard it before. On a tape, in a cramped room, whispering about barrels.",,True
+e3_walter_000,e3_walter,0,,,Walter puts his spoon down. The kitchen goes quiet.,,True
+e3_walter_001,e3_walter,1,WALTER,,Yes. That was me.,,False
+e3_walter_002,e3_walter,2,WALTER,,"Old Merrow was my village. School, church, my mother's grave. In seventy-seven the mill paid boys fifty dollars a night to roll barrels down into the valley, around the old church, before the dam closed. Said it was safe. Said the water would cover it.",,False
+e3_walter_003,e3_walter,3,WALTER,,I bought Margaret's wedding ring with that money.,,False
+e3_walter_004,e3_walter,4,TESS,,Dad.,,False
+e3_walter_005,e3_walter,5,WALTER,,"And now it's happening again. New barrels, every week, same place. But this time it isn't paper waste. It smells like a hospital. And the boats bring crates. Live ones.",,False
+e3_house_000,e3_house,0,,,"After dinner, Walter falls asleep in his chair. Eli washes dishes. You look around.",,True
+e3_map_000,e3_map,0,,,Eli brings a shoebox from under his bed.,,True
+e3_map_001,e3_map,1,ELI,,Nila left this on my boat. When she disappeared I tore it up. I don't know why. I couldn't look at it. Then I couldn't throw it away.,,False
+e3_map_002,e3_map,2,,,"Pieces of a hand-drawn map. Nila's handwriting. Street names. You lay Walter's photo of Old Merrow beside them and match each piece, from the shore up to the church.",,True
+e3_map2_000,e3_map2,0,,,The map is whole. Three marks in Nila's red pen.,,True
+e3_map2_001,e3_map2,1,,,"An X on the drowned church: ""barrels — dive here"".",,True
+e3_map2_002,e3_map2,2,,,"The old mill pier, Pier 3: ""boats Tue/Fri 02:00"".",,True
+e3_map2_003,e3_map2,3,,,"And at the far end of the lake, a little tower symbol on a headland: ""PP. Jonah. Safe.""",,True
+e3_map2_004,e3_map2,4,MANI,,PP. It's in her radio log. Every night. PP.,,False
+e3_map2_005,e3_map2,5,ELI,,Pike Point. There's an old radio tower out there. Nobody goes out there except a crazy old guy. Jonah Pike.,,False
+e3_porch_000,e3_porch,0,,,Tess walks you to the porch. Wind off the lake. She hugs herself.,,True
+e3_porch_001,e3_porch,1,TESS,,"Everybody here's waiting for something to come up out of that lake. Me, I'm just waiting for a bus.",,False
+e3_porch_002,e3_porch,2,TESS,,"Corbin came by the diner again today. He asked if I'd seen ""the brother"".",,False
+e3_porch_a_000,e3_porch_a,0,,,"Tess looks at you for a long time. Then she nods once, like she's decided to believe it.",,True
+e3_porch_a_001,e3_porch_a,1,TESS,,Okay. (beat) Okay.,,False
+e3_porch_a_002,e3_porch_a,2,,,"Behind the screen door, Eli has heard every word.",,True
+e3_porch_b_000,e3_porch_b,0,TESS,,He asked if Nila ever talked about Pike Point. I said no. That was a lie. She talked about it all the time.,,False
+e3_porch_b_001,e3_porch_b,1,,,So the villains already suspect where Nila is.,,True
+e3_boat_000,e3_boat,0,,,Eli rows you out with the engine off. Fog as thick as milk. You can't see the bow of the boat. St. Brendan's bell tolls the half hour from the shore.,,True
+e3_boat_001,e3_boat,1,ELI,,Pier 3 is northeast of the church bell. Steer by the sound. Keep it over your left shoulder.,,False
+e3_boat_002,e3_boat,2,,,"The bell rings. It sounds like it's coming from behind you, slightly to the right.",,True
+e3_boat_wrong_000,e3_boat_wrong,0,,,A hollow knock under the hull. The boat lurches. Eli flinches and grabs the gunwale.,,True
+e3_boat_wrong_001,e3_boat_wrong,1,ELI,,Rooftop. The old village. We're right over it.,,False
+e3_boat_wrong_002,e3_boat_wrong,2,,,"Somewhere beneath you, a drowned house. You hold your breath until the boat slides free. The bell rings again; this time you keep it over your left shoulder.",,True
+e3_pier_000,e3_pier,0,,,"Floodlights through the fog. An unmarked boat ties up at the old mill pier. Men pass crates up a ramp. Some crates have air holes and are stencilled LIVE BAIT — KEEP WARM. Blue barrels roll the other way, down onto the boat.",,True
+e3_pier_001,e3_pier,1,,,A man in a tailored wool coat supervises with a coffee cup. Victor.,,True
+e3_light_000,e3_light,0,,,A searchlight swings across the water toward the skiff.,,True
+e3_light_a_000,e3_light_a,0,,,You press your faces into the wet planks. The light passes over the boat like a hand. It doesn't stop. Eli exhales.,,True
+e3_light_b_000,e3_light_b,0,,,The oars splash. The light swings back and finds your wake. A shout from the pier. Then the fog closes and you're gone.,,True
+e3_light_c_000,e3_light_c,0,,,The light lands full on the skiff. For one long second you are lit up like a stage. Victor lowers his coffee cup. Then the fog rolls between you.,,True
+e3_fire_000,e3_fire,0,,,"Orange light through the fog before you can see the dock. Margaret, the family trawler, is on fire. Walter is on the dock in his undershirt with a garden hose. Tess is screaming for help.",,True
+e3_fire_001,e3_fire,1,,,Eli jumps onto the dock and runs to his father. You reach the white bucket behind the crab traps.,,True
+e3_fire_002,e3_fire,2,,,The lid is off. The bucket is empty.,,True
+e3_fire_003,e3_fire,3,,,"On the post beside it, pinned with a fishing knife: a photo of Tess serving coffee at the diner, taken through the window. On the back, in neat handwriting:",,True
+e3_fire_004,e3_fire,4,,,"""Bait.""",,True
+e3_fire_005,e3_fire,5,,,"On the road above, a sheriff's cruiser rolls slowly away with its lights off.",,True
+e3_end_000,e3_end,0,,,End of Episode 3.,,True
+e4_open_000,e4_open,0,,,"Dawn. Margaret is a blackened hull. Walter sits on an upturned crate, coughing into his fist. Sheriff Corbin walks the dock, hands in his pockets.",,True
+e4_open_001,e4_open,1,CORBIN,,"Electrical fault. Old boat, old wiring. Happens.",,False
+e4_open_002,e4_open,2,ELI,,Somebody pinned a photo of my sister to that post.,,False
+e4_open_003,e4_open,3,CORBIN,,"Kids. (He looks at you.) Trouble does seem to follow strangers around, doesn't it.",,False
+e4_open_a_000,e4_open_a,0,,,Corbin takes the knife and photo in a plastic bag.,,True
+e4_open_a_001,e4_open_a,1,CORBIN,,Evidence. I'll look into it.,,False
+e4_open_a_002,e4_open_a,2,,,You will never see either of them again.,,True
+e4_open_b_000,e4_open_b,0,,,"You say nothing. The knife is a cold weight against your ribs. Corbin watches you a beat too long, then walks away whistling.",,True
+e4_interview_000,e4_interview,0,,,"Your phone alarm: ""Interview — Data Analytics Engineer, Round 2, 11:00."" You'd forgotten. Completely.",,True
+e4_interview_001,e4_interview,1,,,"Ruth lets you use the office. Behind your laptop camera: her scanner, the shotgun, a stuffed pike on the wall. You turn the laptop so the pike is out of frame.",,True
+e4_interview_002,e4_interview,2,DEBORAH,,"Thanks for joining, Mani. Let's start. Tell us about a time you found a pattern nobody else noticed.",,False
+e4_int2_000,e4_int2,0,DEBORAH,,How do you handle working with incomplete or messy data?,,False
+e4_int3_000,e4_int3,0,,,Ruth's scanner crackles behind you. Deborah's eyebrows go up.,,True
+e4_int3_001,e4_int3,1,DEBORAH,,Last one. Why do you want this job?,,False
+e4_int_end_000,e4_int_end,0,,,"Deborah smiles for the first time. ""That's a great answer. We'll be in touch very soon.""",,True
+e4_int_end_001,e4_int_end,1,,,You close the laptop. Ruth is watching you from the doorway.,,True
+e4_int_end_002,e4_int_end,2,RUTH,,"You're going to that mill, aren't you.",,False
+e4_ruth_000,e4_ruth,0,,,Ruth hesitates. Then she takes one spiral notebook out of a drawer and drops it on the desk.,,True
+e4_ruth_001,e4_ruth,1,RUTH,,"This year's. Trucks up the mill road. Date, time, plate. Don't ask me why I keep it.",,False
+e4_ruth_p1_000,e4_ruth_p1,0,,,You spread the notebook pages across the desk and do what you do best. Sort by day. Sort by hour. Count.,,True
+e4_ruth_p2_000,e4_ruth_p2,0,,,"The same nights as the boats. In the margins, Ruth has scribbled scanner notes. You read them down the page.",,True
+e4_ruth_p2_001,e4_ruth_p2,1,,,"""Mill security, 23:40: 'Shift change, cams going to reset.' 23:52: 'Cams back up.'"" Every night, the same.",,True
+e4_ruth_p2_002,e4_ruth_p2,2,,,"Twelve minutes, every night, when the yard cameras are blind.",,True
+e4_ruth_end_000,e4_ruth_end,0,MANI,,Tonight. 23:40. North fence.,,False
+e4_ruth_end_001,e4_ruth_end,1,RUTH,,You're going in there. (It isn't a question.) Then take these.,,False
+e4_ruth_end_002,e4_ruth_end,2,,,A heavy flashlight and a pair of bolt cutters.,,True
+e4_ruth_end_003,e4_ruth_end,3,RUTH,,Not the shotgun. You'd shoot your own foot.,,False
+e4_fence_000,e4_fence,0,,,"Merrow Paper Mill. Brick sheds, a smokestack, broken windows. But warm light leaks from the pulping hall, and steam rises from the boiler house. A sign: CLOSED 2009. PRIVATE PROPERTY.",,True
+e4_fence_001,e4_fence,1,,,23:40. The camera on the fence post stops blinking. Twelve minutes.,,True
+e4_fence_002,e4_fence,2,,,"You cut the fence. Ahead, the yard: a gravel path straight to the pulping hall, or the long way round through the dead grass.",,True
+e4_fence2_000,e4_fence2,0,,,"A guard's flashlight swings along the wall toward you. Behind you, a stack of pallets. To your left, an open shed door.",,True
+e4_hall_000,e4_hall,0,,,"The paper machines are gone. In their place: plastic sheeting, ventilation fans, a long steel table. Three workers in respirators feed powder into two pill presses that thump out small blue tablets stamped M30.",,True
+e4_hall_001,e4_hall,1,,,Counterfeit oxycodone. Which means fentanyl.,,True
+e4_hall_002,e4_hall,2,,,"Blue barrels of chemical sludge stand by the loading door, waiting.",,True
+e4_pills_000,e4_pills,0,,,"A sealed bag of pills sits on the end of the table, a metre from the nearest worker's back. Physical evidence. If you can reach it.",,True
+e4_pills_try_000,e4_pills_try,0,,,You crouch. The worker shifts his weight. The press thumps.,,True
+e4_pills_ok_000,e4_pills_ok,0,,,Your hand closes on the bag between one thump and the next. You're back in the shadows before the press lands again.,,True
+e4_pills_seen_000,e4_pills_seen,0,,,"The worker turns. Your eyes meet over his respirator. He opens his mouth. You run, and he hesitates just long enough. You don't get the bag.",,True
+e4_boiler_000,e4_boiler,0,,,"Heat hits like a wall. Humid, green, almost beautiful. Rows of glass tanks under heat lamps.",,True
+e4_boiler_001,e4_boiler,1,,,"Tiny poison dart frogs, bright blue and yellow. Radiated tortoises from Madagascar stacked in crates. Slow lorises in small cages, blinking. And at the far end, a locked glass vault with a brass plate: B. INSULARIS — ILHA DA QUEIMADA GRANDE — 6.",,True
+e4_boiler_002,e4_boiler,2,,,Only five snakes inside. The one from Eli's bucket came from here. Someone took it back.,,True
+e4_boiler_003,e4_boiler,3,,,"You step back and your shoulder catches a heat-lamp cable. The lights flicker, buzz, and die. In the dark, somewhere close, a tank latch clicks.",,True
+e4_snake1_000,e4_snake1,0,,,"Your flashlight finds it: gold coils on the floor, a metre in front of your boots, head lifting.",,True
+e4_snake2_000,e4_snake2,0,,,"It slides past your boot. It's behind you now, between you and the door. A pipe runs along the floor to your right.",,True
+e4_snake3_000,e4_snake3,0,,,"It rises. Its head sways at knee height, tasting the heat of you.",,True
+e4_snake_end_000,e4_snake_end,0,,,You back out of the boiler house one slow step at a time. The snake loses interest and coils under a tank.,,True
+e4_snake_end_001,e4_snake_end,1,,,"Behind you, a worker swears in the dark: ""Which idiot left the lamp off?""",,True
+e4_keypad_000,e4_keypad,0,,,"The old mill manager's office, upstairs. A keypad on the door. Beside it, a framed Diwali card, of all things, signed ""V.K. — every lock should remember the day it all began.""",,True
+e4_keypad_001,e4_keypad,1,,,"Next to it, a framed newspaper clipping: ""KESSLER RESTRUCTURING TAKES OVER MERROW MILL HOLDINGS — signed March 14, 2019.""",,True
+e4_keypad_002,e4_keypad,2,,,Four digits.,,True
+e4_office_000,e4_office,0,,,"Leather chairs, whisky, a hotel-suite carpet. On the desk, a large glass terrarium with one golden lancehead, bigger than the rest. A brass tag: MIDAS.",,True
+e4_office_001,e4_office,1,,,Victor's laptop is open. A spreadsheet.,,True
+e4_overhear_000,e4_overhear,0,,,"Footsteps on the stairs. You duck behind the terrarium. Victor comes in with Corbin, mid-conversation.",,True
+e4_overhear_001,e4_overhear,1,VICTOR,,"…and I don't care what he looks like, Dale. He's a nice boy from Windsor with a box of sweets. Nice boys go home if you ask them correctly.",,False
+e4_overhear_002,e4_overhear,2,CORBIN,,And the sister?,,False
+e4_overhear_003,e4_overhear,3,VICTOR,,Hades wants her found before she broadcasts again. She knows his voice. Nobody knows his voice.,,False
+e4_overhear_004,e4_overhear,4,,,He taps the terrarium. Midas rises.,,True
+e4_overhear_005,e4_overhear,5,VICTOR,,"Find her, Dale. Or I find a use for you.",,False
+e4_overhear_006,e4_overhear,6,,,Corbin leaves. Victor pours a whisky and talks to the snake.,,True
+e4_overhear_007,e4_overhear,7,VICTOR,,"Festival of lights, Midas. Good triumphs over evil. (He laughs.) Every year, they still believe it.",,False
+e4_chase_000,e4_chase,0,,,An alarm whoops. The camera reset is over. A guard with a shotgun sees you at the office window.,,True
+e4_chase_001,e4_chase,1,GUARD,,HEY!,,False
+e4_chase_002,e4_chase,2,,,The window beside your head explodes. You run.,,True
+e4_ch1_000,e4_ch1,0,,,"Down from the office: a catwalk across the hall, or the stairs to the yard.",,True
+e4_ch2_000,e4_ch2,0,,,"Two men ahead. Cover: a row of barrels, or a parked truck.",,True
+e4_ch3_000,e4_ch3,0,,,A conveyor belt blocks the way. Over it or under it?,,True
+e4_ch4_000,e4_ch4,0,,,"The fence, ten metres. Or the outflow ditch beside it.",,True
+e4_ch_end_000,e4_ch_end,0,,,"You're through the fence and into the trees before the first guard reaches the yard. Flashlights sweep the woods behind you, too late.",,True
+e4_ditch_000,e4_ditch,0,,,"You lie in a ditch of freezing water, heart hammering, the USB stick clenched in your fist. A refrigerated truck rumbles past: MERROW PALLETS & SUPPLY. The cab light flicks on.",,True
+e4_ditch_001,e4_ditch,1,,,"The driver is Gus Pell, still in his diner apron, humming.",,True
+e4_ditch_002,e4_ditch,2,,,Your phone buzzes. Unknown number. You answer and say nothing.,,True
+e4_ditch_003,e4_ditch,3,VICTOR,ON PHONE,"You left your coffee cup at my truck stop, Mani. And your footprints all over my boiler house.",,False
+e4_ditch_004,e4_ditch,4,VICTOR,ON PHONE,You've got her eyes. Did anyone tell you that? Same stubborn eyes.,,False
+e4_ditch_005,e4_ditch,5,VICTOR,ON PHONE,Here's my last offer. Go home. Light your lamps. Call your mother. Or I start taking the people you've met here. One at a time. Until you do.,,False
+e4_ditch_006,e4_ditch,6,,,"The line goes dead. On the hill, the red light on the water tower blinks twice.",,True
+e4_end_000,e4_end,0,,,End of Episode 4.,,True
+e5_open_000,e5_open,0,,,You wake on the couch. Your palms are torn from the fence wire and one cut on your hand won't stop bleeding through the tissue.,,True
+e5_open_001,e5_open,1,,,"Tess, getting ready for her shift, sees the blood on the cushion and drops her mug.",,True
+e5_open_002,e5_open,2,TESS,,That needs stitches. We're going to Dr. Rao. Now.,,False
+e5_clinic_000,e5_clinic,0,,,"A small clinic with faded flu-shot posters. Dr. Anika Rao, forty-six, sharp, exhausted, examines you with gloved hands.",,True
+e5_clinic_001,e5_clinic,1,DR. RAO,,"Four stitches. Wire, not glass. (beat) There's only one fence in this town with wire like that. You've been up at the mill.",,False
+e5_clinic_002,e5_clinic,2,MANI,,"There's a lab up there. And a room full of animals. Golden lanceheads, from Brazil.",,False
+e5_clinic_003,e5_clinic,3,,,She stops wrapping the bandage.,,True
+e5_clinic_004,e5_clinic,4,DR. RAO,,I don't know anything about that. Keep it clean. Come back if it blackens.,,False
+e5_rao1_000,e5_rao1,0,,,She's already turning away. You have one chance to make her listen.,,True
+e5_rao2_000,e5_rao2,0,DR. RAO,,(very quietly) I have that map. I drew it myself in 2015. Nobody wanted it.,,False
+e5_rao2_001,e5_rao2,1,,,She folds her arms.,,True
+e5_rao3_000,e5_rao3,0,,,Dr. Rao goes white.,,True
+e5_rao3_001,e5_rao3,1,DR. RAO,,Four overdoses since spring. Young people. I was told to sign them as heart failure.,,False
+e5_rao3_002,e5_rao3,2,MANI,,Told by whom?,,False
+e5_rao3_003,e5_rao3,3,DR. RAO,,The county coroner. Who is also our sheriff.,,False
+e5_rao3_004,e5_rao3,4,,,"She turns her back to you, very deliberately, and puts a small brass key on the counter beside the sink.",,True
+e5_rao3_005,e5_rao3,5,DR. RAO,,I go to lunch at one. The back door sticks. Everyone knows that.,,False
+e5_station_000,e5_station,0,,,"Wood panelling, burnt coffee, a wall of framed photos. Corbin with the mayor. Corbin at a fish fry. Corbin shaking hands at a ribbon cutting, captioned ""Mill Holdings partners, 2019"". Victor, younger, smiling in the background.",,True
+e5_station_001,e5_station,1,,,"At a side desk, a young deputy types slowly, watching everything. His name plate says S. ORTIZ.",,True
+e5_station_002,e5_station,2,,,You're here to file a missing persons report. Corbin takes it personally.,,True
+e5_station_003,e5_station,3,CORBIN,,Your sister had a gift for stirring things up. People here don't like being stirred.,,False
+e5_cb1_000,e5_cb1,0,CORBIN,,When did you last speak to her?,,False
+e5_cb2_000,e5_cb2,0,CORBIN,,And what have you been doing in town all week?,,False
+e5_cb3_000,e5_cb3,0,CORBIN,,(writing nothing down) Anything else? Anything you've seen?,,False
+e5_cb_end_000,e5_cb_end,0,,,"Corbin relaxes, almost bored with you.",,True
+e5_cb_end_001,e5_cb_end,1,,,His radio squawks. He steps into the back room. His desk drawer is open about an inch.,,True
+e5_drawer_000,e5_drawer,0,,,"A thick envelope of cash, rubber-banded, with a sticky note: ""Nov — V."" Under it, a folder: Coroner's reports — Greyhaven, 2026. Four death certificates, all signed ""cardiac arrest"".",,True
+e5_drawer_001,e5_drawer,1,,,Three seconds. Three photos. You're back in your chair when Corbin comes out.,,True
+e5_stay_000,e5_stay,0,,,"You stay put. Corbin comes back, hands you a form, and watches you fill it in. Across the room, Deputy Ortiz is watching too. Watching the drawer.",,True
+e5_ortiz_000,e5_ortiz,0,,,"Ortiz walks you to your car. Out of Corbin's earshot, he speaks without turning his head.",,True
+e5_ortiz_001,e5_ortiz,1,ORTIZ,,Did your sister ever say my name?,,False
+e5_ortiz2_000,e5_ortiz2,0,ORTIZ,,"I didn't sign up to be anybody's dog. (beat) Two of those kids who died, I went to school with their brothers.",,False
+e5_ortiz2_001,e5_ortiz2,1,,,He glances at the station.,,True
+e5_ortiz2_002,e5_ortiz2,2,ORTIZ,,"The men at that mill carry rifles, Mani. You don't.",,False
+e5_ortiz2_003,e5_ortiz2,3,,,He opens his trunk and hands you a small revolver wrapped in a cloth.,,True
+e5_ortiz2_004,e5_ortiz2,4,ORTIZ,,Confiscated off a poacher last year. It's not in any system. I didn't give you this.,,False
+e5_range_000,e5_range,0,,,"Behind the old gravel pit, Ortiz sets three cans on a log.",,True
+e5_range_001,e5_range,1,ORTIZ,,Six rounds. Every one counts. Show me how you'd do it.,,False
+e5_range2_000,e5_range2,0,,,You miss the first can. You miss the second. The third jumps off the log. The sound is enormous. Your ears ring and your hands shake.,,True
+e5_range2_001,e5_range2,1,MANI,,"I write code, man.",,False
+e5_range2_002,e5_range2,2,ORTIZ,,Then think of it as the last line. You hope you never reach it.,,False
+e5_gus_000,e5_gus,0,,,"Gus is smoking by the dumpsters. You step out of the shadow behind him and hold up your phone: the ledger. ""G.P. — runs, $1,200 per run.""",,True
+e5_gus_001,e5_gus,1,,,Gus drops the cigarette.,,True
+e5_gus_002,e5_gus,2,GUS,,The diner's been losing money for nine years. My wife's chemo wasn't covered. Victor came in with an envelope.,,False
+e5_gus_003,e5_gus,3,GUS,,I drive. That's all. I don't look in the back.,,False
+e5_gus_a_000,e5_gus_a,0,,,"Gus panics. He talks fast, too fast, to make you go away.",,True
+e5_gus_a_001,e5_gus_a,1,GUS,,"Saturday. Tomorrow night. The last run. Victor's shutting it all down. The lab, the animals, everything into the lake. Then he burns the mill.",,False
+e5_gus_a_002,e5_gus_a,2,,,"He goes back inside. Through the window, you see him pick up the phone.",,True
+e5_gus_b_000,e5_gus_b,0,,,Gus looks at you for a long time. Then he sits down on an upturned milk crate.,,True
+e5_gus_b_001,e5_gus_b,1,GUS,,"Saturday night. Tomorrow. The last run. Victor's shutting it all down: the lab, the animals, everything into the lake. Then he burns the mill for the insurance. He wants it clean before the partner comes to look.",,False
+e5_gus_b_002,e5_gus_b,2,MANI,,Hades.,,False
+e5_gus_b_003,e5_gus_b,3,GUS,,I've never seen him. Nobody has. Victor calls him Mark when he's drunk. Just Mark.,,False
+e5_gus_b_004,e5_gus_b,4,GUS,,"If you need a truck, or a road, or a door left open, you call me.",,False
+e5_records_000,e5_records,0,,,"The back door sticks, exactly as promised. A narrow room of filing cabinets and boxes going back to 1979. Thirty years of a town's bodies, on paper.",,True
+e5_records_001,e5_records,1,,,You do what you know. You treat it like a dataset.,,True
+e5_records2_000,e5_records2,0,,,"Now the four 2026 ""cardiac"" deaths. You line up their dates against Ruth's truck log.",,True
+e5_records3_000,e5_records3,0,,,"Clipped to the last file, in Dr. Rao's handwriting: ""Not cardiac. Fentanyl. Signed under protest. A.R.""",,True
+e5_records3_001,e5_records3,1,,,You photograph everything. Thirty years. Four kids. One road.,,True
+e5_motel_000,e5_motel,0,,,Dusk. The motel sign is dark. The office door is open.,,True
+e5_motel_001,e5_motel,1,,,"Inside: drawers on the floor. The stuffed pike smashed. Ruth's scanner stamped flat on the tiles, still hissing. Her chair tipped over. The shotgun gone.",,True
+e5_motel_002,e5_motel,2,,,"The floorboard behind the desk is still in place. You lift it. Fourteen notebooks, untouched. She hid them before they came.",,True
+e5_motel_003,e5_motel,3,,,"On the counter, set neatly in the middle of the mess: Victor's business card. On the back, in the same neat hand as the note on the Marsh dock:",,True
+e5_motel_004,e5_motel,4,,,"""One at a time.""",,True
+e5_motel_005,e5_motel,5,,,"Outside, your car sits on four slashed tyres. Out on the lake, the church bell rings six. Then, a seventh time. It never does that.",,True
+e5_end_000,e5_end,0,,,End of Episode 5.,,True
+e6_open_000,e6_open,0,,,"You, Eli and Ortiz, off duty in a hoodie, have searched the lakeshore for Ruth for four hours. Her skiff is gone from its mooring. That's all you found.",,True
+e6_open_001,e6_open,1,,,"Ortiz leaves to cover his night shift so Corbin won't suspect him. Eli falls asleep in a chair, boots still on.",,True
+e6_open_002,e6_open,2,,,"Your phone lights up. Amma, video call. It's Saturday morning in Vellore. Behind her, oil lamps lined up on the windowsill. Appa is hanging a string of mango leaves over the door.",,True
+e6_open_003,e6_open,3,AMMA,,"Kanna! Naalaiku Deepavali. Nila-va kooppidu, rendu pasangalaiyum onna paakkanum.","Kanna! Tomorrow is Deepavali. Call Nila over, I want to see both my children together.",False
+e6_truth_000,e6_truth,0,,,"Amma's face crumples. She puts her hand over her mouth. Appa takes the phone from her, and his voice is steady.",,True
+e6_truth_001,e6_truth,1,APPA,,"Appo kandupidi, kanna. Naanga vilakku yethi kaathirukkom.","Then find her, kanna. We'll light the lamps and wait.",False
+e6_truth_002,e6_truth,2,APPA,,"Mani. Airport-la unna anuppa vandhappo nee sonna, ""Naan avala paathukuren, Appa."" Naan oru naalum sandhegapattadhilla.","Mani. When we came to see you off at the airport, you said, ""I'll look after her, Appa."" I have never doubted it.",False
+e6_lie_000,e6_lie,0,,,Amma beams. She tells you what she's cooking. She tells you to make Nila wear the green silk. You say yes to everything.,,True
+e6_lie_001,e6_lie,1,APPA,,"Mani. Airport-la unna anuppa vandhappo nee sonna, ""Naan avala paathukuren, Appa."" Naan oru naalum sandhegapattadhilla.","Mani. When we came to see you off at the airport, you said, ""I'll look after her, Appa."" I have never doubted it.",False
+e6_lie_002,e6_lie,2,,,"The call ends. You sit alone in the dark flat with the lie, and it is very heavy.",,True
+e6_church_000,e6_church,0,,,"A small stone church on the hill, lit by candles. The bell rope hangs in a corner. An old priest pulls it for seven o'clock, slowly, exactly seven times.",,True
+e6_church_001,e6_church,1,MANI,,Last night it rang seven at six o'clock.,,False
+e6_church_002,e6_church,2,FATHER REID,,"It did. Ruth Vane and I have an arrangement, from years ago, when she first started writing down trucks. If anyone ever came for her, I was to ring once more than the hour.",,False
+e6_church_003,e6_church,3,FATHER REID,,It means she got away. It means she's safe.,,False
+e6_church_004,e6_church,4,MANI,,Where?,,False
+e6_church_005,e6_church,5,FATHER REID,,"She didn't tell me, so no one could make me tell them. But she left a message, if you came asking. (He reads from a folded paper.) ""Get the camera from the church. It's what Nila went back for. Then the water will bring you to me.""",,False
+e6_church_006,e6_church,6,MANI,,This church?,,False
+e6_church_007,e6_church,7,FATHER REID,,"No, son. The other one. The one underneath the lake.",,False
+e6_archive_000,e6_archive,0,,,"Rows of boxes. Parish records. Photographs of Old Merrow: a schoolhouse, a general store, a stone church with a tall spire, families in Sunday clothes.",,True
+e6_archive_001,e6_archive,1,FATHER REID,,"I was born down there. Baptised in that church. When they flooded the valley, they promised us the water would be clean. They moved our dead up the hill. (beat) Not all of them.",,False
+e6_walter_000,e6_walter,0,,,You show Walter the 1977 photo. He looks at it for a long time.,,True
+e6_walter_001,e6_walter,1,WALTER,,Fifty dollars a night. I bought Margaret's ring with it. I've been paying for that ring my whole life.,,False
+e6_walter_002,e6_walter,2,WALTER,,"I told Father Tom, in confession, forty years ago. He never told a soul. (He stands.) My old diving gear's in the shed. The hose is good. I'll run the compressor myself. Eli steers.",,False
+e6_prep_000,e6_prep,0,,,"Walter's old aluminium workboat. A small petrol compressor chugging on deck. A long yellow air hose. The fog is lifting into a grey, cold day.",,True
+e6_prep_001,e6_prep,1,,,"You're in Walter's ancient wetsuit, a mask, a waterproof flashlight, Nila's map sealed in a plastic sleeve on your wrist. Your phone in a waterproof pouch.",,True
+e6_prep_002,e6_prep,2,ELI,,"Three tugs on the line means pull you up. You tug three times, we pull. Don't be a hero.",,False
+e6_prep_003,e6_prep,3,,,You roll backward off the side.,,True
+e6_dive_000,e6_dive,0,,,"Green darkness. Then shapes. A drowned village, perfectly still.",,True
+e6_dive_001,e6_dive,1,,,Your breath roars in your ears. The yellow hose trails up behind you to a pale disc of light.,,True
+e6_church_in_000,e6_church_in,0,,,You swim through the open doors of the church. Pews in rows. A fallen cross. A stained-glass window glowing faintly green. Barrels stacked to the rafters down the aisles.,,True
+e6_church_in_001,e6_church_in,1,,,"In the front pew, wedged under the kneeler, where she must have dropped it when her own air ran low: a yellow dive-camera housing. NILA, in marker on the strap.",,True
+e6_church_in_002,e6_church_in,2,,,You pull it free. A barrel shifts above you. Then another. A slow avalanche of steel. Silt explodes into the water and the light goes brown.,,True
+e6_silt1_000,e6_silt1,0,,,"Brown nothing. Your flashlight shows only your own hand. Then, faintly: clank. Clank. Clank. Walter, tapping a wrench on the hull above. Louder to your left.",,True
+e6_silt1_001,e6_silt1,1,,,You try to remember which way you came in.,,True
+e6_silt_bad_000,e6_silt_bad,0,,,Barrels. A wall of barrels where the doors were. The avalanche has blocked the main entrance. You turn back.,,True
+e6_silt_bad_001,e6_silt_bad,1,,,"The tapping, to your left.",,True
+e6_silt_bad2_000,e6_silt_bad2,0,,,"Your hand finds stone steps going down. The crypt. Absolutely not. You turn around, heart slamming.",,True
+e6_silt_bad2_001,e6_silt_bad2,1,,,"The tapping, to your left.",,True
+e6_silt2_000,e6_silt2,0,,,"Your glove finds a wooden door frame. A narrow doorway. Above it, the silt is thinner, and there's grey light.",,True
+e6_silt3_000,e6_silt3,0,,,The wall goes on. The tapping is directly above the doorway you just passed. You go back.,,True
+e6_ascend_000,e6_ascend,0,,,"You rise through the drowned bell tower. Daylight above, a pale disc. The shadow of Walter's boat. And beside it, a second hull: longer, darker, an outboard idling.",,True
+e6_ascend_001,e6_ascend,1,,,You draw a breath from the regulator. Air comes. Then half a breath. Then nothing.,,True
+e6_ascend_002,e6_ascend,2,,,"You look up. The yellow air hose drifts down past your face, cut clean. On the surface, a gloved hand pulls back into the second boat. A blade flashes.",,True
+e6_ascend_003,e6_ascend,3,,,You tug three times on the hose. It comes down limp into your hands.,,True
+e6_ascend_004,e6_ascend,4,,,Four metres to the surface. Your lungs burn. The light gets further away.,,True
+e6_end_000,e6_end,0,,,End of Episode 6.,,True
+e7_open_000,e7_open,0,,,"Black. A muffled boom through the water: a shotgun. Then a hand grabs your harness and hauls you upward. Eli, who dived in after you without a mask.",,True
+e7_open_001,e7_open,1,,,"You break the surface choking. A small skiff roars out of the fog. Standing in it, soaked, grey hair loose, shotgun at her shoulder: Ruth Vane. She fires again over the second boat. Its outboard screams and it flees into the fog.",,True
+e7_open_002,e7_open,2,RUTH,,Told you I sleep light.,,False
+e7_open_003,e7_open,3,,,"Walter, shaking, wraps you in a blanket. You check the yellow housing in your arms. Nila's camera is safe.",,True
+e7_skiff_000,e7_skiff,0,,,Ruth steers north toward a dark wooded headland. An old steel radio tower rises out of the trees. Pike Point.,,True
+e7_skiff_001,e7_skiff,1,RUTH,,They came Thursday night. Two of them. I went out the back with Harold's shotgun and took the skiff. I've been at Jonah Pike's cabin since.,,False
+e7_skiff_002,e7_skiff,2,RUTH,,"Nila told me once: ""If I'm not home, I'm with Jonah."" Jonah won't tell even me where she is. Stubborn old goat.",,False
+e7_skiff_003,e7_skiff,3,MANI,,Is she—,,False
+e7_skiff_004,e7_skiff,4,RUTH,,He says she's alive. He says it every day. I choose to believe him.,,False
+e7_jonah_000,e7_jonah,0,,,"A log cabin crammed with radios: shortwave sets, oscilloscopes, a wall of QSL cards from around the world. Jonah Pike, seventy, white beard, a cardigan full of holes, looks at you over his glasses for a long time.",,True
+e7_jonah_001,e7_jonah,1,JONAH,,You're Anna. She talks about you on the air when she thinks nobody's listening. (beat) Somebody always was.,,False
+e7_jonah_002,e7_jonah,2,,,He's recorded every one of Nila's 23:00 broadcasts. And something else.,,True
+e7_footage_000,e7_footage,0,,,"You connect Nila's camera to Jonah's monitor. Timestamped last Sunday, 22:10.",,True
+e7_footage_001,e7_footage,1,,,"Underwater: the barrels, the dead tortoises, a milky cloud. Then Nila surfaces under a dock and films the boat above it. Victor and Corbin, side by side, watching workers drop a crate over the side.",,True
+e7_footage_002,e7_footage,2,CORBIN,ON FOOTAGE,Is that the last of the dead ones?,,False
+e7_footage_003,e7_footage,3,VICTOR,ON FOOTAGE,"The ones Hades won't pay for, yes.",,False
+e7_footage_004,e7_footage,4,,,"The camera turns to Nila's face, lit by her dive torch, whispering:",,True
+e7_footage_005,e7_footage,5,NILA,ON FOOTAGE,"If someone's watching this, I didn't make it back. Barrels at St. Brendan's. Victor Kessler. Sheriff Corbin. Tell everyone.",,False
+e7_footage_006,e7_footage,6,MANI,,She made it back. (To Jonah.) Take me to her.,,False
+e7_trail_000,e7_trail,0,,,"Jonah leads you and Ruth up a rough path through the pines. Wind off the lake. Above, the rusted tower, a single red aircraft light still blinking at the top.",,True
+e7_trail_001,e7_trail,1,JONAH,,"That was 94.1's original transmitter, till they moved it into town in '98. They left everything. I kept it alive, out of spite. (beat) It still reaches every radio in the county.",,False
+e7_trail_002,e7_trail,2,MANI,,That's how she broadcast on 94.1 when the station was off.,,False
+e7_trail_003,e7_trail,3,JONAH,,"Watch your feet. She's rigged the trail. Trip wires, tin cans, a flare.",,False
+e7_trip1_000,e7_trip1,0,,,Your flashlight catches a glint at ankle height between two pines. Or was it just ice?,,True
+e7_trip2_000,e7_trip2,0,,,A fallen log across the path. The obvious step is right in the middle.,,True
+e7_trip3_000,e7_trip3,0,,,"The shed is in sight. A string of fishing line runs low across the last metre, tied to a flare stake.",,True
+e7_trip_end_000,e7_trip_end,0,,,"You reach the shed without a sound. Jonah nods, impressed.",,True
+e7_reunion_000,e7_reunion,0,,,"A concrete shed at the foot of the tower. A camp stove, a sleeping bag, tins of beans, a crate of bottled spring water (half empty), a rack of humming transmitter equipment. Nila's radio bag on a hook.",,True
+e7_reunion_001,e7_reunion,1,NILA,,Stop right there.,,False
+e7_reunion_002,e7_reunion,2,,,She steps from behind the transmitter rack with a flare gun in a shaking hand. Thinner. Hair tied back. A scrape across one cheek.,,True
+e7_reunion_003,e7_reunion,3,,,She sees your face. The flare gun drops.,,True
+e7_reunion_004,e7_reunion,4,NILA,,Anna?,,False
+e7_reunion_005,e7_reunion,5,,,"For a long moment, neither of you moves. Then she's across the shed and you're holding her, and she's crying and laughing and hitting your shoulder.",,True
+e7_reunion_006,e7_reunion,6,NILA,,Naan dhaan vara vendaamnu sonnene!,I told you not to come!,False
+e7_reunion_007,e7_reunion,7,MANI,,Eppo naan un pechu kettirukken?,Since when do I listen to you?,False
+e7_talk_000,e7_talk,0,,,Ruth and Jonah step outside to give you a minute. You sit on the sleeping bag together.,,True
+e7_talk_001,e7_talk,1,,,There's so much to say. Where do you start?,,True
+e7_t1_000,e7_t1,0,NILA,,Amma-ku theriyuma?,Does Amma know?,False
+e7_t1_001,e7_t1,1,MANI,,Illa. Nee kulichittu irukkannu sonnen.,No. I told her you were having a bath.,False
+e7_t1_002,e7_t1,2,,,"Nila laughs, then stops laughing.",,True
+e7_t1_003,e7_t1,3,NILA,,Naalaiku naane solren.,I'll tell her myself tomorrow.,False
+e7_t2_000,e7_t2,0,NILA,,"Corbin's car outside the flat. Men on the stairs. I went out the back with my radio bag, along the shore in the dark, all the way to Jonah's.",,False
+e7_t2_001,e7_t2,1,NILA,,Phone-a vittutu odinen. Rangoli-a paadhi-la vittutten. Kaalaila thirumbi varuvennu nenachen.,I ran and left my phone. I left my rangoli half done. I thought I'd be back by morning.,False
+e7_t3_000,e7_t3,0,,,Nila goes quiet.,,True
+e7_t3_001,e7_t3,1,NILA,,Avan enakku badhil sonnaan. Ovvoru raathiriyum. Naan enna dress pottirukkennu avanukku theriyum. Naan azhudhadhu kooda theriyum. Water tower-ai vida pakkathula naan avana paathadhe illa.,He answered me. Every night. He knew what I was wearing. He even knew when I cried. I never saw him closer than the water tower.,False
+e7_t4_000,e7_t4,0,NILA,,Naan night-la veliya poradha avan Corbin kitta sonnaan. Enakku theriyum. Avan mela kovapadaadha. Corbin Tess vaazhkaiya azhichiruppaan.,He told Corbin I went out at night. I know. Don't be angry with him. Corbin would have destroyed Tess's life.,False
+e7_gift_000,e7_gift,0,,,You pull a gift-wrapped box out of your soaked duffel. The bow is crushed.,,True
+e7_gift_001,e7_gift,1,MANI,,Happy Deepavali. Oru naal munnaadiye.,Happy Deepavali. A day early.,False
+e7_gift_002,e7_gift,2,,,She unwraps it. A new handheld ham radio. She laughs through tears.,,True
+e7_gift_003,e7_gift,3,NILA,,Oru crime scene vazhiya naalu mani neram drive panni enakku radio kondu vandhiya?,You drove four hours through a crime scene to bring me a radio?,False
+e7_gift_004,e7_gift,4,MANI,,Sweets-um dhaan. Konjam nanaanjiduchu.,And sweets. They got a bit wet.,False
+e7_plan_000,e7_plan,0,,,"The four of you around the camp stove, the proof spread on the concrete floor.",,True
+e7_plan_001,e7_plan,1,,,Jonah nudges the crate of water bottles with his boot.,,True
+e7_plan_002,e7_plan,2,JONAH,,Where'd these come from? I never brought you water.,,False
+e7_plan_003,e7_plan,3,NILA,,They were here when I came. I thought you left them.,,False
+e7_plan_004,e7_plan,4,,,"Jonah frowns. Then the plan takes over, and nobody mentions it again.",,True
+e7_plan_005,e7_plan,5,NILA,,"There's no cell signal on Pike Point. If we drive out to call the police, Corbin's on every road. If we call 911 from town, it routes through Corbin's dispatch.",,False
+e7_plan_006,e7_plan,6,JONAH,,So you don't call. You broadcast.,,False
+e7_plan_007,e7_plan,7,NILA,,"At 23:00. On 94.1, to every radio in the county. On 7.185 for the ham operators. And Jonah patches it onto the provincial police band. (beat) They can bury a phone call. They can't bury a whole town hearing it.",,False
+e7_plan_008,e7_plan,8,,,The transmitter powers on. But the feed line up the tower is dead. A length of coax is missing.,,True
+e7_antenna_000,e7_antenna,0,,,You climb to the first platform with the cable over your shoulder. Nila talks you through it on her new radio. You fit the coax. Now the dish has to face the town.,,True
+e7_antenna_001,e7_antenna,1,NILA,ON RADIO,Turn it slowly. Watch the meter. Greyhaven's somewhere south-southwest.,,False
+e7_eli_000,e7_eli,0,,,The signal meter glows green. Forty minutes to 23:00.,,True
+e7_eli_001,e7_eli,1,,,"Eli arrives up the trail, out of breath, carrying a rifle from his father's closet.",,True
+e7_eli_002,e7_eli,2,ELI,,Tess is safe. She's with Father Tom at the church. I came to help.,,False
+e7_eli_003,e7_eli,3,,,Nila hugs him. You don't.,,True
+e7_eli_004,e7_eli,4,,,"Ten minutes later you step outside to check the trip wires and hear Eli around the side of the shed, low, into a handheld radio.",,True
+e7_eli_005,e7_eli,5,ELI,ON RADIO,…Pike Point. Now. (beat) I'm sorry.,,False
+e7_eli_006,e7_eli,6,,,"You round the corner. Eli turns, guilty, the radio still in his hand.",,True
+e7_eli_007,e7_eli,7,,,"Across the lake, an orange glow rises over the trees: the mill is burning. On the lake road below Pike Point, a line of headlights stops at the foot of the trail.",,True
+e7_eli_008,e7_eli,8,,,"The new radio on Nila's belt crackles. A man's voice, warm, amused.",,True
+e7_eli_009,e7_eli,9,VICTOR,ON RADIO,"Nila. Mani. And Ruth, I assume, with Harold's shotgun. (beat) Let's talk about this like adults.",,False
+e7_end_000,e7_end,0,,,End of Episode 7.,,True
+e8_open_000,e8_open,0,,,You grab Eli by the collar and slam him against the shed wall.,,True
+e8_open_001,e8_open,1,MANI,,Who was that?,,False
+e8_open_002,e8_open,2,ELI,,"Ortiz! It was Ortiz! (He holds up the radio. The channel tag reads GPS-2, the deputy's private channel.) I told him to come to Pike Point with everyone he trusts.",,False
+e8_open_003,e8_open,3,ELI,,I said sorry because… because I'm the reason they knew where Nila slept. I've been saying sorry to everyone all week.,,False
+e8_who_000,e8_who,0,,,Nila looks down at the headlights on the lake road.,,True
+e8_who_001,e8_who,1,NILA,,Then who brought them?,,False
+e8_who_002,e8_who,2,JONAH,,Victor has a man on that water tower who sees everything. He's been watching this headland for days.,,False
+e8_offer_000,e8_offer,0,,,"Victor walks up the trail alone, a flashlight in one hand, both hands visible, his coat immaculate even in the mud. Below him, four men with rifles spread into the trees. Corbin stays by the cars.",,True
+e8_offer_001,e8_offer,1,VICTOR,,"Mani! I brought no snakes, I promise.",,False
+e8_offer_002,e8_offer,2,VICTOR,,"Let's be practical. The mill's gone. Burned tonight, very sad, old wiring. There's no lab, no animals, no evidence. Just a camera, some photographs, and a very tired young woman.",,False
+e8_offer_003,e8_offer,3,VICTOR,,Two hundred thousand dollars. Enough to bring your parents over. Enough to never write another job application.,,False
+e8_offer2_000,e8_offer2,0,VICTOR,,No? Then something you can't buy. Corbin's video of the Marsh girl at the till goes away forever. Eli's family keeps the dock. Everyone goes home.,,False
+e8_offer3_000,e8_offer3,0,,,Victor's smile thins.,,True
+e8_offer3_001,e8_offer3,1,VICTOR,,"I'm not the one you should be afraid of, Mani. My partner doesn't negotiate. If you broadcast, he'll come to Windsor himself. To your little apartment. To your parents' shop in Ranipet.",,False
+e8_fail_000,e8_fail,0,,,"You hear yourself say yes. Victor smiles, warm as a fireplace. Behind you, Nila makes a sound you will hear for the rest of your life.",,True
+e8_fail_001,e8_fail,1,,,"By morning the transmitter is smashed, the camera is at the bottom of the lake, and Nila won't look at you.",,True
+e8_fail_002,e8_fail,2,,,No. Not like this. Try again.,,True
+e8_refuse_000,e8_refuse,0,MANI,,"You know what my father said to me when I left India? ""Look after her."" That's the whole job, Victor. That's all I came here to do.",,False
+e8_refuse_001,e8_refuse,1,,,Victor's smile is gone.,,True
+e8_refuse_002,e8_refuse,2,VICTOR,,Then you'll do it in the dark.,,False
+e8_refuse_003,e8_refuse,3,,,He raises a hand. The floodlights on the trucks below snap on.,,True
+e8_w1_000,e8_w1,0,,,You have the revolver: six rounds. Ruth has the shotgun. Jonah has a flare gun. Eli is locked in the shed with Nila. Nila is inside warming up the transmitter for 23:00.,,True
+e8_w1_001,e8_w1,1,,,Wave one: two men moving up through the pines toward the tree line.,,True
+e8_w1a_000,e8_w1a,0,,,Ruth fires twice. Bark explodes beside the first man and both of them drop flat behind a log.,,True
+e8_w1a_001,e8_w1a,1,,,"You fire once, carefully, when one of them raises his head. You miss. He stays down. Five rounds left.",,True
+e8_w1b_000,e8_w1b,0,,,You fire three times into the dark. Two shots hit trees. The third hits a man in the leg and he goes down screaming. A rifle round sparks off the shed doorframe beside your head.,,True
+e8_w1b_001,e8_w1b,1,,,Three rounds left. Your hands won't stop shaking.,,True
+e8_w2_000,e8_w2,0,,,"Wave two: a man behind the shed with bolt cutters at the transmitter's power cable. At the same moment, a rifle round hits the doorframe and Jonah goes down, splinters in his arm.",,True
+e8_w2a_000,e8_w2a,0,,,"You round the shed. The man has the bolt cutters on the cable. You shout. He turns, and you fire. He drops the cutters and runs into the trees, holding his shoulder.",,True
+e8_w2a_001,e8_w2a,1,,,"Ruth is already kneeling beside Jonah, tying her scarf around his arm. He swears at her inventively. He'll live.",,True
+e8_w2b_000,e8_w2b,0,,,"You drag Jonah behind the doorframe. Behind the shed, a heavy clunk. The lights inside flicker. Nila shouts.",,True
+e8_w2b_001,e8_w2b,1,,,"You get there in time to see the man running, the cable half cut. Nila splices it with tape and swearing. It holds. Barely.",,True
+e8_w3_000,e8_w3,0,,,Wave three: a man is climbing the tower ladder to cut the antenna feed. You go up after him.,,True
+e8_w3_001,e8_w3,1,,,"On the first platform, wind howling, he swings a wrench at your head.",,True
+e8_w3a_000,e8_w3a,0,,,"The wrench whistles over your head. You hit him low. He goes over the rail and crashes into the bushes below, groaning. Alive.",,True
+e8_w3b_000,e8_w3b,0,,,The wrench catches your forearm and the revolver nearly goes over the edge. You hold on to it. You hit him with your whole body and he goes over the rail into the bushes below. Your arm screams.,,True
+e8_ortiz_000,e8_ortiz,0,,,"No sirens come. Corbin stays by the cars, smoking, waiting. Victor's men pull back into the trees to regroup.",,True
+e8_ortiz_001,e8_ortiz,1,,,"Ruth reloads with steady hands. ""They'll come again,"" she says. ""Do your thing, girl. Fast.""",,True
+e8_ortiz_002,e8_ortiz,2,,,You check the revolver. One round left.,,True
+e8_air_000,e8_air,0,,,"The signal meter glows green, but only just. Jonah's spare cable is short and the needle trembles. Nila pulls on her headphones. Her hands are steady now.",,True
+e8_air_001,e8_air,1,NILA,ON AIR,"Good evening, Greyhaven. This is After Hours on 94.1. I'm Nila. I'm back. (beat) And tonight I'm going to tell you everything.",,False
+e8_air_002,e8_air,2,,,"She looks at you. You have to hand her the proof in an order a listener, and a police officer, can follow.",,True
+e8_jam_000,e8_jam,0,,,"Halfway through the ledger, the signal meter crashes to red. Nila's headphones fill with her own voice, slowed down, a few seconds behind, distorted.",,True
+e8_jam_001,e8_jam,1,JAMMING VOICE,ON AIR,…If anyone's on seven-one-eight-five… I found it… aana andha—,…If anyone's on seven-one-eight-five… I found it… but don't trust the—,False
+e8_jam_002,e8_jam,2,,,Her private voicemail to you. Only someone tapping her phone could have that.,,True
+e8_jam_003,e8_jam,3,JONAH,,"(clutching his bleeding arm, squinting at a scope) Somebody's flooding 94.1 from the north. The water tower. Big transmitter. That's not Victor's gear.",,False
+e8_jam_004,e8_jam,4,JONAH,,"Ruth. Your notebooks. Fourteen years of scanner channels. Find me one the provincial police listen to overnight, that he isn't covering.",,False
+e8_jam_after_000,e8_jam_after,0,,,"The meter climbs back to green on the new channel. Nila finishes it all: the ledger, the footage, her own whisper from the bottom of the lake. She ends it the way she ended every show.",,True
+e8_jam_after_001,e8_jam_after,1,NILA,ON AIR,"This was After Hours. Lock your doors, Greyhaven. And thank you for listening.",,False
+e8_platform_000,e8_platform,0,,,"Nila steps outside for air. A hand clamps over her mouth. Victor, mud on his coat now, a pistol in his hand, drags her up the tower ladder to the first platform.",,True
+e8_platform_001,e8_platform,1,VICTOR,,MANI!,,False
+e8_platform_002,e8_platform,2,,,"You climb. On the platform, wind howling, Victor holds Nila at the rail with the pistol to her head. You raise the revolver. One round. Your hands shake.",,True
+e8_platform_003,e8_platform,3,VICTOR,,"One bullet. I counted. (He laughs, breathing hard.) You're not a killer, Mani. You're a nice boy with a spreadsheet.",,False
+e8_platform_004,e8_platform,4,MANI,,Let her go. It's over.,,False
+e8_platform_005,e8_platform,5,VICTOR,,Over? You think I'm the top? I'm middle management. You think he'll let me sit in a courtroom?,,False
+e8_platform_006,e8_platform,6,,,"He looks north, toward the water tower, and for the first time, he looks afraid.",,True
+e8_platform_007,e8_platform,7,VICTOR,,He's listening right now. He's always listening. His name is—,,False
+e8_platform_008,e8_platform,8,,,A single rifle crack across the water from the north.,,True
+e8_platform_009,e8_platform,9,,,"Victor jerks. He looks down at his chest, surprised. The pistol slips from his fingers.",,True
+e8_platform_010,e8_platform,10,VICTOR,,…Hades doesn't… leave…,,False
+e8_platform_011,e8_platform,11,,,He falls. Thirty metres into the dark pines.,,True
+e8_platform_012,e8_platform,12,,,"Nila crumples into your arms. You're still holding the revolver. You never fired. On the water tower across the lake, a tiny red light blinks twice and goes dark.",,True
+e8_wrong_000,e8_wrong,0,,,"Headlights at the foot of the trail. Corbin's cruiser. In the back seat, a pale face against the glass. Tess.",,True
+e8_wrong_001,e8_wrong,1,,,"Victor's voice on the radio, very calm.",,True
+e8_wrong_002,e8_wrong,2,VICTOR,ON RADIO,"The Marsh girl for the little USB stick in your pocket, Mani. The encrypted one. Bring it down. Alone.",,False
+e8_wrong_003,e8_wrong,3,,,You never promised to protect her. Nobody was watching her. You walk down the trail with the USB in your hand.,,True
+e8_wrong_004,e8_wrong,4,,,"At the bottom, Victor holds Tess by the arm. You hold out the stick. He takes it. He lets her go. She runs to you.",,True
+e8_wrong_005,e8_wrong,5,VICTOR,,Pleasure doing business—,,False
+e8_wrong_006,e8_wrong,6,,,"A rifle crack from the north. Victor drops where he stands. The USB stick skitters into the dark and is gone. On the water tower, a red light blinks twice.",,True
+e8_route_000,e8_route,0,,,The night goes very quiet.,,True
+e8_dawn_000,e8_dawn,0,,,"Dawn comes up grey and gold. Provincial police cruisers block the mill road. A helicopter circles the lake. The mill is a smoking shell, but the pill presses were steel and survived the fire.",,True
+e8_dawn_001,e8_dawn,1,,,"Corbin is arrested at the county line at six in the morning, still in uniform, a suitcase of cash on the back seat.",,True
+e8_dawn_002,e8_dawn,2,,,Gus is arrested at the diner. He doesn't resist.,,True
+e8_dawn_003,e8_dawn,3,,,Brian Holt is quietly escorted out of the radio station.,,True
+e8_dawn_004,e8_dawn,4,,,"In the trunk of Victor's car, officers find a heated travel case holding Midas and the last five golden lanceheads. A wildlife officer from Toronto says they will be sent home to Brazil.",,True
+e8_dawn_005,e8_dawn,5,,,"Victor's body is recovered from the pines. One rifle round, fired from more than six hundred metres, from the direction of the water tower. The tower is empty. One spent casing on the platform. Nothing else.",,True
+e8_dawn_006,e8_dawn,6,,,"On Victor's phone, the last incoming call: a blocked number, at 23:39. One minute before the shot.",,True
+e8_bye_000,e8_bye,0,,,"For the first time, you walk through Greyhaven in daylight. Say goodbye.",,True
+e8_drive_000,e8_drive,0,,,"Nila's blue hatchback, you driving, windows down despite the cold. Nila has her feet on the dashboard and the new radio in her lap. You argue about music. You laugh until your stomach hurts.",,True
+e8_drive_001,e8_drive,1,,,Your phone buzzes. An email.,,True
+e8_drive_002,e8_drive,2,,,"""Thank you for your time. We'd like to invite you to a third interview next week."" Nila punches your arm. ""Third time's lucky. You'll get it.""",,True
+e8_drive_003,e8_drive,3,,,You stop at the first Tom Portons on County Road 20. Harold and June are at the window table. Harold has a double-double. June pretends not to see.,,True
+e8_drive_004,e8_drive,4,,,"Back on the road, it goes quiet. Nila watches the fields.",,True
+e8_drive_005,e8_drive,5,NILA,,"En voicemail. ""Aana andha—"" Naan solla vandhadhu, badhil sollura andha kurala nambaadhannu.","My voicemail. ""But don't trust the—"" I was going to say, don't trust the voice that answers.",False
+e8_drive_006,e8_drive,6,NILA,,"Naan broadcast panna ovvoru raathiriyum avan badhil sonnaan. Victor avan illa, Anna. Victor-ukke avana paathu bayam.","Every night I broadcast, he answered. Victor wasn't him, Anna. Victor himself was scared of him.",False
+e8_drive_007,e8_drive,7,MANI,,"Ellam mudinjiduchu, Nila.","It's all over, Nila.",False
+e8_drive_008,e8_drive,8,,,Nila doesn't answer. She turns the radio off.,,True
+e8_hades_000,e8_hades,0,,,"The camera rises from the county road, back over the hill, to the old water tower above Greyhaven. On the platform stands a figure in a long dark coat, only a silhouette against the morning sun. A rifle case at his feet. A handheld radio in his gloved hand.",,True
+e8_hades_001,e8_hades,1,,,He watches a small blue car crest the hill and disappear south.,,True
+e8_hades_002,e8_hades,2,HADES,ON RADIO,Victor talked too much. It's handled. (beat) The siblings? (He watches the empty road.) No. Let them go home. Let them light their lamps.,,False
+e8_hades_003,e8_hades,3,,,He lowers the radio.,,True
+e8_hades_004,e8_hades,4,HADES,,I know where home is.,,False
+e8_lamp_000,e8_lamp,0,,,"That afternoon, alone in his cabin, Jonah plugs in a copy of the encrypted file Mani left him. ""Hades_contacts.enc."" He's been running it through an old decryption rig since dawn.",,True
+e8_lamp_001,e8_lamp,1,,,"One word in the file's header decodes. Just one. He reads it twice, then picks up his radio.",,True
+e8_lamp_002,e8_lamp,2,JONAH,ON RADIO,Anna. It's Jonah. Got one word out of that file. (beat) R-E-D-L-A-K-E.,,False
+e8_lamp_003,e8_lamp,3,,,He doesn't know yet what it means. Neither do you.,,True
+end_daybreak_000,end_daybreak,0,,,"Your small apartment in Windsor glows with clay diyas on every surface. The slightly water-damaged laddus on a steel plate. The laptop open on a video call to Vellore: Amma, Appa, oil lamps behind them, fireworks crackling in their street.",,True
+end_daybreak_001,end_daybreak,1,,,"Nila tells them everything herself, gently. Amma scolds you for hiding it, then thanks you, then scolds you again.",,True
+end_daybreak_002,end_daybreak,2,NILA,,"Amma, Anna-ku third interview! Adhu kooda kedaichudum.","Amma, Anna has a third interview! He'll get it too.",False
+end_daybreak_003,end_daybreak,3,,,"Later. The call has ended. Nila is asleep on the couch under a blanket. You stand on the balcony, the Detroit skyline across the river, fireworks over both cities.",,True
+end_daybreak_004,end_daybreak,4,,,"Inside, on the shelf, Nila's old handheld radio, the one she carried all week, switched off. Its display flickers on by itself. One second of static. Then silence.",,True
+end_daybreak_005,end_daybreak,5,,,Nobody sees it.,,True
+end_daybreak_006,end_daybreak,6,,,OUT OF TOWN WILL RETURN.,,True
+end_lamplight_000,end_lamplight,0,,,"Diwali night. Clay diyas on every surface. Amma and Appa on the video call from Vellore, crying and laughing at once.",,True
+end_lamplight_001,end_lamplight,1,,,"Appa: ""Nee ava-va paathukitta."" (You looked after her.)",,True
+end_lamplight_002,end_lamplight,2,,,Everyone you met in Greyhaven is safe. Every proof was heard. You told your parents the truth when it was hardest.,,True
+end_lamplight_003,end_lamplight,3,,,"Later, on the balcony, you write one word on the back of your hand so you won't forget it: REDLAKE.",,True
+end_lamplight_004,end_lamplight,4,,,"Inside, Nila's old radio flickers to static for one second. Nobody sees it.",,True
+end_lamplight_005,end_lamplight,5,,,OUT OF TOWN WILL RETURN.,,True
+e8_fog_000,e8_fog,0,,,"Somebody heard. Not enough people. Not fast enough. The signal was too weak, the proof too thin. No police come up the lake road.",,True
+e8_fog_001,e8_fog,1,,,Victor's men regroup in the trees. Corbin is shouting into his radio.,,True
+e8_fog_002,e8_fog,2,RUTH,,Down to the water. Now.,,False
+e8_fog_003,e8_fog,3,,,"Ruth's skiff is pulled up in the reeds below the point. You, Nila, Ruth and Jonah slide down the wet slope and push off into the black water, engine off, oars only. Behind you, flashlights sweep the empty shed.",,True
+e8_fog_004,e8_fog,4,,,"By sunrise you are on the highway in Nila's blue hatchback, Greyhaven a grey smudge in the mirror.",,True
+e8_fog2_000,e8_fog2,0,,,"Weeks later, a Toronto paper runs Nila's footage. Corbin is arrested at his kitchen table. Gus confesses. The mill is sealed.",,True
+e8_fog2_001,e8_fog2,1,,,"But it took weeks. And for weeks, every time it rained, Nila checked the news for Greyhaven.",,True
+e8_fog2_002,e8_fog2,2,NILA,,"Victor wasn't him, Anna. Victor was scared of him.",,False
+e8_fog2_003,e8_fog2,3,,,"On the water tower above Greyhaven, a silhouette in a long coat watched your car go. ""I know where home is,"" he said, to nobody.",,True
+end_fog_000,end_fog,0,,,"Diwali in Windsor. Lamps lit, a little late. Amma and Appa on the screen. Nila thinner, quieter, alive.",,True
+end_fog_001,end_fog,1,,,You tell yourself that's what matters. Nila is alive.,,True
+end_fog_002,end_fog,2,,,"On the shelf, her old radio clicks to static for one second. Nobody sees it.",,True
+end_fog_003,end_fog,3,,,OUT OF TOWN WILL RETURN.,,True
+e8_wrong2_000,e8_wrong2,0,,,"Tess shakes in your arms. Down the trail, Corbin is already in his cruiser, reversing hard. He's gone before anyone can stop him.",,True
+e8_wrong2_001,e8_wrong2,1,,,The broadcast went out. Police come at dawn. Corbin is caught two days later in Sault Ste. Marie.,,True
+e8_wrong2_002,e8_wrong2,2,,,"But the encrypted file is gone, picked up from the dark by someone you never saw.",,True
+e8_wrong2_003,e8_wrong2,3,TESS,,Why didn't you watch out for me? (beat) Never mind. You came.,,False
+e8_wrong2_004,e8_wrong2,4,,,"On the water tower, a silhouette in a long coat turns a small USB stick over in his gloved fingers. ""I know where home is,"" he says.",,True
+end_wrong_000,end_wrong,0,,,"Diwali in Windsor. Nila beside you, alive. Amma and Appa on the screen.",,True
+end_wrong_001,end_wrong,1,,,You keep thinking about the stick sliding into the dark. About what was on it. About whose hand picked it up.,,True
+end_wrong_002,end_wrong,2,,,Nila's old radio flickers to static. Nobody sees it.,,True
+end_wrong_003,end_wrong,3,,,OUT OF TOWN WILL RETURN.,,True
+e8_silent_000,e8_silent,0,,,Nobody heard. The jamming swallowed every word. No police come.,,True
+e8_silent_001,e8_silent,1,,,"Ruth gets you to the water. You row in the dark with the proof in a dry bag between your knees: the camera, the ledger, the photos.",,True
+e8_silent_002,e8_silent,2,,,"Three days later, in a café in Toronto, Nila hands everything to a journalist called Ivy Laurent, the one she emailed from Greyhaven months ago. Ivy goes pale reading the ledger.",,True
+e8_silent_003,e8_silent,3,IVY,,I know this company. I used to work for one of its suppliers. (beat) Leave it with me.,,False
+e8_silent_004,e8_silent,4,,,"Greyhaven never says a word. Corbin keeps his badge for another month. Then a newspaper story runs, and he doesn't.",,True
+e8_silent_005,e8_silent,5,,,"On the water tower, a silhouette in a long coat says, ""I know where home is.""",,True
+end_silent_000,end_silent,0,,,Diwali in Windsor. The lamps are lit. Nila sits close to you on the couch and doesn't say much.,,True
+end_silent_001,end_silent,1,,,The town you saved never thanked you. Maybe it never will.,,True
+end_silent_002,end_silent,2,,,Nila's old radio flickers to static for one second. Nobody sees it.,,True
+end_silent_003,end_silent,3,,,OUT OF TOWN WILL RETURN.,,True

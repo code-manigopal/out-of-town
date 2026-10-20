@@ -1,0 +1,485 @@
+﻿Name,SceneId,Order,Speaker,Channel,Text,Subtitle,bIsNarration
+p2e1_open_000,p2e1_open,0,,,"A small studio, red ON AIR light. Nila, twenty-six, headphones on, hosting her new late show on a Windsor station.",,True
+p2e1_open_001,p2e1_open,1,NILA,ON AIR,"…and that's why you never trust a man who says he ""doesn't really like music"". Next up, something slow for the night shift—",,False
+p2e1_open_002,p2e1_open,2,,,She coughs. Covers her mouth. Looks at her palm. Blood. She keeps her voice perfectly steady.,,True
+p2e1_open_003,p2e1_open,3,NILA,ON AIR,—here it is.,,False
+p2e1_open_004,p2e1_open,4,,,She presses play. The song starts. She slides off her chair onto the floor. The ON AIR light stays red.,,True
+p2e1_hosp_000,p2e1_hosp,0,,,"A blur. You and Preethi running through emergency doors. Scans. Waiting rooms. Preethi in her hospital pharmacy uniform, between shifts. An oncologist, Dr. Singh, with a tablet.",,True
+p2e1_hosp_001,p2e1_hosp,1,DR. SINGH,,"It's aggressive. And it's atypical. Honestly, I've never seen a progression like this. We'll start treatment, but I won't pretend I understand it.",,False
+p2e1_hosp_002,p2e1_hosp,2,,,Preethi reads the blood panel over his shoulder. She stops on one line.,,True
+p2e1_hosp_003,p2e1_hosp,3,PREETHI,,What's this compound? It's not on any standard panel.,,False
+p2e1_hosp_004,p2e1_hosp,4,DR. SINGH,,The lab flagged it as an artefact.,,False
+p2e1_hosp_005,p2e1_hosp,5,PREETHI,,"(quietly, to you) It's not an artefact.",,False
+p2e1_hosp_006,p2e1_hosp,6,,,"Amma and Appa arrive from Chennai, still in travel clothes. Amma takes Nila's hand.",,True
+p2e1_hosp_007,p2e1_hosp,7,AMMA,,Kanna… enna aachu unakku?,My dear… what happened to you?,False
+p2e1_hosp_008,p2e1_hosp,8,NILA,,"Onnum illa, Amma. Konjam blood, avlo dhaan.","It's nothing, Amma. Just a little blood, that's all.",False
+p2e1_hosp_009,p2e1_hosp,9,APPA,,Unmaiya sollu. Evlo serious?,Tell me the truth. How serious?,False
+p2e1_hosp_010,p2e1_hosp,10,MANI,,"Romba serious, Appa.","Very serious, Appa.",False
+p2e1_case_000,p2e1_case,0,,,"Nila props herself up, a notepad on her knees. You and Preethi on the visitor chairs.",,True
+p2e1_case_001,p2e1_case,1,NILA,,Okay. Treat it like a case. Exposure. Opportunity. Motive.,,False
+p2e1_case_002,p2e1_case,2,NILA,,"Exposure: Old Merrow. I dived in that water twice. But Anna, you dived too, and you're fine.",,False
+p2e1_case_003,p2e1_case,3,MANI,,So it's something only you had.,,False
+p2e1_case_004,p2e1_case,4,NILA,,Pike Point. Six days in that shed. (beat) The water bottles.,,False
+p2e1_case_005,p2e1_case,5,,,She hands you her ham handheld.,,True
+p2e1_case_006,p2e1_case,6,NILA,,"Call Jonah. He's always on, after dark.",,False
+p2e1_jonah_000,p2e1_jonah,0,JONAH,ON RADIO,"Pike Point, go ahead. (beat) Nila? Kid, is that you?",,False
+p2e1_jonah_001,p2e1_jonah,1,NILA,,Jonah. The water in the shed. Did you leave it for me?,,False
+p2e1_jonah_002,p2e1_jonah,2,JONAH,ON RADIO,"I told you last year, kid. I never brought you water.",,False
+p2e1_jonah_003,p2e1_jonah,3,,,Nila lowers the radio.,,True
+p2e1_jonah_004,p2e1_jonah,4,NILA,,"Yaaro naan andha thanni kudikkanumnu nenachirukkaanga, Anna.","Someone wanted me to drink that water, Anna.",False
+p2e1_jonah_005,p2e1_jonah,5,,,Preethi has gone very still.,,True
+p2e1_jonah_006,p2e1_jonah,6,PREETHI,,If someone put something in it… there'd be a record. A supplier. A delivery.,,False
+p2e1_jonah_007,p2e1_jonah,7,NILA,,Then go and find it. Greyhaven. The mill. Victor kept everything.,,False
+p2e1_drive_000,p2e1_drive,0,,,You and Preethi drive east on the county roads you swore you'd never drive again. Preethi reads Nila's notes by phone light.,,True
+p2e1_drive_001,p2e1_drive,1,PREETHI,,"She wrote ""GH-01"" here and circled it three times.",,False
+p2e1_drive_002,p2e1_drive,2,,,A Tom Portons stop. Harold and June at the window table.,,True
+p2e1_drive_003,p2e1_drive,3,HAROLD,,"The data fella! June, it's the data fella!",,False
+p2e1_drive_004,p2e1_drive,4,JUNE,,"Still on decaf, Harold, don't get excited.",,False
+p2e1_drive_005,p2e1_drive,5,PREETHI,,(whispering) You know these people?,,False
+p2e1_drive_006,p2e1_drive,6,MANI,,Long story. It involved a cat phone case.,,False
+p2e1_mill_000,p2e1_mill,0,,,"A blackened shell behind police tape. A private guard in a hut with a space heater. Ruth, a year older, scanner on her belt, shotgun on her shoulder, meets you at the fence.",,True
+p2e1_mill_001,p2e1_mill,1,RUTH,,Corbin's in prison. Victor's in the ground. And nobody in this town says the name Hades out loud.,,False
+p2e1_mill_002,p2e1_mill,2,RUTH,,(to Preethi) You must be the wife. He talks about you on the phone to Nila. Nauseating.,,False
+p2e1_mill_003,p2e1_mill,3,RUTH,,Guard changes at two-fifteen. You've got ten minutes.,,False
+p2e1_mill_004,p2e1_mill,4,,,Preethi climbs the water tower ladder with binoculars. You wait at the fence for her call.,,True
+p2e1_mill2_000,p2e1_mill2,0,PREETHI,ON RADIO,"He's in the hut. Heater's on. He's watching something on his phone. Go now. Stay left, along the wall.",,False
+p2e1_mill2_001,p2e1_mill2,1,,,"You cross the yard in the shadows. Halfway, Preethi's voice again, sharp:",,True
+p2e1_mill2_002,p2e1_mill2,2,PREETHI,ON RADIO,Stop. He's standing up.,,False
+p2e1_mill3_000,p2e1_mill3,0,PREETHI,ON RADIO,…He's just stretching. Okay. Go.,,False
+p2e1_mill3_001,p2e1_mill3,1,,,"Victor's office is a burned box open to the sky. In the corner, his fireproof safe survived, blackened but whole. A keypad. You remember this keypad. You remember his love of anniversaries.",,True
+p2e1_safe_000,p2e1_safe,0,,,The safe door swings open. Ash and papers. Two things matter.,,True
+p2e1_safe_001,p2e1_safe,1,,,"A shipping label: ""NORTHSTAR BIOLOGICS — HX-7 — HAYDEN DEEP, RED LAKE, ON.""",,True
+p2e1_safe_002,p2e1_safe,2,,,"A delivery note: ""24 × spring water, 1 L. Pike Point. Attn: GH-01."" Dated the week Nila hid there.",,True
+p2e1_safe_003,p2e1_safe,3,MANI,INTO RADIO,Anni. GH-01. It's her. She was a subject. A test subject.,,False
+p2e1_safe_004,p2e1_safe,4,,,"Silence on the radio. Then, very tight:",,True
+p2e1_safe_005,p2e1_safe,5,PREETHI,ON RADIO,Get out. Guard's coming your way.,,False
+p2e1_safe_hide_000,p2e1_safe_hide,0,,,"The flashlight passes over the ash a metre from your boots. The guard yawns, scratches, and walks back to his heater. You slip out the way you came.",,True
+p2e1_safe_run_000,p2e1_safe_run,0,,,"The guard shouts. Before he reaches the fence, a shotgun blast booms into the sky from the road. Ruth. The guard dives for his hut. You're over the fence and gone.",,True
+p2e1_plan_000,p2e1_plan,0,,,"The label and the note on Nila's bed tray. Nila looks stronger, the way people do when they have a job.",,True
+p2e1_plan_001,p2e1_plan,1,NILA,,"Red Lake. Northwestern Ontario. Gold country. End of the road. (She taps the label.) Northstar Biologics, registered 2015. Director: M. Hayden. The same Hayden from the plaque at the station. Victor's ""Mark"".",,False
+p2e1_plan_002,p2e1_plan,2,NILA,,"He's not hiding, Anna. He's waiting.",,False
+p2e1_plan_003,p2e1_plan,3,PREETHI,,Then we take it to the police.,,False
+p2e1_plan_004,p2e1_plan,4,NILA,,With what? A label from a burned building. Ortiz already tried; the OPP said Greyhaven is closed. (beat) Hades has the cure. I'd bet my life on it. I am betting my life on it.,,False
+p2e1_plan_005,p2e1_plan,5,MANI,,Then we go.,,False
+p2e1_plan_006,p2e1_plan,6,NILA,,Then you go prepared. Kane's people shot at you in Greyhaven. Up there it'll be worse. (beat) Which brings us to the guns.,,False
+p2e1_plan_007,p2e1_plan,7,PREETHI,,"We can buy hunting rifles, right? People up north have them.",,False
+p2e1_plan_008,p2e1_plan,8,NILA,,"Legally? A licence takes months: a course, a test, background checks. An M4-style rifle is prohibited in Canada, full stop. A Desert Eagle is a restricted handgun; you'd need a special licence just to drive it anywhere. Grenades, forget it.",,False
+p2e1_plan_009,p2e1_plan,9,NILA,,"We don't have months, Anni. I have weeks.",,False
+p2e1_plan_010,p2e1_plan,10,MANI,,So what are you saying?,,False
+p2e1_plan_011,p2e1_plan,11,NILA,,"I studied criminals for four years. Tonight I need one. (She opens her laptop.) Rocco Delisle. Auto body shop off Wyandotte West. Charged twice, never convicted. Brings guns over the river from Detroit. I covered his second trial for a class project. I know what he sells, what he charges, and that he's terrified of court.",,False
+p2e1_plan_012,p2e1_plan,12,PREETHI,,"Nila, this is a crime.",,False
+p2e1_plan_013,p2e1_plan,13,NILA,,"So is what's happening in my blood. (beat) Anni, I'll understand if you don't go.",,False
+p2e1_deal_000,p2e1_deal,0,,,"Rain. The bridge's lights above, trucks rumbling across to Detroit. A grey van with its rear doors open. Rocco Delisle, fifties, leather jacket, two silent men behind him.",,True
+p2e1_deal_001,p2e1_deal,1,,,"Nila is on the radio in your ear, from her hospital bed.",,True
+p2e1_deal_002,p2e1_deal,2,NILA,ON RADIO,Let him talk first. He likes the sound of his own voice.,,False
+p2e1_deal_003,p2e1_deal,3,ROCCO,,The radio girl's brother. She sent me a very polite message. Mentioned my court dates. Very polite.,,False
+p2e1_deal_004,p2e1_deal,4,,,He opens a case.,,True
+p2e1_deal_005,p2e1_deal,5,ROCCO,,"Pump shotgun, twelve-gauge. M4, clean, no serial. Two Desert Eagles. Ammo. Forty grand.",,False
+p2e1_deal_006,p2e1_deal,6,NILA,ON RADIO,He charged the last buyer twenty-two. Say twenty-five.,,False
+p2e1_deal2_000,p2e1_deal2,0,ROCCO,,(sighing) Your sister should be a lawyer. 26.,,False
+p2e1_deal2_001,p2e1_deal2,1,,,"Preethi steps forward to inspect the weapons. She handles them like she handles a pharmacy order: everything checked, nothing assumed.",,True
+p2e1_deal3_000,p2e1_deal3,0,PREETHI,,"This one's dead, Rocco. The pin's filed.",,False
+p2e1_deal3_001,p2e1_deal3,1,,,Rocco laughs and swaps it from the van without argument.,,True
+p2e1_deal3_002,p2e1_deal3,2,ROCCO,,Your sister said you were sharp. She didn't say it was the wife.,,False
+p2e1_deal3_003,p2e1_deal3,3,,,"Headlights on the riverfront road above. A police cruiser, rolling slowly.",,True
+p2e1_deal3_004,p2e1_deal3,4,NILA,ON RADIO,"Patrol car, westbound. Ninety seconds. Close the doors.",,False
+p2e1_deal_ok_000,p2e1_deal_ok,0,,,The cruiser slows. An officer glances down at three men and a woman by a van in the rain. Rocco lifts a coffee cup in greeting. The cruiser rolls on.,,True
+p2e1_deal_ok_001,p2e1_deal_ok,1,ROCCO,,"No grenades. I'm not crazy. (He pockets the cash.) And tell your sister: if she ever mentions my court dates again, I'll stop being polite.",,False
+p2e1_deal_run_000,p2e1_deal_run,0,,,The cruiser's brake lights flare. Rocco's men scatter. You throw the cases into your trunk and Rocco shouts the last of the ammo boxes after you. You're gone before the cruiser turns.,,True
+p2e1_deal_run_001,p2e1_deal_run,1,,,You got the guns. Less ammunition than you paid for.,,True
+p2e1_shop_000,p2e1_shop,0,,,Day 1. Nila reads the list over the radio from her bed while you and Preethi push a cart through a huge outdoor store.,,True
+p2e1_shop_001,p2e1_shop,1,NILA,ON RADIO,Red Lake in November can drop below minus thirty at night. Phones die in the cold. The cell signal ends before Red Lake does. Do not drink any water up there you didn't filter yourself. Ever.,,False
+p2e1_shop_002,p2e1_shop,2,NILA,ON RADIO,"Ever, Anna.",,False
+p2e1_pack_000,p2e1_pack,0,,,Now it all has to fit in the trunk.,,True
+p2e1_bye_000,p2e1_bye,0,,,"At the curb, Amma presses a steel box into Preethi's hands.",,True
+p2e1_bye_001,p2e1_bye,1,AMMA,,Puliyodharai. Sudbury-ku munnadi saapdunga.,Tamarind rice. Eat it before Sudbury.,False
+p2e1_bye_002,p2e1_bye,2,APPA,,Naanum varen.,I'm coming too.,False
+p2e1_bye_003,p2e1_bye,3,MANI,,"Appa, venaam. Nila-va paathukkonga. Adhu dhaan unga velai.","No, Appa. Look after Nila. That's your job.",False
+p2e1_bye_004,p2e1_bye,4,,,Appa nods slowly and holds your face in both hands. He doesn't say anything. He doesn't have to.,,True
+p2e1_bye_005,p2e1_bye,5,,,"Preethi gets in the passenger seat and puts on her seatbelt with great precision, the way she does when she's frightened.",,True
+p2e1_parry_000,p2e1_parry,0,,,"Highway 401, then 400 north. Rock cuts and pine. At a Tom Portons near Parry Sound, a woman in a grey coat jumps up from her booth.",,True
+p2e1_parry_001,p2e1_parry,1,WOMAN,,My bag! My laptop bag was right here!,,False
+p2e1_parry2_000,p2e1_parry2,0,,,Preethi taps on the hatchback window and gives the two boys a look she normally saves for doctors who prescribe the wrong dose. They hand the bag over without a word.,,True
+p2e1_parry2_001,p2e1_parry2,1,WOMAN,,Thank you. Really. (beat) I'm Ivy.,,False
+p2e1_parry2_002,p2e1_parry2,2,,,"Ivy Laurent, mid-thirties. She thanks you a little too carefully. She glances at your face like she's checking it against a photo. Then she leaves, heading north.",,True
+p2e1_sudbury_000,p2e1_sudbury,0,,,"A tired roadside motel. Through the window, the lit-up Big Nickel. You eat Amma's puliyodharai cross-legged on the bed.",,True
+p2e1_sudbury_001,p2e1_sudbury,1,,,"Your phone buzzes: ""Unknown tracker detected travelling with you.""",,True
+p2e1_tracker_000,p2e1_tracker,0,PREETHI,,Smash it?,,False
+p2e1_day2_000,p2e1_day2,0,,,"Day 2. Lake Superior opens up: huge, grey, empty, like the sea. Preethi presses her face to the window like a child.",,True
+p2e1_day2_001,p2e1_day2,1,PREETHI,,This is a lake? This is a LAKE?,,False
+p2e1_day2_002,p2e1_day2,2,,,"At a Tom Portons in Sault Ste. Marie, the cashier is in tears. The staff tip jar has vanished.",,True
+p2e1_wawa_000,p2e1_wawa,0,,,"At the giant Canada goose statue in Wawa, snow starting. Ivy is there, photographing it.",,True
+p2e1_wawa_001,p2e1_wawa,1,PREETHI,,That's not a coincidence.,,False
+p2e1_ivy_000,p2e1_ivy,0,,,"Ivy's room, two doors down. A laptop, maps, a bottle of wine she isn't drinking.",,True
+p2e1_ivy_001,p2e1_ivy,1,IVY,,Your sister emailed me last year. From Greyhaven. I never wrote back. (beat) I'm sorry. I was hiding.,,False
+p2e1_ivy_002,p2e1_ivy,2,MANI,,From who?,,False
+p2e1_ivy_003,p2e1_ivy,3,IVY,,"From Northstar. I was a lab tech there for two years before I became a journalist. I saw what HX-7 does. I took a photo of one file, quit, and ran.",,False
+p2e1_ivy_004,p2e1_ivy,4,,,"She draws a rough map of the surface buildings: gatehouse, office, loading dock, and a freight elevator that goes deeper than the mine maps say.",,True
+p2e1_ivy_005,p2e1_ivy,5,NILA,ON RADIO,Put me on speaker. I want to ask her three things. In the right order.,,False
+p2e1_ivy2_000,p2e1_ivy2,0,IVY,,"Badge 0417. Dr. Lund. Clear, with a faint blue tint under UV. (beat) And I didn't answer because I was scared, Nila. That's all. I'm sorry.",,False
+p2e1_ivy2_001,p2e1_ivy2,1,NILA,ON RADIO,"She's telling the truth. Mostly. (beat) Welcome to the team, Ivy.",,False
+p2e1_cliff_000,p2e1_cliff,0,,,"Snow on the window. Preethi asleep. You awake, the handheld on the bedside table, tuned to your private frequency.",,True
+p2e1_cliff_001,p2e1_cliff,1,,,It crackles. A calm voice. The voice from the water tower in Greyhaven.,,True
+p2e1_cliff_002,p2e1_cliff,2,HADES,ON RADIO,"Welcome to the north, Mani. Bring the file. (beat) And tell your sister: GH-01 is doing very well.",,False
+p2e1_cliff_003,p2e1_cliff,3,,,Preethi's eyes open in the dark.,,True
+p2e1_end_000,p2e1_end,0,,,End of Episode 1.,,True
+p2e2_open_000,p2e2_open,0,,,Wawa behind you. Ivy's dented hatchback ahead. Snow on the shoulders. Preethi has the Hades recording on repeat on her phone.,,True
+p2e2_open_001,p2e2_open,1,PREETHI,,"""GH-01 is doing very well."" He talks about her like a houseplant.",,False
+p2e2_open_002,p2e2_open,2,NILA,ON RADIO,That's what he wants you to feel. Angry people make mistakes. (cough) Don't give him that.,,False
+p2e2_open_003,p2e2_open,3,MANI,,"Nila, how are you feeling?",,False
+p2e2_open_004,p2e2_open,4,NILA,ON RADIO,"Amma made me eat idli at six a.m. I'm feeling attacked. (beat) Drive, Anna.",,False
+p2e2_winnie_000,p2e2_winnie,0,,,A tiny town. A sign: Home of Winnie. A statue of a bear cub in a tree: the real bear that inspired Winnie-the-Pooh. A cluster of kids and a frazzled teacher.,,True
+p2e2_winnie_001,p2e2_winnie,1,TEACHER,,Someone stole Winnie's scarf! The kids knitted it!,,False
+p2e2_winnie_002,p2e2_winnie,2,,,"Red wool fibres on the bark of the statue's tree. Twigs and droppings under the gas station sign across the road. Through your binoculars: a nest on top of the sign, with a flash of red.",,True
+p2e2_winnie2_000,p2e2_winnie2,0,,,"Preethi climbs the gas station ladder, retrieves the scarf, and is attacked by an extremely angry crow. The kids cheer. You film all of it.",,True
+p2e2_winnie2_001,p2e2_winnie2,1,NILA,ON RADIO,Anni lost a fight to a crow. Best day of my life.,,False
+p2e2_winnie2_002,p2e2_winnie2,2,PREETHI,,I WON. I have the scarf. I won.,,False
+p2e2_winnie2_003,p2e2_winnie2,3,,,"At the pumps, a trucker with a grey beard and a CB radio watches you fill up.",,True
+p2e2_winnie2_004,p2e2_winnie2,4,BIG LOU,,"You folks headed west? Two black SUVs been running Highway 17 all week. No front plates. They stop where nobody stops. (He spits.) You hear ""Kane"" on channel nineteen, you get off the road.",,False
+p2e2_nipigon_000,p2e2_nipigon,0,,,"The cable-stayed bridge over the Nipigon River. Superior's frozen edge. At sunset, the Sleeping Giant on the horizon across the bay. Preethi asks you to stop the car. You stand in the cold and watch it.",,True
+p2e2_nipigon_001,p2e2_nipigon,1,PREETHI,,Nee bayappadriya?,Are you scared?,False
+p2e2_nipigon_002,p2e2_nipigon,2,MANI,,Romba.,Very. (beat) You?,False
+p2e2_nipigon_003,p2e2_nipigon,3,PREETHI,,"I'm a pharmacist, Mani. Last month my biggest problem was a doctor's handwriting.",,False
+p2e2_nipigon_004,p2e2_nipigon,4,,,She puts her cold hand in your coat pocket with yours.,,True
+p2e2_okafor_000,p2e2_okafor,0,,,"A warm house full of books. Dr. Grace Okafor, sixty, Nila's former criminology professor. Jollof rice and tea. Nila on speaker.",,True
+p2e2_okafor_001,p2e2_okafor,1,DR. OKAFOR,,"Nila was the best student I ever had, and she chose radio. I've never forgiven her.",,False
+p2e2_okafor_002,p2e2_okafor,2,NILA,ON RADIO,You came to my first show.,,False
+p2e2_okafor_003,p2e2_okafor,3,DR. OKAFOR,,I came to judge it. (To you.) Tell me about the man.,,False
+p2e2_okafor2_000,p2e2_okafor2,0,DR. OKAFOR,,"He won't kill you from a distance, Mani. He'll want you in the room. He'll want to watch you choose.",,False
+p2e2_okafor2_001,p2e2_okafor2,1,,,She writes a name on a card.,,True
+p2e2_okafor2_002,p2e2_okafor2,2,DR. OKAFOR,,"Constable Rachel Dunn, OPP, Red Lake. She was my student too. Honest. Too honest for her own good.",,False
+p2e2_storm_000,p2e2_storm,0,,,"Whiteout. Visibility ten metres. A transport truck jackknifed across both lanes, hazard lights blinking in the snow.",,True
+p2e2_storm_001,p2e2_storm,1,BIG LOU,ON CB,"…whoever's westbound by Ignace, that's no accident, I just came through—",,False
+p2e2_storm_002,p2e2_storm,2,,,Two black SUVs slide out of the snow behind you. Doors open. Men in white parkas with rifles.,,True
+p2e2_storm_003,p2e2_storm,3,KANE,ON RADIO,Mani. Just the file. Nobody has to freeze tonight.,,False
+p2e2_storm_004,p2e2_storm,4,PREETHI,,Mani.,,False
+p2e2_storm_005,p2e2_storm,5,MANI,,I know.,,False
+p2e2_storm_006,p2e2_storm,6,,,"You have seconds. The whiteout is your friend: if you move now, they haven't seen where you went.",,True
+p2e2_fight1_000,p2e2_fight1,0,,,"First fight. In stealth you can take them one by one in the snow. If they spot you, it turns into a firefight.",,True
+p2e2_fight2_000,p2e2_fight2,0,,,A man on the roof of the jackknifed truck has seen the bodies. He opens up. The second SUV's driver tries to swing round to block your car.,,True
+p2e2_case_000,p2e2_case,0,,,"Silence, except the wind. Ivy's hatchback is full of bullet holes. Ivy is crouched behind it, shaking, unhurt.",,True
+p2e2_case_001,p2e2_case,1,,,"In the back of an SUV: a hard case stencilled NSB. Inside, in grey foam, six fragmentation grenades.",,True
+p2e2_case_002,p2e2_case,2,PREETHI,,"(staring at it) These are grenades, Mani. Real grenades.",,False
+p2e2_case_003,p2e2_case,3,NILA,ON RADIO,"Then they're your grenades now. Put them in the trunk, Anni.",,False
+p2e2_case_004,p2e2_case,4,,,You each take two. The rest go in the trunk.,,True
+p2e2_dryden_000,p2e2_dryden,0,,,A motel by the highway. Preethi patches a graze on your arm. Neither of you sleeps much.,,True
+p2e2_dryden_001,p2e2_dryden,1,,,Morning. The car won't start. There's fuel on the snow under the engine.,,True
+p2e2_tyler_000,p2e2_tyler,0,,,Tyler sees your face and goes white.,,True
+p2e2_tyler_a_000,p2e2_tyler_a,0,,,"An OPP cruiser takes Tyler away. He won't say a word. A man with a scar on his chin paid him, is all he'll admit. You lose an hour giving statements.",,True
+p2e2_tyler_b_000,p2e2_tyler_b,0,TYLER,,A guy paid me. Big. Scar on his chin. Said you were thieves.,,False
+p2e2_tyler_b_001,p2e2_tyler_b,1,TYLER,,"Every Thursday night they run a convoy up 105. Northstar trucks. They stop for fuel at Ear Falls at nine. Three trucks, sometimes four. Please don't tell anyone I told you.",,False
+p2e2_ear_000,p2e2_ear,0,,,"Ivy and you fix the fuel line with tape and a hose clamp from her trunk. She turns back toward Dryden to get her own car repaired: ""I'll catch up in Red Lake.""",,True
+p2e2_ear_001,p2e2_ear,1,,,"Highway 105 narrows to two lanes. Forest on both sides for 170 km. No cell signal. Then Ear Falls: a dam, a gas station, a diner. Pie and coffee.",,True
+p2e2_ear_002,p2e2_ear,2,NILA,"ON RADIO, WEAK",Anna. Anni. Naan ungala nenachu romba perumai padaren.,"I'm so proud of you both. (beat) Okay, that's enough emotions. Eat your pie.",False
+p2e2_arrive_000,p2e2_arrive,0,,,"Snow falling. A gold-mining town on a frozen lake. Headframes against a violet sky. On the waterfront, the Norseman floatplane monument, frosted white.",,True
+p2e2_arrive_001,p2e2_arrive,1,PREETHI,,It's beautiful.,,False
+p2e2_arrive_002,p2e2_arrive,2,MANI,,Everything up here is beautiful. That's what scares me.,,False
+p2e2_arrive_003,p2e2_arrive,3,,,"The Northern Star Motel: twelve rooms, a coffee pot, a moose head over the desk. The owner, Bev Arsenault, reading glasses on her head, eyes your long cases.",,True
+p2e2_arrive_004,p2e2_arrive,4,BEV,,Hunting?,,False
+p2e2_arrive_005,p2e2_arrive,5,MANI,,Something like that.,,False
+p2e2_arrive_006,p2e2_arrive,6,BEV,,"Mm. Last person I had who was ""something like that"" was a girl from Toronto in 2024. Disappeared in the night, left her toothbrush. (She hands you a key.) Room seven. Checkout's at eleven. Murders are extra.",,False
+p2e2_gift_000,p2e2_gift,0,,,"On the bed, a gift box with a silk ribbon. Preethi stops your hand.",,True
+p2e2_gift_001,p2e2_gift,1,PREETHI,,"Wait. (She checks it like a package at the pharmacy: no wires, no smell.) Okay.",,False
+p2e2_gift_002,p2e2_gift,2,,,"Inside, on tissue paper: the shed skin of a golden lancehead. And a photo of Nila asleep in her hospital bed in Windsor, taken from inside her room. A card, in neat handwriting:",,True
+p2e2_gift_003,p2e2_gift,3,,,"""Welcome to my town.""",,True
+p2e2_gift_004,p2e2_gift,4,MANI,,Lighthouse! Nila! Answer me!,,False
+p2e2_gift_005,p2e2_gift,5,,,"Static. Then Appa's voice, confused.",,True
+p2e2_gift_006,p2e2_gift,6,APPA,ON RADIO,Mani? Ava thoongittu irukkaa. Enna aachu?,Mani? She's sleeping. What happened?,False
+p2e2_gift_007,p2e2_gift,7,MANI,,"Appa, room-la yaarachum vandhaangala?","Appa, has anyone been in the room?",False
+p2e2_gift_008,p2e2_gift,8,APPA,ON RADIO,"Oru doctor vandhaaru, kaalaila. Romba nalla manushan. Nila-ku flowers kondu vandhaaru.",A doctor came this morning. A very nice man. He brought Nila flowers.,False
+p2e2_end_000,p2e2_end,0,,,End of Episode 2.,,True
+p2e3_open_000,p2e3_open,0,,,"You haven't slept. The radio on the bed. Ortiz's voice on it, from the highway.",,True
+p2e3_open_001,p2e3_open,1,ORTIZ,ON RADIO,"Took three days off. I'll sit outside her door in Windsor till you come home. Nobody brings her flowers but family. (beat) That's not a favour, Mani. I owe her.",,False
+p2e3_open_002,p2e3_open,2,NILA,ON RADIO,"Sam's here. He brought Tom Portons. Okay. Plan for today, Anna. Hospital, museum, rocks.",,False
+p2e3_hosp_000,p2e3_hosp,0,,,"A small, clean hospital, snow piled at the doors. Preethi introduces herself at the desk as a visiting hospital pharmacist from Windsor, which is true, and asks for the director. She gets Dr. Helen Marchetti, fifty-two, sharp, tired, stethoscope worn like a necklace.",,True
+p2e3_hosp_001,p2e3_hosp,1,DR. MARCHETTI,,Windsor? You drove all this way to ask about my formulary?,,False
+p2e3_hosp_002,p2e3_hosp,2,PREETHI,,I drove all this way because my sister-in-law has a cancer nobody understands. (She hands over Nila's panel.) This compound. Have you seen it?,,False
+p2e3_hosp_003,p2e3_hosp,3,,,Marchetti reads it. Closes her office door.,,True
+p2e3_hosp_004,p2e3_hosp,4,DR. MARCHETTI,,"Four times. Four men who did contract work at the Hayden Deep. All dead within five months. I sent samples to Winnipeg. The results came back ""lost"". Then Northstar donated a CT scanner to this hospital. (beat) I was told to stop asking.",,False
+p2e3_hosp2_000,p2e3_hosp2,0,PREETHI,,Same compound. Same pattern. Different start dates. (beat) Nila's three weeks behind the last man.,,False
+p2e3_hosp2_001,p2e3_hosp2,1,DR. MARCHETTI,,(quietly) Then you have about three months. Maybe less.,,False
+p2e3_hosp2_002,p2e3_hosp2,2,,,Preethi doesn't move. You take her hand under the desk.,,True
+p2e3_museum_000,p2e3_museum,0,,,"Gold pans, Norseman models, mine photographs. A volunteer docent, Mrs. Lindqvist, seventies, is delighted to have a visitor.",,True
+p2e3_museum2_000,p2e3_museum2,0,MRS. LINDQVIST,,"Mark came home in 2015. Bought the old mine, built a big house way out past the Burn. Nobody's ever been invited.",,False
+p2e3_museum2_001,p2e3_museum2,1,MRS. LINDQVIST,,"His father too, they say. Though old Robert must be ninety if he's a day.",,False
+p2e3_museum2_002,p2e3_museum2,2,,,"You write down ""Robert"".",,True
+p2e3_overlook_000,p2e3_overlook,0,,,"A lot overlooking the mine buildings and headframe. A.Y. Jackson painted this view once. You and Preethi eat the last of Amma's puliyodharai in the car, heater running.",,True
+p2e3_overlook_001,p2e3_overlook,1,PREETHI,,Three months.,,False
+p2e3_overlook_002,p2e3_overlook,2,MANI,,Less.,,False
+p2e3_overlook_003,p2e3_overlook,3,PREETHI,,What if the cure doesn't exist?,,False
+p2e3_overlook_004,p2e3_overlook,4,MANI,,Then Hades wouldn't send presents. You don't brag about a lock unless you have the key.,,False
+p2e3_rocks_000,p2e3_rocks,0,,,"Cases of minerals: thousands of specimens, quartz, pyrite, real gold glinting under the lights. Somewhere in here are rocks from the Hayden Deep.",,True
+p2e3_rocks2_000,p2e3_rocks2,0,,,"You borrow the case magnifier. Under the Level 6 label, an older typed tag, mostly hidden.",,True
+p2e3_rocks3_000,p2e3_rocks3,0,MANI,,The public mine maps show six levels.,,False
+p2e3_rocks3_001,p2e3_rocks3,1,NILA,ON RADIO,"So there are three more nobody talks about. That's where the lab is, Anna.",,False
+p2e3_dunn_000,p2e3_dunn,0,,,"A call to your phone brings you in. Constable Rachel Dunn, thirty-three, ponytail, notebook, very direct.",,True
+p2e3_dunn_001,p2e3_dunn,1,DUNN,,"Two people from Windsor, long gun cases, asking about Northstar at the hospital and the museum. You know what that sounds like to me?",,False
+p2e3_dunn2_000,p2e3_dunn2,0,DUNN,,(writing) Why Northstar?,,False
+p2e3_dunn3_000,p2e3_dunn3,0,DUNN,,Grace taught me at Lakehead. (She closes her notebook.) I can't help you. I also can't arrest you for being sad.,,False
+p2e3_dunn3_001,p2e3_dunn3,1,DUNN,,"Go home, Mr. Mani. Northstar pays half this town's wages. (beat) And if you don't go home, don't make me find you in a ditch.",,False
+p2e3_daniel_000,p2e3_daniel,0,,,"Planes on skis on the frozen bay. A man in a heavy parka works on the engine of an old Norseman. Daniel Keeper, forty-five.",,True
+p2e3_daniel_001,p2e3_daniel,1,DANIEL,,You're the couple asking about Hayden Deep. (beat) My cousin Joe worked there. He was the third one who died.,,False
+p2e3_daniel_002,p2e3_daniel,2,DANIEL,,There's a stretch of land past the Burn nobody's allowed to fly over. Northstar got a restriction put on it. I know every lake around it.,,False
+p2e3_daniel_003,p2e3_daniel,3,MANI,,Would you fly us?,,False
+p2e3_daniel_004,p2e3_daniel,4,DANIEL,,When it's time. Not before. (He looks at the gun cases in your back seat.) And not with those pointed at my plane.,,False
+p2e3_cliff_000,p2e3_cliff,0,,,"The nightly check-in. Nila reads the five blood panels back to you, voice thin.",,True
+p2e3_cliff_001,p2e3_cliff,1,NILA,ON RADIO,"…so if the peptide binds in the liver first, then the three-week lag means he dosed me in the—",,False
+p2e3_cliff_002,p2e3_cliff,2,,,"Her voice stops. A long electronic tone. Then voices in the room, running feet, the clatter of a falling tray. Then Amma.",,True
+p2e3_cliff_003,p2e3_cliff,3,AMMA,ON RADIO,"Kanna! Nurses vandhurukkaanga, ava moochu—","Kanna! The nurses are here, her breathing—",False
+p2e3_cliff_004,p2e3_cliff,4,,,Static.,,True
+p2e3_end_000,p2e3_end,0,,,End of Episode 3.,,True
+p2e4_open_000,p2e4_open,0,,,"You and Preethi sit on the floor by the radio, coats still on. You've packed the car to drive back to Windsor. Static for six hours.",,True
+p2e4_open_001,p2e4_open,1,,,Then a click.,,True
+p2e4_open_002,p2e4_open,2,NILA,"ON RADIO, A WHISPER",…Anna. Anni. Naan inga dhaan irukken.,I'm still here. (beat) They gave me oxygen. Ortiz yelled at a doctor. It was very funny.,False
+p2e4_open_003,p2e4_open,3,,,Preethi puts her face in her hands and cries.,,True
+p2e4_open_004,p2e4_open,4,NILA,ON RADIO,Unpack the car. (beat) Find the man who dug Level 9.,,False
+p2e4_bar_000,p2e4_bar,0,,,"A low wooden bar with a store at the back. Trophy fish on the walls. Miners on shift break, steam rising off their jackets.",,True
+p2e4_ice_000,p2e4_ice,0,,,"The summer ferry is gone. A ploughed road of ice crosses the dark lake, marked by small evergreen trees stuck in the snow. Thin near the shore, where the current runs.",,True
+p2e4_ice_001,p2e4_ice,1,,,"Halfway across: headlights behind you. Three snowmobiles, fast.",,True
+p2e4_ice2_000,p2e4_ice2,0,,,The snowmobiles close in on both sides.,,True
+p2e4_ice2_001,p2e4_ice2,1,,,Preethi rolls down her window. Wind and snow pour in. She braces the shotgun on the door.,,True
+p2e4_ice3_000,p2e4_ice3,0,,,The third snowmobile is still on you as the island shore rushes up.,,True
+p2e4_ice_end_000,p2e4_ice_end,0,,,You hit the shore road at speed and fishtail into a snowbank. The snowmobile roars past and away into the dark.,,True
+p2e4_sully_000,p2e4_sully,0,,,"A cabin crammed with mining junk, a wood stove, and a black cat named Nugget. ""Sully"" O'Rourke, seventy-eight, takes the rye before he takes your names.",,True
+p2e4_sully_001,p2e4_sully,1,SULLY,,"Hayden Deep. (He pours.) I dug Level Nine in seventy-four. Old Robert Hayden wanted a level nobody would ever see on a map. Said it was for ""cold storage"". I've dug gold for fifty years; you don't keep anything cold that far down. You keep it secret.",,False
+p2e4_stories_000,p2e4_stories,0,,,"Sully refills his glass. ""Ask me something.""",,True
+p2e4_s1_000,p2e4_s1,0,SULLY,,Six of us. Nine months. Paid triple and told to forget it. We cut a vent raise up to the bush by Madsen so we could breathe down there. Nobody ever filled it in. I'd bet my cat on it.,,False
+p2e4_s2_000,p2e4_s2,0,SULLY,,In the eighties. Three of the six of us. Lungs. Same as everybody else on that road. Company paid for the funerals. Very generous. Very quiet.,,False
+p2e4_s3_000,p2e4_s3,0,SULLY,,"Cold little thing. Used to catch garter snakes and keep them in jars on his windowsill. Watched them. Just watched them, for hours. Never let them go.",,False
+p2e4_map_000,p2e4_map,0,,,"Sully turns over a calendar from 1974. On the back, in pencil: a hand-drawn map. Levels 6 to 9, the shafts, and a ventilation raise that comes up in the bush near Madsen.",,True
+p2e4_map_001,p2e4_map,1,SULLY,,"Only map there is. Take it. (beat) And son. The old man never died, you know. They say he lives out there with the boy.",,False
+p2e4_mapp_000,p2e4_mapp,0,,,"You lay Sully's map over Ivy's surface sketch and the ""Level 9"" clue.",,True
+p2e4_back_000,p2e4_back,0,NILA,ON RADIO,"A side door nobody remembers. Every case has one. Good work, Anna.",,False
+p2e4_back_001,p2e4_back,1,,,"You cross back on the marked road, slowly. Where the snowmobile went through, the ice is already freezing over. Preethi is silent.",,True
+p2e4_back_002,p2e4_back,2,PREETHI,,That man could have drowned.,,False
+p2e4_back_003,p2e4_back,3,MANI,,He was shooting at us.,,False
+p2e4_back_004,p2e4_back,4,PREETHI,,I know. (beat) I still want to remember that he could have drowned.,,False
+p2e4_cliff_000,p2e4_cliff,0,,,"The office door is open. Bev is duct-taped to her desk chair, a bruise on her cheek, furious.",,True
+p2e4_cliff_001,p2e4_cliff,1,BEV,,(as Preethi cuts the tape) Three of them. One with a scar. They wanted the Toronto girl.,,False
+p2e4_cliff_002,p2e4_cliff,2,MANI,,Ivy's in Dryden—,,False
+p2e4_cliff_003,p2e4_cliff,3,BEV,,She came back tonight. Two hours ago. Room four.,,False
+p2e4_cliff_004,p2e4_cliff,4,,,"Room four: the door kicked in, the bed overturned, Ivy's laptop smashed. A drop of blood on the snow outside. Drag marks to where a vehicle waited.",,True
+p2e4_cliff_005,p2e4_cliff,5,,,Your radio clicks onto your channel.,,True
+p2e4_cliff_006,p2e4_cliff,6,KANE,ON RADIO,"The journalist talks a lot when she's cold. (beat) Thursday, Mani. Bring the file. You can have whatever's left of her.",,False
+p2e4_end_000,p2e4_end,0,,,End of Episode 4.,,True
+p2e5_open_000,p2e5_open,0,,,"Sully's map, Ivy's sketch and your notes spread on the bed. Nila on the radio, voice weak but precise.",,True
+p2e5_open_001,p2e5_open,1,NILA,ON RADIO,"Kane expects you at the front gate at midnight with the file. So you'll be there, Anna, and you won't. Ivy told me Northstar runs a supply convoy on Thursdays; it fuels at Ear Falls at nine.",,False
+p2e5_open_002,p2e5_open,2,NILA,ON RADIO,"Last truck, there's a gap between the pallets and the cab. You ride in. Anni takes the old ventilation raise near Madsen. You meet on Level 9.",,False
+p2e5_open_003,p2e5_open,3,PREETHI,,And if one of us gets caught?,,False
+p2e5_open_004,p2e5_open,4,NILA,ON RADIO,Then the other one is the plan. (beat) Bring me pictures. Bring me voices. Bring Ivy.,,False
+p2e5_ear_000,p2e5_ear,0,,,"Three Northstar trucks fuelling under floodlights. The drivers are inside, buying coffee. You need to reach the last truck without being seen.",,True
+p2e5_ear_001,p2e5_ear,1,,,"Between you and it: the ice machine, a parked snowplough, and twenty metres of bright concrete.",,True
+p2e5_ear_seen_000,p2e5_ear_seen,0,,,A driver comes out with his coffee and looks right at you. You freeze in the shadow of the truck.,,True
+p2e5_ear_caught_000,p2e5_ear_caught,0,,,"The driver yells. You dive into the gap behind the cab as he comes round the corner with a flashlight. He swears, decides it was a raccoon, and climbs in. Your heart is louder than the engine.",,True
+p2e5_ear2_000,p2e5_ear2,0,,,You fold yourself into the gap behind the cab. Diesel and cold metal. The truck pulls out. North.,,True
+p2e5_vent_000,p2e5_vent,0,,,Deep snow. Preethi follows Sully's map by headlamp to a rusted steel cap in the trees: the 1974 ventilation raise. She cuts the padlock with Ruth's old bolt cutters.,,True
+p2e5_vent_001,p2e5_vent,1,PREETHI,INTO RADIO,"Lighthouse, I'm at the side door.",,False
+p2e5_vent_002,p2e5_vent,2,NILA,ON RADIO,"Three hundred metres of ladder, Anni. Don't look down. Actually, look down. Watch where you put your feet.",,False
+p2e5_vent_003,p2e5_vent,3,,,"Halfway down, a rung snaps under her boot.",,True
+p2e5_vent_slip_000,p2e5_vent_slip,0,,,"She drops a metre and catches a rung with one hand, slamming her knee into the rock. She hangs there, breathing. Then she climbs on.",,True
+p2e5_vent2_000,p2e5_vent2,0,,,"A bat colony explodes past her face in the dark, hundreds of wings. She swears in Tamil, loudly. On the radio, Nila laughs weakly for the first time in days.",,True
+p2e5_vent2_001,p2e5_vent2,1,,,Two hundred metres to go.,,True
+p2e5_surface_000,p2e5_surface,0,,,"The truck rolls through the gate. Floodlights, the headframe, a modern glass office bolted onto old brick. You slip out at the loading dock.",,True
+p2e5_surface_001,p2e5_surface,1,,,Three guards between you and the freight elevator. A locker room. Cameras.,,True
+p2e5_surface_clean_000,p2e5_surface_clean,0,,,"Under the guard post bench: a hard case stencilled NSB. Grenades. And on a hook, a lab coat and an ID badge that opens the freight elevator to Level 6.",,True
+p2e5_surface_loud_000,p2e5_surface_loud,0,,,An alarm starts somewhere and stops. They'll be looking now. Under the guard post bench: a hard case stencilled NSB. Grenades. You take the elevator badge from a guard's belt.,,True
+p2e5_meet_000,p2e5_meet,0,,,Preethi drops from the last rung into warm air. You find the old ramp down from Level 6. You meet in a tunnel lit by white LEDs. She grabs your coat with both hands and doesn't say anything.,,True
+p2e5_meet_001,p2e5_meet,1,,,Then the tunnel opens.,,True
+p2e5_farm_000,p2e5_farm,0,,,"A cavern of heated glass tanks, hundreds of them, in rows that disappear into the dark. In every tank, a golden lancehead. Robotic arms move from tank to tank, pinning the snakes and milking venom into vials. Freezers hum.",,True
+p2e5_farm_001,p2e5_farm,1,PREETHI,,(whispering) This is a farm. He's farming them.,,False
+p2e5_server_000,p2e5_server,0,,,A clean lab behind glass. A server terminal. You plug in the USB with the encrypted file from Greyhaven. Hades_contacts.enc.,,True
+p2e5_server_001,p2e5_server,1,,,It isn't a list of contacts. It's a key. The terminal asks for three fields to unlock the trial database.,,True
+p2e5_files_000,p2e5_files,0,,,The records open.,,True
+p2e5_files_001,p2e5_files,1,,,"SUBJECT GH-01. Nila. ""Route: drinking water. Location: Pike Point, Greyhaven. Progression: as expected."" A scanned note in the margin, in neat handwriting: ""Keep her alive until the brother comes. — M.H.""",,True
+p2e5_files_002,p2e5_files,2,,,SUBJECTS RL-01 to RL-04: the four dead men. Joe Keeper is RL-03.,,True
+p2e5_files_003,p2e5_files,3,,,"HX-7C (antidote): ""Three doses. Stored at the house vault. Access: M.H. only.""",,True
+p2e5_files_004,p2e5_files,4,MANI,INTO RADIO,Nila. He wrote your name. In his own handwriting.,,False
+p2e5_files_005,p2e5_files,5,,,A long silence on the radio.,,True
+p2e5_files_006,p2e5_files,6,NILA,ON RADIO,"Then we have him on paper. Copy everything, Anna.",,False
+p2e5_ivy_000,p2e5_ivy,0,,,"Behind a steel door marked SAMPLES −4°C: Ivy, zip-tied to a shelf, lips blue, a bruise over one eye. Preethi cuts her free and wraps her in her own parka.",,True
+p2e5_ivy_001,p2e5_ivy,1,IVY,,(teeth chattering) I came back to warn you. They were in the parking lot.,,False
+p2e5_ivy_002,p2e5_ivy,2,PREETHI,,You're okay. I've got you. (She checks Ivy's pupils and fingers.) Early hypothermia. You'll keep your fingers.,,False
+p2e5_ivy_003,p2e5_ivy,3,,,Alarms. Red lights. A voice on the PA.,,True
+p2e5_ivy_004,p2e5_ivy,4,KANE,PA,Mani. You were supposed to come to the front door.,,False
+p2e5_esc1_000,p2e5_esc1,0,,,Guards pour into the venom farm between the tank rows. They've been waiting.,,True
+p2e5_esc2_000,p2e5_esc2,0,,,The old mine cage elevator. A slow ride up three hundred metres. Kane's men fire down the shaft from above.,,True
+p2e5_cliff_000,p2e5_cliff,0,,,"You crash through a gap in the fence into the bush and run, Ivy between you. Then lights everywhere, red and blue. A ring of OPP cruisers on the access road. A megaphone.",,True
+p2e5_cliff_001,p2e5_cliff,1,DUNN,MEGAPHONE,Hands where I can see them. Both of you. Now.,,False
+p2e5_cliff_002,p2e5_cliff,2,,,"Preethi looks at the Desert Eagle in her hand, then at you. Behind you, on the mine road, Kane's SUVs stop, turn, and drive calmly away.",,True
+p2e5_end_000,p2e5_end,0,,,End of Episode 5.,,True
+p2e6_open_000,p2e6_open,0,,,"In the two seconds before the floodlights reach you, Preethi does something fast: she shoves both Desert Eagles and the long guns into a snowbank behind a spruce and kicks snow over them.",,True
+p2e6_open_001,p2e6_open,1,PREETHI,,"(under her breath) Illegal guns, Mani. Ninaivirukkaa?",Remember?,False
+p2e6_open_002,p2e6_open,2,,,"You step out with your hands up, Ivy between you. Dunn pats you down: a USB stick, a phone full of photographs, a pocket of dried fruit.",,True
+p2e6_dunn_000,p2e6_dunn,0,,,"Dunn scrolls through the photos on your phone: the venom farm, the whiteboard, the GH-01 record. Ivy, wrapped in a blanket, gives a statement. Dunn's face changes.",,True
+p2e6_dunn_001,p2e6_dunn,1,DUNN,,You broke into a private facility. I should charge you both.,,False
+p2e6_dunn_002,p2e6_dunn,2,MANI,,Charge me. But read page four first.,,False
+p2e6_dunn_003,p2e6_dunn,3,,,"She reads it. ""Keep her alive until the brother comes."" She closes the laptop.",,True
+p2e6_dunn_004,p2e6_dunn,4,DUNN,,I can't get a warrant for Northstar on photos from a break-in. The judge in Kenora golfs with Hayden's lawyer. And half this town's mortgages are paid by that mine.,,False
+p2e6_dunn_005,p2e6_dunn,5,DUNN,,"Officially, you were found lost on a snowmobile trail. (She slides the USB back.) Get your sister her medicine. And whatever you hid in that snowbank, I didn't see it.",,False
+p2e6_amma_000,p2e6_amma,0,,,"No Nila. Instead, Amma's voice, and Appa beside her.",,True
+p2e6_amma_001,p2e6_amma,1,AMMA,ON RADIO,"Kanna, Nila thoonguraa. Doctor sonnaaru, unconscious-nu. Konja naal aagalaam.","Kanna, Nila is sleeping. The doctor says she's unconscious. It may take a few days.",False
+p2e6_amma_002,p2e6_amma,2,AMMA,ON RADIO,Aana naan inga irukken. Ava notes ellam en kitta irukku. Naan padichu solren.,But I'm here. I have all her notes. I'll read them to you.,False
+p2e6_amma_003,p2e6_amma,3,,,Preethi sits down slowly on the bed.,,True
+p2e6_kane_000,p2e6_kane,0,,,The radio clicks onto your channel.,,True
+p2e6_kane_001,p2e6_kane,1,KANE,ON RADIO,You took the journalist. So I took the old man.,,False
+p2e6_kane_002,p2e6_kane,2,,,"A cough, then Sully's voice, angry: ""Don't you come, son!"" A thud.",,True
+p2e6_kane_003,p2e6_kane,3,KANE,ON RADIO,"Starratt-Olsen. Midnight. Not the file this time, Mani. You. Walk in alone.",,False
+p2e6_kane_004,p2e6_kane,4,APPA,ON RADIO,"Mani. Nila ezhudhinadhu inga irukku: ""Kane fights near water. Kane likes high ground."" Idhu ungalukku purinjadha?","Mani. Nila wrote this here: ""Kane fights near water. Kane likes high ground."" Does this make sense to you?",False
+p2e6_kane_005,p2e6_kane,5,PREETHI,,"Purinjudhu, Appa.","It does, Appa.",False
+p2e6_guns_000,p2e6_guns,0,,,"First, the guns. In daylight, by the mine fence, with Northstar patrols driving the access road every ten minutes.",,True
+p2e6_guns_seen_000,p2e6_guns_seen,0,,,"A patrol truck slows. You lie flat in the snow with a shotgun under you. The driver squints, shrugs, and drives on. Too close.",,True
+p2e6_guns_ok_000,p2e6_guns_ok,0,,,"Everything is there under the snow. Cold, dry, loaded.",,True
+p2e6_town_000,p2e6_town,0,,,A near-ghost town. Empty houses with dark windows. A collapsed store. A little white church with a bell tower. Snow drifting through broken doors. A blizzard coming in off the lake.,,True
+p2e6_town_001,p2e6_town,1,,,"You walk down the middle of the road alone, as you were told. Preethi isn't with you. She's already in the church bell tower with the long gun.",,True
+p2e6_town_002,p2e6_town,2,KANE,ON RADIO,"Brave. Or stupid. Your wife's in the church, isn't she? (beat) That's fine. So's my sniper.",,False
+p2e6_town_003,p2e6_town,3,AMMA,ON RADIO,"Nila ezhudhiyirukka: ""Kane likes high ground.""","Nila wrote: ""Kane likes high ground.""",False
+p2e6_sniper_000,p2e6_sniper,0,,,"Preethi scans the town through her scope. Snow everywhere. Then: a puff of breath fog from the highest roof in town, the old hotel.",,True
+p2e6_houses_000,p2e6_houses,0,,,"Three houses between you and the one with a light in the window. In the first, a frightened local hiding with his dog. You get them out the back door into the storm.",,True
+p2e6_houses_001,p2e6_houses,1,,,"Three of Kane's men in the next two houses, waiting.",,True
+p2e6_sully_000,p2e6_sully,0,,,"In the last house, Sully, tied to a kitchen chair, blood in his white hair, alive.",,True
+p2e6_sully_001,p2e6_sully,1,SULLY,,(as you cut him loose) Told you not to come. (beat) Thank you for coming.,,False
+p2e6_sully_002,p2e6_sully,2,,,"Outside, engines. Kane and four men, converging on the road.",,True
+p2e6_road_000,p2e6_road,0,,,"Preethi comes down from the tower at a run. The two of you, behind an old truck, against Kane.",,True
+p2e6_after_000,p2e6_after,0,,,"In Kane's abandoned truck: another hard case stencilled NSB. And a radio, still on Kane's channel.",,True
+p2e6_wake_000,p2e6_wake,0,,,"The radio, after a day and a half of Amma's voice, clicks. A different breath on the line.",,True
+p2e6_wake_001,p2e6_wake,1,NILA,"ON RADIO, BARELY AUDIBLE",…Anna… Anni… naan ellathaiyum kettukittu irundhen.,I heard everything.,False
+p2e6_wake_002,p2e6_wake,2,NILA,ON RADIO,"Jonah got me a thermal image. Public satellite. North-west of the Burn there's only one heat source in four hundred square kilometres. A house. And behind it, something hot. Very hot.",,False
+p2e6_wake_003,p2e6_wake,3,PREETHI,,That's where the cure is.,,False
+p2e6_wake_004,p2e6_wake,4,NILA,ON RADIO,That's where he is. (beat) Call Daniel.,,False
+p2e6_flight_000,p2e6_flight,0,,,"The Norseman on skis, engine roaring. Daniel at the controls, you beside him, Preethi behind with the guns. The town shrinks below.",,True
+p2e6_flight_001,p2e6_flight,1,DANIEL,,Northstar got this airspace restricted. Not illegal to fly. Just unwise. (He grins.) Joe would've liked you.,,False
+p2e6_flight_002,p2e6_flight,2,,,"The Burn: endless dark forest grown thick over old fire scars. A frozen private lake. On its far shore, a stone-and-glass mansion, steam rising from its roofs. Behind it, a black cone of rock breathing a column of white steam into the blue sky.",,True
+p2e6_flight_003,p2e6_flight,3,PREETHI,,Is that a volcano?,,False
+p2e6_flight_004,p2e6_flight,4,DANIEL,,Locals call it the Smoke. Geologists say it can't exist. (beat) It does anyway.,,False
+p2e6_flight_005,p2e6_flight,5,,,A sharp crack. A hole punches through the fuselage beside Preethi's head. A second crack. Oil sprays across the windshield. The engine coughs.,,True
+p2e6_flight_006,p2e6_flight,6,DANIEL,,Rifle! From the ridge! Hold on!,,False
+p2e6_flight_007,p2e6_flight,7,,,"Black smoke. The engine dies. In the silence, only wind. Daniel fights the stick, gliding toward a long frozen lake in the heart of the Burn. The ice rushes up.",,True
+p2e6_flight_008,p2e6_flight,8,,,Impact. White.,,True
+p2e6_end_000,p2e6_end,0,,,End of Episode 6.,,True
+p2e7_open_000,p2e7_open,0,,,"The Norseman lies on its skis on the ice, one wing crumpled, the propeller bent. Steam from the engine. You pull yourself out of the cockpit. Preethi is already beside Daniel, whose leg is bent the wrong way below the knee.",,True
+p2e7_open_001,p2e7_open,1,PREETHI,,Broken. Closed fracture. (To Daniel.) This will hurt very much.,,False
+p2e7_open_002,p2e7_open,2,DANIEL,,"You're a pharmacist, not a— AHH.",,False
+p2e7_daniel_000,p2e7_daniel,0,DANIEL,,"(grey, sweating) Go. I'll fix the radio and keep the flare gun warm. When you're done, fire a green flare and I'll call it in. (beat) If you're not back by dark, I'm eating your sambar rice.",,False
+p2e7_daniel_001,p2e7_daniel,1,NILA,"ON RADIO, FAINT",…Anna… I'm here. I'm listening to them. I'm in their radio.,,False
+p2e7_shore_000,p2e7_shore,0,,,"The tree line. Snowmobile engines somewhere. Two hunters in white camouflage working the shore, rifles slung. They don't know the plane came down this far west.",,True
+p2e7_disguise_000,p2e7_disguise,0,,,"You take the first hunter's white parka, his toque and his radio. In the whites, from fifty metres, you're one of them.",,True
+p2e7_disguise_001,p2e7_disguise,1,,,"Preethi looks you up and down. ""You look like a marshmallow with a gun.""",,True
+p2e7_ridge_000,p2e7_ridge,0,,,"A ridge of black, dead trunks from the old fire, new pines thick below. A glint on the crest.",,True
+p2e7_ridge_001,p2e7_ridge,1,PREETHI,,Sniper. The same one who shot the plane.,,False
+p2e7_ridge_002,p2e7_ridge,2,,,"You spot for her with the binoculars: ""Three hundred. Wind left.""",,True
+p2e7_ridge2_000,p2e7_ridge2,0,,,"In the sniper's nest: another NSB grenade case, and a map of the hunters' patrol routes. A camp on the north trail. An ammo cabin in the ravine. A fire lookout tower where the routes meet.",,True
+p2e7_ridge2_001,p2e7_ridge2,1,MANI,,We split. Meet at the fire lookout.,,False
+p2e7_ridge2_002,p2e7_ridge2,2,PREETHI,,I hate this plan.,,False
+p2e7_ridge2_003,p2e7_ridge2,3,MANI,,Nila made it.,,False
+p2e7_ridge2_004,p2e7_ridge2,4,PREETHI,,I hate it less.,,False
+p2e7_camp_000,p2e7_camp,0,,,"A hunters' camp: tents, a fire, four men, two dogs. In the white parka you could walk right through it. Or bait the wolves you've heard all morning toward the meat rack.",,True
+p2e7_cabin_000,p2e7_cabin,0,,,"A frozen creek and an old trapper's cabin, now an ammo dump. Three guards inside. Preethi can go under the cabin through the crawlspace, or through the front door with the shotgun.",,True
+p2e7_meet_000,p2e7_meet,0,,,"You reach the old steel fire lookout tower at the same moment, from opposite sides. Preethi has a cut on her cheek and a stolen box of shells under her arm. You hold each other for exactly three seconds.",,True
+p2e7_ice_000,p2e7_ice,0,,,"Beyond the lookout, a long lake to cross. Too many snowmobiles. Kane's voice on the hunters' channel, organising them.",,True
+p2e7_ice_001,p2e7_ice,1,NILA,"ON RADIO, A RASP",Anna… give me the hunter's radio.,,False
+p2e7_ice_002,p2e7_ice,2,,,"You hold the captured radio against your own. Nila, in Windsor, listens for a full minute. Then she speaks on Kane's channel in Kane's clipped, flat voice.",,True
+p2e7_ice_003,p2e7_ice,3,NILA,AS KANE,All units. Targets on the south lake. Intercept. Now.,,False
+p2e7_ice_004,p2e7_ice,4,,,"Engines roar. Eight snowmobiles race out onto the south lake, where the current keeps the ice thin.",,True
+p2e7_ice_005,p2e7_ice,5,,,Preethi looks at you. She doesn't say anything.,,True
+p2e7_ice_warn_000,p2e7_ice_warn,0,MANI,INTO RADIO,Thin ice! South lake is thin ice! Turn back!,,False
+p2e7_ice_warn_001,p2e7_ice_warn,1,,,"The snowmobiles skid, turn, scatter. Every one of them makes it back to shore. Now they know exactly where you are.",,True
+p2e7_ice_warn_002,p2e7_ice_warn,2,NILA,ON RADIO,…You were right. I'm glad you were right.,,False
+p2e7_ice_let_000,p2e7_ice_let,0,,,"The ice opens. The lake takes machines and men. Then it's quiet, except for the wind.",,True
+p2e7_ice_let_001,p2e7_ice_let,1,,,Preethi doesn't say anything for a long time.,,True
+p2e7_ice_let_002,p2e7_ice_let,2,NILA,ON RADIO,"…Anna, I'm sorry. I'm sorry I made you do that.",,False
+p2e7_kane1_000,p2e7_kane1,0,,,"Kane, shoulder bandaged from Starratt-Olsen, waits at the top of the lookout with a heavy rifle.",,True
+p2e7_kane1_001,p2e7_kane1,1,KANE,,(shouting down) He said you'd come! He said you'd both come! He's got a bet on which of you dies first!,,False
+p2e7_kane2_000,p2e7_kane2,0,,,Close quarters on the switchback stairs. Two of Kane's men between you and the top.,,True
+p2e7_kane3_000,p2e7_kane3,0,,,Wind. Kane grabs Preethi as she comes up through the hatch and holds her out over the rail. You have one grenade and one magazine left.,,True
+p2e7_kane3_001,p2e7_kane3,1,KANE,,"Drop it, or she flies.",,False
+p2e7_kane_bad_000,p2e7_kane_bad,0,,,Kane laughs and leans Preethi further out. Her boots scrape at nothing. No. Not like this.,,True
+p2e7_kane_bad_001,p2e7_kane_bad,1,,,Think. The grenade.,,True
+p2e7_kane_end_000,p2e7_kane_end,0,,,"The grenade sails off the far side and bursts in the trees below. Kane's head snaps toward the blast. Preethi drives her elbow into his wounded shoulder and twists free. Kane staggers back against the rail, which gives way.",,True
+p2e7_kane_end_001,p2e7_kane_end,1,,,He hangs from the edge by one hand. You reach him.,,True
+p2e7_kane_end_002,p2e7_kane_end,2,KANE,,He'll give you the cure. (A thin laugh.) He wants you to watch him choose which one.,,False
+p2e7_kane_end_003,p2e7_kane_end,3,,,His grip fails. He falls into the trees.,,True
+p2e7_cliff_000,p2e7_cliff,0,,,"From the top of the tower, everything is visible. The frozen private lake below. On its far shore, the Hades Mansion, every window lit gold, steam pouring from vents on its roofs. Behind it, the Smoke breathes a white column into the violet sky.",,True
+p2e7_cliff_001,p2e7_cliff,1,,,"In a glass-walled courtyard, something large and striped paces.",,True
+p2e7_cliff_002,p2e7_cliff,2,,,Preethi loads her last shells. You count the grenades.,,True
+p2e7_cliff_003,p2e7_cliff,3,,,"The radio clicks onto your private channel. A calm voice, warm and pleased.",,True
+p2e7_cliff_004,p2e7_cliff,4,HADES,ON RADIO,"Come in. Shoes off, please. I've made tea.",,False
+p2e7_end_000,p2e7_end,0,,,End of Episode 7.,,True
+p2e8_open_000,p2e8_open,0,,,"Night. Minus thirty-five. You and Preethi cross the lake on foot in the hunters' whites, low and fast. The mansion grows ahead: stone walls, glass wings glowing green and gold, steam rising from copper vents. A thick pipe runs from the house up the slope of the Smoke.",,True
+p2e8_open_001,p2e8_open,1,NILA,"ON RADIO, A WHISPER","He heats it from the volcano. That's how his animals survive up here. (beat) Anna. Anni. Whatever's in that house, it's alive and it's hungry. Go slow.",,False
+p2e8_open_002,p2e8_open,2,,,Three ways in.,,True
+p2e8_kennels_000,p2e8_kennels,0,,,Wolf-dog hybrids pace a heated run. Two guards in the gatehouse with a thermos and a card game. Preethi crushes her sedatives into a hunk of the dogs' own meat.,,True
+p2e8_roof_000,p2e8_roof,0,,,"The boathouse roof is coated in ice. Three metres of it to the balcony rail, with a twenty-metre drop to the frozen lake.",,True
+p2e8_roof_slip_000,p2e8_roof_slip,0,,,"Your boot slides. Preethi grabs your parka hood and hauls. You lie on the ice together, breathing, then crawl the rest.",,True
+p2e8_loud_000,p2e8_loud,0,,,"The grenade blows the generator shed apart. Every light dies for thirty seconds, then flickers back on the geothermal backup. Guards run toward the noise.",,True
+p2e8_hall_000,p2e8_hall,0,,,"Inside. Warm air, stone floors, the smell of wet earth and something like a zoo. Corridors lead off in every direction.",,True
+p2e8_hall_001,p2e8_hall,1,NILA,ON RADIO,"He's in the study, upstairs. He's waiting. But the vault codes, the layout, anything you learn first, it all helps.",,False
+p2e8_tiger_000,p2e8_tiger,0,,,"A heated glass yard. A Siberian tiger lies on a warm rock, watching you with complete calm. Two guards patrol the corridor on the far side of the glass. Two gates: the inner gate into the yard, the outer gate into the guards' corridor. A lever for each.",,True
+p2e8_tiger_001,p2e8_tiger,1,PREETHI,,He keeps a tiger. Of course he keeps a tiger.,,False
+p2e8_cons_000,p2e8_cons,0,,,"A jungle under glass, hot and dripping. Free-roaming golden lanceheads among the roots. A black mamba draped along the rafters. Poison dart frogs on the leaves like sweets.",,True
+p2e8_cons_001,p2e8_cons,1,,,Move slowly. Light every step. Don't touch the leaves.,,True
+p2e8_cons_bite_000,p2e8_cons_bite,0,,,A gold blur from the roots. Preethi cries out. Two punctures in her ankle above the boot.,,True
+p2e8_cons_bite_001,p2e8_cons_bite,1,,,Her hands are shaking but steady enough. She draws the antivenom from the Hayden Deep fridge and injects herself in the thigh. You hold her through the worst of it.,,True
+p2e8_cons_bite_002,p2e8_cons_bite,2,PREETHI,,(through her teeth) Good thing I'm a pharmacist.,,False
+p2e8_cons_ok_000,p2e8_cons_ok,0,,,"At the far end of the conservatory, a service corridor and a ring of keys on a hook: the household keys, labelled. One says VAULT — MH.",,True
+p2e8_pool_000,p2e8_pool,0,,,"A dark, warm saltwater pool. Things move under the surface: saltwater crocodiles. A catwalk crosses above, and a guard walks it back and forth.",,True
+p2e8_pool_bad_000,p2e8_pool_bad,0,,,The guard turns. A shot cracks off the tiles. You hit him before he fires again and he goes over the rail. You don't look at the water. Neither does Preethi.,,True
+p2e8_pool_ok_000,p2e8_pool_ok,0,,,"You cross in his shadow, step for step. He never turns. Below you, something large rolls lazily in the dark water.",,True
+p2e8_trophy_000,p2e8_trophy,0,,,"Stuffed animals from every continent, glass eyes catching the light. A portrait gallery.",,True
+p2e8_trophy_001,p2e8_trophy,1,,,"Robert Hayden in a long dark coat, 1978, beside the Merrow dam. A boy with a jar of snakes on a windowsill. A young man at a university lab bench. A plaque: ""Hayden Family Trust — est. 1934.""",,True
+p2e8_trophy_002,p2e8_trophy,2,MANI,,The coat. It's the same coat.,,False
+p2e8_trophy_003,p2e8_trophy,3,NILA,ON RADIO,Father and son. (beat) Anna. Which one have we been listening to?,,False
+p2e8_radio_000,p2e8_radio,0,,,"Floor-to-ceiling equipment. Racks of recordings labelled by date: every one of Nila's broadcasts from Greyhaven, and her new show in Windsor. A wall of photos of Nila taken from a distance: at Pike Point, at the Windsor studio, asleep in hospital.",,True
+p2e8_radio_001,p2e8_radio,1,,,"Nila, listening through your radio, hears her own voice playing on a loop in his room.",,True
+p2e8_radio_002,p2e8_radio,2,NILA,ON RADIO,…Anna. Burn it. All of it.,,False
+p2e8_study_000,p2e8_study,0,,,"A wood-panelled study. A fire. Tea in a china pot on a low table. A golden lancehead coiled on the desk like a sleeping cat. Behind the desk, for the first time, his face.",,True
+p2e8_study_001,p2e8_study,1,,,"Mark Hayden, fifty-eight, silver-haired, soft-voiced, the long dark coat over a cashmere sweater.",,True
+p2e8_study_002,p2e8_study,2,HADES,,"Shoes. (You don't move.) Fine. (He pours three cups.) Preethi, the pharmacist. Mani, the analyst. And Nila. I assume you're listening, Lighthouse.",,False
+p2e8_study_003,p2e8_study,3,NILA,ON RADIO,"I'm listening, Mark.",,False
+p2e8_study_004,p2e8_study,4,,,"He smiles, pleased, like a man hearing a favourite song.",,True
+p2e8_study_005,p2e8_study,5,HADES,,"Your sister is the most interesting person I've ever listened to. A hundred nights of a voice in the dark, telling the truth to people who don't want it.",,False
+p2e8_study_006,p2e8_study,6,HADES,,"Victor talked too much, so I stopped him. My father always said, never let the help speak at the table.",,False
+p2e8_study_007,p2e8_study,7,MANI,,Why her?,,False
+p2e8_study_008,p2e8_study,8,HADES,,"She was the perfect subject: young, healthy, isolated, curious. She cost me Greyhaven. And I knew you'd come. (He looks at you.) Brothers always come.",,False
+p2e8_offer_000,p2e8_offer,0,,,"He sets three identical glass vials on the desk, each with a white cap. A, B, C.",,True
+p2e8_offer_001,p2e8_offer,1,HADES,,"One of these is HX-7C, the cure. The other two are HX-7, concentrated. One dose of that and she dies by morning. (beat) Give me the file, and choose. I'll let you take whichever one you pick. I want to see if you can save her.",,False
+p2e8_offer_002,p2e8_offer,2,PREETHI,,You'll just let us walk out.,,False
+p2e8_offer_003,p2e8_offer,3,HADES,,"I'm a collector, Preethi. I collect moments.",,False
+p2e8_offer_004,p2e8_offer,4,,,"Preethi asks for one minute and opens her pharmacy kit on his desk. He nods, delighted.",,True
+p2e8_offer_005,p2e8_offer,5,,,"From the Hayden Deep files, she knows what HX-7C should do: a faint blue colour reaction, needle-shaped crystals, and slightly basic, around pH 7.6. She runs three tests on each vial.",,True
+p2e8_offer_006,p2e8_offer,6,,,Vial A: stays clear. Flat plate crystals. pH 6.8.,,True
+p2e8_offer_007,p2e8_offer,7,,,Vial B: faint blue. Needle crystals. pH 7.6.,,True
+p2e8_offer_008,p2e8_offer,8,,,Vial C: stays clear. Needle crystals. pH 7.4.,,True
+p2e8_usb_000,p2e8_usb,0,HADES,,"(applauding softly) Oh, she's good. She's very good.",,False
+p2e8_usb_001,p2e8_usb,1,,,You hand over the USB. He plugs it into his laptop. Blank. Wiped.,,True
+p2e8_usb_002,p2e8_usb,2,NILA,ON RADIO,"I erased it remotely this morning, Mark. You never needed it. You just wanted us here.",,False
+p2e8_usb_003,p2e8_usb,3,,,"Hades looks at the empty screen for a long moment. Then he laughs, genuinely.",,True
+p2e8_usb_004,p2e8_usb,4,HADES,,"I'm going to miss you, Lighthouse.",,False
+p2e8_usb_005,p2e8_usb,5,,,"Outside, across the lake, a green flare climbs into the sky. Daniel. Then, far off, the thud of helicopter rotors.",,True
+p2e8_usb_006,p2e8_usb,6,,,"Hades sighs and presses a button under the desk. Deep below the house, valves open. The pipes scream. Steam explodes from vents in every wing. Glass shatters in the conservatory. The animals are loose.",,True
+p2e8_escape_000,p2e8_escape,0,,,"Steam, falling glass, alarms. Guards between you and the back terrace, where Hades is disappearing up the slope of the Smoke.",,True
+p2e8_smoke_000,p2e8_smoke,0,,,"The black cone above you, hot under your boots despite the snow. Steam everywhere. Hades on a ledge, the golden lancehead around his arm, the coat whipping in the hot wind.",,True
+p2e8_smoke_001,p2e8_smoke,1,HADES,,You know what my father will say? That I played with my food. (beat) He's right.,,False
+p2e8_smoke_002,p2e8_smoke,2,,,"The ground cracks between you. A column of scalding steam erupts from the fissure with a roar. When it clears, the ledge is empty. A golden lancehead slides away over the rocks. The coat is gone. No body.",,True
+p2e8_smoke_003,p2e8_smoke,3,,,Neither of you fired. The Smoke took him.,,True
+p2e8_heli_000,p2e8_heli,0,,,"An OPP helicopter lands on the ice, rotor wash blasting snow. Dunn jumps out, then two paramedics carrying Daniel on a stretcher, grinning, leg splinted.",,True
+p2e8_heli_001,p2e8_heli,1,DUNN,,Your journalist sent the lab files to every newspaper in the country an hour ago. The judge in Kenora stopped golfing. (beat) Get in.,,False
+p2e8_heli_002,p2e8_heli,2,,,"Preethi holds the vial in both hands inside her parka, against her heart, the whole flight.",,True
+p2e8_hosp_000,p2e8_hosp,0,,,Dr. Singh. Dr. Marchetti on a video call from Red Lake. Preethi with three pages of notes. The first dose.,,True
+p2e8_hosp_001,p2e8_hosp,1,,,"A long, silent wait. Amma praying under her breath. Appa holding Nila's hand. Ortiz asleep in a plastic chair in the corridor.",,True
+p2e8_hosp_002,p2e8_hosp,2,,,Nila's eyes open.,,True
+p2e8_hosp_003,p2e8_hosp,3,NILA,,Anna… Anni… neenga romba late.,You two are very late.,False
+p2e8_hosp_004,p2e8_hosp,4,PREETHI,,(crying and laughing) Traffic.,,False
+p2e8_pongal_000,p2e8_pongal,0,,,"Appa said it a year ago: ""Come home for Pongal."" The pongal pot boils over on the stove for luck and everyone shouts ""Pongalo pongal!"" A kolam at the door. Sugarcane in the corner. Amma and Appa in person this time.",,True
+p2e8_pongal_001,p2e8_pongal,1,,,"Ortiz, Ruth and Jonah on a video call from Greyhaven. Daniel, Ivy and Dunn on another from Red Lake. Daniel's leg is in a cast covered in signatures.",,True
+p2e8_pongal_002,p2e8_pongal,2,,,"Nila, thinner, hair short, laughing, back on her feet.",,True
+p2e8_pongal_003,p2e8_pongal,3,NILA,,"Appa, poana varusham nee sonna, Pongal-ku veetuku vaanu. (beat) Naan vandhutten.","Appa, last year you said come home for Pongal. (beat) I came.",False
+p2e8_hook_000,p2e8_hook,0,,,"Preethi sits on the edge of the bed, holding something behind her back. She shows you a pregnancy test. Positive.",,True
+p2e8_hook_001,p2e8_hook,1,,,"You stare at it. Then at her. Joy, so big it's quiet.",,True
+p2e8_hook_002,p2e8_hook,2,,,"In the living room, Nila's old radio, switched off on the shelf, clicks to static on its own. An old man's voice, slow and amused:",,True
+p2e8_hook_003,p2e8_hook,3,OLD MAN,ON RADIO,"Congratulations, Anni.",,False
+p2e8_hook_004,p2e8_hook,4,,,Silence. Nobody hears it.,,True
+p2_end_000,p2_end,0,,,A stone house somewhere you have never seen. Snow at the windows.,,True
+p2_end_001,p2_end,1,,,"A very old man in a long dark coat, Robert Hayden, sits beside a hospital bed.",,True
+p2_end_002,p2_end,2,,,"In the bed, burned and bandaged, Mark Hayden opens his eyes.",,True
+p2_end_003,p2_end,3,,,"""You played with your food, Mark,"" the old man says. ""Now we do it properly.""",,True
+p2_end_004,p2_end,4,,,OUT OF TOWN WILL RETURN.,,True

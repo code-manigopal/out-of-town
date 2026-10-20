@@ -1,0 +1,62 @@
+﻿Name,SceneId,Label,SubLabel,TargetScene,RequiredFlags,RequiredClues,LockedReason,TimerSeconds
+p2e1_mill2_c0,p2e1_mill2,Freeze against the wall,,p2e1_mill3,(),(),,6
+p2e1_mill2_c1,p2e1_mill2,"Keep moving, fast",,p2e1_mill3,(),(),,6
+p2e1_safe_c0,p2e1_safe,Hide behind the safe,,p2e1_safe_hide,(),(),,6
+p2e1_safe_c1,p2e1_safe,Run for the fence,,p2e1_safe_run,(),(),,6
+p2e1_plan_c0,p2e1_plan,"""Naan varen. Nee en thangachi maadhiri.""",PREETHI: I'm coming. You're like my own little sister.,p2e1_deal,(),(),,0
+p2e1_plan_c1,p2e1_plan,"""I'm coming. But we use them only to survive.""",PREETHI: Restraint.,p2e1_deal,(),(),,0
+p2e1_deal_c0,p2e1_deal,"""Twenty-five. Cash.""",,p2e1_deal2,(),(),,0
+p2e1_deal_c1,p2e1_deal,"""Fine. Forty.""",,p2e1_deal2,(),(),,0
+p2e1_deal_c2,p2e1_deal,"""You charged the last guy twenty-two, Rocco.""",,p2e1_deal2,(),(),,0
+p2e1_deal3_c0,p2e1_deal3,Close the van doors and stand like you're chatting,,p2e1_deal_ok,(),(),,8
+p2e1_deal3_c1,p2e1_deal3,Grab the cases and run for the car,,p2e1_deal_run,(),(),,8
+p2e1_tracker_c0,p2e1_tracker,Smash it,,p2e1_day2,(),(),,0
+p2e1_tracker_c1,p2e1_tracker,Stick it on a transport truck heading east,,p2e1_day2,(),(),,0
+p2e2_tyler_c0,p2e2_tyler,Report him to the OPP,,p2e2_tyler_a,(),(),,0
+p2e2_tyler_c1,p2e2_tyler,"Flip him: ""Tell us who paid you, and we never met.""",,p2e2_tyler_b,(),(),,0
+p2e3_dunn_c0,p2e3_dunn,"""Grace Okafor said you were honest.""",,p2e3_dunn2,(),(),,0
+p2e3_dunn_c1,p2e3_dunn,"""We're tourists.""",,p2e3_dunn2,(),(),,0
+p2e3_dunn_c2,p2e3_dunn,"""Some men shot at us near Ignace.""",,p2e3_dunn2,(),(),,0
+p2e3_dunn2_c0,p2e3_dunn2,Tell her about Nila's cancer and show the five blood panels,,p2e3_dunn3,(),(),You'd need the blood panels,0
+p2e3_dunn2_c1,p2e3_dunn2,"""We're thinking of investing.""",,p2e3_dunn3,(),(),,0
+p2e3_dunn2_c2,p2e3_dunn2,Show her the gun cases are locked,,p2e3_dunn3,(),(),,0
+p2e4_ice_c0,p2e4_ice,Stay on the marked road,Safer. Slower.,p2e4_ice2,(),(),,6
+p2e4_ice_c1,p2e4_ice,Cut across the open ice,Faster. The ice booms.,p2e4_ice2,(),(),,6
+p2e4_ice3_c0,p2e4_ice3,Brake hard at the shore,,p2e4_ice_end,(),(),,5
+p2e4_ice3_c1,p2e4_ice3,Keep your speed,,p2e4_ice_end,(),(),,5
+p2e4_stories_c0,p2e4_stories,"""Tell me about the dig.""",,p2e4_s1,(),(),,0
+p2e4_stories_c1,p2e4_stories,"""Did the miners get sick?""",,p2e4_s2,(),(),,0
+p2e4_stories_c2,p2e4_stories,"""What was Mark like as a boy?""",,p2e4_s3,(),(),,0
+p2e4_stories_c3,p2e4_stories,Watch what he's doing,,p2e4_map,(),(),,0
+p2e5_open_c0,p2e5_open,"Mani takes the M4, Preethi the shotgun",,p2e5_ear,(),(),,0
+p2e5_open_c1,p2e5_open,"Preethi takes the M4, Mani the shotgun",,p2e5_ear,(),(),,0
+p2e5_ear_c0,p2e5_ear,"Ice machine, then the snowplough's shadow, then the truck",,p2e5_ear2,(),(),,0
+p2e5_ear_c1,p2e5_ear,Walk straight across like you belong there,,p2e5_ear_seen,(),(),,0
+p2e5_ear_seen_c0,p2e5_ear_seen,Stay absolutely still,,p2e5_ear2,(),(),,5
+p2e5_ear_seen_c1,p2e5_ear_seen,Run,,p2e5_ear_caught,(),(),,5
+p2e5_vent_c0,p2e5_vent,Grab the rail with both hands,,p2e5_vent2,(),(),,4
+p2e5_vent_c1,p2e5_vent,Reach for the next rung down,,p2e5_vent_slip,(),(),,4
+p2e6_guns_c0,p2e6_guns,"Wait for a patrol to pass, then dig",,p2e6_guns_ok,(),(),,0
+p2e6_guns_c1,p2e6_guns,"Dig now, fast",,p2e6_guns_seen,(),(),,0
+p2e7_ice_c0,p2e7_ice,Warn them on their channel,They turn back. You lose your head start.,p2e7_ice_warn,(),(),,0
+p2e7_ice_c1,p2e7_ice,Let it happen,The way to the lookout is clear.,p2e7_ice_let,(),(),,0
+p2e7_kane3_c0,p2e7_kane3,Throw the grenade off the far side of the platform,,p2e7_kane_end,(),(),,6
+p2e7_kane3_c1,p2e7_kane3,Drop your gun,,p2e7_kane_bad,(),(),,6
+p2e7_kane3_c2,p2e7_kane3,Shoot at Kane,,p2e7_kane_bad,(),(),,6
+p2e8_open_c0,p2e8_open,The kennels: wolf-dogs and two guards,,p2e8_kennels,(),(),,0
+p2e8_open_c1,p2e8_open,"The boathouse roof, to a balcony",,p2e8_roof,(),(),,0
+p2e8_open_c2,p2e8_open,Grenade the generator shed and go in loud,,p2e8_loud,(),(),No grenades left,0
+p2e8_roof_c0,p2e8_roof,"Crawl on your stomach, spreading your weight",,p2e8_hall,(),(),,5
+p2e8_roof_c1,p2e8_roof,Walk it quickly,,p2e8_roof_slip,(),(),,5
+p2e8_hall_c0,p2e8_hall,The courtyard enclosure,,p2e8_tiger,(),(),,0
+p2e8_hall_c1,p2e8_hall,The glass conservatory,,p2e8_cons,(),(),,0
+p2e8_hall_c2,p2e8_hall,The indoor pool,,p2e8_pool,(),(),,0
+p2e8_hall_c3,p2e8_hall,The trophy hall,,p2e8_trophy,(),(),,0
+p2e8_hall_c4,p2e8_hall,The radio room,,p2e8_radio,(),(),,0
+p2e8_hall_c5,p2e8_hall,Go up to the study,,p2e8_study,(),(),Explore at least three wings first,0
+p2e8_cons_c0,p2e8_cons,"Slowly, flashlight on the path, step only on bare stone",,p2e8_cons_ok,(),(),,7
+p2e8_cons_c1,p2e8_cons,Push through the leaves to save time,,p2e8_cons_bite,(),(),,7
+p2e8_pool_c0,p2e8_pool,Cross behind him as he turns away,,p2e8_pool_ok,(),(),,6
+p2e8_pool_c1,p2e8_pool,Cross toward him and take him down,,p2e8_pool_bad,(),(),,6
+p2e8_radio_c0,p2e8_radio,Burn it: a flare into the tape racks,,p2e8_hall,(),(),,0
+p2e8_radio_c1,p2e8_radio,Take one tape and leave quietly,,p2e8_hall,(),(),,0

@@ -1,0 +1,137 @@
+﻿Name,SceneId,Label,SubLabel,TargetScene,RequiredFlags,RequiredClues,LockedReason,TimerSeconds
+e1_call_c0,e1_call,"""Avalukku work busy, Amma.""","She's busy with work, Amma. (Reassure them.)",e1_call2,(),(),,0
+e1_call_c1,e1_call,"""Inniki avala paakka poren, ippo dhaan kilambaren.""","I'm going to see her today, I'm leaving now. (A half-truth.)",e1_call2,(),(),,0
+e1_tp1_c0,e1_tp1,Help sort it out,,e1_tp1p,(),(),,0
+e1_tp1_c1,e1_tp1,Stay out of it,,e1_tp1skip,(),(),,0
+e1_victor_c0,e1_victor,"""Greyhaven. Visiting my sister for Diwali.""",,e1_victor2,(),(),,0
+e1_victor_c1,e1_victor,"""North. Visiting family.""",,e1_victor2,(),(),,0
+e1_main_c0,e1_main,"Go to the Lakeview Motel, where Nila lives",,e1_ruth,(),(),,0
+e1_main_c1,e1_main,Look at the radio station first,,e1_station,(),(),,0
+e1_ruth_c0,e1_ruth,"""She told me to talk to you and nobody else.""",The truth.,e1_ruth2,(),(),,0
+e1_ruth_c1,e1_ruth,"""I'm here for Diwali. Is she around?""",Casual.,e1_ruth2,(),(),,0
+e1_ruth_c2,e1_ruth,"""Has the sheriff been asking about her?""",Too direct.,e1_ruth2b,(),(),,0
+e1_tess_c0,e1_tess,"""I will. Thank you, Tess.""",,e1_cliff,(),(),,0
+e1_tess_c1,e1_tess,"""Who do you think came in here?""",,e1_tess2,(),(),,0
+e2_hall_c0,e2_hall,Hide in the closet,,e2_hall_closet,(),(),,8
+e2_hall_c1,e2_hall,Climb out the window,,e2_hall_window,(),(),,8
+e2_hall_c2,e2_hall,Open the door,,e2_hall_door,(),(),,8
+e2_gus_c0,e2_gus,"""How was the fishing? With that bait?""",Let him know you remember the cooler.,e2_gus_a,(),(),,0
+e2_gus_c1,e2_gus,"""Thanks for breakfast.""",Say nothing.,e2_gus_b,(),(),,0
+e2_brian1_c0,e2_brian1,"""Forty-six people called her show about the same road. I plotted them.""",,e2_brian2,(),(),You'd need the callers' data,0
+e2_brian1_c1,e2_brian1,"""I want to hear her last show. Now.""",,e2_brian2,(),(),,0
+e2_brian1_c2,e2_brian1,"""You're protecting criminals.""",,e2_brian2,(),(),,0
+e2_brian2_c0,e2_brian2,"""Someone cut her antenna cable. Clean through. Then the sheriff let himself into her flat at one in the morning.""",,e2_brian3,(),(),You'd need the cable,0
+e2_brian2_c1,e2_brian2,"""Please. She's my sister.""",,e2_brian3,(),(),,0
+e2_brian2_c2,e2_brian2,"""I'll call a lawyer.""",,e2_brian3,(),(),,0
+e2_brian3_c0,e2_brian3,"""The reason she disappeared. And if she turns up dead, I'll tell everyone you had it.""",,e2_brian_end,(),(),,0
+e2_brian3_c1,e2_brian3,"""Nothing. I just want to hear her voice.""",,e2_brian_end,(),(),,0
+e2_brian3_c2,e2_brian3,"""I don't know.""",,e2_brian_end,(),(),,0
+e2_lot_c0,e2_lot,"""Do you know a Victor Kessler?""",,e2_lot_v,(),(),,0
+e2_lot_c1,e2_lot,"""I heard Nila's last show.""",,e2_lot_t,(),(),,0
+e2_lot_c2,e2_lot,"""Of course, Sheriff. Thank you.""",Stay polite.,e2_lot_p,(),(),,0
+e3_open_c0,e3_open,"""You did what you had to. Help me now.""",Forgive him.,e3_bucket,(),(),,0
+e3_open_c1,e3_open,"""You sold her out.""",Anger.,e3_bucket,(),(),,0
+e3_open_c2,e3_open,"""Nila said you'd know about the dock. Show me.""",Stay focused.,e3_bucket,(),(),,0
+e3_dinner_c0,e3_dinner,"""You called Nila's show. The night before it was cut.""",Confront him now.,e3_walter,(),(),,0
+e3_dinner_c1,e3_dinner,Say nothing and eat,Wait for him to tell it.,e3_walter,(),(),,0
+e3_porch_c0,e3_porch,"""Nobody's going to touch you. I promise.""",Promise to protect her.,e3_porch_a,(),(),,0
+e3_porch_c1,e3_porch,"""Then tell me everything Corbin asked you.""",Get information.,e3_porch_b,(),(),,0
+e3_boat_c0,e3_boat,Turn left until the bell is over your left shoulder,,e3_pier,(),(),,0
+e3_boat_c1,e3_boat,Row straight ahead,,e3_boat_wrong,(),(),,0
+e3_boat_c2,e3_boat,Turn right toward the bell,,e3_boat_wrong,(),(),,0
+e3_light_c0,e3_light,Lie flat in the bottom of the boat,,e3_light_a,(),(),,7
+e3_light_c1,e3_light,Row hard into the fog,,e3_light_b,(),(),,7
+e3_light_c2,e3_light,Drift and hope,,e3_light_c,(),(),,7
+e4_open_c0,e4_open,Show Corbin the knife and photo,,e4_open_a,(),(),,0
+e4_open_c1,e4_open,Keep them hidden in your jacket,,e4_open_b,(),(),,0
+e4_interview_c0,e4_interview,"""Forty-six reports. Different people, different complaints. Nobody connected them because nobody plotted them. On a map they all sit on one road.""",,e4_int2,(),(),You haven't plotted the callers,0
+e4_interview_c1,e4_interview,"""At Auragle I optimised a billing pipeline and cut processing time by forty percent.""",,e4_int2,(),(),,0
+e4_interview_c2,e4_interview,"""Honestly, I'm having a strange week. Can we reschedule?""",,e4_int2,(),(),,0
+e4_int2_c0,e4_int2,"""I start with what I can verify, label everything I'm assuming, and test the assumptions first.""",,e4_int3,(),(),,0
+e4_int2_c1,e4_int2,"""I clean it until it's perfect, then I start.""",,e4_int3,(),(),,0
+e4_int2_c2,e4_int2,"""I trust my gut.""",,e4_int3,(),(),,0
+e4_int3_c0,e4_int3,"""Because data is just people, written down. I like finding them in it.""",,e4_int_end,(),(),,0
+e4_int3_c1,e4_int3,"""The salary.""",,e4_int_end,(),(),,0
+e4_int3_c2,e4_int3,"""I've been out of work for a while and I'm good at this.""",,e4_int_end,(),(),,0
+e4_fence_c0,e4_fence,"Through the grass, the long way",,e4_fence2,(),(),,0
+e4_fence_c1,e4_fence,Straight across the gravel,,e4_fence2,(),(),,0
+e4_fence2_c0,e4_fence2,Duck behind the pallets,,e4_hall,(),(),,6
+e4_fence2_c1,e4_fence2,Slip into the shed,,e4_hall,(),(),,6
+e4_pills_c0,e4_pills,Crouch-walk out and grab the bag,,e4_pills_try,(),(),,0
+e4_pills_c1,e4_pills,Leave it. The photos are enough.,,e4_boiler,(),(),,0
+e4_pills_try_c0,e4_pills_try,"Grab it NOW, between thumps",,e4_pills_ok,(),(),,4
+e4_pills_try_c1,e4_pills_try,Wait for him to turn away,,e4_pills_seen,(),(),,4
+e4_snake1_c0,e4_snake1,Freeze,,e4_snake2,(),(),,5
+e4_snake1_c1,e4_snake1,Step back,,e4_snake2,(),(),,5
+e4_snake2_c0,e4_snake2,"Step over the pipe, away from it",,e4_snake3,(),(),,5
+e4_snake2_c1,e4_snake2,Turn and shine the light on it,,e4_snake3,(),(),,5
+e4_snake3_c0,e4_snake3,Back away slowly,,e4_snake_end,(),(),,5
+e4_snake3_c1,e4_snake3,Run for the door,,e4_snake_end,(),(),,5
+e4_ch1_c0,e4_ch1,Catwalk,,e4_ch2,(),(),,4
+e4_ch1_c1,e4_ch1,Stairs,,e4_ch2,(),(),,4
+e4_ch2_c0,e4_ch2,The barrels,,e4_ch3,(),(),,4
+e4_ch2_c1,e4_ch2,The truck,,e4_ch3,(),(),,4
+e4_ch3_c0,e4_ch3,Under,,e4_ch4,(),(),,4
+e4_ch3_c1,e4_ch3,Over,,e4_ch4,(),(),,4
+e4_ch4_c0,e4_ch4,The gap in the fence you cut,,e4_ch_end,(),(),,4
+e4_ch4_c1,e4_ch4,The outflow ditch,,e4_ch_end,(),(),,4
+e5_open_c0,e5_open,Tell Tess the truth about the mill,,e5_clinic,(),(),,0
+e5_open_c1,e5_open,"""I slipped on the dock.""",,e5_clinic,(),(),,0
+e5_rao1_c0,e5_rao1,Show her the 46 callers on the map,,e5_rao2,(),(),You'd need the callers' data,0
+e5_rao1_c1,e5_rao1,"""You took an oath.""",,e5_rao2,(),(),,0
+e5_rao1_c2,e5_rao1,"""My sister is missing because of this.""",,e5_rao2,(),(),,0
+e5_rao2_c0,e5_rao2,Show her the photos of the blue M30 pills,,e5_rao3,(),(),You'd need the lab photos,0
+e5_rao2_c1,e5_rao2,Show her the bag of pills,,e5_rao3,(),(),You didn't take the pills,0
+e5_rao2_c2,e5_rao2,"""I'll go to the newspapers.""",,e5_rao3,(),(),,0
+e5_cb1_c0,e5_cb1,"""Sunday night. She left me a voicemail.""",,e5_cb2,(),(),,0
+e5_cb1_c1,e5_cb1,"""Sunday. She sounded scared of someone.""",,e5_cb2,(),(),,0
+e5_cb1_c2,e5_cb1,"""Why don't you tell me, Sheriff?""",,e5_cb2,(),(),,0
+e5_cb2_c0,e5_cb2,"""Waiting. Walking. Eating too much pie.""",,e5_cb3,(),(),,0
+e5_cb2_c1,e5_cb2,"""Asking around.""",,e5_cb3,(),(),,0
+e5_cb2_c2,e5_cb2,"""Looking into the mill.""",,e5_cb3,(),(),,0
+e5_cb3_c0,e5_cb3,"""Only fog.""",,e5_cb_end,(),(),,0
+e5_cb3_c1,e5_cb3,"""A burning boat.""",,e5_cb_end,(),(),,0
+e5_cb3_c2,e5_cb3,"""Trucks on the mill road at two in the morning.""",,e5_cb_end,(),(),,0
+e5_cb_end_c0,e5_cb_end,Open the drawer,,e5_drawer,(),(),,6
+e5_cb_end_c1,e5_cb_end,Stay in your chair,,e5_stay,(),(),,6
+e5_ortiz_c0,e5_ortiz,"""No. But she said someone at the station was decent.""",Honest.,e5_ortiz2,(),(),,0
+e5_ortiz_c1,e5_ortiz,"""Yes. She trusted you.""",A kind lie.,e5_ortiz2,(),(),,0
+e5_gus_c0,e5_gus,"""Then you'll talk to the police. Today.""",Threaten him.,e5_gus_a,(),(),,0
+e5_gus_c1,e5_gus,"""Help me, and I'll tell them you did.""",Offer him a way out.,e5_gus_b,(),(),,0
+e6_open_c0,e6_open,"""Amma, Nila-va kaanom. Naan thedittu irukken. Promise-aa kandupidipen.""","Amma, Nila's missing. I'm searching for her. I promise I'll find her. (The truth.)",e6_truth,(),(),,0
+e6_open_c1,e6_open,"""Ava kulichittu irukka, Amma, naalaiku call pannuva.""","She's having a bath, Amma, she'll call you tomorrow. (Protect them.)",e6_lie,(),(),,0
+e6_walter_c0,e6_walter,"""You were nineteen. Help me now and it counts.""",Forgive him.,e6_prep,(),(),,0
+e6_walter_c1,e6_walter,"""You let this whole town get sick.""",Hold it against him.,e6_prep,(),(),,0
+e6_silt1_c0,e6_silt1,"Follow the tapping, left along the wall",,e6_silt2,(),(),,0
+e6_silt1_c1,e6_silt1,"Back the way you came, toward the main doors",,e6_silt_bad,(),(),,0
+e6_silt1_c2,e6_silt1,"Straight ahead, toward the altar",,e6_silt_bad2,(),(),,0
+e6_silt2_c0,e6_silt2,Swim up through the bell tower,,e6_ascend,(),(),,0
+e6_silt2_c1,e6_silt2,Keep feeling along the wall,,e6_silt3,(),(),,0
+e7_trip1_c0,e7_trip1,Step high over the glint,,e7_trip2,(),(),,0
+e7_trip1_c1,e7_trip1,Brush it aside with your boot,,e7_trip2,(),(),,0
+e7_trip2_c0,e7_trip2,Step on the middle,,e7_trip3,(),(),,0
+e7_trip2_c1,e7_trip2,Climb over at the root end,,e7_trip3,(),(),,0
+e7_trip3_c0,e7_trip3,"Duck under at the stake end, where it's highest",,e7_trip_end,(),(),,0
+e7_trip3_c1,e7_trip3,Hurry through,,e7_trip_end,(),(),,0
+e7_talk_c0,e7_talk,"""Amma and Appa.""",,e7_t1,(),(),,0
+e7_talk_c1,e7_talk,"""What happened Sunday?""",,e7_t2,(),(),,0
+e7_talk_c2,e7_talk,"""The voice.""",,e7_t3,(),(),,0
+e7_talk_c3,e7_talk,"""Eli.""",,e7_t4,(),(),,0
+e7_talk_c4,e7_talk,Give her the Diwali present,,e7_gift,(),(),,0
+e7_plan_c0,e7_plan,Use Nila's cut cable from the flat,,e7_antenna,(),(),You didn't keep the cable,0
+e7_plan_c1,e7_plan,Use Jonah's short spare,,e7_antenna,(),(),,0
+e8_open_c0,e8_open,Believe him,Eli fights beside you.,e8_who,(),(),,0
+e8_open_c1,e8_open,Take the rifle away from him,Eli waits in the shed.,e8_who,(),(),,0
+e8_offer_c0,e8_offer,Refuse,,e8_offer2,(),(),,0
+e8_offer_c1,e8_offer,Take the money,,e8_fail,(),(),,0
+e8_offer2_c0,e8_offer2,Refuse,,e8_offer3,(),(),,0
+e8_offer2_c1,e8_offer2,"Accept, for Tess",,e8_fail,(),(),,0
+e8_offer3_c0,e8_offer3,Refuse,,e8_refuse,(),(),,0
+e8_offer3_c1,e8_offer3,Back down,,e8_fail,(),(),,0
+e8_fail_c0,e8_fail,Go back,,e8_offer,(),(),,0
+e8_w1_c0,e8_w1,Let Ruth's shotgun pin them; hold your fire,,e8_w1a,(),(),,7
+e8_w1_c1,e8_w1,Empty the revolver into the trees,,e8_w1b,(),(),,7
+e8_w2_c0,e8_w2,Protect the cable,,e8_w2a,(),(),,6
+e8_w2_c1,e8_w2,Run to Jonah,,e8_w2b,(),(),,6
+e8_w3_c0,e8_w3,Duck and drive your shoulder into him,,e8_w3a,(),(),,5
+e8_w3_c1,e8_w3,Raise the revolver,,e8_w3b,(),(),,5

@@ -1,0 +1,5691 @@
+{
+  "part": {
+    "id": "p2",
+    "name": "Out of Town: Red Lake",
+    "episodes": [
+      {
+        "title": "Lighthouse",
+        "start": "p2e1_open",
+        "blurb": "The diagnosis, the guns, the road north."
+      },
+      {
+        "title": "Highway 17",
+        "start": "p2e2_open",
+        "blurb": "White River, Thunder Bay, an ambush in the snow."
+      },
+      {
+        "title": "Gold Country",
+        "start": "p2e3_open",
+        "blurb": "Red Lake. The hospital, the museum, Level 9."
+      },
+      {
+        "title": "The Ice Road",
+        "start": "p2e4_open",
+        "blurb": "McKenzie Island and the man who dug it."
+      },
+      {
+        "title": "Hayden Deep",
+        "start": "p2e5_open",
+        "blurb": "Into the mine."
+      },
+      {
+        "title": "Starratt-Olsen",
+        "start": "p2e6_open",
+        "blurb": "Amma on the radio. A ghost town at midnight."
+      },
+      {
+        "title": "The Burn",
+        "start": "p2e7_open",
+        "blurb": "Hades's forest. Kane."
+      },
+      {
+        "title": "The Hades Mansion",
+        "start": "p2e8_open",
+        "blurb": "Three vials. One cure."
+      }
+    ],
+    "people": {
+      "ivy": "Ivy Laurent",
+      "dunn": "Const. Dunn",
+      "daniel": "Daniel Keeper",
+      "bev": "Bev Arsenault",
+      "sully": "Sully O'Rourke",
+      "marchetti": "Dr. Marchetti"
+    },
+    "clues": {
+      "panel": {
+        "name": "Nila's blood panel",
+        "desc": "One unnamed compound the lab called an artefact. Preethi says it isn't."
+      },
+      "jonahWater": {
+        "name": "Jonah's answer",
+        "desc": "\"I never brought you water.\" Someone else left those bottles at Pike Point."
+      },
+      "label": {
+        "name": "Northstar shipping label",
+        "desc": "NORTHSTAR BIOLOGICS — HX-7 — HAYDEN DEEP, RED LAKE, ON. From Victor's fireproof safe."
+      },
+      "delivery": {
+        "name": "GH-01 delivery note",
+        "desc": "\"24 × spring water, 1 L. Pike Point. Attn: GH-01.\" The week Nila hid there."
+      },
+      "guns": {
+        "name": "Rocco's guns",
+        "desc": "Pump shotgun, M4, two Desert Eagles. Illegal. Bought under the Ambassador Bridge."
+      },
+      "ivyMap": {
+        "name": "Ivy's surface map",
+        "desc": "Gatehouse, office, loading dock, and a freight elevator that goes deeper than the mine maps say."
+      },
+      "profile": {
+        "name": "Dr. Okafor's profile",
+        "desc": "A collector who needs control. A voyeur who needs an audience. \"He'll want you in the room.\""
+      },
+      "dunnName": {
+        "name": "Constable Rachel Dunn",
+        "desc": "OPP, Red Lake. \"Honest. Too honest for her own good.\""
+      },
+      "convoy": {
+        "name": "Thursday convoy",
+        "desc": "Northstar trucks run up Highway 105 every Thursday night. Fuel stop at Ear Falls."
+      },
+      "gift": {
+        "name": "Welcome gift",
+        "desc": "A shed lancehead skin and a photo of Nila asleep, taken inside her hospital room. \"Welcome to my town.\""
+      },
+      "panels5": {
+        "name": "Five blood panels",
+        "desc": "Nila and four dead Northstar workers share one peptide. Nila is about three weeks behind the last man.",
+        "proof": true
+      },
+      "hayden": {
+        "name": "The Hayden family",
+        "desc": "Prospectors in 1934. Hayden Deep, 1946–1991. Engineer R. Hayden went south in 1974. Mark Hayden came home in 2015."
+      },
+      "robert": {
+        "name": "\"Old Robert\"",
+        "desc": "Mark's father. \"Must be ninety if he's a day.\" Some say he lives out past the Burn with his son."
+      },
+      "level9": {
+        "name": "\"Level 9\"",
+        "desc": "A gold specimen with a hidden second tag. Public mine maps show only six levels."
+      },
+      "sullyMap": {
+        "name": "Sully's 1974 map",
+        "desc": "Levels 6 to 9, and a forgotten ventilation raise that comes up in the bush near Madsen."
+      },
+      "farm": {
+        "name": "Venom farm photos",
+        "desc": "Hundreds of golden lanceheads in heated tanks on Level 9. Robotic arms milking venom.",
+        "proof": true
+      },
+      "gh01": {
+        "name": "Subject GH-01 file",
+        "desc": "Nila. \"Route: drinking water. Pike Point.\" In Hades's hand: \"Keep her alive until the brother comes. — M.H.\"",
+        "proof": true
+      },
+      "rl": {
+        "name": "Subjects RL-01 to RL-04",
+        "desc": "The four dead Red Lake workers. Joe Keeper was RL-03.",
+        "proof": true
+      },
+      "cure": {
+        "name": "HX-7C",
+        "desc": "The antidote. \"Three doses. Stored at the house vault. Access: M.H. only.\""
+      },
+      "thermal": {
+        "name": "Thermal image",
+        "desc": "One heat source in 400 km² north-west of the Burn: a house. Behind it, something very hot."
+      },
+      "portraits": {
+        "name": "The portrait gallery",
+        "desc": "Robert Hayden in a long coat beside the Merrow dam, 1978. A boy with a jar of snakes."
+      },
+      "antivenom": {
+        "name": "Antivenom",
+        "desc": "One dose, taken from the Hayden Deep lab fridge by Preethi."
+      }
+    }
+  },
+  "scenes": {
+    "p2e1_open": {
+      "id": "p2e1_open",
+      "ep": 1,
+      "place": "Windsor radio studio",
+      "time": "23:40",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "A small studio, red ON AIR light. Nila, twenty-six, headphones on, hosting her new late show on a Windsor station.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "NILA",
+          "channel": "ON AIR",
+          "text": "…and that's why you never trust a man who says he \"doesn't really like music\". Next up, something slow for the night shift—",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "She coughs. Covers her mouth. Looks at her palm. Blood. She keeps her voice perfectly steady.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "NILA",
+          "channel": "ON AIR",
+          "text": "—here it is.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "She presses play. The song starts. She slides off her chair onto the floor. The ON AIR light stays red.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e1_hosp"
+    },
+    "p2e1_hosp": {
+      "id": "p2e1_hosp",
+      "ep": 1,
+      "place": "Hospital, Windsor",
+      "time": "Five days later",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "A blur. You and Preethi running through emergency doors. Scans. Waiting rooms. Preethi in her hospital pharmacy uniform, between shifts. An oncologist, Dr. Singh, with a tablet.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "DR. SINGH",
+          "channel": "",
+          "text": "It's aggressive. And it's atypical. Honestly, I've never seen a progression like this. We'll start treatment, but I won't pretend I understand it.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Preethi reads the blood panel over his shoulder. She stops on one line.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "What's this compound? It's not on any standard panel.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "DR. SINGH",
+          "channel": "",
+          "text": "The lab flagged it as an artefact.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "(quietly, to you) It's not an artefact.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Amma and Appa arrive from Chennai, still in travel clothes. Amma takes Nila's hand.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "AMMA",
+          "channel": "",
+          "text": "Kanna… enna aachu unakku?",
+          "subtitle": "My dear… what happened to you?",
+          "narration": false
+        },
+        {
+          "speaker": "NILA",
+          "channel": "",
+          "text": "Onnum illa, Amma. Konjam blood, avlo dhaan.",
+          "subtitle": "It's nothing, Amma. Just a little blood, that's all.",
+          "narration": false
+        },
+        {
+          "speaker": "APPA",
+          "channel": "",
+          "text": "Unmaiya sollu. Evlo serious?",
+          "subtitle": "Tell me the truth. How serious?",
+          "narration": false
+        },
+        {
+          "speaker": "MANI",
+          "channel": "",
+          "text": "Romba serious, Appa.",
+          "subtitle": "Very serious, Appa.",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e1_case"
+    },
+    "p2e1_case": {
+      "id": "p2e1_case",
+      "ep": 1,
+      "place": "Nila's hospital room",
+      "time": "Night",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Nila props herself up, a notepad on her knees. You and Preethi on the visitor chairs.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "NILA",
+          "channel": "",
+          "text": "Okay. Treat it like a case. Exposure. Opportunity. Motive.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "NILA",
+          "channel": "",
+          "text": "Exposure: Old Merrow. I dived in that water twice. But Anna, you dived too, and you're fine.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "MANI",
+          "channel": "",
+          "text": "So it's something only you had.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "NILA",
+          "channel": "",
+          "text": "Pike Point. Six days in that shed. (beat) The water bottles.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "She hands you her ham handheld.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "NILA",
+          "channel": "",
+          "text": "Call Jonah. He's always on, after dark.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "puzzle": {
+        "type": "tune",
+        "title": "Call Jonah",
+        "to": "p2e1_jonah"
+      }
+    },
+    "p2e1_jonah": {
+      "id": "p2e1_jonah",
+      "ep": 1,
+      "place": "Nila's hospital room",
+      "time": "Night",
+      "lines": [
+        {
+          "speaker": "JONAH",
+          "channel": "ON RADIO",
+          "text": "Pike Point, go ahead. (beat) Nila? Kid, is that you?",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "NILA",
+          "channel": "",
+          "text": "Jonah. The water in the shed. Did you leave it for me?",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "JONAH",
+          "channel": "ON RADIO",
+          "text": "I told you last year, kid. I never brought you water.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Nila lowers the radio.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "NILA",
+          "channel": "",
+          "text": "Yaaro naan andha thanni kudikkanumnu nenachirukkaanga, Anna.",
+          "subtitle": "Someone wanted me to drink that water, Anna.",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Preethi has gone very still.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "If someone put something in it… there'd be a record. A supplier. A delivery.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "NILA",
+          "channel": "",
+          "text": "Then go and find it. Greyhaven. The mill. Victor kept everything.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e1_drive"
+    },
+    "p2e1_drive": {
+      "id": "p2e1_drive",
+      "ep": 1,
+      "place": "County Road 20 / Tom Portons",
+      "time": "Night",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "You and Preethi drive east on the county roads you swore you'd never drive again. Preethi reads Nila's notes by phone light.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "She wrote \"GH-01\" here and circled it three times.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "A Tom Portons stop. Harold and June at the window table.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "HAROLD",
+          "channel": "",
+          "text": "The data fella! June, it's the data fella!",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "JUNE",
+          "channel": "",
+          "text": "Still on decaf, Harold, don't get excited.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "(whispering) You know these people?",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "MANI",
+          "channel": "",
+          "text": "Long story. It involved a cat phone case.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e1_mill"
+    },
+    "p2e1_mill": {
+      "id": "p2e1_mill",
+      "ep": 1,
+      "place": "Merrow Mill ruins, Greyhaven",
+      "time": "02:00",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "A blackened shell behind police tape. A private guard in a hut with a space heater. Ruth, a year older, scanner on her belt, shotgun on her shoulder, meets you at the fence.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "RUTH",
+          "channel": "",
+          "text": "Corbin's in prison. Victor's in the ground. And nobody in this town says the name Hades out loud.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "RUTH",
+          "channel": "",
+          "text": "(to Preethi) You must be the wife. He talks about you on the phone to Nila. Nauseating.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "RUTH",
+          "channel": "",
+          "text": "Guard changes at two-fifteen. You've got ten minutes.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Preethi climbs the water tower ladder with binoculars. You wait at the fence for her call.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e1_mill2"
+    },
+    "p2e1_mill2": {
+      "id": "p2e1_mill2",
+      "ep": 1,
+      "place": "Mill yard",
+      "time": "02:04",
+      "lines": [
+        {
+          "speaker": "PREETHI",
+          "channel": "ON RADIO",
+          "text": "He's in the hut. Heater's on. He's watching something on his phone. Go now. Stay left, along the wall.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "You cross the yard in the shadows. Halfway, Preethi's voice again, sharp:",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "ON RADIO",
+          "text": "Stop. He's standing up.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [
+        {
+          "label": "Freeze against the wall",
+          "sub": "",
+          "to": "p2e1_mill3"
+        },
+        {
+          "label": "Keep moving, fast",
+          "sub": "",
+          "to": "p2e1_mill3",
+          "hasEffects": true
+        }
+      ],
+      "timer": {
+        "secs": 6,
+        "to": "p2e1_mill3"
+      }
+    },
+    "p2e1_mill3": {
+      "id": "p2e1_mill3",
+      "ep": 1,
+      "place": "Ruins of Victor's office",
+      "time": "02:07",
+      "lines": [
+        {
+          "speaker": "PREETHI",
+          "channel": "ON RADIO",
+          "text": "…He's just stretching. Okay. Go.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Victor's office is a burned box open to the sky. In the corner, his fireproof safe survived, blackened but whole. A keypad. You remember this keypad. You remember his love of anniversaries.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "puzzle": {
+        "type": "code",
+        "title": "Victor's safe",
+        "to": "p2e1_safe"
+      }
+    },
+    "p2e1_safe": {
+      "id": "p2e1_safe",
+      "ep": 1,
+      "place": "Ruins of Victor's office",
+      "time": "02:09",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "The safe door swings open. Ash and papers. Two things matter.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "A shipping label: \"NORTHSTAR BIOLOGICS — HX-7 — HAYDEN DEEP, RED LAKE, ON.\"",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "A delivery note: \"24 × spring water, 1 L. Pike Point. Attn: GH-01.\" Dated the week Nila hid there.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "MANI",
+          "channel": "INTO RADIO",
+          "text": "Anni. GH-01. It's her. She was a subject. A test subject.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Silence on the radio. Then, very tight:",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "ON RADIO",
+          "text": "Get out. Guard's coming your way.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [
+        {
+          "label": "Hide behind the safe",
+          "sub": "",
+          "to": "p2e1_safe_hide"
+        },
+        {
+          "label": "Run for the fence",
+          "sub": "",
+          "to": "p2e1_safe_run",
+          "hasEffects": true
+        }
+      ],
+      "timer": {
+        "secs": 6,
+        "to": "p2e1_safe_run"
+      }
+    },
+    "p2e1_safe_hide": {
+      "id": "p2e1_safe_hide",
+      "ep": 1,
+      "place": "Mill ruins",
+      "time": "02:11",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "The flashlight passes over the ash a metre from your boots. The guard yawns, scratches, and walks back to his heater. You slip out the way you came.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e1_plan"
+    },
+    "p2e1_safe_run": {
+      "id": "p2e1_safe_run",
+      "ep": 1,
+      "place": "Mill ruins",
+      "time": "02:11",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "The guard shouts. Before he reaches the fence, a shotgun blast booms into the sky from the road. Ruth. The guard dives for his hut. You're over the fence and gone.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e1_plan"
+    },
+    "p2e1_plan": {
+      "id": "p2e1_plan",
+      "ep": 1,
+      "place": "Nila's hospital room",
+      "time": "Next day",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "The label and the note on Nila's bed tray. Nila looks stronger, the way people do when they have a job.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "NILA",
+          "channel": "",
+          "text": "Red Lake. Northwestern Ontario. Gold country. End of the road. (She taps the label.) Northstar Biologics, registered 2015. Director: M. Hayden. The same Hayden from the plaque at the station. Victor's \"Mark\".",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "NILA",
+          "channel": "",
+          "text": "He's not hiding, Anna. He's waiting.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "Then we take it to the police.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "NILA",
+          "channel": "",
+          "text": "With what? A label from a burned building. Ortiz already tried; the OPP said Greyhaven is closed. (beat) Hades has the cure. I'd bet my life on it. I am betting my life on it.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "MANI",
+          "channel": "",
+          "text": "Then we go.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "NILA",
+          "channel": "",
+          "text": "Then you go prepared. Kane's people shot at you in Greyhaven. Up there it'll be worse. (beat) Which brings us to the guns.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "We can buy hunting rifles, right? People up north have them.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "NILA",
+          "channel": "",
+          "text": "Legally? A licence takes months: a course, a test, background checks. An M4-style rifle is prohibited in Canada, full stop. A Desert Eagle is a restricted handgun; you'd need a special licence just to drive it anywhere. Grenades, forget it.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "NILA",
+          "channel": "",
+          "text": "We don't have months, Anni. I have weeks.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "MANI",
+          "channel": "",
+          "text": "So what are you saying?",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "NILA",
+          "channel": "",
+          "text": "I studied criminals for four years. Tonight I need one. (She opens her laptop.) Rocco Delisle. Auto body shop off Wyandotte West. Charged twice, never convicted. Brings guns over the river from Detroit. I covered his second trial for a class project. I know what he sells, what he charges, and that he's terrified of court.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "Nila, this is a crime.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "NILA",
+          "channel": "",
+          "text": "So is what's happening in my blood. (beat) Anni, I'll understand if you don't go.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [
+        {
+          "label": "\"Naan varen. Nee en thangachi maadhiri.\"",
+          "sub": "PREETHI: I'm coming. You're like my own little sister.",
+          "to": "p2e1_deal"
+        },
+        {
+          "label": "\"I'm coming. But we use them only to survive.\"",
+          "sub": "PREETHI: Restraint.",
+          "to": "p2e1_deal",
+          "hasEffects": true
+        }
+      ]
+    },
+    "p2e1_deal": {
+      "id": "p2e1_deal",
+      "ep": 1,
+      "place": "Under the Ambassador Bridge, Windsor",
+      "time": "23:00",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Rain. The bridge's lights above, trucks rumbling across to Detroit. A grey van with its rear doors open. Rocco Delisle, fifties, leather jacket, two silent men behind him.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Nila is on the radio in your ear, from her hospital bed.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "NILA",
+          "channel": "ON RADIO",
+          "text": "Let him talk first. He likes the sound of his own voice.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "ROCCO",
+          "channel": "",
+          "text": "The radio girl's brother. She sent me a very polite message. Mentioned my court dates. Very polite.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "He opens a case.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "ROCCO",
+          "channel": "",
+          "text": "Pump shotgun, twelve-gauge. M4, clean, no serial. Two Desert Eagles. Ammo. Forty grand.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "NILA",
+          "channel": "ON RADIO",
+          "text": "He charged the last buyer twenty-two. Say twenty-five.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [
+        {
+          "label": "\"Twenty-five. Cash.\"",
+          "sub": "",
+          "to": "p2e1_deal2",
+          "hasEffects": true
+        },
+        {
+          "label": "\"Fine. Forty.\"",
+          "sub": "",
+          "to": "p2e1_deal2",
+          "hasEffects": true
+        },
+        {
+          "label": "\"You charged the last guy twenty-two, Rocco.\"",
+          "sub": "",
+          "to": "p2e1_deal2",
+          "hasEffects": true
+        }
+      ]
+    },
+    "p2e1_deal2": {
+      "id": "p2e1_deal2",
+      "ep": 1,
+      "place": "Under the Ambassador Bridge",
+      "time": "23:04",
+      "lines": [
+        {
+          "speaker": "ROCCO",
+          "channel": "",
+          "text": "(sighing) Your sister should be a lawyer. 26.",
+          "subtitle": "",
+          "narration": false,
+          "dynamic": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Preethi steps forward to inspect the weapons. She handles them like she handles a pharmacy order: everything checked, nothing assumed.",
+          "subtitle": "",
+          "narration": true,
+          "dynamic": true
+        }
+      ],
+      "choices": [],
+      "dynamicLines": true,
+      "puzzle": {
+        "type": "pick",
+        "title": "Inspect the guns",
+        "to": "p2e1_deal3"
+      }
+    },
+    "p2e1_deal3": {
+      "id": "p2e1_deal3",
+      "ep": 1,
+      "place": "Under the Ambassador Bridge",
+      "time": "23:07",
+      "lines": [
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "This one's dead, Rocco. The pin's filed.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Rocco laughs and swaps it from the van without argument.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "ROCCO",
+          "channel": "",
+          "text": "Your sister said you were sharp. She didn't say it was the wife.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Headlights on the riverfront road above. A police cruiser, rolling slowly.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "NILA",
+          "channel": "ON RADIO",
+          "text": "Patrol car, westbound. Ninety seconds. Close the doors.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [
+        {
+          "label": "Close the van doors and stand like you're chatting",
+          "sub": "",
+          "to": "p2e1_deal_ok"
+        },
+        {
+          "label": "Grab the cases and run for the car",
+          "sub": "",
+          "to": "p2e1_deal_run",
+          "hasEffects": true
+        }
+      ],
+      "timer": {
+        "secs": 8,
+        "to": "p2e1_deal_run"
+      }
+    },
+    "p2e1_deal_ok": {
+      "id": "p2e1_deal_ok",
+      "ep": 1,
+      "place": "Under the Ambassador Bridge",
+      "time": "23:09",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "The cruiser slows. An officer glances down at three men and a woman by a van in the rain. Rocco lifts a coffee cup in greeting. The cruiser rolls on.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "ROCCO",
+          "channel": "",
+          "text": "No grenades. I'm not crazy. (He pockets the cash.) And tell your sister: if she ever mentions my court dates again, I'll stop being polite.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e1_shop"
+    },
+    "p2e1_deal_run": {
+      "id": "p2e1_deal_run",
+      "ep": 1,
+      "place": "Under the Ambassador Bridge",
+      "time": "23:09",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "The cruiser's brake lights flare. Rocco's men scatter. You throw the cases into your trunk and Rocco shouts the last of the ammo boxes after you. You're gone before the cruiser turns.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "You got the guns. Less ammunition than you paid for.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e1_shop"
+    },
+    "p2e1_shop": {
+      "id": "p2e1_shop",
+      "ep": 1,
+      "place": "Outdoor store, Windsor",
+      "time": "Day 1, 09:00",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Day 1. Nila reads the list over the radio from her bed while you and Preethi push a cart through a huge outdoor store.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "NILA",
+          "channel": "ON RADIO",
+          "text": "Red Lake in November can drop below minus thirty at night. Phones die in the cold. The cell signal ends before Red Lake does. Do not drink any water up there you didn't filter yourself. Ever.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "NILA",
+          "channel": "ON RADIO",
+          "text": "Ever, Anna.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "puzzle": {
+        "type": "multi",
+        "title": "The shopping list",
+        "to": "p2e1_pack"
+      }
+    },
+    "p2e1_pack": {
+      "id": "p2e1_pack",
+      "ep": 1,
+      "place": "Your building's parking lot",
+      "time": "Day 1, 11:30",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Now it all has to fit in the trunk.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "puzzle": {
+        "type": "order",
+        "title": "Pack the trunk",
+        "to": "p2e1_bye"
+      }
+    },
+    "p2e1_bye": {
+      "id": "p2e1_bye",
+      "ep": 1,
+      "place": "Curbside, Windsor",
+      "time": "Day 1, 12:00",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "At the curb, Amma presses a steel box into Preethi's hands.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "AMMA",
+          "channel": "",
+          "text": "Puliyodharai. Sudbury-ku munnadi saapdunga.",
+          "subtitle": "Tamarind rice. Eat it before Sudbury.",
+          "narration": false
+        },
+        {
+          "speaker": "APPA",
+          "channel": "",
+          "text": "Naanum varen.",
+          "subtitle": "I'm coming too.",
+          "narration": false
+        },
+        {
+          "speaker": "MANI",
+          "channel": "",
+          "text": "Appa, venaam. Nila-va paathukkonga. Adhu dhaan unga velai.",
+          "subtitle": "No, Appa. Look after Nila. That's your job.",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Appa nods slowly and holds your face in both hands. He doesn't say anything. He doesn't have to.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Preethi gets in the passenger seat and puts on her seatbelt with great precision, the way she does when she's frightened.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e1_parry"
+    },
+    "p2e1_parry": {
+      "id": "p2e1_parry",
+      "ep": 1,
+      "place": "Tom Portons near Parry Sound",
+      "time": "Day 1, 16:00",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Highway 401, then 400 north. Rock cuts and pine. At a Tom Portons near Parry Sound, a woman in a grey coat jumps up from her booth.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "WOMAN",
+          "channel": "",
+          "text": "My bag! My laptop bag was right here!",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "puzzle": {
+        "type": "search",
+        "title": "The Missing Laptop Bag",
+        "to": "p2e1_parry2"
+      }
+    },
+    "p2e1_parry2": {
+      "id": "p2e1_parry2",
+      "ep": 1,
+      "place": "Tom Portons parking lot",
+      "time": "Day 1, 16:08",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Preethi taps on the hatchback window and gives the two boys a look she normally saves for doctors who prescribe the wrong dose. They hand the bag over without a word.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "WOMAN",
+          "channel": "",
+          "text": "Thank you. Really. (beat) I'm Ivy.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Ivy Laurent, mid-thirties. She thanks you a little too carefully. She glances at your face like she's checking it against a photo. Then she leaves, heading north.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e1_sudbury"
+    },
+    "p2e1_sudbury": {
+      "id": "p2e1_sudbury",
+      "ep": 1,
+      "place": "Motel, Sudbury · Night 1",
+      "time": "Day 1, 22:00",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "A tired roadside motel. Through the window, the lit-up Big Nickel. You eat Amma's puliyodharai cross-legged on the bed.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Your phone buzzes: \"Unknown tracker detected travelling with you.\"",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "puzzle": {
+        "type": "search",
+        "title": "The Uninvited Passenger",
+        "to": "p2e1_tracker"
+      }
+    },
+    "p2e1_tracker": {
+      "id": "p2e1_tracker",
+      "ep": 1,
+      "place": "Motel lot, Sudbury",
+      "time": "Day 1, 22:20",
+      "lines": [
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "Smash it?",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [
+        {
+          "label": "Smash it",
+          "sub": "",
+          "to": "p2e1_day2",
+          "hasEffects": true
+        },
+        {
+          "label": "Stick it on a transport truck heading east",
+          "sub": "",
+          "to": "p2e1_day2",
+          "hasEffects": true
+        }
+      ]
+    },
+    "p2e1_day2": {
+      "id": "p2e1_day2",
+      "ep": 1,
+      "place": "Lake Superior shore",
+      "time": "Day 2",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Day 2. Lake Superior opens up: huge, grey, empty, like the sea. Preethi presses her face to the window like a child.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "This is a lake? This is a LAKE?",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "At a Tom Portons in Sault Ste. Marie, the cashier is in tears. The staff tip jar has vanished.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "puzzle": {
+        "type": "pick",
+        "title": "The Tip Jar",
+        "to": "p2e1_wawa"
+      }
+    },
+    "p2e1_wawa": {
+      "id": "p2e1_wawa",
+      "ep": 1,
+      "place": "The Wawa goose",
+      "time": "Day 2, 16:30",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "At the giant Canada goose statue in Wawa, snow starting. Ivy is there, photographing it.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "That's not a coincidence.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e1_ivy"
+    },
+    "p2e1_ivy": {
+      "id": "p2e1_ivy",
+      "ep": 1,
+      "place": "Motel, Wawa · Night 2",
+      "time": "Day 2, 21:00",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Ivy's room, two doors down. A laptop, maps, a bottle of wine she isn't drinking.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "IVY",
+          "channel": "",
+          "text": "Your sister emailed me last year. From Greyhaven. I never wrote back. (beat) I'm sorry. I was hiding.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "MANI",
+          "channel": "",
+          "text": "From who?",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "IVY",
+          "channel": "",
+          "text": "From Northstar. I was a lab tech there for two years before I became a journalist. I saw what HX-7 does. I took a photo of one file, quit, and ran.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "She draws a rough map of the surface buildings: gatehouse, office, loading dock, and a freight elevator that goes deeper than the mine maps say.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "NILA",
+          "channel": "ON RADIO",
+          "text": "Put me on speaker. I want to ask her three things. In the right order.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "puzzle": {
+        "type": "order",
+        "title": "Nila's questions",
+        "to": "p2e1_ivy2"
+      }
+    },
+    "p2e1_ivy2": {
+      "id": "p2e1_ivy2",
+      "ep": 1,
+      "place": "Motel, Wawa",
+      "time": "Day 2, 21:20",
+      "lines": [
+        {
+          "speaker": "IVY",
+          "channel": "",
+          "text": "Badge 0417. Dr. Lund. Clear, with a faint blue tint under UV. (beat) And I didn't answer because I was scared, Nila. That's all. I'm sorry.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "NILA",
+          "channel": "ON RADIO",
+          "text": "She's telling the truth. Mostly. (beat) Welcome to the team, Ivy.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e1_cliff"
+    },
+    "p2e1_cliff": {
+      "id": "p2e1_cliff",
+      "ep": 1,
+      "place": "Your motel room, Wawa",
+      "time": "Day 3, 02:00",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Snow on the window. Preethi asleep. You awake, the handheld on the bedside table, tuned to your private frequency.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "It crackles. A calm voice. The voice from the water tower in Greyhaven.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "HADES",
+          "channel": "ON RADIO",
+          "text": "Welcome to the north, Mani. Bring the file. (beat) And tell your sister: GH-01 is doing very well.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Preethi's eyes open in the dark.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e1_end"
+    },
+    "p2e1_end": {
+      "id": "p2e1_end",
+      "ep": 1,
+      "place": "Wawa",
+      "time": "Day 3",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "End of Episode 1.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "episodeEnd": true
+    },
+    "p2e2_open": {
+      "id": "p2e2_open",
+      "ep": 2,
+      "place": "Highway 17, westbound",
+      "time": "Day 3, 08:30",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Wawa behind you. Ivy's dented hatchback ahead. Snow on the shoulders. Preethi has the Hades recording on repeat on her phone.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "\"GH-01 is doing very well.\" He talks about her like a houseplant.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "NILA",
+          "channel": "ON RADIO",
+          "text": "That's what he wants you to feel. Angry people make mistakes. (cough) Don't give him that.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "MANI",
+          "channel": "",
+          "text": "Nila, how are you feeling?",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "NILA",
+          "channel": "ON RADIO",
+          "text": "Amma made me eat idli at six a.m. I'm feeling attacked. (beat) Drive, Anna.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e2_winnie"
+    },
+    "p2e2_winnie": {
+      "id": "p2e2_winnie",
+      "ep": 2,
+      "place": "White River",
+      "time": "Day 3, 10:00",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "A tiny town. A sign: Home of Winnie. A statue of a bear cub in a tree: the real bear that inspired Winnie-the-Pooh. A cluster of kids and a frazzled teacher.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "TEACHER",
+          "channel": "",
+          "text": "Someone stole Winnie's scarf! The kids knitted it!",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Red wool fibres on the bark of the statue's tree. Twigs and droppings under the gas station sign across the road. Through your binoculars: a nest on top of the sign, with a flash of red.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "puzzle": {
+        "type": "pick",
+        "title": "Winnie's Scarf",
+        "to": "p2e2_winnie2"
+      }
+    },
+    "p2e2_winnie2": {
+      "id": "p2e2_winnie2",
+      "ep": 2,
+      "place": "White River",
+      "time": "Day 3, 10:15",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Preethi climbs the gas station ladder, retrieves the scarf, and is attacked by an extremely angry crow. The kids cheer. You film all of it.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "NILA",
+          "channel": "ON RADIO",
+          "text": "Anni lost a fight to a crow. Best day of my life.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "I WON. I have the scarf. I won.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "At the pumps, a trucker with a grey beard and a CB radio watches you fill up.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "BIG LOU",
+          "channel": "",
+          "text": "You folks headed west? Two black SUVs been running Highway 17 all week. No front plates. They stop where nobody stops. (He spits.) You hear \"Kane\" on channel nineteen, you get off the road.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e2_nipigon"
+    },
+    "p2e2_nipigon": {
+      "id": "p2e2_nipigon",
+      "ep": 2,
+      "place": "Nipigon / Lake Superior",
+      "time": "Day 3, 16:30",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "The cable-stayed bridge over the Nipigon River. Superior's frozen edge. At sunset, the Sleeping Giant on the horizon across the bay. Preethi asks you to stop the car. You stand in the cold and watch it.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "Nee bayappadriya?",
+          "subtitle": "Are you scared?",
+          "narration": false
+        },
+        {
+          "speaker": "MANI",
+          "channel": "",
+          "text": "Romba.",
+          "subtitle": "Very. (beat) You?",
+          "narration": false
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "I'm a pharmacist, Mani. Last month my biggest problem was a doctor's handwriting.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "She puts her cold hand in your coat pocket with yours.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e2_okafor"
+    },
+    "p2e2_okafor": {
+      "id": "p2e2_okafor",
+      "ep": 2,
+      "place": "Dr. Okafor's house, Thunder Bay · Night 3",
+      "time": "Day 3, 20:00",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "A warm house full of books. Dr. Grace Okafor, sixty, Nila's former criminology professor. Jollof rice and tea. Nila on speaker.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "DR. OKAFOR",
+          "channel": "",
+          "text": "Nila was the best student I ever had, and she chose radio. I've never forgiven her.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "NILA",
+          "channel": "ON RADIO",
+          "text": "You came to my first show.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "DR. OKAFOR",
+          "channel": "",
+          "text": "I came to judge it. (To you.) Tell me about the man.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "puzzle": {
+        "type": "multi",
+        "title": "Build the profile",
+        "to": "p2e2_okafor2"
+      }
+    },
+    "p2e2_okafor2": {
+      "id": "p2e2_okafor2",
+      "ep": 2,
+      "place": "Dr. Okafor's house",
+      "time": "Day 3, 21:00",
+      "lines": [
+        {
+          "speaker": "DR. OKAFOR",
+          "channel": "",
+          "text": "He won't kill you from a distance, Mani. He'll want you in the room. He'll want to watch you choose.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "She writes a name on a card.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "DR. OKAFOR",
+          "channel": "",
+          "text": "Constable Rachel Dunn, OPP, Red Lake. She was my student too. Honest. Too honest for her own good.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e2_storm"
+    },
+    "p2e2_storm": {
+      "id": "p2e2_storm",
+      "ep": 2,
+      "place": "Highway 17 near Ignace",
+      "time": "Day 4, 14:00",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Whiteout. Visibility ten metres. A transport truck jackknifed across both lanes, hazard lights blinking in the snow.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "BIG LOU",
+          "channel": "ON CB",
+          "text": "…whoever's westbound by Ignace, that's no accident, I just came through—",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Two black SUVs slide out of the snow behind you. Doors open. Men in white parkas with rifles.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "KANE",
+          "channel": "ON RADIO",
+          "text": "Mani. Just the file. Nobody has to freeze tonight.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "Mani.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "MANI",
+          "channel": "",
+          "text": "I know.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "You have seconds. The whiteout is your friend: if you move now, they haven't seen where you went.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e2_fight1"
+    },
+    "p2e2_fight1": {
+      "id": "p2e2_fight1",
+      "ep": 2,
+      "place": "Highway 17 · whiteout",
+      "time": "Day 4, 14:02",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "First fight. In stealth you can take them one by one in the snow. If they spot you, it turns into a firefight.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "combat": {
+        "to": "p2e2_fight2",
+        "cleanTo": null
+      }
+    },
+    "p2e2_fight2": {
+      "id": "p2e2_fight2",
+      "ep": 2,
+      "place": "Highway 17 · the truck",
+      "time": "Day 4, 14:08",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "A man on the roof of the jackknifed truck has seen the bodies. He opens up. The second SUV's driver tries to swing round to block your car.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "combat": {
+        "to": "p2e2_case",
+        "cleanTo": null
+      }
+    },
+    "p2e2_case": {
+      "id": "p2e2_case",
+      "ep": 2,
+      "place": "Highway 17",
+      "time": "Day 4, 14:15",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Silence, except the wind. Ivy's hatchback is full of bullet holes. Ivy is crouched behind it, shaking, unhurt.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "In the back of an SUV: a hard case stencilled NSB. Inside, in grey foam, six fragmentation grenades.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "(staring at it) These are grenades, Mani. Real grenades.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "NILA",
+          "channel": "ON RADIO",
+          "text": "Then they're your grenades now. Put them in the trunk, Anni.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "You each take two. The rest go in the trunk.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e2_dryden"
+    },
+    "p2e2_dryden": {
+      "id": "p2e2_dryden",
+      "ep": 2,
+      "place": "Motel, Dryden · Night 4",
+      "time": "Day 5, 07:30",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "A motel by the highway. Preethi patches a graze on your arm. Neither of you sleeps much.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Morning. The car won't start. There's fuel on the snow under the engine.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "puzzle": {
+        "type": "search",
+        "title": "The Fuel Line",
+        "to": "p2e2_tyler"
+      }
+    },
+    "p2e2_tyler": {
+      "id": "p2e2_tyler",
+      "ep": 2,
+      "place": "Motel office, Dryden",
+      "time": "Day 5, 07:45",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Tyler sees your face and goes white.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [
+        {
+          "label": "Report him to the OPP",
+          "sub": "",
+          "to": "p2e2_tyler_a"
+        },
+        {
+          "label": "Flip him: \"Tell us who paid you, and we never met.\"",
+          "sub": "",
+          "to": "p2e2_tyler_b",
+          "hasEffects": true
+        }
+      ]
+    },
+    "p2e2_tyler_a": {
+      "id": "p2e2_tyler_a",
+      "ep": 2,
+      "place": "Motel office, Dryden",
+      "time": "Day 5, 08:30",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "An OPP cruiser takes Tyler away. He won't say a word. A man with a scar on his chin paid him, is all he'll admit. You lose an hour giving statements.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e2_ear"
+    },
+    "p2e2_tyler_b": {
+      "id": "p2e2_tyler_b",
+      "ep": 2,
+      "place": "Motel office, Dryden",
+      "time": "Day 5, 07:50",
+      "lines": [
+        {
+          "speaker": "TYLER",
+          "channel": "",
+          "text": "A guy paid me. Big. Scar on his chin. Said you were thieves.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "TYLER",
+          "channel": "",
+          "text": "Every Thursday night they run a convoy up 105. Northstar trucks. They stop for fuel at Ear Falls at nine. Three trucks, sometimes four. Please don't tell anyone I told you.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e2_ear"
+    },
+    "p2e2_ear": {
+      "id": "p2e2_ear",
+      "ep": 2,
+      "place": "Highway 105 / diner, Ear Falls",
+      "time": "Day 5, 13:00",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Ivy and you fix the fuel line with tape and a hose clamp from her trunk. She turns back toward Dryden to get her own car repaired: \"I'll catch up in Red Lake.\"",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Highway 105 narrows to two lanes. Forest on both sides for 170 km. No cell signal. Then Ear Falls: a dam, a gas station, a diner. Pie and coffee.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "NILA",
+          "channel": "ON RADIO, WEAK",
+          "text": "Anna. Anni. Naan ungala nenachu romba perumai padaren.",
+          "subtitle": "I'm so proud of you both. (beat) Okay, that's enough emotions. Eat your pie.",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e2_arrive"
+    },
+    "p2e2_arrive": {
+      "id": "p2e2_arrive",
+      "ep": 2,
+      "place": "Red Lake",
+      "time": "Day 5, 17:00",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Snow falling. A gold-mining town on a frozen lake. Headframes against a violet sky. On the waterfront, the Norseman floatplane monument, frosted white.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "It's beautiful.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "MANI",
+          "channel": "",
+          "text": "Everything up here is beautiful. That's what scares me.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "The Northern Star Motel: twelve rooms, a coffee pot, a moose head over the desk. The owner, Bev Arsenault, reading glasses on her head, eyes your long cases.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "BEV",
+          "channel": "",
+          "text": "Hunting?",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "MANI",
+          "channel": "",
+          "text": "Something like that.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "BEV",
+          "channel": "",
+          "text": "Mm. Last person I had who was \"something like that\" was a girl from Toronto in 2024. Disappeared in the night, left her toothbrush. (She hands you a key.) Room seven. Checkout's at eleven. Murders are extra.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e2_gift"
+    },
+    "p2e2_gift": {
+      "id": "p2e2_gift",
+      "ep": 2,
+      "place": "Room 7",
+      "time": "Day 5, 17:45",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "On the bed, a gift box with a silk ribbon. Preethi stops your hand.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "Wait. (She checks it like a package at the pharmacy: no wires, no smell.) Okay.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Inside, on tissue paper: the shed skin of a golden lancehead. And a photo of Nila asleep in her hospital bed in Windsor, taken from inside her room. A card, in neat handwriting:",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "\"Welcome to my town.\"",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "MANI",
+          "channel": "",
+          "text": "Lighthouse! Nila! Answer me!",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Static. Then Appa's voice, confused.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "APPA",
+          "channel": "ON RADIO",
+          "text": "Mani? Ava thoongittu irukkaa. Enna aachu?",
+          "subtitle": "Mani? She's sleeping. What happened?",
+          "narration": false
+        },
+        {
+          "speaker": "MANI",
+          "channel": "",
+          "text": "Appa, room-la yaarachum vandhaangala?",
+          "subtitle": "Appa, has anyone been in the room?",
+          "narration": false
+        },
+        {
+          "speaker": "APPA",
+          "channel": "ON RADIO",
+          "text": "Oru doctor vandhaaru, kaalaila. Romba nalla manushan. Nila-ku flowers kondu vandhaaru.",
+          "subtitle": "A doctor came this morning. A very nice man. He brought Nila flowers.",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e2_end"
+    },
+    "p2e2_end": {
+      "id": "p2e2_end",
+      "ep": 2,
+      "place": "Red Lake",
+      "time": "Day 5",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "End of Episode 2.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "episodeEnd": true
+    },
+    "p2e3_open": {
+      "id": "p2e3_open",
+      "ep": 3,
+      "place": "Room 7, Northern Star Motel",
+      "time": "Day 6, 06:00",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "You haven't slept. The radio on the bed. Ortiz's voice on it, from the highway.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "ORTIZ",
+          "channel": "ON RADIO",
+          "text": "Took three days off. I'll sit outside her door in Windsor till you come home. Nobody brings her flowers but family. (beat) That's not a favour, Mani. I owe her.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "NILA",
+          "channel": "ON RADIO",
+          "text": "Sam's here. He brought Tom Portons. Okay. Plan for today, Anna. Hospital, museum, rocks.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e3_hosp"
+    },
+    "p2e3_hosp": {
+      "id": "p2e3_hosp",
+      "ep": 3,
+      "place": "Red Lake Margaret Cochenour Memorial Hospital",
+      "time": "Day 6, 09:00",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "A small, clean hospital, snow piled at the doors. Preethi introduces herself at the desk as a visiting hospital pharmacist from Windsor, which is true, and asks for the director. She gets Dr. Helen Marchetti, fifty-two, sharp, tired, stethoscope worn like a necklace.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "DR. MARCHETTI",
+          "channel": "",
+          "text": "Windsor? You drove all this way to ask about my formulary?",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "I drove all this way because my sister-in-law has a cancer nobody understands. (She hands over Nila's panel.) This compound. Have you seen it?",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Marchetti reads it. Closes her office door.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "DR. MARCHETTI",
+          "channel": "",
+          "text": "Four times. Four men who did contract work at the Hayden Deep. All dead within five months. I sent samples to Winnipeg. The results came back \"lost\". Then Northstar donated a CT scanner to this hospital. (beat) I was told to stop asking.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "puzzle": {
+        "type": "multi",
+        "title": "Five blood panels",
+        "to": "p2e3_hosp2"
+      }
+    },
+    "p2e3_hosp2": {
+      "id": "p2e3_hosp2",
+      "ep": 3,
+      "place": "Dr. Marchetti's office",
+      "time": "Day 6, 09:30",
+      "lines": [
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "Same compound. Same pattern. Different start dates. (beat) Nila's three weeks behind the last man.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "DR. MARCHETTI",
+          "channel": "",
+          "text": "(quietly) Then you have about three months. Maybe less.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Preethi doesn't move. You take her hand under the desk.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e3_museum"
+    },
+    "p2e3_museum": {
+      "id": "p2e3_museum",
+      "ep": 3,
+      "place": "Red Lake Regional Heritage Centre",
+      "time": "Day 6, 11:00",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Gold pans, Norseman models, mine photographs. A volunteer docent, Mrs. Lindqvist, seventies, is delighted to have a visitor.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "puzzle": {
+        "type": "search",
+        "title": "The Hayden family",
+        "to": "p2e3_museum2"
+      }
+    },
+    "p2e3_museum2": {
+      "id": "p2e3_museum2",
+      "ep": 3,
+      "place": "Heritage Centre",
+      "time": "Day 6, 11:30",
+      "lines": [
+        {
+          "speaker": "MRS. LINDQVIST",
+          "channel": "",
+          "text": "Mark came home in 2015. Bought the old mine, built a big house way out past the Burn. Nobody's ever been invited.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "MRS. LINDQVIST",
+          "channel": "",
+          "text": "His father too, they say. Though old Robert must be ninety if he's a day.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "You write down \"Robert\".",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e3_overlook"
+    },
+    "p2e3_overlook": {
+      "id": "p2e3_overlook",
+      "ep": 3,
+      "place": "Dickenson Mine viewing lot, Balmertown",
+      "time": "Day 6, 13:00",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "A lot overlooking the mine buildings and headframe. A.Y. Jackson painted this view once. You and Preethi eat the last of Amma's puliyodharai in the car, heater running.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "Three months.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "MANI",
+          "channel": "",
+          "text": "Less.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "What if the cure doesn't exist?",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "MANI",
+          "channel": "",
+          "text": "Then Hades wouldn't send presents. You don't brag about a lock unless you have the key.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e3_rocks"
+    },
+    "p2e3_rocks": {
+      "id": "p2e3_rocks",
+      "ep": 3,
+      "place": "Balmertown Municipal Office · mineral collection",
+      "time": "Day 6, 14:00",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Cases of minerals: thousands of specimens, quartz, pyrite, real gold glinting under the lights. Somewhere in here are rocks from the Hayden Deep.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "puzzle": {
+        "type": "search",
+        "title": "The mineral collection",
+        "to": "p2e3_rocks2"
+      }
+    },
+    "p2e3_rocks2": {
+      "id": "p2e3_rocks2",
+      "ep": 3,
+      "place": "Mineral collection",
+      "time": "Day 6, 14:20",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "You borrow the case magnifier. Under the Level 6 label, an older typed tag, mostly hidden.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "puzzle": {
+        "type": "code",
+        "title": "The hidden tag",
+        "to": "p2e3_rocks3"
+      }
+    },
+    "p2e3_rocks3": {
+      "id": "p2e3_rocks3",
+      "ep": 3,
+      "place": "Mineral collection",
+      "time": "Day 6, 14:25",
+      "lines": [
+        {
+          "speaker": "MANI",
+          "channel": "",
+          "text": "The public mine maps show six levels.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "NILA",
+          "channel": "ON RADIO",
+          "text": "So there are three more nobody talks about. That's where the lab is, Anna.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e3_dunn"
+    },
+    "p2e3_dunn": {
+      "id": "p2e3_dunn",
+      "ep": 3,
+      "place": "OPP detachment, Red Lake",
+      "time": "Day 6, 15:30",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "A call to your phone brings you in. Constable Rachel Dunn, thirty-three, ponytail, notebook, very direct.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "DUNN",
+          "channel": "",
+          "text": "Two people from Windsor, long gun cases, asking about Northstar at the hospital and the museum. You know what that sounds like to me?",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [
+        {
+          "label": "\"Grace Okafor said you were honest.\"",
+          "sub": "",
+          "to": "p2e3_dunn2",
+          "hasEffects": true
+        },
+        {
+          "label": "\"We're tourists.\"",
+          "sub": "",
+          "to": "p2e3_dunn2"
+        },
+        {
+          "label": "\"Some men shot at us near Ignace.\"",
+          "sub": "",
+          "to": "p2e3_dunn2",
+          "hasEffects": true
+        }
+      ]
+    },
+    "p2e3_dunn2": {
+      "id": "p2e3_dunn2",
+      "ep": 3,
+      "place": "OPP detachment",
+      "time": "Day 6, 15:35",
+      "lines": [
+        {
+          "speaker": "DUNN",
+          "channel": "",
+          "text": "(writing) Why Northstar?",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [
+        {
+          "label": "Tell her about Nila's cancer and show the five blood panels",
+          "sub": "",
+          "to": "p2e3_dunn3",
+          "hasCondition": true,
+          "hasEffects": true
+        },
+        {
+          "label": "\"We're thinking of investing.\"",
+          "sub": "",
+          "to": "p2e3_dunn3"
+        },
+        {
+          "label": "Show her the gun cases are locked",
+          "sub": "",
+          "to": "p2e3_dunn3",
+          "hasEffects": true
+        }
+      ]
+    },
+    "p2e3_dunn3": {
+      "id": "p2e3_dunn3",
+      "ep": 3,
+      "place": "OPP detachment",
+      "time": "Day 6, 15:40",
+      "lines": [
+        {
+          "speaker": "DUNN",
+          "channel": "",
+          "text": "Grace taught me at Lakehead. (She closes her notebook.) I can't help you. I also can't arrest you for being sad.",
+          "subtitle": "",
+          "narration": false,
+          "dynamic": true
+        },
+        {
+          "speaker": "DUNN",
+          "channel": "",
+          "text": "Go home, Mr. Mani. Northstar pays half this town's wages. (beat) And if you don't go home, don't make me find you in a ditch.",
+          "subtitle": "",
+          "narration": false,
+          "dynamic": true
+        }
+      ],
+      "choices": [],
+      "dynamicLines": true,
+      "next": "p2e3_daniel"
+    },
+    "p2e3_daniel": {
+      "id": "p2e3_daniel",
+      "ep": 3,
+      "place": "Floatplane base, Red Lake",
+      "time": "Day 6, 16:30",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Planes on skis on the frozen bay. A man in a heavy parka works on the engine of an old Norseman. Daniel Keeper, forty-five.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "DANIEL",
+          "channel": "",
+          "text": "You're the couple asking about Hayden Deep. (beat) My cousin Joe worked there. He was the third one who died.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "DANIEL",
+          "channel": "",
+          "text": "There's a stretch of land past the Burn nobody's allowed to fly over. Northstar got a restriction put on it. I know every lake around it.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "MANI",
+          "channel": "",
+          "text": "Would you fly us?",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "DANIEL",
+          "channel": "",
+          "text": "When it's time. Not before. (He looks at the gun cases in your back seat.) And not with those pointed at my plane.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e3_cliff"
+    },
+    "p2e3_cliff": {
+      "id": "p2e3_cliff",
+      "ep": 3,
+      "place": "Room 7",
+      "time": "Day 6, 22:00",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "The nightly check-in. Nila reads the five blood panels back to you, voice thin.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "NILA",
+          "channel": "ON RADIO",
+          "text": "…so if the peptide binds in the liver first, then the three-week lag means he dosed me in the—",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Her voice stops. A long electronic tone. Then voices in the room, running feet, the clatter of a falling tray. Then Amma.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "AMMA",
+          "channel": "ON RADIO",
+          "text": "Kanna! Nurses vandhurukkaanga, ava moochu—",
+          "subtitle": "Kanna! The nurses are here, her breathing—",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Static.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e3_end"
+    },
+    "p2e3_end": {
+      "id": "p2e3_end",
+      "ep": 3,
+      "place": "Red Lake",
+      "time": "Day 6",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "End of Episode 3.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "episodeEnd": true
+    },
+    "p2e4_open": {
+      "id": "p2e4_open",
+      "ep": 4,
+      "place": "Room 7",
+      "time": "Day 7, 04:10",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "You and Preethi sit on the floor by the radio, coats still on. You've packed the car to drive back to Windsor. Static for six hours.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Then a click.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "NILA",
+          "channel": "ON RADIO, A WHISPER",
+          "text": "…Anna. Anni. Naan inga dhaan irukken.",
+          "subtitle": "I'm still here. (beat) They gave me oxygen. Ortiz yelled at a doctor. It was very funny.",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Preethi puts her face in her hands and cries.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "NILA",
+          "channel": "ON RADIO",
+          "text": "Unpack the car. (beat) Find the man who dug Level 9.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e4_bar"
+    },
+    "p2e4_bar": {
+      "id": "p2e4_bar",
+      "ep": 4,
+      "place": "Bar and general store, Cochenour",
+      "time": "Day 7, 15:00",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "A low wooden bar with a store at the back. Trophy fish on the walls. Miners on shift break, steam rising off their jackets.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "puzzle": {
+        "type": "search",
+        "title": "Asking around",
+        "to": "p2e4_ice"
+      }
+    },
+    "p2e4_ice": {
+      "id": "p2e4_ice",
+      "ep": 4,
+      "place": "Ice road to McKenzie Island",
+      "time": "Day 7, 19:00",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "The summer ferry is gone. A ploughed road of ice crosses the dark lake, marked by small evergreen trees stuck in the snow. Thin near the shore, where the current runs.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Halfway across: headlights behind you. Three snowmobiles, fast.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [
+        {
+          "label": "Stay on the marked road",
+          "sub": "Safer. Slower.",
+          "to": "p2e4_ice2"
+        },
+        {
+          "label": "Cut across the open ice",
+          "sub": "Faster. The ice booms.",
+          "to": "p2e4_ice2",
+          "hasEffects": true
+        }
+      ],
+      "timer": {
+        "secs": 6,
+        "to": "p2e4_ice2"
+      }
+    },
+    "p2e4_ice2": {
+      "id": "p2e4_ice2",
+      "ep": 4,
+      "place": "Ice road",
+      "time": "Day 7, 19:02",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "The snowmobiles close in on both sides.",
+          "subtitle": "",
+          "narration": true,
+          "dynamic": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Preethi rolls down her window. Wind and snow pour in. She braces the shotgun on the door.",
+          "subtitle": "",
+          "narration": true,
+          "dynamic": true
+        }
+      ],
+      "choices": [],
+      "dynamicLines": true,
+      "combat": {
+        "to": "p2e4_ice3",
+        "cleanTo": null
+      }
+    },
+    "p2e4_ice3": {
+      "id": "p2e4_ice3",
+      "ep": 4,
+      "place": "Ice road, island shore",
+      "time": "Day 7, 19:05",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "The third snowmobile is still on you as the island shore rushes up.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [
+        {
+          "label": "Brake hard at the shore",
+          "sub": "",
+          "to": "p2e4_ice_end",
+          "hasEffects": true
+        },
+        {
+          "label": "Keep your speed",
+          "sub": "",
+          "to": "p2e4_ice_end"
+        }
+      ],
+      "timer": {
+        "secs": 5,
+        "to": "p2e4_ice_end"
+      }
+    },
+    "p2e4_ice_end": {
+      "id": "p2e4_ice_end",
+      "ep": 4,
+      "place": "McKenzie Island",
+      "time": "Day 7, 19:06",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "You hit the shore road at speed and fishtail into a snowbank. The snowmobile roars past and away into the dark.",
+          "subtitle": "",
+          "narration": true,
+          "dynamic": true
+        }
+      ],
+      "choices": [],
+      "dynamicLines": true,
+      "next": "p2e4_sully"
+    },
+    "p2e4_sully": {
+      "id": "p2e4_sully",
+      "ep": 4,
+      "place": "Sully's cabin, McKenzie Island",
+      "time": "Day 7, 20:00",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "A cabin crammed with mining junk, a wood stove, and a black cat named Nugget. \"Sully\" O'Rourke, seventy-eight, takes the rye before he takes your names.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "SULLY",
+          "channel": "",
+          "text": "Hayden Deep. (He pours.) I dug Level Nine in seventy-four. Old Robert Hayden wanted a level nobody would ever see on a map. Said it was for \"cold storage\". I've dug gold for fifty years; you don't keep anything cold that far down. You keep it secret.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e4_stories"
+    },
+    "p2e4_stories": {
+      "id": "p2e4_stories",
+      "ep": 4,
+      "place": "Sully's cabin",
+      "time": "Day 7, 20:15",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Sully refills his glass. \"Ask me something.\"",
+          "subtitle": "",
+          "narration": true,
+          "dynamic": true
+        }
+      ],
+      "choices": [
+        {
+          "label": "\"Tell me about the dig.\"",
+          "sub": "",
+          "to": "p2e4_s1",
+          "once": true
+        },
+        {
+          "label": "\"Did the miners get sick?\"",
+          "sub": "",
+          "to": "p2e4_s2",
+          "once": true
+        },
+        {
+          "label": "\"What was Mark like as a boy?\"",
+          "sub": "",
+          "to": "p2e4_s3",
+          "once": true
+        },
+        {
+          "label": "Watch what he's doing",
+          "sub": "",
+          "to": "p2e4_map"
+        }
+      ],
+      "dynamicLines": true
+    },
+    "p2e4_s1": {
+      "id": "p2e4_s1",
+      "ep": 4,
+      "place": "Sully's cabin",
+      "time": "Day 7, 20:20",
+      "lines": [
+        {
+          "speaker": "SULLY",
+          "channel": "",
+          "text": "Six of us. Nine months. Paid triple and told to forget it. We cut a vent raise up to the bush by Madsen so we could breathe down there. Nobody ever filled it in. I'd bet my cat on it.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e4_stories"
+    },
+    "p2e4_s2": {
+      "id": "p2e4_s2",
+      "ep": 4,
+      "place": "Sully's cabin",
+      "time": "Day 7, 20:25",
+      "lines": [
+        {
+          "speaker": "SULLY",
+          "channel": "",
+          "text": "In the eighties. Three of the six of us. Lungs. Same as everybody else on that road. Company paid for the funerals. Very generous. Very quiet.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e4_stories"
+    },
+    "p2e4_s3": {
+      "id": "p2e4_s3",
+      "ep": 4,
+      "place": "Sully's cabin",
+      "time": "Day 7, 20:30",
+      "lines": [
+        {
+          "speaker": "SULLY",
+          "channel": "",
+          "text": "Cold little thing. Used to catch garter snakes and keep them in jars on his windowsill. Watched them. Just watched them, for hours. Never let them go.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e4_stories"
+    },
+    "p2e4_map": {
+      "id": "p2e4_map",
+      "ep": 4,
+      "place": "Sully's cabin",
+      "time": "Day 7, 20:40",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Sully turns over a calendar from 1974. On the back, in pencil: a hand-drawn map. Levels 6 to 9, the shafts, and a ventilation raise that comes up in the bush near Madsen.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "SULLY",
+          "channel": "",
+          "text": "Only map there is. Take it. (beat) And son. The old man never died, you know. They say he lives out there with the boy.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e4_mapp"
+    },
+    "p2e4_mapp": {
+      "id": "p2e4_mapp",
+      "ep": 4,
+      "place": "Sully's cabin",
+      "time": "Day 7, 20:50",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "You lay Sully's map over Ivy's surface sketch and the \"Level 9\" clue.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "puzzle": {
+        "type": "pick",
+        "title": "The way in",
+        "to": "p2e4_back"
+      }
+    },
+    "p2e4_back": {
+      "id": "p2e4_back",
+      "ep": 4,
+      "place": "Ice road, return",
+      "time": "Day 7, 22:00",
+      "lines": [
+        {
+          "speaker": "NILA",
+          "channel": "ON RADIO",
+          "text": "A side door nobody remembers. Every case has one. Good work, Anna.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "You cross back on the marked road, slowly. Where the snowmobile went through, the ice is already freezing over. Preethi is silent.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "That man could have drowned.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "MANI",
+          "channel": "",
+          "text": "He was shooting at us.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "I know. (beat) I still want to remember that he could have drowned.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e4_cliff"
+    },
+    "p2e4_cliff": {
+      "id": "p2e4_cliff",
+      "ep": 4,
+      "place": "Northern Star Motel office",
+      "time": "Day 7, 22:30",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "The office door is open. Bev is duct-taped to her desk chair, a bruise on her cheek, furious.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "BEV",
+          "channel": "",
+          "text": "(as Preethi cuts the tape) Three of them. One with a scar. They wanted the Toronto girl.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "MANI",
+          "channel": "",
+          "text": "Ivy's in Dryden—",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "BEV",
+          "channel": "",
+          "text": "She came back tonight. Two hours ago. Room four.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Room four: the door kicked in, the bed overturned, Ivy's laptop smashed. A drop of blood on the snow outside. Drag marks to where a vehicle waited.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Your radio clicks onto your channel.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "KANE",
+          "channel": "ON RADIO",
+          "text": "The journalist talks a lot when she's cold. (beat) Thursday, Mani. Bring the file. You can have whatever's left of her.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e4_end"
+    },
+    "p2e4_end": {
+      "id": "p2e4_end",
+      "ep": 4,
+      "place": "Red Lake",
+      "time": "Day 7",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "End of Episode 4.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "episodeEnd": true
+    },
+    "p2e5_open": {
+      "id": "p2e5_open",
+      "ep": 5,
+      "place": "Room 7",
+      "time": "Day 9, Thursday 18:00",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Sully's map, Ivy's sketch and your notes spread on the bed. Nila on the radio, voice weak but precise.",
+          "subtitle": "",
+          "narration": true,
+          "dynamic": true
+        },
+        {
+          "speaker": "NILA",
+          "channel": "ON RADIO",
+          "text": "Kane expects you at the front gate at midnight with the file. So you'll be there, Anna, and you won't. Ivy told me Northstar runs a supply convoy on Thursdays; it fuels at Ear Falls at nine.",
+          "subtitle": "",
+          "narration": false,
+          "dynamic": true
+        },
+        {
+          "speaker": "NILA",
+          "channel": "ON RADIO",
+          "text": "Last truck, there's a gap between the pallets and the cab. You ride in. Anni takes the old ventilation raise near Madsen. You meet on Level 9.",
+          "subtitle": "",
+          "narration": false,
+          "dynamic": true
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "And if one of us gets caught?",
+          "subtitle": "",
+          "narration": false,
+          "dynamic": true
+        },
+        {
+          "speaker": "NILA",
+          "channel": "ON RADIO",
+          "text": "Then the other one is the plan. (beat) Bring me pictures. Bring me voices. Bring Ivy.",
+          "subtitle": "",
+          "narration": false,
+          "dynamic": true
+        }
+      ],
+      "choices": [
+        {
+          "label": "Mani takes the M4, Preethi the shotgun",
+          "sub": "",
+          "to": "p2e5_ear",
+          "hasEffects": true
+        },
+        {
+          "label": "Preethi takes the M4, Mani the shotgun",
+          "sub": "",
+          "to": "p2e5_ear",
+          "hasEffects": true
+        }
+      ],
+      "dynamicLines": true
+    },
+    "p2e5_ear": {
+      "id": "p2e5_ear",
+      "ep": 5,
+      "place": "Gas station, Ear Falls",
+      "time": "21:00",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Three Northstar trucks fuelling under floodlights. The drivers are inside, buying coffee. You need to reach the last truck without being seen.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Between you and it: the ice machine, a parked snowplough, and twenty metres of bright concrete.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [
+        {
+          "label": "Ice machine, then the snowplough's shadow, then the truck",
+          "sub": "",
+          "to": "p2e5_ear2"
+        },
+        {
+          "label": "Walk straight across like you belong there",
+          "sub": "",
+          "to": "p2e5_ear_seen",
+          "hasEffects": true
+        }
+      ]
+    },
+    "p2e5_ear_seen": {
+      "id": "p2e5_ear_seen",
+      "ep": 5,
+      "place": "Ear Falls",
+      "time": "21:03",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "A driver comes out with his coffee and looks right at you. You freeze in the shadow of the truck.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [
+        {
+          "label": "Stay absolutely still",
+          "sub": "",
+          "to": "p2e5_ear2"
+        },
+        {
+          "label": "Run",
+          "sub": "",
+          "to": "p2e5_ear_caught"
+        }
+      ],
+      "timer": {
+        "secs": 5,
+        "to": "p2e5_ear_caught"
+      }
+    },
+    "p2e5_ear_caught": {
+      "id": "p2e5_ear_caught",
+      "ep": 5,
+      "place": "Ear Falls",
+      "time": "21:04",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "The driver yells. You dive into the gap behind the cab as he comes round the corner with a flashlight. He swears, decides it was a raccoon, and climbs in. Your heart is louder than the engine.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e5_vent"
+    },
+    "p2e5_ear2": {
+      "id": "p2e5_ear2",
+      "ep": 5,
+      "place": "Last Northstar truck",
+      "time": "21:05",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "You fold yourself into the gap behind the cab. Diesel and cold metal. The truck pulls out. North.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e5_vent"
+    },
+    "p2e5_vent": {
+      "id": "p2e5_vent",
+      "ep": 5,
+      "place": "Bush near Madsen · Preethi",
+      "time": "21:30",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Deep snow. Preethi follows Sully's map by headlamp to a rusted steel cap in the trees: the 1974 ventilation raise. She cuts the padlock with Ruth's old bolt cutters.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "INTO RADIO",
+          "text": "Lighthouse, I'm at the side door.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "NILA",
+          "channel": "ON RADIO",
+          "text": "Three hundred metres of ladder, Anni. Don't look down. Actually, look down. Watch where you put your feet.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Halfway down, a rung snaps under her boot.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [
+        {
+          "label": "Grab the rail with both hands",
+          "sub": "",
+          "to": "p2e5_vent2"
+        },
+        {
+          "label": "Reach for the next rung down",
+          "sub": "",
+          "to": "p2e5_vent_slip",
+          "hasEffects": true
+        }
+      ],
+      "timer": {
+        "secs": 4,
+        "to": "p2e5_vent_slip"
+      }
+    },
+    "p2e5_vent_slip": {
+      "id": "p2e5_vent_slip",
+      "ep": 5,
+      "place": "Ventilation raise",
+      "time": "21:50",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "She drops a metre and catches a rung with one hand, slamming her knee into the rock. She hangs there, breathing. Then she climbs on.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e5_vent2"
+    },
+    "p2e5_vent2": {
+      "id": "p2e5_vent2",
+      "ep": 5,
+      "place": "Ventilation raise",
+      "time": "22:00",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "A bat colony explodes past her face in the dark, hundreds of wings. She swears in Tamil, loudly. On the radio, Nila laughs weakly for the first time in days.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Two hundred metres to go.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e5_surface"
+    },
+    "p2e5_surface": {
+      "id": "p2e5_surface",
+      "ep": 5,
+      "place": "Hayden Deep · surface · Mani",
+      "time": "22:15",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "The truck rolls through the gate. Floodlights, the headframe, a modern glass office bolted onto old brick. You slip out at the loading dock.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Three guards between you and the freight elevator. A locker room. Cameras.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "combat": {
+        "to": "p2e5_surface_loud",
+        "cleanTo": "p2e5_surface_clean"
+      }
+    },
+    "p2e5_surface_clean": {
+      "id": "p2e5_surface_clean",
+      "ep": 5,
+      "place": "Guard post",
+      "time": "22:25",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Under the guard post bench: a hard case stencilled NSB. Grenades. And on a hook, a lab coat and an ID badge that opens the freight elevator to Level 6.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e5_meet"
+    },
+    "p2e5_surface_loud": {
+      "id": "p2e5_surface_loud",
+      "ep": 5,
+      "place": "Guard post",
+      "time": "22:25",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "An alarm starts somewhere and stops. They'll be looking now. Under the guard post bench: a hard case stencilled NSB. Grenades. You take the elevator badge from a guard's belt.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e5_meet"
+    },
+    "p2e5_meet": {
+      "id": "p2e5_meet",
+      "ep": 5,
+      "place": "Level 9",
+      "time": "23:00",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Preethi drops from the last rung into warm air. You find the old ramp down from Level 6. You meet in a tunnel lit by white LEDs. She grabs your coat with both hands and doesn't say anything.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Then the tunnel opens.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e5_farm"
+    },
+    "p2e5_farm": {
+      "id": "p2e5_farm",
+      "ep": 5,
+      "place": "Level 9 · the venom farm",
+      "time": "23:05",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "A cavern of heated glass tanks, hundreds of them, in rows that disappear into the dark. In every tank, a golden lancehead. Robotic arms move from tank to tank, pinning the snakes and milking venom into vials. Freezers hum.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "(whispering) This is a farm. He's farming them.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "puzzle": {
+        "type": "search",
+        "title": "The venom farm",
+        "to": "p2e5_server"
+      }
+    },
+    "p2e5_server": {
+      "id": "p2e5_server",
+      "ep": 5,
+      "place": "Level 9 · the lab",
+      "time": "23:20",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "A clean lab behind glass. A server terminal. You plug in the USB with the encrypted file from Greyhaven. Hades_contacts.enc.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "It isn't a list of contacts. It's a key. The terminal asks for three fields to unlock the trial database.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "puzzle": {
+        "type": "multi",
+        "title": "Unlock the database",
+        "to": "p2e5_files"
+      }
+    },
+    "p2e5_files": {
+      "id": "p2e5_files",
+      "ep": 5,
+      "place": "Level 9 · the lab",
+      "time": "23:25",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "The records open.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "SUBJECT GH-01. Nila. \"Route: drinking water. Location: Pike Point, Greyhaven. Progression: as expected.\" A scanned note in the margin, in neat handwriting: \"Keep her alive until the brother comes. — M.H.\"",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "SUBJECTS RL-01 to RL-04: the four dead men. Joe Keeper is RL-03.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "HX-7C (antidote): \"Three doses. Stored at the house vault. Access: M.H. only.\"",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "MANI",
+          "channel": "INTO RADIO",
+          "text": "Nila. He wrote your name. In his own handwriting.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "A long silence on the radio.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "NILA",
+          "channel": "ON RADIO",
+          "text": "Then we have him on paper. Copy everything, Anna.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e5_ivy"
+    },
+    "p2e5_ivy": {
+      "id": "p2e5_ivy",
+      "ep": 5,
+      "place": "Level 9 · cold store",
+      "time": "23:35",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Behind a steel door marked SAMPLES −4°C: Ivy, zip-tied to a shelf, lips blue, a bruise over one eye. Preethi cuts her free and wraps her in her own parka.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "IVY",
+          "channel": "",
+          "text": "(teeth chattering) I came back to warn you. They were in the parking lot.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "You're okay. I've got you. (She checks Ivy's pupils and fingers.) Early hypothermia. You'll keep your fingers.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Alarms. Red lights. A voice on the PA.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "KANE",
+          "channel": "PA",
+          "text": "Mani. You were supposed to come to the front door.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e5_esc1"
+    },
+    "p2e5_esc1": {
+      "id": "p2e5_esc1",
+      "ep": 5,
+      "place": "Level 9 · the venom farm",
+      "time": "23:40",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Guards pour into the venom farm between the tank rows. They've been waiting.",
+          "subtitle": "",
+          "narration": true,
+          "dynamic": true
+        }
+      ],
+      "choices": [],
+      "dynamicLines": true,
+      "combat": {
+        "to": "p2e5_esc2",
+        "cleanTo": null
+      }
+    },
+    "p2e5_esc2": {
+      "id": "p2e5_esc2",
+      "ep": 5,
+      "place": "Mine cage elevator",
+      "time": "23:50",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "The old mine cage elevator. A slow ride up three hundred metres. Kane's men fire down the shaft from above.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "combat": {
+        "to": "p2e5_cliff",
+        "cleanTo": null
+      }
+    },
+    "p2e5_cliff": {
+      "id": "p2e5_cliff",
+      "ep": 5,
+      "place": "Hayden Deep fence line",
+      "time": "Day 10, 00:30",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "You crash through a gap in the fence into the bush and run, Ivy between you. Then lights everywhere, red and blue. A ring of OPP cruisers on the access road. A megaphone.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "DUNN",
+          "channel": "MEGAPHONE",
+          "text": "Hands where I can see them. Both of you. Now.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Preethi looks at the Desert Eagle in her hand, then at you. Behind you, on the mine road, Kane's SUVs stop, turn, and drive calmly away.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e5_end"
+    },
+    "p2e5_end": {
+      "id": "p2e5_end",
+      "ep": 5,
+      "place": "Red Lake",
+      "time": "Day 10",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "End of Episode 5.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "episodeEnd": true
+    },
+    "p2e6_open": {
+      "id": "p2e6_open",
+      "ep": 6,
+      "place": "Hayden Deep fence line",
+      "time": "Day 10, 00:31",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "In the two seconds before the floodlights reach you, Preethi does something fast: she shoves both Desert Eagles and the long guns into a snowbank behind a spruce and kicks snow over them.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "(under her breath) Illegal guns, Mani. Ninaivirukkaa?",
+          "subtitle": "Remember?",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "You step out with your hands up, Ivy between you. Dunn pats you down: a USB stick, a phone full of photographs, a pocket of dried fruit.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e6_dunn"
+    },
+    "p2e6_dunn": {
+      "id": "p2e6_dunn",
+      "ep": 6,
+      "place": "OPP detachment · interview room",
+      "time": "Day 10, 02:00",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Dunn scrolls through the photos on your phone: the venom farm, the whiteboard, the GH-01 record. Ivy, wrapped in a blanket, gives a statement. Dunn's face changes.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "DUNN",
+          "channel": "",
+          "text": "You broke into a private facility. I should charge you both.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "MANI",
+          "channel": "",
+          "text": "Charge me. But read page four first.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "She reads it. \"Keep her alive until the brother comes.\" She closes the laptop.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "DUNN",
+          "channel": "",
+          "text": "I can't get a warrant for Northstar on photos from a break-in. The judge in Kenora golfs with Hayden's lawyer. And half this town's mortgages are paid by that mine.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "DUNN",
+          "channel": "",
+          "text": "Officially, you were found lost on a snowmobile trail. (She slides the USB back.) Get your sister her medicine. And whatever you hid in that snowbank, I didn't see it.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e6_amma"
+    },
+    "p2e6_amma": {
+      "id": "p2e6_amma",
+      "ep": 6,
+      "place": "Room 7",
+      "time": "Day 10, 09:00",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "No Nila. Instead, Amma's voice, and Appa beside her.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "AMMA",
+          "channel": "ON RADIO",
+          "text": "Kanna, Nila thoonguraa. Doctor sonnaaru, unconscious-nu. Konja naal aagalaam.",
+          "subtitle": "Kanna, Nila is sleeping. The doctor says she's unconscious. It may take a few days.",
+          "narration": false
+        },
+        {
+          "speaker": "AMMA",
+          "channel": "ON RADIO",
+          "text": "Aana naan inga irukken. Ava notes ellam en kitta irukku. Naan padichu solren.",
+          "subtitle": "But I'm here. I have all her notes. I'll read them to you.",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Preethi sits down slowly on the bed.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e6_kane"
+    },
+    "p2e6_kane": {
+      "id": "p2e6_kane",
+      "ep": 6,
+      "place": "Room 7",
+      "time": "Day 10, 11:00",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "The radio clicks onto your channel.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "KANE",
+          "channel": "ON RADIO",
+          "text": "You took the journalist. So I took the old man.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "A cough, then Sully's voice, angry: \"Don't you come, son!\" A thud.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "KANE",
+          "channel": "ON RADIO",
+          "text": "Starratt-Olsen. Midnight. Not the file this time, Mani. You. Walk in alone.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "APPA",
+          "channel": "ON RADIO",
+          "text": "Mani. Nila ezhudhinadhu inga irukku: \"Kane fights near water. Kane likes high ground.\" Idhu ungalukku purinjadha?",
+          "subtitle": "Mani. Nila wrote this here: \"Kane fights near water. Kane likes high ground.\" Does this make sense to you?",
+          "narration": false
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "Purinjudhu, Appa.",
+          "subtitle": "It does, Appa.",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e6_guns"
+    },
+    "p2e6_guns": {
+      "id": "p2e6_guns",
+      "ep": 6,
+      "place": "Hayden Deep fence line",
+      "time": "Day 10, 14:00",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "First, the guns. In daylight, by the mine fence, with Northstar patrols driving the access road every ten minutes.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [
+        {
+          "label": "Wait for a patrol to pass, then dig",
+          "sub": "",
+          "to": "p2e6_guns_ok"
+        },
+        {
+          "label": "Dig now, fast",
+          "sub": "",
+          "to": "p2e6_guns_seen",
+          "hasEffects": true
+        }
+      ]
+    },
+    "p2e6_guns_seen": {
+      "id": "p2e6_guns_seen",
+      "ep": 6,
+      "place": "Mine fence",
+      "time": "Day 10, 14:05",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "A patrol truck slows. You lie flat in the snow with a shotgun under you. The driver squints, shrugs, and drives on. Too close.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e6_guns_ok"
+    },
+    "p2e6_guns_ok": {
+      "id": "p2e6_guns_ok",
+      "ep": 6,
+      "place": "Mine fence",
+      "time": "Day 10, 14:10",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Everything is there under the snow. Cold, dry, loaded.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e6_town"
+    },
+    "p2e6_town": {
+      "id": "p2e6_town",
+      "ep": 6,
+      "place": "Starratt-Olsen",
+      "time": "Day 10, 23:50",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "A near-ghost town. Empty houses with dark windows. A collapsed store. A little white church with a bell tower. Snow drifting through broken doors. A blizzard coming in off the lake.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "You walk down the middle of the road alone, as you were told. Preethi isn't with you. She's already in the church bell tower with the long gun.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "KANE",
+          "channel": "ON RADIO",
+          "text": "Brave. Or stupid. Your wife's in the church, isn't she? (beat) That's fine. So's my sniper.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "AMMA",
+          "channel": "ON RADIO",
+          "text": "Nila ezhudhiyirukka: \"Kane likes high ground.\"",
+          "subtitle": "Nila wrote: \"Kane likes high ground.\"",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e6_sniper"
+    },
+    "p2e6_sniper": {
+      "id": "p2e6_sniper",
+      "ep": 6,
+      "place": "Church bell tower · Preethi",
+      "time": "Day 10, 23:55",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Preethi scans the town through her scope. Snow everywhere. Then: a puff of breath fog from the highest roof in town, the old hotel.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "combat": {
+        "to": "p2e6_houses",
+        "cleanTo": null
+      }
+    },
+    "p2e6_houses": {
+      "id": "p2e6_houses",
+      "ep": 6,
+      "place": "Starratt-Olsen · house to house · Mani",
+      "time": "Day 11, 00:05",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Three houses between you and the one with a light in the window. In the first, a frightened local hiding with his dog. You get them out the back door into the storm.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Three of Kane's men in the next two houses, waiting.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "combat": {
+        "to": "p2e6_sully",
+        "cleanTo": null
+      }
+    },
+    "p2e6_sully": {
+      "id": "p2e6_sully",
+      "ep": 6,
+      "place": "Starratt-Olsen · last house",
+      "time": "Day 11, 00:12",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "In the last house, Sully, tied to a kitchen chair, blood in his white hair, alive.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "SULLY",
+          "channel": "",
+          "text": "(as you cut him loose) Told you not to come. (beat) Thank you for coming.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Outside, engines. Kane and four men, converging on the road.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e6_road"
+    },
+    "p2e6_road": {
+      "id": "p2e6_road",
+      "ep": 6,
+      "place": "Starratt-Olsen · the road",
+      "time": "Day 11, 00:15",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Preethi comes down from the tower at a run. The two of you, behind an old truck, against Kane.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "combat": {
+        "to": "p2e6_after",
+        "cleanTo": null
+      }
+    },
+    "p2e6_after": {
+      "id": "p2e6_after",
+      "ep": 6,
+      "place": "Starratt-Olsen",
+      "time": "Day 11, 00:30",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "In Kane's abandoned truck: another hard case stencilled NSB. And a radio, still on Kane's channel.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e6_wake"
+    },
+    "p2e6_wake": {
+      "id": "p2e6_wake",
+      "ep": 6,
+      "place": "Room 7",
+      "time": "Day 11, 04:00",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "The radio, after a day and a half of Amma's voice, clicks. A different breath on the line.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "NILA",
+          "channel": "ON RADIO, BARELY AUDIBLE",
+          "text": "…Anna… Anni… naan ellathaiyum kettukittu irundhen.",
+          "subtitle": "I heard everything.",
+          "narration": false
+        },
+        {
+          "speaker": "NILA",
+          "channel": "ON RADIO",
+          "text": "Jonah got me a thermal image. Public satellite. North-west of the Burn there's only one heat source in four hundred square kilometres. A house. And behind it, something hot. Very hot.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "That's where the cure is.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "NILA",
+          "channel": "ON RADIO",
+          "text": "That's where he is. (beat) Call Daniel.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e6_flight"
+    },
+    "p2e6_flight": {
+      "id": "p2e6_flight",
+      "ep": 6,
+      "place": "Norseman, over the Burn",
+      "time": "Day 11, 08:00",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "The Norseman on skis, engine roaring. Daniel at the controls, you beside him, Preethi behind with the guns. The town shrinks below.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "DANIEL",
+          "channel": "",
+          "text": "Northstar got this airspace restricted. Not illegal to fly. Just unwise. (He grins.) Joe would've liked you.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "The Burn: endless dark forest grown thick over old fire scars. A frozen private lake. On its far shore, a stone-and-glass mansion, steam rising from its roofs. Behind it, a black cone of rock breathing a column of white steam into the blue sky.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "Is that a volcano?",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "DANIEL",
+          "channel": "",
+          "text": "Locals call it the Smoke. Geologists say it can't exist. (beat) It does anyway.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "A sharp crack. A hole punches through the fuselage beside Preethi's head. A second crack. Oil sprays across the windshield. The engine coughs.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "DANIEL",
+          "channel": "",
+          "text": "Rifle! From the ridge! Hold on!",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Black smoke. The engine dies. In the silence, only wind. Daniel fights the stick, gliding toward a long frozen lake in the heart of the Burn. The ice rushes up.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Impact. White.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e6_end"
+    },
+    "p2e6_end": {
+      "id": "p2e6_end",
+      "ep": 6,
+      "place": "The Burn",
+      "time": "Day 11",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "End of Episode 6.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "episodeEnd": true
+    },
+    "p2e7_open": {
+      "id": "p2e7_open",
+      "ep": 7,
+      "place": "Frozen lake, the Burn",
+      "time": "Day 12, 08:45",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "The Norseman lies on its skis on the ice, one wing crumpled, the propeller bent. Steam from the engine. You pull yourself out of the cockpit. Preethi is already beside Daniel, whose leg is bent the wrong way below the knee.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "Broken. Closed fracture. (To Daniel.) This will hurt very much.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "DANIEL",
+          "channel": "",
+          "text": "You're a pharmacist, not a— AHH.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "puzzle": {
+        "type": "order",
+        "title": "Splint the leg",
+        "to": "p2e7_daniel"
+      }
+    },
+    "p2e7_daniel": {
+      "id": "p2e7_daniel",
+      "ep": 7,
+      "place": "Frozen lake, the Burn",
+      "time": "Day 12, 09:10",
+      "lines": [
+        {
+          "speaker": "DANIEL",
+          "channel": "",
+          "text": "(grey, sweating) Go. I'll fix the radio and keep the flare gun warm. When you're done, fire a green flare and I'll call it in. (beat) If you're not back by dark, I'm eating your sambar rice.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "NILA",
+          "channel": "ON RADIO, FAINT",
+          "text": "…Anna… I'm here. I'm listening to them. I'm in their radio.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e7_shore"
+    },
+    "p2e7_shore": {
+      "id": "p2e7_shore",
+      "ep": 7,
+      "place": "Lake shore · Area 1",
+      "time": "Day 12, 09:30",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "The tree line. Snowmobile engines somewhere. Two hunters in white camouflage working the shore, rifles slung. They don't know the plane came down this far west.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "combat": {
+        "to": "p2e7_disguise",
+        "cleanTo": null
+      }
+    },
+    "p2e7_disguise": {
+      "id": "p2e7_disguise",
+      "ep": 7,
+      "place": "Lake shore",
+      "time": "Day 12, 09:45",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "You take the first hunter's white parka, his toque and his radio. In the whites, from fifty metres, you're one of them.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Preethi looks you up and down. \"You look like a marshmallow with a gun.\"",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e7_ridge"
+    },
+    "p2e7_ridge": {
+      "id": "p2e7_ridge",
+      "ep": 7,
+      "place": "The burned ridge · Area 2",
+      "time": "Day 12, 10:30",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "A ridge of black, dead trunks from the old fire, new pines thick below. A glint on the crest.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "Sniper. The same one who shot the plane.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "You spot for her with the binoculars: \"Three hundred. Wind left.\"",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "combat": {
+        "to": "p2e7_ridge2",
+        "cleanTo": null
+      }
+    },
+    "p2e7_ridge2": {
+      "id": "p2e7_ridge2",
+      "ep": 7,
+      "place": "Sniper's nest",
+      "time": "Day 12, 10:50",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "In the sniper's nest: another NSB grenade case, and a map of the hunters' patrol routes. A camp on the north trail. An ammo cabin in the ravine. A fire lookout tower where the routes meet.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "MANI",
+          "channel": "",
+          "text": "We split. Meet at the fire lookout.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "I hate this plan.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "MANI",
+          "channel": "",
+          "text": "Nila made it.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "I hate it less.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e7_camp"
+    },
+    "p2e7_camp": {
+      "id": "p2e7_camp",
+      "ep": 7,
+      "place": "The north trail · Mani",
+      "time": "Day 12, 11:30",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "A hunters' camp: tents, a fire, four men, two dogs. In the white parka you could walk right through it. Or bait the wolves you've heard all morning toward the meat rack.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "combat": {
+        "to": "p2e7_cabin",
+        "cleanTo": null
+      }
+    },
+    "p2e7_cabin": {
+      "id": "p2e7_cabin",
+      "ep": 7,
+      "place": "The ravine · Preethi",
+      "time": "Day 12, 11:45",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "A frozen creek and an old trapper's cabin, now an ammo dump. Three guards inside. Preethi can go under the cabin through the crawlspace, or through the front door with the shotgun.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "combat": {
+        "to": "p2e7_meet",
+        "cleanTo": null
+      }
+    },
+    "p2e7_meet": {
+      "id": "p2e7_meet",
+      "ep": 7,
+      "place": "Foot of the fire lookout",
+      "time": "Day 12, 12:30",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "You reach the old steel fire lookout tower at the same moment, from opposite sides. Preethi has a cut on her cheek and a stolen box of shells under her arm. You hold each other for exactly three seconds.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e7_ice"
+    },
+    "p2e7_ice": {
+      "id": "p2e7_ice",
+      "ep": 7,
+      "place": "The south lake · Area 4",
+      "time": "Day 12, 13:00",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Beyond the lookout, a long lake to cross. Too many snowmobiles. Kane's voice on the hunters' channel, organising them.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "NILA",
+          "channel": "ON RADIO, A RASP",
+          "text": "Anna… give me the hunter's radio.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "You hold the captured radio against your own. Nila, in Windsor, listens for a full minute. Then she speaks on Kane's channel in Kane's clipped, flat voice.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "NILA",
+          "channel": "AS KANE",
+          "text": "All units. Targets on the south lake. Intercept. Now.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Engines roar. Eight snowmobiles race out onto the south lake, where the current keeps the ice thin.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Preethi looks at you. She doesn't say anything.",
+          "subtitle": "",
+          "narration": true,
+          "dynamic": true
+        }
+      ],
+      "choices": [
+        {
+          "label": "Warn them on their channel",
+          "sub": "They turn back. You lose your head start.",
+          "to": "p2e7_ice_warn",
+          "hasEffects": true
+        },
+        {
+          "label": "Let it happen",
+          "sub": "The way to the lookout is clear.",
+          "to": "p2e7_ice_let"
+        }
+      ]
+    },
+    "p2e7_ice_warn": {
+      "id": "p2e7_ice_warn",
+      "ep": 7,
+      "place": "The south lake",
+      "time": "Day 12, 13:02",
+      "lines": [
+        {
+          "speaker": "MANI",
+          "channel": "INTO RADIO",
+          "text": "Thin ice! South lake is thin ice! Turn back!",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "The snowmobiles skid, turn, scatter. Every one of them makes it back to shore. Now they know exactly where you are.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "NILA",
+          "channel": "ON RADIO",
+          "text": "…You were right. I'm glad you were right.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e7_kane1"
+    },
+    "p2e7_ice_let": {
+      "id": "p2e7_ice_let",
+      "ep": 7,
+      "place": "The south lake",
+      "time": "Day 12, 13:02",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "The ice opens. The lake takes machines and men. Then it's quiet, except for the wind.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Preethi doesn't say anything for a long time.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "NILA",
+          "channel": "ON RADIO",
+          "text": "…Anna, I'm sorry. I'm sorry I made you do that.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e7_kane1"
+    },
+    "p2e7_kane1": {
+      "id": "p2e7_kane1",
+      "ep": 7,
+      "place": "The fire lookout",
+      "time": "Day 12, 15:00",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Kane, shoulder bandaged from Starratt-Olsen, waits at the top of the lookout with a heavy rifle.",
+          "subtitle": "",
+          "narration": true,
+          "dynamic": true
+        },
+        {
+          "speaker": "KANE",
+          "channel": "",
+          "text": "(shouting down) He said you'd come! He said you'd both come! He's got a bet on which of you dies first!",
+          "subtitle": "",
+          "narration": false,
+          "dynamic": true
+        }
+      ],
+      "choices": [],
+      "dynamicLines": true,
+      "combat": {
+        "to": "p2e7_kane2",
+        "cleanTo": null
+      }
+    },
+    "p2e7_kane2": {
+      "id": "p2e7_kane2",
+      "ep": 7,
+      "place": "The lookout stairwell",
+      "time": "Day 12, 15:10",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Close quarters on the switchback stairs. Two of Kane's men between you and the top.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "combat": {
+        "to": "p2e7_kane3",
+        "cleanTo": null
+      }
+    },
+    "p2e7_kane3": {
+      "id": "p2e7_kane3",
+      "ep": 7,
+      "place": "The lookout platform",
+      "time": "Day 12, 15:20",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Wind. Kane grabs Preethi as she comes up through the hatch and holds her out over the rail. You have one grenade and one magazine left.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "KANE",
+          "channel": "",
+          "text": "Drop it, or she flies.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [
+        {
+          "label": "Throw the grenade off the far side of the platform",
+          "sub": "",
+          "to": "p2e7_kane_end"
+        },
+        {
+          "label": "Drop your gun",
+          "sub": "",
+          "to": "p2e7_kane_bad"
+        },
+        {
+          "label": "Shoot at Kane",
+          "sub": "",
+          "to": "p2e7_kane_bad"
+        }
+      ],
+      "timer": {
+        "secs": 6,
+        "to": "p2e7_kane_bad"
+      }
+    },
+    "p2e7_kane_bad": {
+      "id": "p2e7_kane_bad",
+      "ep": 7,
+      "place": "The lookout platform",
+      "time": "Day 12, 15:21",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Kane laughs and leans Preethi further out. Her boots scrape at nothing. No. Not like this.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Think. The grenade.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e7_kane3"
+    },
+    "p2e7_kane_end": {
+      "id": "p2e7_kane_end",
+      "ep": 7,
+      "place": "The lookout platform",
+      "time": "Day 12, 15:21",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "The grenade sails off the far side and bursts in the trees below. Kane's head snaps toward the blast. Preethi drives her elbow into his wounded shoulder and twists free. Kane staggers back against the rail, which gives way.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "He hangs from the edge by one hand. You reach him.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "KANE",
+          "channel": "",
+          "text": "He'll give you the cure. (A thin laugh.) He wants you to watch him choose which one.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "His grip fails. He falls into the trees.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e7_cliff"
+    },
+    "p2e7_cliff": {
+      "id": "p2e7_cliff",
+      "ep": 7,
+      "place": "Lookout platform",
+      "time": "Day 12, 16:30",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "From the top of the tower, everything is visible. The frozen private lake below. On its far shore, the Hades Mansion, every window lit gold, steam pouring from vents on its roofs. Behind it, the Smoke breathes a white column into the violet sky.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "In a glass-walled courtyard, something large and striped paces.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Preethi loads her last shells. You count the grenades.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "The radio clicks onto your private channel. A calm voice, warm and pleased.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "HADES",
+          "channel": "ON RADIO",
+          "text": "Come in. Shoes off, please. I've made tea.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e7_end"
+    },
+    "p2e7_end": {
+      "id": "p2e7_end",
+      "ep": 7,
+      "place": "The Burn",
+      "time": "Day 12",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "End of Episode 7.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "episodeEnd": true
+    },
+    "p2e8_open": {
+      "id": "p2e8_open",
+      "ep": 8,
+      "place": "Frozen private lake",
+      "time": "Day 12, 18:00",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Night. Minus thirty-five. You and Preethi cross the lake on foot in the hunters' whites, low and fast. The mansion grows ahead: stone walls, glass wings glowing green and gold, steam rising from copper vents. A thick pipe runs from the house up the slope of the Smoke.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "NILA",
+          "channel": "ON RADIO, A WHISPER",
+          "text": "He heats it from the volcano. That's how his animals survive up here. (beat) Anna. Anni. Whatever's in that house, it's alive and it's hungry. Go slow.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Three ways in.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [
+        {
+          "label": "The kennels: wolf-dogs and two guards",
+          "sub": "",
+          "to": "p2e8_kennels"
+        },
+        {
+          "label": "The boathouse roof, to a balcony",
+          "sub": "",
+          "to": "p2e8_roof"
+        },
+        {
+          "label": "Grenade the generator shed and go in loud",
+          "sub": "",
+          "to": "p2e8_loud",
+          "hasCondition": true
+        }
+      ]
+    },
+    "p2e8_kennels": {
+      "id": "p2e8_kennels",
+      "ep": 8,
+      "place": "Gatehouse and kennels",
+      "time": "Day 12, 18:20",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Wolf-dog hybrids pace a heated run. Two guards in the gatehouse with a thermos and a card game. Preethi crushes her sedatives into a hunk of the dogs' own meat.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "combat": {
+        "to": "p2e8_hall",
+        "cleanTo": null
+      }
+    },
+    "p2e8_roof": {
+      "id": "p2e8_roof",
+      "ep": 8,
+      "place": "Boathouse roof",
+      "time": "Day 12, 18:20",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "The boathouse roof is coated in ice. Three metres of it to the balcony rail, with a twenty-metre drop to the frozen lake.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [
+        {
+          "label": "Crawl on your stomach, spreading your weight",
+          "sub": "",
+          "to": "p2e8_hall"
+        },
+        {
+          "label": "Walk it quickly",
+          "sub": "",
+          "to": "p2e8_roof_slip"
+        }
+      ],
+      "timer": {
+        "secs": 5,
+        "to": "p2e8_roof_slip"
+      }
+    },
+    "p2e8_roof_slip": {
+      "id": "p2e8_roof_slip",
+      "ep": 8,
+      "place": "Boathouse roof",
+      "time": "Day 12, 18:22",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Your boot slides. Preethi grabs your parka hood and hauls. You lie on the ice together, breathing, then crawl the rest.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e8_hall"
+    },
+    "p2e8_loud": {
+      "id": "p2e8_loud",
+      "ep": 8,
+      "place": "Generator shed",
+      "time": "Day 12, 18:20",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "The grenade blows the generator shed apart. Every light dies for thirty seconds, then flickers back on the geothermal backup. Guards run toward the noise.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "combat": {
+        "to": "p2e8_hall",
+        "cleanTo": null
+      }
+    },
+    "p2e8_hall": {
+      "id": "p2e8_hall",
+      "ep": 8,
+      "place": "Inside the Hades Mansion",
+      "time": "Day 12, 18:40",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Inside. Warm air, stone floors, the smell of wet earth and something like a zoo. Corridors lead off in every direction.",
+          "subtitle": "",
+          "narration": true,
+          "dynamic": true
+        },
+        {
+          "speaker": "NILA",
+          "channel": "ON RADIO",
+          "text": "He's in the study, upstairs. He's waiting. But the vault codes, the layout, anything you learn first, it all helps.",
+          "subtitle": "",
+          "narration": false,
+          "dynamic": true
+        }
+      ],
+      "choices": [
+        {
+          "label": "The courtyard enclosure",
+          "sub": "",
+          "to": "p2e8_tiger",
+          "once": true
+        },
+        {
+          "label": "The glass conservatory",
+          "sub": "",
+          "to": "p2e8_cons",
+          "once": true
+        },
+        {
+          "label": "The indoor pool",
+          "sub": "",
+          "to": "p2e8_pool",
+          "once": true
+        },
+        {
+          "label": "The trophy hall",
+          "sub": "",
+          "to": "p2e8_trophy",
+          "once": true
+        },
+        {
+          "label": "The radio room",
+          "sub": "",
+          "to": "p2e8_radio",
+          "once": true
+        },
+        {
+          "label": "Go up to the study",
+          "sub": "",
+          "to": "p2e8_study",
+          "hasCondition": true
+        }
+      ],
+      "dynamicLines": true
+    },
+    "p2e8_tiger": {
+      "id": "p2e8_tiger",
+      "ep": 8,
+      "place": "Courtyard enclosure",
+      "time": "Day 12, 18:50",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "A heated glass yard. A Siberian tiger lies on a warm rock, watching you with complete calm. Two guards patrol the corridor on the far side of the glass. Two gates: the inner gate into the yard, the outer gate into the guards' corridor. A lever for each.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "He keeps a tiger. Of course he keeps a tiger.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "puzzle": {
+        "type": "pick",
+        "title": "The tiger",
+        "to": "p2e8_hall"
+      }
+    },
+    "p2e8_cons": {
+      "id": "p2e8_cons",
+      "ep": 8,
+      "place": "Glass conservatory",
+      "time": "Day 12, 19:00",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "A jungle under glass, hot and dripping. Free-roaming golden lanceheads among the roots. A black mamba draped along the rafters. Poison dart frogs on the leaves like sweets.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Move slowly. Light every step. Don't touch the leaves.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [
+        {
+          "label": "Slowly, flashlight on the path, step only on bare stone",
+          "sub": "",
+          "to": "p2e8_cons_ok"
+        },
+        {
+          "label": "Push through the leaves to save time",
+          "sub": "",
+          "to": "p2e8_cons_bite"
+        }
+      ],
+      "timer": {
+        "secs": 7,
+        "to": "p2e8_cons_bite"
+      }
+    },
+    "p2e8_cons_bite": {
+      "id": "p2e8_cons_bite",
+      "ep": 8,
+      "place": "Glass conservatory",
+      "time": "Day 12, 19:02",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "A gold blur from the roots. Preethi cries out. Two punctures in her ankle above the boot.",
+          "subtitle": "",
+          "narration": true,
+          "dynamic": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Her hands are shaking but steady enough. She draws the antivenom from the Hayden Deep fridge and injects herself in the thigh. You hold her through the worst of it.",
+          "subtitle": "",
+          "narration": true,
+          "dynamic": true
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "(through her teeth) Good thing I'm a pharmacist.",
+          "subtitle": "",
+          "narration": false,
+          "dynamic": true
+        }
+      ],
+      "choices": [],
+      "dynamicLines": true,
+      "next": "p2e8_cons_ok"
+    },
+    "p2e8_cons_ok": {
+      "id": "p2e8_cons_ok",
+      "ep": 8,
+      "place": "Glass conservatory",
+      "time": "Day 12, 19:05",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "At the far end of the conservatory, a service corridor and a ring of keys on a hook: the household keys, labelled. One says VAULT — MH.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e8_hall"
+    },
+    "p2e8_pool": {
+      "id": "p2e8_pool",
+      "ep": 8,
+      "place": "Indoor pool",
+      "time": "Day 12, 19:10",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "A dark, warm saltwater pool. Things move under the surface: saltwater crocodiles. A catwalk crosses above, and a guard walks it back and forth.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [
+        {
+          "label": "Cross behind him as he turns away",
+          "sub": "",
+          "to": "p2e8_pool_ok"
+        },
+        {
+          "label": "Cross toward him and take him down",
+          "sub": "",
+          "to": "p2e8_pool_bad"
+        }
+      ],
+      "timer": {
+        "secs": 6,
+        "to": "p2e8_pool_bad"
+      }
+    },
+    "p2e8_pool_bad": {
+      "id": "p2e8_pool_bad",
+      "ep": 8,
+      "place": "Indoor pool",
+      "time": "Day 12, 19:11",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "The guard turns. A shot cracks off the tiles. You hit him before he fires again and he goes over the rail. You don't look at the water. Neither does Preethi.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e8_hall"
+    },
+    "p2e8_pool_ok": {
+      "id": "p2e8_pool_ok",
+      "ep": 8,
+      "place": "Indoor pool",
+      "time": "Day 12, 19:11",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "You cross in his shadow, step for step. He never turns. Below you, something large rolls lazily in the dark water.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e8_hall"
+    },
+    "p2e8_trophy": {
+      "id": "p2e8_trophy",
+      "ep": 8,
+      "place": "Trophy hall",
+      "time": "Day 12, 19:15",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Stuffed animals from every continent, glass eyes catching the light. A portrait gallery.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Robert Hayden in a long dark coat, 1978, beside the Merrow dam. A boy with a jar of snakes on a windowsill. A young man at a university lab bench. A plaque: \"Hayden Family Trust — est. 1934.\"",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "MANI",
+          "channel": "",
+          "text": "The coat. It's the same coat.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "NILA",
+          "channel": "ON RADIO",
+          "text": "Father and son. (beat) Anna. Which one have we been listening to?",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e8_hall"
+    },
+    "p2e8_radio": {
+      "id": "p2e8_radio",
+      "ep": 8,
+      "place": "The radio room",
+      "time": "Day 12, 19:20",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Floor-to-ceiling equipment. Racks of recordings labelled by date: every one of Nila's broadcasts from Greyhaven, and her new show in Windsor. A wall of photos of Nila taken from a distance: at Pike Point, at the Windsor studio, asleep in hospital.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Nila, listening through your radio, hears her own voice playing on a loop in his room.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "NILA",
+          "channel": "ON RADIO",
+          "text": "…Anna. Burn it. All of it.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [
+        {
+          "label": "Burn it: a flare into the tape racks",
+          "sub": "",
+          "to": "p2e8_hall",
+          "hasEffects": true
+        },
+        {
+          "label": "Take one tape and leave quietly",
+          "sub": "",
+          "to": "p2e8_hall"
+        }
+      ]
+    },
+    "p2e8_study": {
+      "id": "p2e8_study",
+      "ep": 8,
+      "place": "Hades's study",
+      "time": "Day 12, 19:30",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "A wood-panelled study. A fire. Tea in a china pot on a low table. A golden lancehead coiled on the desk like a sleeping cat. Behind the desk, for the first time, his face.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Mark Hayden, fifty-eight, silver-haired, soft-voiced, the long dark coat over a cashmere sweater.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "HADES",
+          "channel": "",
+          "text": "Shoes. (You don't move.) Fine. (He pours three cups.) Preethi, the pharmacist. Mani, the analyst. And Nila. I assume you're listening, Lighthouse.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "NILA",
+          "channel": "ON RADIO",
+          "text": "I'm listening, Mark.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "He smiles, pleased, like a man hearing a favourite song.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "HADES",
+          "channel": "",
+          "text": "Your sister is the most interesting person I've ever listened to. A hundred nights of a voice in the dark, telling the truth to people who don't want it.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "HADES",
+          "channel": "",
+          "text": "Victor talked too much, so I stopped him. My father always said, never let the help speak at the table.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "MANI",
+          "channel": "",
+          "text": "Why her?",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "HADES",
+          "channel": "",
+          "text": "She was the perfect subject: young, healthy, isolated, curious. She cost me Greyhaven. And I knew you'd come. (He looks at you.) Brothers always come.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e8_offer"
+    },
+    "p2e8_offer": {
+      "id": "p2e8_offer",
+      "ep": 8,
+      "place": "Hades's study",
+      "time": "Day 12, 19:45",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "He sets three identical glass vials on the desk, each with a white cap. A, B, C.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "HADES",
+          "channel": "",
+          "text": "One of these is HX-7C, the cure. The other two are HX-7, concentrated. One dose of that and she dies by morning. (beat) Give me the file, and choose. I'll let you take whichever one you pick. I want to see if you can save her.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "You'll just let us walk out.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "HADES",
+          "channel": "",
+          "text": "I'm a collector, Preethi. I collect moments.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Preethi asks for one minute and opens her pharmacy kit on his desk. He nods, delighted.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "From the Hayden Deep files, she knows what HX-7C should do: a faint blue colour reaction, needle-shaped crystals, and slightly basic, around pH 7.6. She runs three tests on each vial.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Vial A: stays clear. Flat plate crystals. pH 6.8.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Vial B: faint blue. Needle crystals. pH 7.6.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Vial C: stays clear. Needle crystals. pH 7.4.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "puzzle": {
+        "type": "pick",
+        "title": "The three vials",
+        "to": "p2e8_usb"
+      }
+    },
+    "p2e8_usb": {
+      "id": "p2e8_usb",
+      "ep": 8,
+      "place": "Hades's study",
+      "time": "Day 12, 19:50",
+      "lines": [
+        {
+          "speaker": "HADES",
+          "channel": "",
+          "text": "(applauding softly) Oh, she's good. She's very good.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "You hand over the USB. He plugs it into his laptop. Blank. Wiped.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "NILA",
+          "channel": "ON RADIO",
+          "text": "I erased it remotely this morning, Mark. You never needed it. You just wanted us here.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Hades looks at the empty screen for a long moment. Then he laughs, genuinely.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "HADES",
+          "channel": "",
+          "text": "I'm going to miss you, Lighthouse.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Outside, across the lake, a green flare climbs into the sky. Daniel. Then, far off, the thud of helicopter rotors.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Hades sighs and presses a button under the desk. Deep below the house, valves open. The pipes scream. Steam explodes from vents in every wing. Glass shatters in the conservatory. The animals are loose.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e8_escape"
+    },
+    "p2e8_escape": {
+      "id": "p2e8_escape",
+      "ep": 8,
+      "place": "The mansion · eruption",
+      "time": "Day 12, 20:00",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Steam, falling glass, alarms. Guards between you and the back terrace, where Hades is disappearing up the slope of the Smoke.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "combat": {
+        "to": "p2e8_smoke",
+        "cleanTo": null
+      }
+    },
+    "p2e8_smoke": {
+      "id": "p2e8_smoke",
+      "ep": 8,
+      "place": "The Smoke",
+      "time": "Day 12, 20:20",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "The black cone above you, hot under your boots despite the snow. Steam everywhere. Hades on a ledge, the golden lancehead around his arm, the coat whipping in the hot wind.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "HADES",
+          "channel": "",
+          "text": "You know what my father will say? That I played with my food. (beat) He's right.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "The ground cracks between you. A column of scalding steam erupts from the fissure with a roar. When it clears, the ledge is empty. A golden lancehead slides away over the rocks. The coat is gone. No body.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Neither of you fired. The Smoke took him.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e8_heli"
+    },
+    "p2e8_heli": {
+      "id": "p2e8_heli",
+      "ep": 8,
+      "place": "Frozen private lake",
+      "time": "Day 12, 20:40",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "An OPP helicopter lands on the ice, rotor wash blasting snow. Dunn jumps out, then two paramedics carrying Daniel on a stretcher, grinning, leg splinted.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "DUNN",
+          "channel": "",
+          "text": "Your journalist sent the lab files to every newspaper in the country an hour ago. The judge in Kenora stopped golfing. (beat) Get in.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Preethi holds the vial in both hands inside her parka, against her heart, the whole flight.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2e8_hosp"
+    },
+    "p2e8_hosp": {
+      "id": "p2e8_hosp",
+      "ep": 8,
+      "place": "Hospital, Windsor",
+      "time": "Two days later",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Dr. Singh. Dr. Marchetti on a video call from Red Lake. Preethi with three pages of notes. The first dose.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "A long, silent wait. Amma praying under her breath. Appa holding Nila's hand. Ortiz asleep in a plastic chair in the corridor.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Nila's eyes open.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "NILA",
+          "channel": "",
+          "text": "Anna… Anni… neenga romba late.",
+          "subtitle": "You two are very late.",
+          "narration": false
+        },
+        {
+          "speaker": "PREETHI",
+          "channel": "",
+          "text": "(crying and laughing) Traffic.",
+          "subtitle": "",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e8_pongal"
+    },
+    "p2e8_pongal": {
+      "id": "p2e8_pongal",
+      "ep": 8,
+      "place": "Mani and Preethi's apartment, Windsor",
+      "time": "January · Pongal",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Appa said it a year ago: \"Come home for Pongal.\" The pongal pot boils over on the stove for luck and everyone shouts \"Pongalo pongal!\" A kolam at the door. Sugarcane in the corner. Amma and Appa in person this time.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Ortiz, Ruth and Jonah on a video call from Greyhaven. Daniel, Ivy and Dunn on another from Red Lake. Daniel's leg is in a cast covered in signatures.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Nila, thinner, hair short, laughing, back on her feet.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "NILA",
+          "channel": "",
+          "text": "Appa, poana varusham nee sonna, Pongal-ku veetuku vaanu. (beat) Naan vandhutten.",
+          "subtitle": "Appa, last year you said come home for Pongal. (beat) I came.",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "p2e8_hook"
+    },
+    "p2e8_hook": {
+      "id": "p2e8_hook",
+      "ep": 8,
+      "place": "Later that night",
+      "time": "January",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Preethi sits on the edge of the bed, holding something behind her back. She shows you a pregnancy test. Positive.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "You stare at it. Then at her. Joy, so big it's quiet.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "In the living room, Nila's old radio, switched off on the shelf, clicks to static on its own. An old man's voice, slow and amused:",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "OLD MAN",
+          "channel": "ON RADIO",
+          "text": "Congratulations, Anni.",
+          "subtitle": "",
+          "narration": false
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "Silence. Nobody hears it.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "next": "p2_end"
+    },
+    "p2_end": {
+      "id": "p2_end",
+      "ep": 8,
+      "place": "Somewhere else",
+      "time": "—",
+      "lines": [
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "A stone house somewhere you have never seen. Snow at the windows.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "A very old man in a long dark coat, Robert Hayden, sits beside a hospital bed.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "In the bed, burned and bandaged, Mark Hayden opens his eyes.",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "\"You played with your food, Mark,\" the old man says. \"Now we do it properly.\"",
+          "subtitle": "",
+          "narration": true
+        },
+        {
+          "speaker": "",
+          "channel": "",
+          "text": "OUT OF TOWN WILL RETURN.",
+          "subtitle": "",
+          "narration": true
+        }
+      ],
+      "choices": [],
+      "ending": "p2end"
+    }
+  }
+}

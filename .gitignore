@@ -1,0 +1,35 @@
+# Unreal Engine
+game/Binaries/
+game/Intermediate/
+game/Saved/
+game/DerivedDataCache/
+game/Build/
+game/Plugins/*/Binaries/
+game/Plugins/*/Intermediate/
+*.sln
+*.suo
+*.opensdf
+*.sdf
+*.VC.db
+*.VC.opendb
+.vs/
+.vscode/
+.idea/
+*.xcodeproj
+*.xcworkspace
+
+# Compiled
+*.pdb
+*.obj
+*.exe
+*.dll
+*.lib
+*.exp
+*.ilk
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node / tooling
+node_modules/
