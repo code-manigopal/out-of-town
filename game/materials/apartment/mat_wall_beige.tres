@@ -1,0 +1,22 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3]
+
+[ext_resource type="Texture2D" path="res://materials/apartment/beige_wall_001/beige_wall_001_albedo_2k.jpg" id="1_alb"]
+[ext_resource type="Texture2D" path="res://materials/apartment/beige_wall_001/beige_wall_001_normal_2k.jpg" id="2_nor"]
+[ext_resource type="Texture2D" path="res://materials/apartment/beige_wall_001/beige_wall_001_roughness_2k.jpg" id="3_rgh"]
+[ext_resource type="Texture2D" path="res://materials/apartment/beige_wall_001/beige_wall_001_ao_2k.jpg" id="4_ao"]
+
+[resource]
+albedo_color = Color(1.3, 1.45, 1.7, 1)
+albedo_texture = ExtResource("1_alb")
+roughness = 1.0
+roughness_texture = ExtResource("3_rgh")
+normal_enabled = true
+normal_scale = 0.5
+normal_texture = ExtResource("2_nor")
+ao_enabled = true
+ao_light_affect = 0.7
+ao_texture = ExtResource("4_ao")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 5

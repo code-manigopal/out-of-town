@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3]
+
+[ext_resource type="Texture2D" path="res://materials/apartment/fabric_pattern_07/fabric_pattern_07_normal_2k.jpg" id="1_nor"]
+[ext_resource type="Texture2D" path="res://materials/apartment/fabric_pattern_07/fabric_pattern_07_roughness_2k.jpg" id="2_rgh"]
+
+[resource]
+albedo_color = Color(0.13, 0.17, 0.29, 1)
+roughness = 1.0
+roughness_texture = ExtResource("2_rgh")
+normal_enabled = true
+normal_scale = 0.8
+normal_texture = ExtResource("1_nor")
+uv1_scale = Vector3(3, 3, 3)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 5

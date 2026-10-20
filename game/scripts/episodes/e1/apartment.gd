@@ -17,6 +17,8 @@ const INTRO_SCENE: String = "e1_apt"
 @export var auto_answer_seconds: float = 90.0
 ## Play the e1_apt narration when the apartment loads.
 @export var play_intro: bool = true
+## Show the floating object name tags (greybox debugging aid; the interaction prompt already names objects).
+@export var show_debug_labels: bool = false
 
 ## Shared with the episode flow; created here when the scene runs on its own.
 var runner: OOTStoryRunner = null
@@ -36,6 +38,8 @@ var call_active: bool = false
 
 
 func _ready() -> void:
+	if OS.get_cmdline_user_args().has("--skip-intro"):
+		play_intro = false  # debug/render aid: godot ... res://scenes/p1/e1/apartment.tscn -- --skip-intro
 	player.yaw = deg_to_rad(-90.0)
 	player.body.rotation.y = player.yaw
 	var inter: OOTInteractor = player.interactor
@@ -52,6 +56,8 @@ func _ready() -> void:
 	_timer.one_shot = true
 	_timer.timeout.connect(_answer_laptop)
 	_ring_label.visible = false
+	for n: Node in find_children("NameLabel", "Label3D", true, false):
+		(n as Label3D).visible = show_debug_labels
 	hud.set_packed(0, get_pack_total())
 	_on_carried_changed(null)
 	if runner == null:
@@ -109,9 +115,19 @@ func pack_item(item_id: String) -> bool:
 	hud.set_packed(packed_ids.size(), total)
 	item_packed.emit(item_id, packed_ids.size(), total)
 	if packed_ids.size() >= total:
+		_zip_duffel()
 		all_packed.emit()
 		_start_ringing()
 	return true
+
+
+## Swaps the duffel's open model for the zipped one once everything is packed.
+func _zip_duffel() -> void:
+	var open_model: Node3D = duffel.get_node_or_null("Visual/ModelOpen") as Node3D
+	var zipped_model: Node3D = duffel.get_node_or_null("Visual/ModelZipped") as Node3D
+	if open_model != null and zipped_model != null:
+		open_model.visible = false
+		zipped_model.visible = true
 
 
 func _on_pickup_taken(target: OOTInteractable) -> void:

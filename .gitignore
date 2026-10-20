@@ -21,3 +21,7 @@ Thumbs.db
 
 # Node / tooling
 node_modules/
+
+# Blender backups
+*.blend1
+*.blend2
