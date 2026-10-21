@@ -1,0 +1,135 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/episodes/e1/windsor_exterior.gd" id="1_ext"]
+[ext_resource type="Script" path="res://scripts/episodes/e1/exterior_world.gd" id="2_world"]
+[ext_resource type="Environment" path="res://scenes/common/env_exterior_morning.tres" id="3_env"]
+[ext_resource type="PackedScene" path="res://environments/windsor/exterior/building.glb" id="4_bld"]
+[ext_resource type="PackedScene" path="res://environments/windsor/exterior/neighbours.glb" id="5_nb"]
+[ext_resource type="PackedScene" path="res://environments/windsor/exterior/alley_props.glb" id="6_al"]
+[ext_resource type="PackedScene" path="res://environments/windsor/exterior/main_door_leaf.glb" id="7_leaf"]
+[ext_resource type="Script" path="res://scripts/props/oot_door.gd" id="8_door"]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/sedan.tscn" id="9_car"]
+[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="10_player"]
+[ext_resource type="PackedScene" path="res://ui/hud/hud.tscn" id="12_hud"]
+[ext_resource type="Script" path="res://ui/hud/hud.gd" id="13_hudgd"]
+[ext_resource type="PackedScene" path="res://scenes/common/film_grain_layer.tscn" id="14_grain"]
+[ext_resource type="Script" path="res://scripts/vehicle/oot_nav_arrows.gd" id="15_arrows"]
+
+[sub_resource type="BoxShape3D" id="Shape_Ramp"]
+size = Vector3(2.4, 0.2, 4.6228)
+
+[sub_resource type="BoxShape3D" id="Shape_Stairs"]
+size = Vector3(2.4, 4.8, 3.7)
+
+[node name="WindsorExterior" type="Node3D"]
+script = ExtResource("1_ext")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("3_env")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+unique_name_in_owner = true
+light_color = Color(1, 0.97, 0.93, 1)
+light_energy = 2.6
+light_indirect_energy = 1.0
+light_angular_distance = 0.4
+shadow_enabled = true
+shadow_bias = 0.03
+shadow_normal_bias = 1.0
+shadow_blur = 0.8
+directional_shadow_mode = 2
+directional_shadow_max_distance = 110.0
+
+[node name="World" type="Node3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_world")
+
+[node name="Building" parent="." instance=ExtResource("4_bld")]
+
+[node name="Neighbours" parent="." instance=ExtResource("5_nb")]
+
+[node name="AlleyProps" parent="." instance=ExtResource("6_al")]
+
+[node name="MainDoor" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.375, 0, 11.5)
+unique_name_in_owner = true
+script = ExtResource("8_door")
+display_name = "main door"
+prompt_open = "Open"
+open_toward_front = true
+open_angle_deg = 88.0
+toggles_on_use = false
+body_center = Vector3(0.465, 1.05, 0)
+body_size = Vector3(0.93, 2.1, 0.05)
+
+[node name="Leaf" parent="MainDoor" instance=ExtResource("7_leaf")]
+
+[node name="StairRamp" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.778754, -0.627330, 0, 0.627330, 0.778754, -4.2000, 1.3721, 7.7373)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StairRamp"]
+shape = SubResource("Shape_Ramp")
+
+[node name="StairsVolume" type="Area3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2, 2.2, 7.85)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StairsVolume"]
+shape = SubResource("Shape_Stairs")
+
+[node name="GraffitiSlots" type="Node3D" parent="."]
+
+[node name="Graffiti_1" type="Decal" parent="GraffitiSlots"]
+transform = Transform3D(0, -1, 0, 0, 0, -1, 1, 0, 0, 8.35, 1.55, 3.2)
+size = Vector3(2.3, 1.0, 1.15)
+albedo_mix = 1.0
+normal_fade = 0.25
+cull_mask = 1048575
+
+[node name="Graffiti_2" type="Decal" parent="GraffitiSlots"]
+transform = Transform3D(0, -1, 0, 0, 0, -1, 1, 0, 0, 8.35, 1.7, 0.9)
+size = Vector3(2.3, 1.0, 1.15)
+albedo_mix = 1.0
+normal_fade = 0.25
+cull_mask = 1048575
+
+[node name="Graffiti_3" type="Decal" parent="GraffitiSlots"]
+transform = Transform3D(0, -1, 0, 0, 0, -1, 1, 0, 0, 8.35, 2.25, -1.6)
+size = Vector3(2.3, 1.0, 1.15)
+albedo_mix = 1.0
+normal_fade = 0.25
+cull_mask = 1048575
+
+[node name="Graffiti_4" type="Decal" parent="GraffitiSlots"]
+transform = Transform3D(0, -1, 0, 0, 0, -1, 1, 0, 0, 8.35, 1.4, -3.7)
+size = Vector3(2.3, 1.0, 1.15)
+albedo_mix = 1.0
+normal_fade = 0.25
+cull_mask = 1048575
+
+[node name="Sedan" parent="." instance=ExtResource("9_car")]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -0.8, 0.02, -10.5)
+
+[node name="NavArrows" type="Node3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("15_arrows")
+
+[node name="Player" parent="." instance=ExtResource("10_player")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.93, 5.25)
+
+[node name="PostFX" parent="." instance=ExtResource("14_grain")]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Hud" parent="UI" instance=ExtResource("12_hud")]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("13_hudgd")

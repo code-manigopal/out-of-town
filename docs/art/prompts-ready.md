@@ -273,3 +273,41 @@ A real printed graduation photo, the official stage shot taken by the ceremony p
 ```
 A real printed snapshot of the young woman in the attached reference, age 24, at her first night on air in a small-town radio studio: sitting at a worn mixing desk with a broadcast microphone on an arm, big over-ear headphones on crooked, grinning at the camera and giving a thumbs-up, a red ON AIR light glowing on the wall behind her (the only words in the picture), acoustic foam panels, old station posters with no readable text, warm desk lamp light at night. Candid phone photo, slight grain, realistic skin. Portrait 3:4.
 ```
+
+---
+
+# Episode 1 apartment and exit: images to generate
+
+Save each one where its line says. The game picks them up automatically.
+
+**41. `photo_nila_baby.png`** → `game/props/photos/` (pinned on Mani's board; also copy to `docs/art/sheets/props/`)
+```
+A real old printed family photo from 2001, slightly faded colours and soft focus, taken with a cheap film camera: a South Indian Tamil baby girl about six months old, chubby cheeks, a little black dot (drishti pottu) on her cheek, wearing a tiny yellow cotton frock, sitting on a woven mat on a cool red-oxide floor in a modest Tamil home, laughing at the camera. In the bottom right corner, the camera's orange digital date stamp reads exactly: 14 08 '01. No other text. Landscape 3:2.
+```
+
+**Before 42–44, generate Amma's and Appa's face sheets first (prompts 34 and 35)**, then attach them here so the call stills and their later 3D models match.
+
+**42. `amma_appa_wide.png`** → `game/props/photos/call/` (attach Amma's and Appa's face sheets)
+```
+A webcam video-call frame seen from a laptop camera at night, 10:40 pm in a modest middle-class home in Vellore, India: a South Indian Tamil mother in her mid-50s in a deep green cotton saree, grey streaks in her hair in a low bun, small red bindi, leaning close to the screen and squinting, and beside her the Tamil father in his late 50s with thinning grey hair and a grey moustache, still in a half-sleeve white work shirt with a pen in the pocket, sitting a little back. Behind them a wall with a wall clock, a calendar and a small framed deity picture, warm tubelight, slight webcam grain and wide-angle distortion. Faces real and unretouched. No readable text, no app interface. 16:9.
+```
+
+**43. `amma_close.png`** → `game/props/photos/call/` (same chat, attach the wide still)
+```
+Same people and room as the attached image, same webcam view at night, but the mother has leaned in very close to the laptop camera so her face fills most of the frame, worried but loving, the father partly visible behind her shoulder. Slight webcam grain. No text, no interface. 16:9.
+```
+
+**44. `appa_close.png`** → `game/props/photos/call/` (same chat)
+```
+Same people and room as the attached image, same webcam view at night, but now the father is in front, close to the camera, calm and proud, trying to look cheerful, the mother visible beside him. Slight webcam grain. No text, no interface. 16:9.
+```
+
+**45–48. Alley graffiti** → `game/environments/windsor/exterior/graffiti/graffiti_1.png` … `graffiti_4.png` (new chat each, or one chat with "same style")
+```
+Flat, front-on photo of graffiti painted on an old red-brick alley wall in a Canadian city, even daylight, no perspective: [VARIANT]. Realistic spray paint with drips and overspray, slightly weathered. No real names, no words, no brand names, no gang signs, nothing offensive. Square 1:1.
+```
+Use one `[VARIANT]` per image:
+1. a big colourful abstract wildstyle tag made of interlocking letter-like shapes that spell nothing
+2. a large stencil of a crow on a power line, black and white
+3. a faded mural of a sunrise over a lake with a small lighthouse, peeling paint
+4. small layered throw-ups and drips in silver and black, abstract shapes only

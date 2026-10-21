@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/vehicle/oot_car.gd" id="1_car"]
+[ext_resource type="PackedScene" path="res://vehicles/sedan/sedan.glb" id="2_model"]
+
+[node name="Sedan" type="VehicleBody3D"]
+script = ExtResource("1_car")
+
+[node name="Model" parent="." instance=ExtResource("2_model")]

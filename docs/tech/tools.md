@@ -36,6 +36,8 @@ Project settings: **Jolt Physics** is the 3D physics engine; Godot's own `.blend
 | Audacity | 4.0.1 | GPL (tool) | `brew install --cask audacity` | Voice and sound editing |
 | Rhubarb Lip Sync | 1.14.0 | MIT | `~/Applications/Tools/Rhubarb-Lip-Sync-1.14.0-macOS/rhubarb` | Mouth shapes from voice audio; use `--recognizer phonetic` for Tanglish |
 | MediaPipe | 1.1.1 | Apache-2.0 | `tools/.venv` (Python 3.12, gitignored) | Face landmarks for likeness fitting; Pose for motion capture from phone video |
+| blender-kiln `fidelity_check.py` | commit 4b170be | MIT (vendored with its LICENSE) | `tools/likeness/vendor/blender_kiln/`; run via `tools/likeness/run_fidelity.sh` | Measures a model against its turnaround sheet: silhouette IoU per height band, overlay and side-by-side. Only this script is used, not the plugin |
+| Bun | 1.4.3 | MIT (tool) | `brew install oven-sh/bun/bun` | Installed for the Kiln trial (not used by the project) |
 | ffmpeg | 9.0.2 | LGPL/GPL (tool) | `brew install ffmpeg` | Audio filters (phone, radio, video call), encoding to Ogg |
 | Piper TTS | 1.8.0 | GPL-3.0 (tool) | `tools/.venv` (`pip install piper-tts`) | **Placeholder** voice lines for timing; never shipped |
 | Kokoro | 0.9.4 (model Kokoro-82M) | Apache-2.0 | `tools/.venv` + `tools/voice/models/kokoro/` (gitignored, ~319 MB) | **Default placeholder VO**; Hindi voices + `tools/voice/tanglish.py` phonemes for the Tamil family, English voices for others; never final VO |

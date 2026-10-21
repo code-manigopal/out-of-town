@@ -44,6 +44,9 @@ var runner: OOTStoryRunner = null
 var packed_ids: Array[String] = []
 var is_ringing: bool = false
 var call_active: bool = false
+## Run the seated, cinematic version of the call (OOTCallCinematic). Off: the plain dialogue box only.
+var use_call_cinematic: bool = true
+var call_cinematic: OOTCallCinematic = null
 ## item_id -> the copy of that item's Visual shown sitting in its duffel slot.
 var slot_items: Dictionary = {}
 ## Car keys are in Mani's pocket (also the StoryState flag `has_car_keys`).
@@ -325,11 +328,17 @@ func _answer_laptop() -> void:
 
 func _on_call_started(r: OOTStoryRunner) -> void:
 	call_started.emit()
+	if use_call_cinematic:
+		call_cinematic = OOTCallCinematic.new()
+		add_child(call_cinematic)
+		call_cinematic.start(self, dialogue)
 	dialogue.begin(r, call_trigger.stop_scene_id)
 
 
 func _on_call_target_reached(scene_id: String) -> void:
 	call_active = false
+	if call_cinematic != null and is_instance_valid(call_cinematic):
+		call_cinematic.finish()
 	_enable_duffel_pickup()
 	OOTJournalData.grant("e1_goal_leave")
 	call_finished.emit(scene_id)

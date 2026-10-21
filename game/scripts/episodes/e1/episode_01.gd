@@ -1,19 +1,22 @@
 class_name OOTEpisode01
 extends Node
 ## Episode 1 flow (G1 slice): cold open voicemail on black -> title card ->
-## apartment (pack, laptop call) -> end card at e1_road.
+## apartment (pack, laptop call) -> building exterior and the drive (windsor_exterior.tscn) -> fade card for
+## e1_road -> end card.
 
 signal flow_finished
 
 const PART_ID: String = "p1"
 const EPISODE: int = 1
 const APARTMENT_SCENE: String = "res://scenes/p1/e1/apartment.tscn"
+const EXTERIOR_SCENE: String = "res://scenes/p1/e1/windsor_exterior.tscn"
 const DIALOGUE_BOX_SCENE: String = "res://ui/dialogue/dialogue_box.tscn"
 const END_SCENE_ID: String = "e1_road"
 const TITLE_SECONDS: float = 4.0
 
 var runner: OOTStoryRunner = OOTStoryRunner.new()
 var apartment: OOTApartment = null
+var exterior: OOTWindsorExterior = null
 var stage: String = "boot"
 
 var _layer: CanvasLayer
@@ -99,13 +102,48 @@ func _start_apartment() -> void:
 	add_child(apartment)
 
 
-## Mani leaves through the front door with the bag and the car keys. The building
-## exterior and drive are not built yet, so the slice ends here for now.
+## Mani leaves through the front door with the bag and the car keys: cut to black, swap the apartment for the building
+## exterior (the duffel stays in his hands, the `has_car_keys` flag lives in StoryState) and let him walk to the car and
+## drive. If the exterior is missing the slice ends on the card below, as before.
 func _on_apartment_exit() -> void:
-	stage = "end"
+	if stage != "apartment":
+		return
+	stage = "exterior"
+	var item: OOTInteractable = apartment.duffel if apartment != null else null
+	if item != null and item.get_parent() != null:
+		item.get_parent().remove_child(item)       # keep the bag alive: it goes out with Mani
+	_card_title.text = ""
+	_card_sub.text = ""
+	_card.visible = true
+	await get_tree().create_timer(0.7).timeout
 	if apartment != null:
 		apartment.queue_free()
 		apartment = null
+	if not ResourceLoader.exists(EXTERIOR_SCENE):
+		_show_end_card()
+		return
+	exterior = (load(EXTERIOR_SCENE) as PackedScene).instantiate() as OOTWindsorExterior
+	exterior.standalone_start = item == null
+	if item != null:
+		exterior.carry_in(item)
+	exterior.drive_reached_county_road.connect(_on_drive_reached)
+	add_child(exterior)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	_card.visible = false
+
+
+## The drive ended: the exterior has already faded to the e1_road card; the fallback end card follows.
+func _on_drive_reached() -> void:
+	stage = "end"
+	if exterior != null:
+		exterior.queue_free()
+		exterior = null
+	_show_end_card()
+
+
+func _show_end_card() -> void:
+	stage = "end"
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	var road: OOTScene = runner.scene
 	_card_title.text = "To be continued: County Road 20"

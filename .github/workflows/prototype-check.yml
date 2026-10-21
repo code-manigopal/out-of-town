@@ -44,3 +44,7 @@ jobs:
         run: godot --headless --path game --script res://tests/run_apartment_tests.gd
       - name: Player tests
         run: godot --headless --path game --script res://tests/run_player_tests.gd
+      - name: Call tests
+        run: godot --headless --path game --script res://tests/run_call_tests.gd
+      - name: Exterior tests
+        run: godot --headless --path game --script res://tests/run_exterior_tests.gd
