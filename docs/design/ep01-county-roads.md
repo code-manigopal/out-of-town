@@ -54,7 +54,7 @@ All sizes in metres. Greybox with CSG boxes in Godot first, final art later. Eac
 - **Size:** one-bedroom, about 7 × 8 m: entry, living + kitchenette, bedroom, bathroom (door closed).
 - **Layout:** front door → living room with the counter on the right (sweets box, diyas packet, gift radio) → laptop on a small desk by the window → bedroom with the open duffel on the bed. Whiteboard on the living-room wall, photos on a shelf.
 - **Flow:** the duffel is the "packing" target; carrying each item to it fills a slot. When all three are packed, the laptop rings; the call can't start before that. *(design)* If the ringing laptop is left unanswered for 90 s, the call starts by itself (Amma doesn't give up).
-- **Light:** bright 08:10 November sun through blinds, cool white. The safest room in the game: remember this light at the end.
+- **Light:** bright 09:05 November sun through blinds, cool white. The safest room in the game: remember this light at the end.
 
 ### 4.2 County roads — `road_cr20.tscn`, `road_chatham.tscn`
 - **Shape:** not open world. Each drive is a 2–3 km road strip with gentle curves, built with a Path3D road and repeating roadside sets (greenhouses, silos, fences, then forest). The car can leave the road onto a soft shoulder; invisible rails stop it going further.
@@ -112,8 +112,8 @@ All sizes in metres. Greybox with CSG boxes in Godot first, final art later. Eac
 
 | Beat | Time | Light | Weather |
 | --- | --- | --- | --- |
-| Apartment | 08:10 | bright cool sun | clear |
-| Drive 1, Tom Portons 1 | 09:05–09:46 | high morning sun | clear, cold |
+| Apartment | 09:05–09:35 | bright cool sun | clear |
+| Drive 1, Tom Portons 1 | 10:10–11:06 | high morning sun | clear, cold |
 | Drive 2 | 12:10 | sun → overcast | clouding over |
 | Truck stop | 14:20 | flat grey | rain |
 | Main Street | 17:40 | dusk, sodium orange | fog rolling in |

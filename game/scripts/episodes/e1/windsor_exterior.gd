@@ -10,7 +10,7 @@ extends Node3D
 ## exterior_world.gd; the car is oot_car.gd; the chevrons are oot_nav_arrows.gd. Story text (the card's place and time)
 ## comes from the StoryDB scene `e1_road`; the few UI hints below are placeholders until Mani's inner-voice lines exist.
 
-## The end of the drive: the fade to the "County Road 20, Essex County - 09:05" card is done and the next beat can start.
+## The end of the drive: the fade to the "County Road 20, Essex County - 10:10" card is done and the next beat can start.
 signal drive_reached_county_road
 signal stage_changed(new_stage: StringName)
 signal trunk_loaded
@@ -545,7 +545,7 @@ func _on_engine_started() -> void:
 
 # --- the end of the drive -------------------------------------------------------------------------
 
-## Fade out, show the e1_road place/time card ("County Road 20, Essex County - 09:05") and emit drive_reached_county_road.
+## Fade out, show the e1_road place/time card ("County Road 20, Essex County - 10:10") and emit drive_reached_county_road.
 func finish_drive() -> void:
 	if drive_finished:
 		return
@@ -565,14 +565,14 @@ func finish_drive() -> void:
 	drive_reached_county_road.emit()
 
 
-## "County Road 20, Essex County - 09:05", from the e1_road scene's place and time.
+## "County Road 20, Essex County - 10:10", from the e1_road scene's place and time.
 func road_card_text() -> String:
 	var db: Node = OOTServices.db()
 	if db != null:
 		var sc: OOTScene = db.get_scene(PART_ID, ROAD_SCENE_ID)
 		if sc != null:
 			return "%s — %s" % [sc.place, sc.time]
-	return "County Road 20, Essex County — 09:05"
+	return "County Road 20, Essex County — 10:10"
 
 
 # --- graffiti slots ---------------------------------------------------------------------------------

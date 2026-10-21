@@ -8,7 +8,7 @@ e1_open:{ep:1, card:true, radio:true, place:"Black screen", time:"Sunday 23:52",
   "~The message cuts. Silence."],
   fx:{clue:"voicemail"}, next:"e1_apt"},
 
-e1_apt:{ep:1, place:"Mani's apartment, Windsor", time:"Tue 08:10", lines:[
+e1_apt:{ep:1, place:"Mani's apartment, Windsor", time:"Tue 09:05", lines:[
   "~A small one-bedroom near the river. A whiteboard of job applications, half of them crossed out. A graduation photo from the University of Windsor. On the counter: a box of laddu and mysore pak, a packet of clay diyas, and a gift-wrapped ham radio with a crooked bow.",
   "~You play the voicemail again. You call Nila. Straight to voicemail. Again.",
   "~Before you leave, you look around the flat one more time."],
@@ -20,7 +20,7 @@ e1_apt:{ep:1, place:"Mani's apartment, Windsor", time:"Tue 08:10", lines:[
     {t:"Photo of Nila", text:"Nila at her first broadcast in Greyhaven, headphones crooked, grinning. She studied criminology for four years, then chose radio. Appa didn't speak to her for a week. Then he listened to every show."}
   ]}},
 
-e1_call:{ep:1, place:"Mani's apartment, Windsor", time:"Tue 08:30", lines:[
+e1_call:{ep:1, place:"Mani's apartment, Windsor", time:"Tue 09:30", lines:[
   "~Your laptop rings. A video call from Vellore. Amma and Appa, 7 pm their time, Appa still in his shop shirt from Sri Valli Leathers.",
   "AMMA: Kanna, saaptiya? Moonji ellam ilachu pochu. || Kanna, did you eat? Your face has gone so thin.",
   "MANI: Saapten, Amma. || I ate, Amma.",
@@ -31,30 +31,30 @@ e1_call:{ep:1, place:"Mani's apartment, Windsor", time:"Tue 08:30", lines:[
     {t:"\"Avalukku work busy, Amma.\"", sub:"She's busy with work, Amma. (Reassure them.)", to:"e1_call2", fx:{set:{call1:"reassure"}}},
     {t:"\"Inniki avala paakka poren, ippo dhaan kilambaren.\"", sub:"I'm going to see her today, I'm leaving now. (A half-truth.)", to:"e1_call2", fx:{flag:"honest1", set:{call1:"half"}}}
   ]},
-e1_call2:{ep:1, place:"Mani's apartment, Windsor", time:"Tue 08:34", lines:[
+e1_call2:{ep:1, place:"Mani's apartment, Windsor", time:"Tue 09:34", lines:[
   "APPA: Sweets eduthutu po. Kadai nalla poguthu, kavala padaadhenu Appa sonnaarnu sollu. Pongal-ku veetuku vara sollu. || Take her the sweets. Tell her Appa says the shop is doing fine, she should stop worrying. Tell her to come home for Pongal.",
   "AMMA: Innoru vishayam, Kanna. Preethi-nu oru ponnu, Windsor-la dhaan irukkaa. Pharmacist. Photo anupparen, paaru. || One more thing, Kanna. There's a girl called Preethi, she lives in Windsor too. A pharmacist. I'm sending her photo, have a look.",
   "MANI: Amma! Ippo venaam! || Amma! Not now!",
   "~Amma laughs. Appa shakes his head. The call ends. Your phone buzzes: a photo from Amma. You don't open it. You pick up the gift radio and look at it for a long moment."],
   next:"e1_road"},
 
-e1_road:{ep:1, place:"County Road 20, Essex County", time:"Tue 09:05", lines:[
+e1_road:{ep:1, place:"County Road 20, Essex County", time:"Tue 10:10", lines:[
   "~You head east along Lake Erie. Greenhouses glitter outside Leamington. Flat farmland, grain silos, a hawk on a fence post. The radio plays a country station you'd never admit to liking.",
   "~At a red light you text Nila's flatmate, a name she's mentioned a hundred times.",
   "MANI (TEXT): Hi Tess, it's Mani, Nila's brother. Is she around? Coming up today.",
   "~No reply. The light goes green. Your stomach says coffee."],
   next:"e1_tp1"},
 
-e1_tp1:{ep:1, place:"Tom Portons, County Road 20", time:"Tue 09:35", lines:[
+e1_tp1:{ep:1, place:"Tom Portons, County Road 20", time:"Tue 10:55", lines:[
   "~A busy coffee-and-donut shop. Red-and-cream decor, a hockey rerun on the TV, the smell of burnt sugar. You order a coffee and an apple fritter.",
   "~At the counter, an old man in a flat cap slaps a receipt down.",
   "HAROLD: Third day running! I order a double-double and somebody gives me decaf! I've been coming here since 1974!",
   "~The young cashier, Priya, looks helpless. Your coffee is still brewing. You have nothing better to do."],
   choices:[{t:"Help sort it out", to:"e1_tp1p"},{t:"Stay out of it", to:"e1_tp1skip"}]},
-e1_tp1skip:{ep:1, place:"Tom Portons, County Road 20", time:"Tue 09:38", lines:[
+e1_tp1skip:{ep:1, place:"Tom Portons, County Road 20", time:"Tue 10:58", lines:[
   "~You try. You really do. But Harold is now shouting at the menu board, and Priya looks like she might cry, and you are a person who cannot leave a broken thing alone.",
   "MANI: Can I see the receipts?"], next:"e1_tp1p"},
-e1_tp1p:{ep:1, place:"Tom Portons, County Road 20", time:"Tue 09:40", lines:[
+e1_tp1p:{ep:1, place:"Tom Portons, County Road 20", time:"Tue 11:00", lines:[
   "~Small mystery: The Decaf Problem."],
   puzzle:{type:"search", title:"The Decaf Problem", prompt:"Examine everything. Then decide who's behind it.", need:4, doneLabel:"I know who did it", to:"e1_tp1acc", spots:[
     {t:"Harold's three receipts", text:"Each order was rung up correctly: medium double-double, regular. Not decaf."},
@@ -63,14 +63,14 @@ e1_tp1p:{ep:1, place:"Tom Portons, County Road 20", time:"Tue 09:40", lines:[
     {t:"Harold's table", text:"His newspaper, his reading glasses, and a phone in a case printed with a fat orange cat in a Christmas sweater. It isn't his phone. His is in his shirt pocket."},
     {t:"The woman by the window", text:"Harold's wife, June. Very, very interested in her crossword. She hasn't turned a page in five minutes."}
   ]}},
-e1_tp1acc:{ep:1, place:"Tom Portons, County Road 20", time:"Tue 09:44", lines:["~So who's switching Harold's coffee?"],
+e1_tp1acc:{ep:1, place:"Tom Portons, County Road 20", time:"Tue 11:04", lines:["~So who's switching Harold's coffee?"],
   puzzle:{type:"pick", title:"Who did it?", prompt:"Point at the culprit.", to:"e1_tp1done", options:[
     {t:"Priya, the cashier", why:"Priya rings up exactly what's ordered. The app order isn't hers."},
     {t:"A stranger using Harold's name", why:"A stranger wouldn't know when Harold arrives, or own the cat phone case."},
     {t:"June, his wife", correct:true},
     {t:"Harold, pretending for attention", why:"His receipts are real. He's genuinely furious."}
   ]}},
-e1_tp1done:{ep:1, place:"Tom Portons, County Road 20", time:"Tue 09:46", lines:[
+e1_tp1done:{ep:1, place:"Tom Portons, County Road 20", time:"Tue 11:06", lines:[
   "JUNE: The doctor said no caffeine after his heart thing, and he's a stubborn old goat!",
   "HAROLD: June! Fifty-two years and you're sabotaging my coffee?",
   "JUNE: Fifty-two years and I'd like fifty-three, thank you.",

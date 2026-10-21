@@ -376,7 +376,7 @@ func _test_drive_and_fade(ext: OOTWindsorExterior) -> void:
 	_check(turned, "the car leaves the lot, turns left and follows the back street")
 	_check(max_lat < 4.5, "the car stays within the road corridor (max %.1f m off the route)" % max_lat)
 	_check(ext.drive_finished and done[0], "the fade finishes and drive_reached_county_road is emitted (%.0f s)" % (_sim() - t0))
-	_check(ext._card_title.text == ext.road_card_text() and ext._card_title.text.contains("County Road 20, Essex County") and ext._card_title.text.contains("09:05"),
+	_check(ext._card_title.text == ext.road_card_text() and ext._card_title.text.contains("County Road 20, Essex County") and ext._card_title.text.contains("10:10"),
 		"the card reads '%s'" % ext._card_title.text)
 	_check(is_equal_approx(ext._card_fade.modulate.a, 1.0), "the screen is faded to black")
 

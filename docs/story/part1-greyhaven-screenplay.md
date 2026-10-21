@@ -75,7 +75,7 @@ The message cuts. Silence.
 
 **TITLE CARD:** OUT OF TOWN: GREYHAVEN. EPISODE 1. COUNTY ROADS.
 
-**SCENE 2 — INT. MANI'S APARTMENT, WINDSOR — TUESDAY, 08:10**
+**SCENE 2 — INT. MANI'S APARTMENT, WINDSOR — TUESDAY, 09:05**
 
 A small one-bedroom. A whiteboard of job applications, half of them crossed out. A graduation photo from the University of Windsor. On the counter: a box of homemade-style laddu and mysore pak, a packet of clay diyas, and a gift-wrapped handheld ham radio with a bow.
 
@@ -83,7 +83,7 @@ Mani, 29, packs a duffel. He plays Nila's voicemail again. Calls her. Straight t
 
 **\[PLAY\]** Walk around the apartment. Pack three items into the duffel: the sweets, the diyas, the gift radio. Optional: look at the whiteboard (Mani's notes: "Data Analytics Engineer, 2nd round Thurs"), the graduation photo, and a framed photo of Nila at her first broadcast.
 
-His laptop rings. A video call from Vellore. Amma and Appa, 10:40 pm their time, Appa still in his shop shirt.
+His laptop rings. A video call from Vellore. At 9:30 in the morning: Amma and Appa, 7 pm their time, Appa still in his shop shirt.
 
 **AMMA:** Kanna, saaptiya? Moonji ellam ilachu pochu. (Kanna, did you eat? Your face has gone so thin.)
 
@@ -113,7 +113,7 @@ Mani's grey sedan heads east along Lake Erie. Greenhouses glitter outside Leamin
 
 **\[PLAY\]** Driving segment. Steer, use the car radio, and read texts at stops. Mani's phone mounts on the dash. He sends a text to Nila's flatmate, Tess: *"Hi Tess, it's Mani, Nila's brother. Is she around? Coming up today."* No reply yet.
 
-**SCENE 4 — INT. TOM PORTONS, COUNTY ROAD 20 — 09:35**
+**SCENE 4 — INT. TOM PORTONS, COUNTY ROAD 20 — 10:55**
 
 A busy coffee-and-donut shop. Red-and-cream decor, a hockey game rerun on the TV. Mani orders a coffee and an apple fritter.
 
