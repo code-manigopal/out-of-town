@@ -15,6 +15,7 @@ from mathutils import Vector
 args = sys.argv[sys.argv.index("--") + 1:]
 OUT = args[0]
 FAST = "--fast" in args
+SUFFIX = next((a.split("=")[1] for a in args if a.startswith("--suffix=")), "")
 os.makedirs(OUT, exist_ok=True)
 sc = bpy.context.scene
 
@@ -111,7 +112,7 @@ for name, (x, y) in views.items():
     p = os.path.join(OUT, "_t_%s.png" % name)
     shoot(p, (cx + x, y, cz), (cx, 0, cz), ortho=1.95)
     files.append(p)
-stitch(os.path.join(OUT, "turnaround.png"), files)
+stitch(os.path.join(OUT, "turnaround%s.png" % SUFFIX), files)
 
 # ---- face (eye height ~1.62 m) ----
 sc.render.resolution_x, sc.render.resolution_y = (300, 380) if FAST else (600, 760)
@@ -122,5 +123,5 @@ for name, ang in (("f", 0), ("q", 35), ("s", 90)):
     p = os.path.join(OUT, "_f_%s.png" % name)
     shoot(p, (math.sin(a) * 1.3, -math.cos(a) * 1.3, fz + 0.02), (0, 0, fz), lens=90)
     files.append(p)
-stitch(os.path.join(OUT, "face.png"), files)
+stitch(os.path.join(OUT, "face%s.png" % SUFFIX), files)
 print("rendered", OUT)

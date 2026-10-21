@@ -98,8 +98,8 @@ def load_raw(path, size=None):
     return arr
 
 
-def save_raw(name, arr, directory=OUT_TEX, alpha=False):
-    """Save a raw float array as an 8-bit PNG without colour conversion; returns path."""
+def save_raw(name, arr, directory=OUT_TEX, alpha=False, fmt="PNG", quality=90):
+    """Save a raw float array as an 8-bit PNG/JPEG without colour conversion; returns path."""
     os.makedirs(directory, exist_ok=True)
     h, w = arr.shape[:2]
     out = np.ones((h, w, 4), dtype=np.float32)
@@ -108,9 +108,11 @@ def save_raw(name, arr, directory=OUT_TEX, alpha=False):
     img.colorspace_settings.name = "Non-Color"
     img.alpha_mode = "CHANNEL_PACKED"
     img.pixels = out.ravel()
-    path = os.path.join(directory, name + ".png")
+    path = os.path.join(directory, name + (".png" if fmt == "PNG" else ".jpg"))
     img.filepath_raw = path
-    img.file_format = "PNG"
+    img.file_format = fmt
+    if fmt == "JPEG":
+        bpy.context.scene.render.image_settings.quality = quality
     img.save()
     bpy.data.images.remove(img)
     return path
@@ -127,7 +129,8 @@ def tex_node(nt, path, srgb=True, alpha=False):
 
 
 def make_material(name, base_path=None, color=(0.5, 0.5, 0.5), rough=0.6, metal=0.0, normal_path=None,
-                  normal_strength=1.0, alpha_clip=False, spec=0.4, sss=0.0, sss_color=None):
+                  normal_strength=1.0, alpha_clip=False, spec=0.4, sss=0.0, sss_color=None,
+                  orm_path=None, alpha_const=None, double_sided=False, alpha_cutoff=0.5):
     mat = bpy.data.materials.new(name)
     mat.use_nodes = True
     nt = mat.node_tree
@@ -145,7 +148,13 @@ def make_material(name, base_path=None, color=(0.5, 0.5, 0.5), rough=0.6, metal=
         t = tex_node(nt, base_path, True, alpha=alpha_clip)
         nt.links.new(t.outputs["Color"], bsdf.inputs["Base Color"])
         if alpha_clip:
-            nt.links.new(t.outputs["Alpha"], bsdf.inputs["Alpha"])
+            # Alpha -> Math(GREATER_THAN cutoff) -> Alpha: the glTF exporter turns this into alphaMode MASK
+            # (Godot: alpha scissor with this threshold).
+            gt = nt.nodes.new("ShaderNodeMath")
+            gt.operation = "GREATER_THAN"
+            gt.inputs[1].default_value = alpha_cutoff
+            nt.links.new(t.outputs["Alpha"], gt.inputs[0])
+            nt.links.new(gt.outputs["Value"], bsdf.inputs["Alpha"])
     else:
         bsdf.inputs["Base Color"].default_value = (*color, 1.0)
     if normal_path:
@@ -154,6 +163,16 @@ def make_material(name, base_path=None, color=(0.5, 0.5, 0.5), rough=0.6, metal=
         nm.inputs["Strength"].default_value = normal_strength
         nt.links.new(t.outputs["Color"], nm.inputs["Color"])
         nt.links.new(nm.outputs["Normal"], bsdf.inputs["Normal"])
+    if orm_path:
+        t = tex_node(nt, orm_path, False)
+        sp = nt.nodes.new("ShaderNodeSeparateColor")
+        nt.links.new(t.outputs["Color"], sp.inputs["Color"])
+        nt.links.new(sp.outputs["Green"], bsdf.inputs["Roughness"])
+    if alpha_const is not None:
+        bsdf.inputs["Alpha"].default_value = alpha_const
+        mat.surface_render_method = "BLENDED"
+    if double_sided:
+        mat.use_backface_culling = False
     if sss > 0:
         for k in ("Subsurface Weight", "Subsurface"):
             if k in bsdf.inputs:
@@ -164,6 +183,7 @@ def make_material(name, base_path=None, color=(0.5, 0.5, 0.5), rough=0.6, metal=
             bsdf.inputs["Subsurface Scale"].default_value = 0.01
     if alpha_clip:
         mat.surface_render_method = "DITHERED"
+        mat.use_backface_culling = False if double_sided else mat.use_backface_culling
     return mat
 
 
@@ -778,6 +798,10 @@ def build_accessories(objs, rig):
     bind_rigid(case, rig, "lowerarm_l"); bind_rigid(d, rig, "lowerarm_l")
     created += [case, d]
 
+    objs["glasses_params"] = dict(gy=gy, cz=cz, cxs=cxs, lw=lw, lh=lh, lr=lr)
+    if "jacket" not in objs:
+        objs["extras"] = created
+        return created
     # ---- jacket collar, hood, zip tapes, hoodie drawstrings -----------------------------
     jk = objs["jacket"]
     jv = np.array([(jk.matrix_world @ v_.co)[:] for v_ in jk.data.vertices])
@@ -868,13 +892,14 @@ def build_accessories(objs, rig):
 # ---------------------------------------------------------------------------------------------
 # 5. bake shapes, strip hidden geometry
 # ---------------------------------------------------------------------------------------------
-def finalize_meshes(objs):
+def finalize_meshes(objs, bake=True):
     hm, rig = objs["hm"], objs["rig"]
     bpy.ops.object.select_all(action="DESELECT")
     bpy.context.view_layer.objects.active = hm
     hm.select_set(True)
     # bake face/macro targets into the basis
-    bpy.ops.object.shape_key_remove(all=True, apply_mix=True)
+    if bake:
+        bpy.ops.object.shape_key_remove(all=True, apply_mix=True)
     # drop helper geometry and every body face covered by clothing
     bm = bmesh.new()
     bm.from_mesh(hm.data)
@@ -885,7 +910,7 @@ def finalize_meshes(objs):
         w = {names[i]: x for i, x in v[dl].items() if i in names}
         in_body = w.get("body", 0) > 0.5
         covered = any(n.startswith("Delete.") and x > 0.5 for n, x in w.items())
-        if (not in_body) or covered:
+        if (not in_body) or covered or (v.co.z < 0.17 and abs(v.co.x) > 0.04):
             kill.append(v)
     bmesh.ops.delete(bm, geom=kill, context="VERTS")
     bm.to_mesh(hm.data)
@@ -1303,7 +1328,11 @@ def run_all():
     return objs
 
 
-if __name__ == "__main__":
+if __name__ == "__main__" and "--v1" not in ARGS:
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import mani_v2
+    mani_v2.main_entry()
+elif __name__ == "__main__":
     objs = run_all()
     scratch = "/private/tmp/claude-501/-Users-kamanika-Downloads-out-of-town/5498a04d-a1fe-4ca0-a447-3242544418f6/scratchpad/mani/w/stage1.blend"
     bpy.ops.wm.save_as_mainfile(filepath=scratch)

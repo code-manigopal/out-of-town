@@ -2,19 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://p3pesjs7bcb7"
-path="res://.godot/imported/mani_mani_jacket_n.png-2058dbba47e9be20039d07c9f3456a89.ctex"
+uid="uid://cg2bp2gu0se0g"
+path="res://.godot/imported/mani_leather_n.jpg-cc4a9c7c81d6ee3a99e8f11b04523d30.ctex"
 metadata={
 "vram_texture": false
-}
-generator_parameters={
-"md5": "d7a14886be8e4af41ed0f678c65cca02"
 }
 
 [deps]
 
-source_file="res://characters/mani/mani_mani_jacket_n.png"
-dest_files=["res://.godot/imported/mani_mani_jacket_n.png-2058dbba47e9be20039d07c9f3456a89.ctex"]
+source_file="res://characters/mani/textures/mani_leather_n.jpg"
+dest_files=["res://.godot/imported/mani_leather_n.jpg-cc4a9c7c81d6ee3a99e8f11b04523d30.ctex"]
 
 [params]
 
@@ -26,7 +23,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

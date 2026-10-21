@@ -2,19 +2,19 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2nm8hwwpfm05"
-path="res://.godot/imported/mani_mani_skin_c.png-5b44277d7520e9bbbd6409b5bf8e7940.ctex"
+uid="uid://w0fy6bxi8gjc"
+path="res://.godot/imported/mani_mani_haircards_n.png-640039756f7eb56cec0ca646c1c50448.ctex"
 metadata={
 "vram_texture": false
 }
 generator_parameters={
-"md5": "d76b2c2aa1589a419c9eb47c3325e4f2"
+"md5": "921db00ef6b7bae21fcc52a5050754b2"
 }
 
 [deps]
 
-source_file="res://characters/mani/mani_mani_skin_c.png"
-dest_files=["res://.godot/imported/mani_mani_skin_c.png-5b44277d7520e9bbbd6409b5bf8e7940.ctex"]
+source_file="res://characters/mani/mani_mani_haircards_n.png"
+dest_files=["res://.godot/imported/mani_mani_haircards_n.png-640039756f7eb56cec0ca646c1c50448.ctex"]
 
 [params]
 

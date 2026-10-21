@@ -2,19 +2,19 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnbhnk26r0gfb"
-path="res://.godot/imported/mani_mani_boots_c.png-a618d2be42326a004c86c72b8d369d48.ctex"
+uid="uid://dq53asuiyo5eb"
+path="res://.godot/imported/mani_mani_beardcards_c.png-98c746becc1bf674e91e5d880c79dcc9.ctex"
 metadata={
 "vram_texture": false
 }
 generator_parameters={
-"md5": "3c11c18f39d3d09adee5fa185732094a"
+"md5": "a43afb4a074ace1346f6cf64e7fc537a"
 }
 
 [deps]
 
-source_file="res://characters/mani/mani_mani_boots_c.png"
-dest_files=["res://.godot/imported/mani_mani_boots_c.png-a618d2be42326a004c86c72b8d369d48.ctex"]
+source_file="res://characters/mani/mani_mani_beardcards_c.png"
+dest_files=["res://.godot/imported/mani_mani_beardcards_c.png-98c746becc1bf674e91e5d880c79dcc9.ctex"]
 
 [params]
 
