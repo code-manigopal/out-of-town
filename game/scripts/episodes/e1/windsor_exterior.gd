@@ -343,7 +343,7 @@ func _run_push_door() -> void:
 	player.play_action(&"door_open_push", true, true)
 	await get_tree().create_timer(0.18).timeout
 	main_door.open()
-	await player.action_finished
+	await _action_done()
 	busy = false
 	_refresh_interactables()
 
@@ -400,12 +400,12 @@ func _run_trunk() -> void:
 		var tw: Tween = create_tween()
 		tw.tween_property(bag, "global_position", rest, 0.18)
 	player.interactor.clear_carried()
-	await player.action_finished
+	await _action_done()
 	# 2. open the trunk
 	player.play_action(&"trunk_open", true, true)
 	await get_tree().create_timer(0.38).timeout
 	car.open_trunk(0.57)
-	await player.action_finished
+	await _action_done()
 	# 3. lift the bag into the trunk
 	player.play_action(&"reach_low", true, false)
 	await get_tree().create_timer(0.45).timeout
@@ -421,16 +421,23 @@ func _run_trunk() -> void:
 			bag.position = q, 0.0, 1.0, 0.55).set_trans(Tween.TRANS_SINE)
 		tw2.parallel().tween_property(bag, "quaternion", Basis(Vector3.UP, PI).get_rotation_quaternion(), 0.55)
 		await tw2.finished
-	await player.action_finished
+	await _action_done()
 	# 4. close it
 	player.play_action(&"trunk_close", true, false)
 	await get_tree().create_timer(0.3).timeout
 	car.close_trunk(0.46)
-	await player.action_finished
+	await _action_done()
 	trunk_done = true
 	busy = false
 	_refresh_interactables()
 	trunk_loaded.emit()
+
+
+## Waits for the player's current action clip, unless it already finished: awaiting the
+## signal after it fired would hang the sequence (the trunk never closed).
+func _action_done() -> void:
+	if player.is_acting():
+		await player.action_finished
 
 
 ## Height of the bag's meshes (world metres).
@@ -472,7 +479,7 @@ func _run_enter_car() -> void:
 	car.open_door(0.4)
 	await get_tree().create_timer(1.2).timeout           # the clip's 'seated' event is at 1.75
 	player.set_pose_override(&"sit_drive", 0.15)
-	await player.action_finished
+	await _action_done()
 	_seat_player()
 	await get_tree().create_timer(0.25).timeout
 	car.close_door(0.4)
