@@ -65,15 +65,20 @@ This screenplay follows the one true ending. Choices and alternative endings wil
 
 Mani drives from Windsor to Greyhaven, solves two small mysteries at roadside coffee shops, meets a friendly stranger named Victor, and arrives to find Nila gone.
 
-**SCENE 1 — COLD OPEN. BLACK SCREEN.**
+**SCENE 1 — COLD OPEN. MONTAGE: WINDSOR, TUESDAY MORNING.**
 
-Radio static. A phone voicemail plays, timestamped *Sunday 23:52*.
+Morning light over Windsor. Nila's voicemail from *Sunday 23:52* plays over the city, one part per shot:
+
+- The riverside: the Detroit River, the Detroit skyline across the water, joggers on the riverfront path.
+- Busy roads: traffic, buses, a crossing.
+- The edge of town: dense trees turning for November.
+- Mani's street, and the two-storey brick house where he rents the upper flat, number 2.
 
 **NILA (V.O.):** Anna, naan dhaan. Station-ku call pannadha, okay? Plan panna maadhiri Tuesday vandhudu. Naan oru vishayam kandupidichiruken. Phone-la solla mudiyaadhu. Inga vandhappo edhavadhu weird-aa irundha, Ruth kitta mattum pesu, vera yaar kittayum illa. Anna, yaara venaalum nambu, aana andha— (Anna, it's me. Don't call the station, okay? Just come Tuesday like we planned. I found something. I can't say it on the phone. If anything feels weird when you get here, talk only to Ruth, nobody else. Anna, trust anyone, but don't trust the—)
 
-The message cuts. Silence.
+The message cuts. Silence. The camera drifts in through the blinds of Mani's window, circles him in the flat and settles over his shoulder.
 
-**TITLE CARD:** OUT OF TOWN: GREYHAVEN. EPISODE 1. COUNTY ROADS.
+*(The episode title card comes later, when Mani leaves Windsor. See Scene 3.)*
 
 **SCENE 2 — INT. MANI'S APARTMENT, WINDSOR — TUESDAY, 09:05**
 
@@ -81,7 +86,13 @@ A small one-bedroom. A whiteboard of job applications, half of them crossed out.
 
 Mani, 29, packs a duffel. He plays Nila's voicemail again. Calls her. Straight to voicemail.
 
+**\[PLAY\]** First objective: *Check the phone.* Mani's phone holds Amma's messages, his calls (Nila's voicemail) and his objectives.
+
 **\[PLAY\]** Walk around the apartment. Pack three items into the duffel: the sweets, the diyas, the gift radio. Optional: look at the whiteboard (Mani's notes: "Data Analytics Engineer, 2nd round Thurs"), the graduation photo, and a framed photo of Nila at her first broadcast.
+
+*(While packing, as the first gift goes into the duffel, Mani's inner voice:)*
+
+**MANI (THOUGHT):** Nila enna solla vandhaa? Oru vela edhavadhu prachanaiya? (What was Nila trying to tell me? Is something wrong?)
 
 His laptop rings. A video call from Vellore. At 9:30 in the morning: Amma and Appa, 7 pm their time, Appa still in his shop shirt.
 
@@ -107,7 +118,15 @@ His laptop rings. A video call from Vellore. At 9:30 in the morning: Amma and Ap
 
 Mani closes the laptop. Stares at the gift radio.
 
+**\[PLAY\]** He takes the car keys and the bag, leaves flat 2 by the verandah and the stairs, and walks round through the side alley to the back lot. The bag goes in the trunk of his grey sedan. He drives out through Windsor's streets.
+
 **SCENE 3 — EXT. COUNTY ROAD 20, ESSEX COUNTY — MORNING**
+
+Windsor falls behind. Fade out.
+
+**TITLE CARD:** OUT OF TOWN: GREYHAVEN. EPISODE 1. COUNTY ROADS.
+
+Fade in on the county road.
 
 Mani's grey sedan heads east along Lake Erie. Greenhouses glitter outside Leamington. Flat farmland, grain silos, a hawk on a fence post.
 
