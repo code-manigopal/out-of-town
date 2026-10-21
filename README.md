@@ -41,7 +41,17 @@ Game assets (models, textures, audio, video) are stored with [Git LFS](https://g
 git lfs install
 git clone <this-repo-url> out-of-town
 cd out-of-town
+git config core.hooksPath tools/hooks   # do this first: Git LFS hooks + the large-art quota guard
 git lfs pull
+```
+
+**Run `git config core.hooksPath tools/hooks` once on every new clone, before anything else.** It turns on the project's Git hooks: the standard Git LFS hooks (they upload models and textures when you push) and the pre-commit guard that keeps work-in-progress art over 5 MB out of git, so we stay inside GitHub's free 1 GB of LFS storage. Approved final art is committed with `ALLOW_BIG_ART=1 git commit ...`.
+
+Then install the binary Godot add-ons and the Python tools:
+
+```bash
+tools/install_addons.sh
+tools/setup_python_tools.sh
 ```
 
 ### 2. Play the prototype
