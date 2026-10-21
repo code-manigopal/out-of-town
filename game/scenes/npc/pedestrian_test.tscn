@@ -1,0 +1,126 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/npc/pedestrian.tscn" id="1_uphx7"]
+[ext_resource type="Script" path="res://scripts/npc/oot_pedestrian.gd" id="2_2dm53"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_of84a"]
+size = Vector3(80, 0.2, 80)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kcet2"]
+albedo_color = Color(0.45, 0.45, 0.47, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_obe8o"]
+size = Vector3(80, 0.2, 80)
+
+[sub_resource type="Environment" id="Environment_yy1e5"]
+background_mode = 1
+background_color = Color(0.62, 0.66, 0.72, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.7, 0.72, 0.78, 1)
+ambient_light_energy = 0.6
+
+[sub_resource type="Curve3D" id="Curve3D_4fwa2"]
+bake_interval = 0.1
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -9, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_0kvrd"]
+bake_interval = 0.1
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -9, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, -3),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="Curve3D" id="Curve3D_sqtns"]
+bake_interval = 0.1
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 6, 0, 4, 0, 0, 0, 0, 0, 0, 8, 0, 4),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="PedestrianTest" type="Node3D" unique_id=1500115456]
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=1486256500]
+
+[node name="@CollisionShape3D@2" type="CollisionShape3D" parent="Ground" unique_id=308645888]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+shape = SubResource("BoxShape3D_of84a")
+
+[node name="@MeshInstance3D@3" type="MeshInstance3D" parent="Ground" unique_id=2054303675]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+material_override = SubResource("StandardMaterial3D_kcet2")
+mesh = SubResource("BoxMesh_obe8o")
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=6048068]
+transform = Transform3D(0.81915206, 0.43938506, -0.36868784, 0, 0.64278764, 0.76604444, 0.57357645, -0.62750685, 0.5265408, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Env" type="WorldEnvironment" parent="." unique_id=1088779180]
+environment = SubResource("Environment_yy1e5")
+
+[node name="Camera" type="Camera3D" parent="." unique_id=316693698]
+transform = Transform3D(1, 0, 0, 0, 0.89879405, 0.43837115, 0, -0.43837115, 0.89879405, 0, 7, 15)
+
+[node name="PedRoute_Straight" type="Path3D" parent="." unique_id=1254159631]
+curve = SubResource("Curve3D_4fwa2")
+
+[node name="PedRoute_Corner" type="Path3D" parent="." unique_id=1121172550]
+curve = SubResource("Curve3D_0kvrd")
+
+[node name="Wait_Crossing" type="Node3D" parent="PedRoute_Corner" unique_id=1134023187]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="PedRoute_BusStop" type="Path3D" parent="." unique_id=622387962]
+curve = SubResource("Curve3D_sqtns")
+
+[node name="PedA" type="CharacterBody3D" parent="." unique_id=936936999 instance=ExtResource("1_uphx7")]
+script = ExtResource("2_2dm53")
+route = NodePath("../PedRoute_Straight")
+speed = 1.3
+start_offset = 2.0
+
+[node name="PedB" type="CharacterBody3D" parent="." unique_id=1720112927 instance=ExtResource("1_uphx7")]
+script = ExtResource("2_2dm53")
+model_path = "res://characters/pedestrians/ped_4.glb"
+route = NodePath("../PedRoute_Straight")
+speed = 1.0
+start_offset = 12.0
+reverse = true
+
+[node name="PedC" type="CharacterBody3D" parent="." unique_id=1816508867 instance=ExtResource("1_uphx7")]
+script = ExtResource("2_2dm53")
+model_path = "res://characters/pedestrians/ped_2.glb"
+route = NodePath("../PedRoute_Corner")
+speed = 1.0
+start_offset = 1.0
+
+[node name="PedD" type="CharacterBody3D" parent="." unique_id=714026942 instance=ExtResource("1_uphx7")]
+script = ExtResource("2_2dm53")
+model_path = "res://characters/pedestrians/ped_6.glb"
+route = NodePath("../PedRoute_Corner")
+start_offset = 6.0
+
+[node name="PedE" type="CharacterBody3D" parent="." unique_id=578419548 instance=ExtResource("1_uphx7")]
+script = ExtResource("2_2dm53")
+model_path = "res://characters/pedestrians/ped_3.glb"
+route = NodePath("../PedRoute_BusStop")
+speed = 1.0
+start_offset = 0.2
+mode = 1
+idle_style = 1
+face_direction = Vector3(0, 0, 1)
+
+[node name="PedF" type="CharacterBody3D" parent="." unique_id=996455975 instance=ExtResource("1_uphx7")]
+script = ExtResource("2_2dm53")
+model_path = "res://characters/pedestrians/ped_5.glb"
+route = NodePath("../PedRoute_BusStop")
+speed = 1.0
+start_offset = 1.4
+mode = 1
+idle_style = 0
+face_direction = Vector3(0, 0, 1)

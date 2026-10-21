@@ -9,9 +9,11 @@ extends RefCounted
 ##     "adds": [entry ids granted along with this one] }
 
 const PATHS: Array[String] = ["res://data/journal/p1_journal.json"]
-const SECTIONS: Array[String] = ["goal", "people", "clues", "notes"]
+## Journal (J) sections. "goal" entries are not a journal tab: they become phone objectives (OBJECTIVE_SECTION).
+const SECTIONS: Array[String] = ["people", "clues", "notes"]
+const OBJECTIVE_SECTION: String = "goal"
 const SECTION_TITLES: Dictionary = {
-	"goal": "Current goal", "people": "People", "clues": "Clues", "notes": "Notes",
+	"goal": "Objectives", "people": "People", "clues": "Clues", "notes": "Notes",
 }
 
 static var _entries: Dictionary = {}
@@ -50,13 +52,26 @@ static func entry_for_item(item_id: String) -> String:
 	return ""
 
 
-## Adds the entry (and any "adds") to StoryState. True if anything new was added.
+## True if the entry is a goal (an objective, not a journal page).
+static func is_objective(entry_id: String) -> bool:
+	return str(get_entry(entry_id).get("section", "")) == OBJECTIVE_SECTION
+
+
+## Adds the entry (and any "adds") to StoryState. A "goal" entry becomes the current objective instead (the previous
+## one is completed). True if anything new was added.
 static func grant(entry_id: String) -> bool:
 	var st: Node = OOTServices.state()
 	if st == null or entry_id.is_empty():
 		return false
-	var added: bool = st.journal_add(entry_id)
+	var added: bool = false
+	if is_objective(entry_id):
+		added = st.objective_set(entry_id)
+	else:
+		added = st.journal_add(entry_id)
 	for extra: Variant in get_entry(entry_id).get("adds", []):
-		if st.journal_add(str(extra)):
+		if is_objective(str(extra)):
+			if st.objective_set(str(extra)):
+				added = true
+		elif st.journal_add(str(extra)):
 			added = true
 	return added

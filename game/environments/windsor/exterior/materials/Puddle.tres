@@ -1,8 +1,13 @@
-[gd_resource type="StandardMaterial3D" format=3]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://environments/windsor/exterior/textures/puddle_c.png" id="1_t"]
 
 [resource]
 resource_name = "Puddle"
 transparency = 1
-albedo_color = Color(0.03, 0.04, 0.05, 0.6)
-metallic_specular = 0.6
-roughness = 0.03
+albedo_color = Color(1, 1, 1, 0.78)
+albedo_texture = ExtResource("1_t")
+metallic_specular = 0.5
+roughness = 0.02
+texture_filter = 5
+

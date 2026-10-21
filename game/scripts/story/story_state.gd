@@ -11,6 +11,12 @@ signal clue_added(clue_id: String)
 signal danger_changed(new_danger: int)
 signal nila_health_changed(value: int)
 signal journal_added(entry_id: String)
+## A new goal became current (journal entries with section "goal" are granted as objectives).
+signal objective_started(objective_id: String)
+signal objective_finished(objective_id: String)
+## A phone message arrived (see OOTPhone.notify_message) or was read.
+signal phone_message_delivered(message_id: String)
+signal phone_message_read(message_id: String)
 
 const TRUST_MIN: int = -3
 const TRUST_MAX: int = 3
@@ -31,6 +37,11 @@ var clues: Array[String] = []
 var nila_health: int = 100
 var vars: Dictionary = {}    # prototype "vars" (set / add effects)
 var journal: Array[String] = []  # journal entry ids in the order they were added
+var objectives: Array[String] = []        # objective ids (goal journal entries) in the order they were set
+var objectives_done: Array[String] = []   # completed objective ids
+var current_objective: String = ""        # "" when nothing is pending
+var phone_delivered: Array[String] = []   # phone message ids pushed in by OOTPhone.notify_message
+var phone_read: Array[String] = []        # phone message ids Mani has read
 
 
 ## Clears all state for a new playthrough of a part ("p1" or "p2").
@@ -41,6 +52,11 @@ func start_part(part_id: String) -> void:
 	trust.clear()
 	clues.clear()
 	journal.clear()
+	objectives.clear()
+	objectives_done.clear()
+	current_objective = ""
+	phone_delivered.clear()
+	phone_read.clear()
 	vars.clear()
 	danger = 0
 	nila_health = 100
@@ -141,6 +157,68 @@ func journal_entries() -> Array[String]:
 	return journal
 
 
+# Objectives. The id is a journal entry id whose section is "goal" (text in data/journal/*.json).
+## Makes the objective current (the previous current one is completed). False if it was already set once.
+func objective_set(objective_id: String) -> bool:
+	if objective_id.is_empty() or objectives.has(objective_id):
+		return false
+	if not current_objective.is_empty():
+		objective_complete(current_objective)
+	objectives.append(objective_id)
+	current_objective = objective_id
+	objective_started.emit(objective_id)
+	return true
+
+
+## Marks an objective done. False if it is unknown or already done.
+func objective_complete(objective_id: String) -> bool:
+	if not objectives.has(objective_id) or objectives_done.has(objective_id):
+		return false
+	objectives_done.append(objective_id)
+	if current_objective == objective_id:
+		current_objective = ""
+	objective_finished.emit(objective_id)
+	return true
+
+
+func objective_current() -> String:
+	return current_objective
+
+
+func objective_is_done(objective_id: String) -> bool:
+	return objectives_done.has(objective_id)
+
+
+## Every objective id in the order it was set.
+func objective_list() -> Array[String]:
+	return objectives
+
+
+# Phone (Mani's messages). Message text lives in data/phone/*.json.
+func phone_deliver(message_id: String) -> bool:
+	if message_id.is_empty() or phone_delivered.has(message_id):
+		return false
+	phone_delivered.append(message_id)
+	phone_message_delivered.emit(message_id)
+	return true
+
+
+func phone_is_delivered(message_id: String) -> bool:
+	return phone_delivered.has(message_id)
+
+
+func phone_mark_read(message_id: String) -> bool:
+	if message_id.is_empty() or phone_read.has(message_id):
+		return false
+	phone_read.append(message_id)
+	phone_message_read.emit(message_id)
+	return true
+
+
+func phone_is_read(message_id: String) -> bool:
+	return phone_read.has(message_id)
+
+
 # Nila's health (story clock, 0 to 100)
 func set_nila_health(value: int) -> void:
 	var v: int = clampi(value, HEALTH_MIN, HEALTH_MAX)
@@ -218,6 +296,11 @@ func to_dict() -> Dictionary:
 		"danger": danger,
 		"clues": clues,
 		"journal": journal.duplicate(),
+		"objectives": objectives.duplicate(),
+		"objectives_done": objectives_done.duplicate(),
+		"current_objective": current_objective,
+		"phone_delivered": phone_delivered.duplicate(),
+		"phone_read": phone_read.duplicate(),
 		"nila_health": nila_health,
 		"vars": vars,
 	}
@@ -240,6 +323,19 @@ func from_dict(data: Dictionary) -> void:
 	journal.clear()
 	for j: Variant in data.get("journal", []):
 		journal.append(str(j))
+	objectives.clear()
+	for o: Variant in data.get("objectives", []):
+		objectives.append(str(o))
+	objectives_done.clear()
+	for o: Variant in data.get("objectives_done", []):
+		objectives_done.append(str(o))
+	current_objective = str(data.get("current_objective", ""))
+	phone_delivered.clear()
+	for m: Variant in data.get("phone_delivered", []):
+		phone_delivered.append(str(m))
+	phone_read.clear()
+	for m: Variant in data.get("phone_read", []):
+		phone_read.append(str(m))
 	nila_health = int(data.get("nila_health", 100))
 	vars = (data.get("vars", {}) as Dictionary).duplicate(true)
 

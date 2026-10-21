@@ -7,6 +7,7 @@ e1_open_004,e1_open,4,,,The message cuts. Silence.,,True
 e1_apt_000,e1_apt,0,,,"A small one-bedroom near the river. A whiteboard of job applications, half of them crossed out. A graduation photo from the University of Windsor. On the counter: a box of laddu and mysore pak, a packet of clay diyas, and a gift-wrapped ham radio with a crooked bow.",,True
 e1_apt_001,e1_apt,1,,,You play the voicemail again. You call Nila. Straight to voicemail. Again.,,True
 e1_apt_002,e1_apt,2,,,"Before you leave, you look around the flat one more time.",,True
+e1_thought_pack1_000,e1_thought_pack1,0,MANI,THOUGHT,Nila enna solla vandhaa? Oru vela edhavadhu prachanaiya?,What was Nila trying to tell me? Is something wrong?,False
 e1_call_000,e1_call,0,,,"Your laptop rings. A video call from Vellore. Amma and Appa, 7 pm their time, Appa still in his shop shirt from Sri Valli Leathers.",,True
 e1_call_001,e1_call,1,AMMA,,"Kanna, saaptiya? Moonji ellam ilachu pochu.","Kanna, did you eat? Your face has gone so thin.",False
 e1_call_002,e1_call,2,MANI,,"Saapten, Amma.","I ate, Amma.",False

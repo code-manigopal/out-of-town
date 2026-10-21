@@ -17,6 +17,10 @@ const CLICK_SOUND: String = "res://audio/sfx/kenney/interface/click_001.ogg"
 const CHOICE_SOUND: String = "res://audio/sfx/kenney/interface/select_001.ogg"
 
 @export var opaque_background: bool = false
+## Prototype narration lines ("A small one-bedroom near the river...") are stage directions for the browser version.
+## In the 3D game they are skipped (the room shows them). Spoken lines, choices and Mani's inner voice always show.
+## The text-only dialogue test scene turns this on.
+@export var show_narration: bool = false
 
 var runner: OOTStoryRunner = null
 var stop_at: String = ""
@@ -162,14 +166,28 @@ func _on_scene_entered(scene: OOTScene) -> void:
 	if not stop_at.is_empty() and scene.id == stop_at:
 		_finish(scene.id)
 		return
-	_line_index = 0
+	var first: int = _next_visible(scene, -1)
+	_line_index = first if first != -1 else scene.lines.size()   # nothing to present: straight to choices / next
 	_show_line()
+
+
+## True for a line this box does not present (narration, unless show_narration).
+func _is_hidden(line: OOTDialogueLine) -> bool:
+	return line.is_narration and not show_narration
+
+
+## Index of the first presented line after `from` in the scene, or -1 when there is none.
+func _next_visible(scene: OOTScene, from: int) -> int:
+	for i: int in range(from + 1, scene.lines.size()):
+		if not _is_hidden(scene.lines[i]):
+			return i
+	return -1
 
 
 func _show_line() -> void:
 	_clear_choices()
 	var scene: OOTScene = runner.scene
-	if scene.lines.is_empty():
+	if _line_index >= scene.lines.size():
 		_speaker.text = ""
 		_text.text = ""
 		_subtitle.text = ""
@@ -177,16 +195,32 @@ func _show_line() -> void:
 		_after_lines()
 		return
 	var line: OOTDialogueLine = scene.lines[_line_index]
+	_apply_thought_style(OOTThoughtSubtitle.is_thought(line))
 	_speaker.text = _speaker_label(line)
 	_text.text = _to_bbcode(line.text)
 	_subtitle.text = line.get_subtitle()
 	_subtitle.visible = not _subtitle.text.is_empty()
 	_hint.text = "Click / Enter to continue"
 	_play_vo(line)
-	if _line_index == scene.lines.size() - 1:
+	if _next_visible(scene, _line_index) == -1:
 		var opts: Array[OOTChoice] = runner.get_choices()
 		if not opts.is_empty():
 			_show_choices(opts)
+
+
+## Inner-voice (THOUGHT) lines: italic, no speaker name, no frame behind the text.
+func _apply_thought_style(on: bool) -> void:
+	var sb: StyleBoxFlat = _panel.get_theme_stylebox("panel") as StyleBoxFlat
+	if sb != null:
+		sb.bg_color = Color(0, 0, 0, 0) if on else Color(0.04, 0.05, 0.06, 0.82)
+	_speaker.visible = not on
+	var f: Font = OOTUiStyle.italic_font(400) if on else null
+	if on:
+		_text.add_theme_font_override("normal_font", f)
+		_subtitle.add_theme_font_override("font", f)
+	else:
+		_text.remove_theme_font_override("normal_font")
+		_subtitle.remove_theme_font_override("font")
 
 
 ## Called when the last line has been read (or the scene has no lines).
@@ -248,15 +282,18 @@ func advance() -> void:
 	if not is_open or runner == null or runner.scene == null:
 		return
 	var scene: OOTScene = runner.scene
-	if _line_index < scene.lines.size() - 1:
+	if _line_index >= scene.lines.size():
+		return
+	var nxt: int = _next_visible(scene, _line_index)
+	if nxt != -1:
 		_play_ui(CLICK_SOUND)
 		_stop_vo()
-		_line_index += 1
+		_line_index = nxt
 		_show_line()
-	elif _line_index == scene.lines.size() - 1 and _choices.get_child_count() == 0:
+	elif _choices.get_child_count() == 0:
 		_play_ui(CLICK_SOUND)
 		_stop_vo()
-		_line_index += 1
+		_line_index = scene.lines.size()
 		_after_lines()
 
 
@@ -275,7 +312,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _speaker_label(line: OOTDialogueLine) -> String:
-	if line.is_narration:
+	if line.is_narration or OOTThoughtSubtitle.is_thought(line):
 		return ""
 	if line.channel.is_empty():
 		return line.speaker

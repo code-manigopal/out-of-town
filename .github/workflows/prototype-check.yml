@@ -48,3 +48,11 @@ jobs:
         run: godot --headless --path game --script res://tests/run_call_tests.gd
       - name: Exterior tests
         run: godot --headless --path game --script res://tests/run_exterior_tests.gd
+      - name: Story UI tests
+        run: godot --headless --path game --script res://tests/run_story_ui_tests.gd
+      - name: Vehicle tests
+        run: godot --headless --path game --script res://tests/run_vehicle_tests.gd
+      - name: NPC tests
+        run: godot --headless --path game --script res://tests/run_npc_tests.gd
+      - name: Opening tests
+        run: godot --headless --path game --script res://tests/run_opening_tests.gd

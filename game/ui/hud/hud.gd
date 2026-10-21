@@ -3,7 +3,8 @@ extends Control
 ## In-world HUD: the centre reticle (changes style with what you look at, no
 ## key prompts), a faint object name, packing counter, carried item, toast, the
 ## ringing banner and the "Journal updated" note. It also owns the journal
-## notebook (J) so every scene with a HUD gets it. Pure presentation.
+## notebook (J), Mani's phone (P) and the top-left objective toast so every scene with a HUD gets them.
+## Pure presentation.
 
 const JOURNAL_SCENE: PackedScene = preload("res://ui/journal/journal.tscn")
 const SFX_JOURNAL: String = "res://audio/sfx/kenney/interface/scratch_002.ogg"
@@ -12,6 +13,9 @@ const NAME_FADE_SPEED: float = 7.0
 var reticle: OOTReticle
 var name_label: Label
 var journal: Control
+var phone: OOTPhone
+var objective_toast: OOTObjectiveToast
+var thought: OOTThoughtSubtitle
 var _packed: Label
 var _carried: Label
 var _toast: Label
@@ -31,9 +35,9 @@ func _ready() -> void:
 	OOTUiSettings.ensure_loaded()
 	set_anchors_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_packed = _label(Vector2(24, 20), 22, HORIZONTAL_ALIGNMENT_LEFT)
+	_packed = _label(Vector2(24, 140), 22, HORIZONTAL_ALIGNMENT_LEFT)
 	_packed.text = "Packed 0/3"
-	_carried = _label(Vector2(24, 52), 18, HORIZONTAL_ALIGNMENT_LEFT)
+	_carried = _label(Vector2(24, 172), 18, HORIZONTAL_ALIGNMENT_LEFT)
 	_toast = _label(Vector2(0, 100), 22, HORIZONTAL_ALIGNMENT_CENTER)
 	_ring = _label(Vector2(0, 150), 30, HORIZONTAL_ALIGNMENT_CENTER)
 	_ring.visible = false
@@ -66,6 +70,18 @@ func _ready() -> void:
 	if get_tree().get_nodes_in_group("oot_journal").is_empty():
 		journal = JOURNAL_SCENE.instantiate() as Control
 		add_child(journal)
+	if OOTPhone.instance() == null:
+		phone = OOTPhone.new()
+		phone.name = "Phone"
+		add_child(phone)
+	else:
+		phone = OOTPhone.instance()
+	objective_toast = OOTObjectiveToast.new()
+	objective_toast.name = "ObjectiveToast"
+	add_child(objective_toast)
+	thought = OOTThoughtSubtitle.new()
+	thought.name = "Thought"
+	add_child(thought)
 	_register_modals.call_deferred()
 
 
@@ -155,6 +171,11 @@ func set_carried(item_name: String) -> void:
 func show_toast(text: String, seconds: float = 2.5) -> void:
 	_toast.text = text
 	_toast_left = seconds
+
+
+## Mani's inner voice: italic subtitle, no speaker frame, plus his clean close-mic VO (story scene id, e.g. e1_thought_pack1).
+func show_thought(scene_id: String, order: int = 0) -> bool:
+	return thought.play(scene_id, order)
 
 
 func set_ringing(on: bool) -> void:

@@ -20,6 +20,10 @@ e1_apt:{ep:1, place:"Mani's apartment, Windsor", time:"Tue 09:05", lines:[
     {t:"Photo of Nila", text:"Nila at her first broadcast in Greyhaven, headphones crooked, grinning. She studied criminology for four years, then chose radio. Appa didn't speak to her for a week. Then he listened to every show."}
   ]}},
 
+e1_thought_pack1:{ep:1, place:"Mani's apartment, Windsor", time:"Tue 09:12", lines:[
+  "MANI (THOUGHT): Nila enna solla vandhaa? Oru vela edhavadhu prachanaiya? || What was Nila trying to tell me? Is something wrong?"],
+  next:"e1_apt"},
+
 e1_call:{ep:1, place:"Mani's apartment, Windsor", time:"Tue 09:30", lines:[
   "~Your laptop rings. A video call from Vellore. Amma and Appa, 7 pm their time, Appa still in his shop shirt from Sri Valli Leathers.",
   "AMMA: Kanna, saaptiya? Moonji ellam ilachu pochu. || Kanna, did you eat? Your face has gone so thin.",

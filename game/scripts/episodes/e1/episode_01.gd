@@ -1,41 +1,40 @@
 class_name OOTEpisode01
 extends Node
-## Episode 1 flow (G1 slice): cold open voicemail on black -> title card ->
-## apartment (pack, laptop call) -> building exterior and the drive (windsor_exterior.tscn) -> fade card for
-## e1_road -> end card.
+## Episode 1 flow: opening montage (Windsor riverside, a busy road, the forest edge, Mani's house, Nila's voicemail over it)
+## -> through the blinds into the apartment (pack, laptop call) -> building exterior and the drive (windsor_exterior.tscn);
+## when the drive reaches the county road the screen fades and the title card "OUT OF TOWN: GREYHAVEN / EPISODE 1 - COUNTY
+## ROADS" shows -> end card (until the next scenes exist).
 
 signal flow_finished
 
 const PART_ID: String = "p1"
 const EPISODE: int = 1
+const MONTAGE_SCENE: String = "res://scenes/p1/e1/opening_montage.tscn"
 const APARTMENT_SCENE: String = "res://scenes/p1/e1/apartment.tscn"
 const EXTERIOR_SCENE: String = "res://scenes/p1/e1/windsor_exterior.tscn"
-const DIALOGUE_BOX_SCENE: String = "res://ui/dialogue/dialogue_box.tscn"
 const END_SCENE_ID: String = "e1_road"
-const TITLE_SECONDS: float = 4.0
+const TITLE_SECONDS: float = 4.5
 
 var runner: OOTStoryRunner = OOTStoryRunner.new()
+var montage: OOTOpeningMontage = null
 var apartment: OOTApartment = null
 var exterior: OOTWindsorExterior = null
+## "cold_open" (the montage), "apartment", "exterior", "title", "end".
 var stage: String = "boot"
 
 var _layer: CanvasLayer
 var _card: ColorRect
 var _card_title: Label
 var _card_sub: Label
-var _card_skip: bool = false
-var _opening_box: OOTDialogueBox
 
 
 func _ready() -> void:
 	_build_card()
-	_opening_box = (load(DIALOGUE_BOX_SCENE) as PackedScene).instantiate() as OOTDialogueBox
-	_opening_box.opaque_background = true
-	_layer.add_child(_opening_box)
-	_opening_box.finished.connect(_on_open_finished)
 	stage = "cold_open"
-	runner.start(PART_ID, EPISODE)  # enters e1_open
-	_opening_box.begin(runner, "e1_apt")
+	runner.start(PART_ID, EPISODE)  # enters e1_open: the montage plays its voicemail lines itself
+	montage = (load(MONTAGE_SCENE) as PackedScene).instantiate() as OOTOpeningMontage
+	montage.finished.connect(_on_montage_finished)
+	add_child(montage)
 
 
 func _build_card() -> void:
@@ -77,26 +76,24 @@ func episode_text() -> String:
 	return "EPISODE %d — %s" % [EPISODE, title]
 
 
-func _on_open_finished(_scene_id: String) -> void:
+## The montage ended (or was skipped): the voicemail is in the journal; the camera continues through the blinds.
+func _on_montage_finished(_skipped: bool) -> void:
 	if stage != "cold_open":
 		return
-	stage = "title"
-	_opening_box.queue_free()
-	_card_title.text = title_text()
-	_card_sub.text = episode_text()
 	OOTJournalData.grant("e1_voicemail")
-	_card.visible = true
-	_card_skip = false
-	await get_tree().create_timer(TITLE_SECONDS).timeout
+	runner.continue_story()   # e1_open -> e1_apt (the apartment runs from there)
+	if montage != null:
+		montage.queue_free()
+		montage = null
 	_start_apartment()
 
 
 func _start_apartment() -> void:
-	if stage != "title":
+	if stage != "cold_open":
 		return
 	stage = "apartment"
-	_card.visible = false
 	apartment = (load(APARTMENT_SCENE) as PackedScene).instantiate() as OOTApartment
+	apartment.intro_through_window = true
 	apartment.set_runner(runner)  # parked at e1_apt
 	apartment.exit_requested.connect(_on_apartment_exit)
 	add_child(apartment)
@@ -133,13 +130,20 @@ func _on_apartment_exit() -> void:
 	_card.visible = false
 
 
-## The drive ended: the exterior has already faded to the e1_road card; the fallback end card follows.
+## The drive ended: the exterior has already faded to black on the way to the county road. The title card shows here, then the
+## fallback end card follows until the next scenes exist.
 func _on_drive_reached() -> void:
-	stage = "end"
+	stage = "title"
 	if exterior != null:
 		exterior.queue_free()
 		exterior = null
-	_show_end_card()
+	_card_title.text = title_text()
+	_card_sub.text = episode_text()
+	_card.color = Color.BLACK
+	_card.visible = true
+	await get_tree().create_timer(TITLE_SECONDS).timeout
+	if stage == "title":
+		_show_end_card()
 
 
 func _show_end_card() -> void:
@@ -154,5 +158,5 @@ func _show_end_card() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if stage == "title" and (event.is_action_pressed("interact") or event.is_action_pressed("ui_accept")):
-		_start_apartment()
+		_show_end_card()
 		get_viewport().set_input_as_handled()

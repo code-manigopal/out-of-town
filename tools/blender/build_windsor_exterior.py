@@ -7,7 +7,8 @@ Run headless (re-runnable, deterministic):
 
 Outputs
     game/environments/windsor/exterior/<asset>.glb            (see ASSETS)
-    game/environments/windsor/exterior/textures/*.png          (generated: brick, concrete, asphalt, grass, ...)
+    (textures: Poly Haven CC0 maps in textures/ph/, see its SOURCES.md; the .tres materials in materials/ are written by
+     art_source/environments/windsor/exterior/tools/gen_materials.py and Godot swaps them in by material name)
     art_source/environments/windsor/exterior/windsor_exterior.blend
 
 Conventions (docs/tech/technical-design.md "Asset pipeline")
@@ -88,89 +89,6 @@ def save_png(name, arr):
     img.file_format = "PNG"
     img.save()
     return img
-
-
-def gen_textures():
-    np = _np()
-    os.makedirs(TEX, exist_ok=True)
-    n = 512
-    # brick: 0.9 m x 0.9 m tile, 12 courses, 4 bricks per course
-    rng = np.random.RandomState(7)
-    img = np.zeros((n, n, 3), dtype=np.float32)
-    mort = np.array([0.66, 0.63, 0.58])
-    img[:] = mort
-    courses, per = 12, 4
-    ch = n / courses
-    cw = n / per
-    noise = tile_noise(n, 16, 3, 3)
-    for r in range(courses):
-        off = (cw / 2) if r % 2 else 0
-        for c in range(per + 1):
-            x0 = int(c * cw - cw / 2 + off + 3)
-            x1 = int(c * cw + cw / 2 + off - 3)
-            y0 = int(r * ch + 3)
-            y1 = int((r + 1) * ch - 3)
-            base = np.array([0.50, 0.19, 0.13]) * (0.78 + rng.rand() * 0.42)
-            base = base + np.array([0.04, 0.02, 0.02]) * (rng.rand() - 0.5) * 3
-            for yy in range(y0, y1):
-                for xx in range(x0, x1):
-                    img[yy % n, xx % n] = base
-    img = img * (0.88 + 0.24 * noise[:, :, None])
-    save_png("brick_c.png", img)
-    # concrete slab 1.5 m with joints on the borders
-    nz = tile_noise(n, 8, 5, 5)
-    g = 0.58 + 0.20 * nz
-    c = np.stack([g, g * 0.99, g * 0.96], axis=2)
-    fine = np.random.RandomState(11).rand(n, n).astype(np.float32)
-    c *= (0.96 + 0.08 * fine[:, :, None])
-    c[:5, :, :] *= 0.45
-    c[:, :5, :] *= 0.45
-    save_png("concrete_c.png", c)
-    # asphalt
-    nz = tile_noise(n, 8, 9, 5)
-    fine = np.random.RandomState(13).rand(n, n).astype(np.float32)
-    g = 0.17 + 0.07 * nz + 0.05 * fine
-    a = np.stack([g, g, g * 1.04], axis=2)
-    save_png("asphalt_c.png", a)
-    # grass (late autumn)
-    nz = tile_noise(n, 16, 21, 5)
-    fine = np.random.RandomState(17).rand(n, n).astype(np.float32)
-    base = np.stack([0.30 + 0.10 * nz, 0.34 + 0.10 * nz, 0.15 + 0.04 * nz], axis=2)
-    base *= (0.85 + 0.30 * fine[:, :, None])
-    save_png("grass_c.png", base)
-    # wood: horizontal grey-painted boards, 0.9 m tile / 8 boards
-    nz = tile_noise(n, 32, 31, 3)
-    wd = np.zeros((n, n, 3), dtype=np.float32)
-    bh = n // 8
-    for i in range(8):
-        tone = 0.80 + 0.2 * ((i * 37) % 7) / 7
-        wd[i * bh:(i + 1) * bh] = np.array([0.42, 0.40, 0.37]) * tone
-        wd[i * bh:i * bh + 3] *= 0.45
-    wd *= (0.9 + 0.2 * nz[:, :, None])
-    save_png("deck_c.png", wd)
-    # vertical wooden fence planks
-    pl = np.zeros((n, n, 3), dtype=np.float32)
-    pw = n // 6
-    for i in range(6):
-        tone = 0.75 + 0.25 * ((i * 53) % 5) / 5
-        pl[:, i * pw:(i + 1) * pw] = np.array([0.45, 0.33, 0.22]) * tone
-        pl[:, i * pw:i * pw + 3] *= 0.4
-    pl *= (0.88 + 0.24 * tile_noise(n, 24, 41, 3)[:, :, None])
-    save_png("fence_c.png", pl)
-    # roof membrane / gravel
-    nz = tile_noise(n, 24, 51, 4)
-    fine = np.random.RandomState(19).rand(n, n).astype(np.float32)
-    g = 0.22 + 0.10 * nz + 0.08 * fine
-    save_png("roof_c.png", np.stack([g, g, g * 1.03], axis=2))
-    # clapboard siding (cream), 0.9 m / 10 boards
-    nz = tile_noise(n, 16, 61, 3)
-    sd = np.zeros((n, n, 3), dtype=np.float32)
-    sh = n // 10
-    for i in range(10):
-        sd[i * sh:(i + 1) * sh] = np.array([0.80, 0.77, 0.68])
-        sd[i * sh:i * sh + 5] *= 0.55
-    sd *= (0.93 + 0.14 * nz[:, :, None])
-    save_png("siding_c.png", sd)
 
 
 # ----------------------------------------------------------------------------------------------------------
@@ -271,6 +189,18 @@ def build_materials():
     make_mat("Number", "#d9b45a", 0.3, metal=1.0)
     make_mat("NumberDark", "#1c1d1f", 0.5)
     make_mat("Light", "#fff1c9", 0.3, emit=("#fff1c9", 0.0))
+    make_mat("SidingGreen", "#9fb59a", 0.8, tex="siding_c.png", tile=0.9, tint="#9fb59a")
+    make_mat("SidingGrey", "#a9acb2", 0.8, tex="siding_c.png", tile=0.9, tint="#a9acb2")
+    make_mat("LeafGreen", "#7a8a2c", 0.9)
+    make_mat("ShutterDark", "#23332b", 0.6)
+    make_mat("ShopInterior", "#b89a6a", 0.9, emit=("#d9b676", 0.16))
+    make_mat("ShopFloor", "#6a5642", 0.8)
+    make_mat("HydrantRed", "#a81d17", 0.45)
+    make_mat("BinGreen", "#2e4a38", 0.5, metal=0.2)
+    make_mat("SignWhite", "#f1f1ea", 0.5)
+    make_mat("SignRed", "#b3171c", 0.45)
+    make_mat("ManholeIron", "#2d2e30", 0.55, metal=0.6)
+    make_mat("LampLens", "#d8d4c4", 0.2)
 
 
 # ----------------------------------------------------------------------------------------------------------
@@ -855,81 +785,535 @@ def build_alley_props(col):
 # ----------------------------------------------------------------------------------------------------------
 # repeated props (origin at bottom centre, front +Z)
 # ----------------------------------------------------------------------------------------------------------
-def build_house(col, name, w, d, mat, style, roof="gable", stories=2, porch=True):
+# ----------------------------------------------------------------------------------------------------------
+# windows, houses, shops (v2: real trim, sills, sashes, porches)
+# ----------------------------------------------------------------------------------------------------------
+def sash_window(gb, cx, y0, y1, w, zf, face=1, style=0, shutters=False, curtain=0):
+    """A double-hung style window on a flat wall whose outer face is at z = zf (face +1 faces +Z, -1 faces -Z).
+    Frame proud of the wall, recessed glass, muntins, projecting sill, lintel cap, optional shutters and a blind."""
+    s = face
+    x0, x1 = cx - w / 2, cx + w / 2
+    fw = 0.08
+
+    def zr(a, b):
+        return (min(zf + s * a, zf + s * b), max(zf + s * a, zf + s * b))
+    za, zb = zr(0.0, 0.07)
+    gb.box(x0 - fw, y0, za, x0, y1, zb, "Trim")
+    gb.box(x1, y0, za, x1 + fw, y1, zb, "Trim")
+    gb.box(x0 - fw, y1, za, x1 + fw, y1 + fw, zb, "Trim")
+    gb.box(x0 - fw, y0 - fw, za, x1 + fw, y0, zb, "Trim")
+    # lintel cap + sill with overhang
+    ca, cb = zr(0.0, 0.1)
+    gb.box(x0 - fw - 0.06, y1 + fw, ca, x1 + fw + 0.06, y1 + fw + 0.05, cb, "Trim")
+    sa, sb = zr(0.0, 0.13)
+    gb.box(x0 - fw - 0.05, y0 - fw - 0.05, sa, x1 + fw + 0.05, y0 - fw, sb, "Trim")
+    # recessed dark interior, curtain, glass
+    ia, ib = zr(-0.06, -0.04)
+    gb.box(x0, y0, ia, x1, y1, ib, "TrimDark")
+    if curtain:
+        ka, kb = zr(-0.04, -0.03)
+        h = (y1 - y0) * (0.34 if curtain == 1 else 0.7)
+        gb.box(x0, y1 - h, ka, x1, y1, kb, "Blind")
+    ga, gb_ = zr(-0.02, -0.014)
+    gb.box(x0, y0, ga, x1, y1, gb_, "Glass")
+    # muntins
+    ma, mb = zr(-0.03, 0.04)
+    cols = 2 if style % 2 == 0 else 1
+    rows = 3 if style % 3 == 0 else 2
+    for k in range(1, cols):
+        xm = x0 + w * k / cols
+        gb.box(xm - 0.015, y0, ma, xm + 0.015, y1, mb, "Trim")
+    for k in range(1, rows):
+        ym = y0 + (y1 - y0) * k / rows
+        gb.box(x0, ym - 0.015, ma, x1, ym + 0.015, mb, "Trim")
+    gb.box(x0, (y0 + y1) / 2 - 0.03, ma, x1, (y0 + y1) / 2 + 0.03, mb, "Trim")      # meeting rail
+    if shutters:
+        ha, hb = zr(0.0, 0.05)
+        for sx, ex in ((x0 - fw - 0.34, x0 - fw - 0.02), (x1 + fw + 0.02, x1 + fw + 0.34)):
+            gb.box(sx, y0 - fw, ha, ex, y1 + fw, hb, "ShutterDark")
+            for k in range(1, 9):
+                yy = y0 - fw + (y1 - y0 + 2 * fw) * k / 9
+                gb.box(sx + 0.03, yy - 0.01, hb, ex - 0.03, yy + 0.01, hb + s * 0.012 if s > 0 else hb, "ShutterDark")
+
+
+def sash_window_z(gb, cz, y0, y1, w, xf, face=1):
+    """Simple side-wall window (wall along Z, outer face at x = xf)."""
+    s = face
+    z0, z1 = cz - w / 2, cz + w / 2
+    fw = 0.07
+
+    def xr(a, b):
+        return (min(xf + s * a, xf + s * b), max(xf + s * a, xf + s * b))
+    a, b = xr(0.0, 0.06)
+    gb.box(a, y0, z0 - fw, b, y1, z0, "Trim")
+    gb.box(a, y0, z1, b, y1, z1 + fw, "Trim")
+    gb.box(a, y1, z0 - fw, b, y1 + fw, z1 + fw, "Trim")
+    c, d = xr(0.0, 0.1)
+    gb.box(c, y0 - fw - 0.04, z0 - fw - 0.04, d, y0 - fw + 0.01, z1 + fw + 0.04, "Trim")
+    e, f = xr(-0.05, -0.03)
+    gb.box(e, y0, z0, f, y1, z1, "TrimDark")
+    g, h = xr(-0.02, -0.014)
+    gb.box(g, y0, z0, h, y1, z1, "Glass")
+    m, n = xr(-0.03, 0.03)
+    gb.box(m, y0, cz - 0.015, n, y1, cz + 0.015, "Trim")
+    gb.box(m, (y0 + y1) / 2 - 0.025, z0, n, (y0 + y1) / 2 + 0.025, z1, "Trim")
+
+
+def front_door(gb, cx, zf, mat, w=0.95, h=2.1):
+    """Panelled front door with a glass lite, frame, transom and a small lamp, on the wall face z = zf (faces +Z)."""
+    x0, x1 = cx - w / 2, cx + w / 2
+    gb.box(x0 - 0.1, 0.0, zf, x0, h + 0.1, zf + 0.08, "Trim")
+    gb.box(x1, 0.0, zf, x1 + 0.1, h + 0.1, zf + 0.08, "Trim")
+    gb.box(x0 - 0.1, h, zf, x1 + 0.1, h + 0.1, zf + 0.08, "Trim")
+    gb.box(x0, 0.0, zf, x1, h, zf + 0.04, mat)
+    for (a, b) in ((0.12, 0.9), (1.0, 1.9)):
+        pass
+    for px in (x0 + 0.12, cx + 0.04):
+        gb.box(px, 0.12, zf + 0.04, px + w / 2 - 0.16, 0.85, zf + 0.055, mat)
+        gb.box(px, 0.12, zf + 0.055, px + w / 2 - 0.16, 0.14, zf + 0.06, "Trim")
+    gb.box(x0 + 0.14, 1.25, zf + 0.04, x1 - 0.14, 1.85, zf + 0.05, "TrimDark")
+    gb.box(x0 + 0.14, 1.25, zf + 0.05, x1 - 0.14, 1.85, zf + 0.054, "Glass")
+    gb.box(x1 - 0.2, 0.95, zf + 0.04, x1 - 0.12, 1.05, zf + 0.09, "Brass")                    # handle
+    gb.box(cx - 0.1, h + 0.25, zf, cx + 0.1, h + 0.55, zf + 0.12, "TrimDark")                  # lamp
+    gb.box(x1 + 0.2, 1.45, zf, x1 + 0.34, 1.57, zf + 0.025, "Brass")                          # number plate
+
+
+def build_house(col, name, w, d, mat, style, roof="gable", stories=2, porch=True, trim_corner=True, dormer=False,
+                door="DoorMain", shutters=False):
     b = GB()
+    wins = GB()
     h = 2.7 * stories
     hw, hd = w / 2, d / 2
+    siding = mat.startswith("Siding")
     b.box(-hw, 0.0, -hd, hw, h, hd, mat)
-    b.box(-hw - 0.04, 0.0, -hd - 0.04, hw + 0.04, 0.3, hd + 0.04, "Concrete")
+    b.box(-hw - 0.05, 0.0, -hd - 0.05, hw + 0.05, 0.4, hd + 0.05, "Concrete")               # foundation
+    if siding and trim_corner:
+        for sx in (-hw, hw):
+            for sz in (-hd, hd):
+                b.box(sx - 0.06, 0.4, sz - 0.06, sx + 0.06, h, sz + 0.06, "Trim")
+    if stories > 1:
+        b.box(-hw - 0.03, 2.62, -hd - 0.03, hw + 0.03, 2.74, hd + 0.04, "Trim")                  # belt course
     if roof == "gable":
-        b.prism_roof(-hw, hw, -hd, hd, h, 2.2, "Roof", ridge_axis="x", overhang=0.3)
+        b.prism_roof(-hw, hw, -hd, hd, h, 2.1, "Roof", ridge_axis="x", overhang=0.35)
+        b.box(-hw - 0.35, h - 0.06, hd + 0.3, hw + 0.35, h + 0.12, hd + 0.38, "Trim")          # fascia front
+        b.box(-hw - 0.35, h - 0.06, -hd - 0.38, hw + 0.35, h + 0.12, -hd - 0.3, "Trim")
+        b.rod((-hw - 0.35, h - 0.1, hd + 0.4), (hw + 0.35, h - 0.1, hd + 0.4), 0.04, "Steel", seg=6)     # gutter
+        b.rod((hw - 0.25, h - 0.1, hd + 0.4), (hw - 0.25, 0.25, hd + 0.4), 0.035, "Steel", seg=6)       # downspout
+        if dormer:
+            dx = -hw * 0.45
+            b.box(dx - 0.8, h + 0.35, hd - 0.9, dx + 0.8, h + 1.65, hd + 0.0, mat)
+            b.prism_roof(dx - 0.8, dx + 0.8, hd - 1.9, hd + 0.0, h + 1.65, 0.7, "Roof", ridge_axis="z", overhang=0.15)
+            sash_window(wins, dx, h + 0.55, h + 1.45, 0.8, hd + 0.0, 1, style, False)
     else:
-        b.box(-hw - 0.1, h, -hd - 0.1, hw + 0.1, h + 0.22, hd + 0.1, "Roof")
-        b.box(-hw, h + 0.22, -hd, hw, h + 0.5, hd, mat)
-    wins = GB()
+        b.box(-hw - 0.12, h, -hd - 0.12, hw + 0.12, h + 0.2, hd + 0.12, "Trim")
+        b.box(-hw, h + 0.2, -hd, hw, h + 0.7, hd, mat)
+        b.box(-hw - 0.05, h + 0.7, -hd - 0.05, hw + 0.05, h + 0.78, hd + 0.05, "Trim")
+    # windows front, back and sides
     n = 2 if w < 8 else 3
     for k in range(n):
         cx = -hw + (k + 0.5) * w / n
         for s in range(stories):
-            y0 = s * 2.7 + 0.9
-            if s == 0 and k == n // 2:
+            y0 = s * 2.7 + 0.85
+            if s == 0 and k == n // 2 and porch:
                 continue
-            window_flat_x(wins, cx, y0, y0 + 1.3, 1.0, hd)
-    # front door + porch
-    b.box(-0.45, 0.0, hd, 0.45, 2.1, hd + 0.05, "DoorGreen" if style % 2 else "DoorMain")
+            sash_window(wins, cx, y0, y0 + 1.35, 0.95, hd, 1, style + s + k, shutters, curtain=(k + s + style) % 3)
+            sash_window(wins, cx, y0, y0 + 1.35, 0.95, -hd, -1, style + s + k, False, curtain=(k + s) % 3)
+    for s in range(stories):
+        y0 = s * 2.7 + 0.85
+        for sz in (-hd * 0.45, hd * 0.45):
+            sash_window_z(wins, sz, y0, y0 + 1.3, 0.8, hw, 1)
+            sash_window_z(wins, sz, y0, y0 + 1.3, 0.8, -hw, -1)
+    # front door
+    front_door(b, 0.0, hd, door)
     if porch:
-        b.box(-1.3, 0.0, hd, 1.3, 0.35, hd + 1.4, "Concrete")
-        b.box(-1.4, 2.45, hd, 1.4, 2.6, hd + 1.5, "Roof")
-        for x in (-1.25, 1.25):
-            b.box(x - 0.07, 0.35, hd + 1.3, x + 0.07, 2.45, hd + 1.44, "Trim")
-    ch = GB()
-    ch.box(hw * 0.4, h - 0.2, -0.4, hw * 0.4 + 0.7, h + 2.8, 0.4, "BrickBrown")
-    objs = [b.finish(name, col), wins.finish(name + "_Windows", col), ch.finish(name + "_Chimney", col)]
+        # slab, steps, columns, rail, gabled roof
+        b.box(-1.5, 0.0, hd, 1.5, 0.38, hd + 1.7, "Concrete")
+        for i in range(3):
+            b.box(-0.7, 0.0, hd + 1.7 + i * 0.28, 0.7, 0.38 - (i + 1) * 0.12 + 0.12 * (1 if i == 0 else 0), hd + 1.98 + i * 0.28, "Concrete")
+        for x in (-1.4, 1.4):
+            b.box(x - 0.08, 0.38, hd + 1.55, x + 0.08, 2.45, hd + 1.7, "Trim")
+            b.box(x - 0.11, 0.38, hd + 1.52, x + 0.11, 0.55, hd + 1.73, "Trim")
+        b.box(-1.65, 2.45, hd, 1.65, 2.58, hd + 1.85, "Trim")
+        b.prism_roof(-1.5, 1.5, hd, hd + 1.7, 2.58, 0.55, "Roof", ridge_axis="z", overhang=0.15)
+        for x0_, x1_ in ((-1.4, -0.75), (0.75, 1.4)):
+            b.box(x0_, 0.95, hd + 1.62, x1_, 1.0, hd + 1.66, "Trim")
+            for k in range(7):
+                xx = x0_ + (x1_ - x0_) * k / 6
+                b.box(xx - 0.015, 0.4, hd + 1.62, xx + 0.015, 0.95, hd + 1.66, "Trim")
+    # chimney with cap
+    b.box(hw * 0.45, h - 0.4, -0.45, hw * 0.45 + 0.8, h + 2.6, 0.45, "BrickBrown")
+    b.box(hw * 0.45 - 0.06, h + 2.6, -0.51, hw * 0.45 + 0.86, h + 2.7, 0.51, "Concrete")
+    # a few fixtures: gas meter + electric meter on the side, AC unit at the back
+    b.box(hw - 0.02, 0.9, 1.0, hw + 0.1, 1.3, 1.3, "Steel")
+    b.box(-hw - 0.3, 0.0, -0.4, -hw, 0.8, 0.4, "BinGrey")
+    objs = [b.finish(name, col), wins.finish(name + "_Windows", col)]
     return objs
 
 
-def build_shop(col, name, w, mat, awn, upper_mat="Brick"):
-    """Two-storey shopfront facing -Z (toward the street it faces: origin at the sidewalk edge, depth +Z away)."""
+SHOP_DEPTH = 10.0
+SIGN_H = 0.9
+
+
+def build_shop(col, name, w, mat, awn, upper_mat="Brick", kind=0):
+    """Two-storey shopfront facing -Z (origin at the sidewalk edge, depth +Z away). The fascia board is a plain slot
+    (SignBack); the sign picture is a separate quad Godot places at z = -0.13 from signs/<shop_id>.png."""
     b = GB()
-    d = 10.0
+    d = SHOP_DEPTH
     b.box(-w / 2, 0.0, 0.0, w / 2, 6.4, d, mat)
-    b.box(-w / 2 - 0.05, 6.4, -0.05, w / 2 + 0.05, 6.8, d, "Trim")
-    b.box(-w / 2, 6.8, 0.0, w / 2, 7.2, 0.35, mat)
-    # glass front: shopfront opening
+    b.box(-w / 2 - 0.06, 6.4, -0.08, w / 2 + 0.06, 6.55, d, "Trim")                             # cornice
+    b.box(-w / 2 - 0.1, 6.55, -0.15, w / 2 + 0.1, 6.75, d, "Trim")
+    b.box(-w / 2, 6.75, 0.0, w / 2, 7.15, 0.35, mat)                                             # parapet
+    b.box(-w / 2 - 0.05, 7.15, -0.05, w / 2 + 0.05, 7.25, 0.4, "Concrete")                      # coping
+    # pilasters at the party walls
+    for sx in (-w / 2, w / 2 - 0.4):
+        b.box(sx, 0.0, -0.08, sx + 0.4, 3.35, 0.0, mat)
+    b.box(-w / 2, 0.0, -0.06, w / 2, 0.35, 0.0, "Concrete")                                      # stall riser plinth
     g = GB()
-    g.box(-w / 2 + 0.5, 0.35, -0.04, w / 2 - 0.5, 2.9, 0.0, "GlassShop")
-    g.box(-w / 2 + 0.45, 0.0, -0.1, w / 2 - 0.45, 0.35, 0.0, "TrimDark")
-    g.box(-w / 2 + 0.45, 2.9, -0.1, w / 2 - 0.45, 3.0, 0.0, "TrimDark")
-    g.box(-w / 2 + 0.4, 0.35, -0.1, -w / 2 + 0.5, 2.9, 0.0, "TrimDark")
-    g.box(w / 2 - 0.5, 0.35, -0.1, w / 2 - 0.4, 2.9, 0.0, "TrimDark")
-    g.box(0.9, 0.0, -0.12, 1.0, 2.2, 0.0, "TrimDark")       # door stile
-    # awning
-    g.box(-w / 2 + 0.3, 3.05, -1.4, w / 2 - 0.3, 3.2, -0.05, awn)
-    g.box(-w / 2 + 0.3, 2.85, -1.42, w / 2 - 0.3, 3.05, -1.35, awn)
-    # sign board (blank; Godot adds the name as Label3D)
-    g.box(-w / 2 + 0.6, 3.3, -0.12, w / 2 - 0.6, 4.1, -0.02, "SignBack")
-    for k in range(2):
-        cx = -w / 4 + k * w / 2
-        window_flat_x(g, cx, 4.6, 5.9, 1.5, 0.0, face=-1)
-    return [b.finish(name, col), g.finish(name + "_Front", col)]
+    wins = GB()
+    gw0, gw1 = -w / 2 + 0.45, w / 2 - 0.45
+    # display-window box 0.3 m deep: warm lit back panel, shelves and a counter behind the glass, frame in front
+    gi = GB()
+    gi.box(gw0, 0.35, -0.03, gw1, 2.9, -0.02, "ShopInterior")
+    gi.box(gw0, 0.35, -0.3, gw1, 0.37, -0.03, "ShopFloor")
+    gi.box(gw0, 2.87, -0.3, gw1, 2.9, -0.03, "ShopFloor")
+    for k in range(3):
+        gi.box(gw0 + 0.3, 0.8 + 0.55 * k, -0.2, gw1 - 0.3, 0.84 + 0.55 * k, -0.04, "Deck")
+        for j in range(5):
+            xx = gw0 + 0.6 + j * (gw1 - gw0 - 1.2) / 4
+            gi.box(xx - 0.12, 0.84 + 0.55 * k, -0.18, xx + 0.12, 1.2 + 0.55 * k, -0.08, ["BrickTan", "Awning1", "Awning2", "Blind", "Awning3"][(j + k) % 5])
+    gi.box(gw0 + 0.4, 0.35, -0.26, gw1 - 0.4, 0.8, -0.1, "Deck")
+    # glazing with mullions (glass at z -0.22)
+    g.box(gw0, 0.35, -0.225, gw1, 2.9, -0.215, "GlassShop")
+    g.box(gw0 - 0.03, 0.0, -0.3, gw1 + 0.03, 0.35, 0.0, "TrimDark")
+    g.box(gw0 - 0.05, 2.9, -0.3, gw1 + 0.05, 3.05, 0.0, "TrimDark")
+    g.box(gw0 - 0.07, 0.0, -0.3, gw0, 2.95, 0.0, "TrimDark")
+    g.box(gw1, 0.0, -0.3, gw1 + 0.07, 2.95, 0.0, "TrimDark")
+    n = max(2, int(w / 2.3))
+    door_i = n // 2 if kind % 2 == 0 else 0
+    segw = (gw1 - gw0) / n
+    for k in range(1, n):
+        xm = gw0 + segw * k
+        g.box(xm - 0.04, 0.35, -0.27, xm + 0.04, 2.9, -0.15, "TrimDark")
+    # entrance door in segment door_i: glazed door with push bar, in the plane of the glass
+    dx0 = gw0 + segw * door_i + 0.08
+    dx1 = gw0 + segw * (door_i + 1) - 0.08
+    g.box(dx0, 0.0, -0.29, dx1, 2.25, -0.2, "TrimDark")
+    g.box(dx0 + 0.1, 0.25, -0.292, dx1 - 0.1, 2.1, -0.28, "Glass")
+    g.rod((dx1 - 0.2, 0.9, -0.33), (dx1 - 0.2, 1.3, -0.33), 0.012, "Steel", seg=5)
+    # awning: sloped canopy, valance, side wings
+    g.box(-w / 2 + 0.3, 3.2, -1.45, w / 2 - 0.3, 3.3, -0.1, awn)
+    g.box(-w / 2 + 0.3, 3.0, -1.5, w / 2 - 0.3, 3.2, -1.44, awn)
+    g.box(-w / 2 + 0.3, 3.2, -1.45, -w / 2 + 0.34, 3.3, -0.1, awn)
+    # fascia board slot behind the awning's top (the quad Godot adds sits in front of this)
+    g.box(-w / 2 + 0.55, 3.35, -0.12, w / 2 - 0.55, 3.35 + SIGN_H + 0.1, -0.02, "SignBack")
+    # upper windows
+    nu = 2 if w < 8.5 else 3
+    for k in range(nu):
+        cx = -w / 2 + (k + 0.5) * w / nu
+        sash_window(wins, cx, 4.5, 5.9, 1.1, 0.0, -1, kind + k, False, curtain=(k + kind) % 3)
+    return [b.finish(name, col), g.finish(name + "_Front", col), wins.finish(name + "_Windows", col),
+            gi.finish(name + "_Interior", col)]
 
 
-def build_tree(col, name, seed, leaf="LeafOrange", bare=0.0):
+# ----------------------------------------------------------------------------------------------------------
+# trees: scripted trunk/limb generator + alpha leaf cards (CC0, ours)
+# ----------------------------------------------------------------------------------------------------------
+def _rand_unit(rng):
+    while True:
+        v = V((rng.uniform(-1, 1), rng.uniform(-1, 1), rng.uniform(-1, 1)))
+        if 0.01 < v.length_squared <= 1.0:
+            return v.normalized()
+
+
+def _rotate_about(d, axis, ang):
+    return (Matrix.Rotation(ang, 3, axis) @ d).normalized()
+
+
+def _tube(bm, uvl, pts, radii, nseg):
+    """A tapered tube along `pts` (Godot coords) with bark UVs (u around, v along; 0.9 m per tile)."""
+    P = [G(*p) for p in pts]
+    if len(P) < 2:
+        return
+    t0 = (P[1] - P[0]).normalized()
+    ref = V((0, 0, 1)) if abs(t0.z) < 0.9 else V((1, 0, 0))
+    u = t0.cross(ref).normalized()
+    ucnt = max(1, int(round(2 * math.pi * radii[0] / 0.9)))
+    rings = []
+    dist = []
+    acc = 0.0
+    for i, p in enumerate(P):
+        if i:
+            acc += (p - P[i - 1]).length
+        dist.append(acc)
+        t = (P[min(i + 1, len(P) - 1)] - P[max(i - 1, 0)]).normalized()
+        u = (u - t * u.dot(t))
+        if u.length < 1e-5:
+            u = t.cross(V((1, 0, 0)))
+        u.normalize()
+        v = t.cross(u)
+        rings.append([bm.verts.new(p + (u * math.cos(a) + v * math.sin(a)) * radii[i])
+                      for a in (math.tau * j / nseg for j in range(nseg))])
+    for i in range(len(P) - 1):
+        for j in range(nseg):
+            j1 = (j + 1) % nseg
+            f = bm.faces.new([rings[i][j], rings[i][j1], rings[i + 1][j1], rings[i + 1][j]])
+            f.smooth = True
+            uj, uj1 = ucnt * j / nseg, ucnt * (j + 1) / nseg
+            v0, v1 = dist[i] / 0.9, dist[i + 1] / 0.9
+            for l, uv in zip(f.loops, ((uj, v0), (uj1, v0), (uj1, v1), (uj, v1))):
+                l[uvl].uv = uv
+
+
+UPV = V((0.0, 1.0, 0.0))        # Godot up
+
+
+def make_tree(col, name, seed, leaf_mat, height=8.0, angle=(38, 62), cards=7, card_size=(1.2, 1.7), density=1.0,
+              lean=0.04, clear=2.4, limbs_n=7, crown=3.6):
+    """Street tree in Godot coords (y up), origin at the foot of the trunk. Returns [trunk, leaves]."""
     rng = random.Random(seed)
+    bm = bmesh.new()
+    uvl = bm.loops.layers.uv.new("UVMap")
+    tips = []
+
+    def grow(p, d, length, r0, r1, depth, n_child, child_len, child_ang, up_bias):
+        n = max(3, int(length / 0.55))
+        pts, rad = [p], [r0]
+        cur, dd = p, d
+        for i in range(n):
+            dd = (dd + _rand_unit(rng) * (0.10 + 0.05 * depth) + UPV * up_bias * 0.1).normalized()
+            cur = cur + dd * (length / n)
+            pts.append(cur)
+            rad.append(r0 + (r1 - r0) * (i + 1) / n)
+        if depth == 0:
+            pts.insert(0, p - UPV * 0.15)           # sink the foot into the ground
+            rad.insert(0, r0)
+        nseg = 8 if depth == 0 else (6 if rad[0] > 0.05 else 4)
+        _tube(bm, uvl, pts, rad, nseg)
+        if depth >= 2 or n_child <= 0:
+            tips.append(cur)
+            return
+        for i in range(n_child):
+            if depth == 0:
+                t = clear / height + (0.9 - clear / height) * (i + rng.uniform(0.0, 0.6)) / n_child
+            else:
+                t = rng.uniform(0.35, 0.95)
+            fi = t * (len(pts) - 1)
+            idx = min(int(fi), len(pts) - 2)
+            fr = fi - idx
+            base = pts[idx].lerp(pts[idx + 1], fr)
+            rb = rad[idx] * (1 - fr) + rad[idx + 1] * fr
+            az = math.radians(137.5 * i + rng.uniform(-20, 20)) if depth == 0 else rng.uniform(0, math.tau)
+            ang = math.radians(rng.uniform(*child_ang)) * ((1.0 - 0.4 * t) if depth == 0 else 1.0)
+            axis = d.cross(V((1, 0, 0)))
+            if axis.length < 0.2:
+                axis = d.cross(V((0, 0, 1)))
+            axis.normalize()
+            cd = _rotate_about(_rotate_about(d, axis, ang), d, az)
+            cd = (cd + UPV * 0.18).normalized()
+            L = child_len * (1.0 - 0.4 * (t if depth == 0 else 0.0)) * rng.uniform(0.8, 1.15)
+            grow(base, cd, L, max(rb * 0.55, 0.03), 0.012, depth + 1, 3 if depth == 0 else 2, L * 0.62, (28, 58), 0.6)
+        tips.append(cur)
+
+    up = V((rng.uniform(-lean, lean), 1.0, rng.uniform(-lean, lean))).normalized()
+    grow(V((0, 0, 0)), up, height * 0.95, 0.21, 0.03, 0, limbs_n, crown, angle, 0.5)
+    me = bpy.data.meshes.new(name + "_Trunk")
+    bm.to_mesh(me)
+    bm.free()
+    me.materials.append(MATS["Bark"])
+    trunk = bpy.data.objects.new(name + "_Trunk", me)
+    col.objects.link(trunk)
+    # leaf cards at the tips plus a few along the crown interior
+    lb = bmesh.new()
+    luv = lb.loops.layers.uv.new("UVMap")
+    centre = V((0, height * 0.66, 0))
+    normals = []
+    for tp in tips:
+        k = max(1, int(round(cards * density * rng.uniform(0.7, 1.3))))
+        for _ in range(k):
+            c = tp + _rand_unit(rng) * V((0.9, 0.7, 0.9)) * rng.uniform(0.2, 1.0)
+            if c.y < clear * 0.9:
+                continue
+            s = rng.uniform(*card_size)
+            q = _rand_unit(rng)
+            a = _rand_unit(rng)
+            n_ = a.cross(q)
+            if n_.length < 0.1:
+                continue
+            n_.normalize()
+            u_ = n_.cross(UPV)
+            if u_.length < 0.1:
+                u_ = n_.cross(V((1, 0, 0)))
+            u_.normalize()
+            v_ = n_.cross(u_)
+            corners = [c + (u_ * (-0.5) + v_ * (-0.5)) * s, c + (u_ * 0.5 + v_ * (-0.5)) * s,
+                       c + (u_ * 0.5 + v_ * 0.5) * s, c + (u_ * (-0.5) + v_ * 0.5) * s]
+            vs = [lb.verts.new(G(*p_)) for p_ in corners]
+            f = lb.faces.new(vs)
+            f.smooth = True
+            for l, uv in zip(f.loops, ((0, 0), (1, 0), (1, 1), (0, 1))):
+                l[luv].uv = uv
+            for p_ in corners:
+                nrm = (p_ - centre)
+                nrm = (nrm.normalized() * 0.8 + UPV * 0.35).normalized()
+                normals.append(G(*nrm))
+    lme = bpy.data.meshes.new(name + "_Leaves")
+    lb.to_mesh(lme)
+    lb.free()
+    lme.materials.append(MATS[leaf_mat])
+    try:
+        lme.normals_split_custom_set_from_vertices(normals)
+    except Exception as e:      # older Blender: plain smooth shading
+        print("custom normals unavailable:", e)
+    leaves = bpy.data.objects.new(name + "_Leaves", lme)
+    col.objects.link(leaves)
+    return [trunk, leaves]
+
+
+# ----------------------------------------------------------------------------------------------------------
+# street furniture (origin on the ground, front +Z)
+# ----------------------------------------------------------------------------------------------------------
+def build_hydrant(col):
     b = GB()
-    h = rng.uniform(5.5, 7.5)
-    b.cyl(0, 0, 0, 0.22, h * 0.55, "Bark", seg=8)
-    b.rod((0, h * 0.5, 0), (0.5, h * 0.8, 0.2), 0.12, "Bark")
-    b.rod((0, h * 0.45, 0), (-0.6, h * 0.75, -0.3), 0.1, "Bark")
-    l = GB()
-    for i in range(7):
-        a = rng.uniform(0, math.tau)
-        r = rng.uniform(0.0, 1.5)
-        x, z = math.cos(a) * r, math.sin(a) * r
-        y = h * 0.75 + rng.uniform(-0.2, 1.4)
-        mat = rng.choice([leaf, "LeafYellow", "LeafRust"] if i % 3 else [leaf])
-        l.sphere(x, y, z, rng.uniform(1.0, 1.6), mat, scale=(1.0, 0.8, 1.0), u=7, v=5)
-    return [b.finish(name + "_Trunk", col), l.finish(name + "_Leaves", col, smooth=True)]
+    b.cyl(0, 0.0, 0, 0.13, 0.08, "HydrantRed", seg=14)
+    b.cyl(0, 0.08, 0, 0.095, 0.55, "HydrantRed", seg=14)
+    b.cyl(0, 0.62, 0, 0.115, 0.05, "HydrantRed", seg=14)
+    b.sphere(0, 0.66, 0, 0.1, "HydrantRed", scale=(1, 0.8, 1), u=14, v=6)
+    b.cyl(0, 0.74, 0, 0.035, 0.07, "Steel", seg=8)
+    for sx in (-1, 1):
+        b.cyl(sx * 0.13, 0.5, 0, 0.045, 0.2, "HydrantRed", seg=10, axis="x")
+        b.cyl(sx * 0.235, 0.5, 0, 0.05, 0.03, "Steel", seg=10, axis="x")
+    b.cyl(0, 0.4, 0.11, 0.06, 0.12, "HydrantRed", seg=12, axis="z")
+    b.cyl(0, 0.4, 0.18, 0.065, 0.03, "Steel", seg=12, axis="z")
+    return [b.finish("Hydrant", col, smooth=True)]
+
+
+def build_litter_bin(col):
+    b = GB()
+    b.cyl(0, 0.05, 0, 0.26, 0.82, "BinGreen", seg=16)
+    b.cyl(0, 0.0, 0, 0.22, 0.05, "Black", seg=12)
+    b.cyl(0, 0.87, 0, 0.275, 0.05, "Black", seg=16)
+    b.cyl(0, 0.62, 0, 0.268, 0.03, "Steel", seg=16)
+    b.box(-0.12, 0.7, 0.255, 0.12, 0.8, 0.27, "Black")
+    return [b.finish("LitterBin", col, smooth=True)]
+
+
+def build_bench(col):
+    b = GB()
+    for z in (-0.18, -0.06, 0.06, 0.18):
+        b.box(-0.9, 0.45, z - 0.04, 0.9, 0.49, z + 0.04, "Deck")
+    for z, y in ((-0.2, 0.62), (-0.2, 0.74), (-0.2, 0.86)):
+        b.box(-0.9, y, z - 0.02, 0.9, y + 0.09, z + 0.0, "Deck")
+    for x in (-0.8, 0.8):
+        b.box(x - 0.025, 0.0, -0.25, x + 0.025, 0.45, 0.22, "Black")
+        b.box(x - 0.025, 0.45, -0.25, x + 0.025, 0.95, -0.2, "Black")
+    return [b.finish("Bench", col)]
+
+
+def build_bike_ring(col):
+    b = GB()
+    pts = []
+    for i in range(0, 25):
+        a = math.pi * i / 24
+        pts.append((math.cos(a) * 0.3, 0.05 + math.sin(a) * 0.4 + 0.45 * (1 if False else 0.0), 0.0))
+    # inverted U: legs plus arc
+    b.rod((-0.3, 0.0, 0), (-0.3, 0.55, 0), 0.025, "Steel", seg=8)
+    b.rod((0.3, 0.0, 0), (0.3, 0.55, 0), 0.025, "Steel", seg=8)
+    prev = (-0.3, 0.55, 0)
+    for i in range(1, 13):
+        a = math.pi - math.pi * i / 12
+        cur = (math.cos(a) * 0.3, 0.55 + math.sin(a) * 0.3, 0)
+        b.rod(prev, cur, 0.025, "Steel", seg=8)
+        prev = cur
+    return [b.finish("BikeRing", col, smooth=True)]
+
+
+def _octagon(gb, cx, cy, cz, r, depth, mat):
+    m = Matrix.Translation(G(cx, cy, cz)) @ Matrix.Rotation(math.radians(90), 4, "X") @ Matrix.Rotation(math.radians(22.5), 4, "Z")
+    res = bmesh.ops.create_cone(gb.bm, cap_ends=True, cap_tris=False, segments=8, radius1=r, radius2=r, depth=depth, matrix=m)
+    i = gb.mi(mat)
+    for f in {f for v in res["verts"] for f in v.link_faces}:
+        f.material_index = i
+
+
+def build_stop_sign(col):
+    b = GB()
+    b.box(-0.025, 0.0, -0.025, 0.025, 2.6, 0.025, "Steel")
+    _octagon(b, 0.0, 2.2, 0.04, 0.38, 0.02, "SignRed")
+    _octagon(b, 0.0, 2.2, 0.052, 0.34, 0.004, "SignRed")
+    ring = GB()
+    objs = [b.finish("StopSign", col)]
+    t = make_text("StopText", "STOP", 0.2, (0, 2.2, 0.058), "+z", col, mat="SignWhite", extrude=0.002)
+    objs.append(t)
+    # white border: thin octagon slightly in front of the red one, then red face again
+    w = GB()
+    _octagon(w, 0.0, 2.2, 0.047, 0.365, 0.004, "SignWhite")
+    objs.append(w.finish("StopBorder", col))
+    return objs
+
+
+def build_speed_sign(col):
+    b = GB()
+    b.box(-0.025, 0.0, -0.025, 0.025, 2.5, 0.025, "Steel")
+    b.box(-0.3, 1.75, 0.03, 0.3, 2.55, 0.05, "SignWhite")
+    b.box(-0.3, 1.75, 0.05, -0.28, 2.55, 0.056, "NumberDark")
+    b.box(0.28, 1.75, 0.05, 0.3, 2.55, 0.056, "NumberDark")
+    b.box(-0.3, 2.53, 0.05, 0.3, 2.55, 0.056, "NumberDark")
+    b.box(-0.3, 1.75, 0.05, 0.3, 1.77, 0.056, "NumberDark")
+    objs = [b.finish("SpeedSign", col)]
+    objs.append(make_text("SpeedMax", "MAX", 0.09, (0, 2.45, 0.058), "+z", col, mat="NumberDark", extrude=0.002))
+    objs.append(make_text("SpeedNum", "40", 0.3, (0, 2.2, 0.058), "+z", col, mat="NumberDark", extrude=0.002))
+    objs.append(make_text("SpeedKm", "km/h", 0.08, (0, 1.88, 0.058), "+z", col, mat="NumberDark", extrude=0.002))
+    return objs
+
+
+def build_parking_sign(col):
+    b = GB()
+    b.box(-0.025, 0.0, -0.025, 0.025, 2.6, 0.025, "Steel")
+    b.box(-0.22, 1.85, 0.03, 0.22, 2.55, 0.045, "SignWhite")
+    b.box(-0.22, 2.35, 0.045, 0.22, 2.55, 0.05, "SignRed")
+    objs = [b.finish("ParkingSign", col)]
+    objs.append(make_text("PkP", "P", 0.28, (0, 2.45, 0.052), "+z", col, mat="SignWhite", extrude=0.002))
+    objs.append(make_text("PkA", "2 HR", 0.12, (0, 2.15, 0.052), "+z", col, mat="NumberDark", extrude=0.002))
+    objs.append(make_text("PkB", "8-18", 0.1, (0, 1.97, 0.052), "+z", col, mat="NumberDark", extrude=0.002))
+    return objs
+
+
+def build_storm_drain(col):
+    b = GB()
+    b.box(-0.35, -0.01, -0.2, 0.35, 0.012, 0.2, "ManholeIron")
+    for i in range(9):
+        x = -0.28 + i * 0.07
+        b.box(x - 0.015, 0.012, -0.17, x + 0.015, 0.02, 0.17, "ManholeIron")
+    b.box(-0.35, -0.01, -0.2, 0.35, 0.0, 0.2, "Black") if False else None
+    return [b.finish("StormDrain", col)]
+
+
+def build_manhole(col):
+    b = GB()
+    b.cyl(0, 0.0, 0, 0.36, 0.012, "ManholeIron", seg=24)
+    for r_, n_ in ((0.3, 24), (0.2, 16)):
+        pass
+    for k in range(6):
+        a = math.pi * k / 6
+        b.box(-0.3, 0.012, -0.012, 0.3, 0.02, 0.012, "Black") if k == 0 else None
+    for k in range(-2, 3):
+        b.box(-0.28, 0.012, k * 0.1 - 0.012, 0.28, 0.02, k * 0.1 + 0.012, "Black")
+    return [b.finish("Manhole", col)]
+
+
+def build_streetlight(col):
+    b = GB()
+    b.cyl(0, 0.0, 0, 0.17, 0.4, "Steel", seg=12)
+    b.cyl(0, 0.4, 0, 0.115, 3.3, "Steel", seg=12)
+    b.cyl(0, 3.7, 0, 0.095, 3.4, "Steel", seg=12)
+    b.cyl(0, 7.1, 0, 0.08, 0.6, "Steel", seg=12)
+    pts = [(0, 7.65, 0), (-0.25, 7.85, 0), (-0.8, 8.0, 0), (-1.4, 7.98, 0), (-1.85, 7.9, 0)]
+    for a, c in zip(pts[:-1], pts[1:]):
+        b.rod(a, c, 0.05, "Steel", seg=8)
+    b.box(-2.55, 7.78, -0.23, -1.75, 7.92, 0.23, "BinGrey")           # cobra head
+    b.box(-2.45, 7.74, -0.19, -1.85, 7.78, 0.19, "LampLens")
+    b.box(-2.6, 7.86, -0.17, -2.5, 7.9, 0.17, "BinGrey")
+    return [b.finish("Streetlight", col, smooth=False)]
 
 
 def build_bus_shelter(col):
@@ -959,14 +1343,6 @@ def build_signs(col):
     s.box(-0.035, 0.0, -0.035, 0.035, 2.5, 0.035, "Steel")
     s.box(-0.45, 2.2, -0.04, 0.45, 2.5, 0.0, "SignBack")                 # street-name blade (Godot adds the text)
     return [b.finish("BusStopSign", col), s.finish("StreetNameSign", col)]
-
-
-def build_streetlight(col):
-    b = GB()
-    b.cyl(0, 0, 0, 0.09, 7.0, "Steel", seg=8)
-    b.rod((0, 6.95, 0), (-1.8, 7.3, 0), 0.05, "Steel")
-    b.box(-2.3, 7.2, -0.18, -1.7, 7.32, 0.18, "BinGrey")
-    return [b.finish("Streetlight", col)]
 
 
 def build_utility_pole(col):
@@ -1014,7 +1390,6 @@ def main():
     bpy.ops.wm.read_factory_settings(use_empty=True)
     os.makedirs(OUT, exist_ok=True)
     os.makedirs(os.path.dirname(OUT_BLEND), exist_ok=True)
-    gen_textures()
     build_materials()
     sc = bpy.context.scene
     sc.unit_settings.system = "METRIC"
@@ -1025,21 +1400,34 @@ def main():
         ("main_door_leaf", build_main_door_leaf(col)),
         ("neighbours", build_neighbours(col)),
         ("alley_props", build_alley_props(col)),
-        ("house_a", build_house(col, "house_a", 8.0, 9.5, "Brick", 0)),
-        ("house_b", build_house(col, "house_b", 7.0, 8.5, "Siding", 1, stories=2)),
+        ("house_a", build_house(col, "house_a", 8.0, 9.5, "Brick", 0, dormer=True)),
+        ("house_b", build_house(col, "house_b", 7.0, 8.5, "Siding", 1, stories=2, door="DoorGreen", shutters=True)),
         ("house_c", build_house(col, "house_c", 9.0, 9.0, "BrickBrown", 2, roof="flat", porch=True)),
-        ("house_d", build_house(col, "house_d", 7.0, 8.0, "SidingBlue", 3, stories=1)),
-        ("house_e", build_house(col, "house_e", 8.5, 9.0, "BrickTan", 4, stories=2)),
-        ("shop_a", build_shop(col, "shop_a", 8.0, "Brick", "Awning1")),
-        ("shop_b", build_shop(col, "shop_b", 7.0, "BrickTan", "Awning2")),
-        ("shop_c", build_shop(col, "shop_c", 9.0, "BrickBrown", "Awning3")),
-        ("shop_d", build_shop(col, "shop_d", 7.5, "Brick", "Awning2")),
-        ("tree_a", build_tree(col, "tree_a", 1, "LeafOrange")),
-        ("tree_b", build_tree(col, "tree_b", 2, "LeafYellow")),
-        ("tree_c", build_tree(col, "tree_c", 3, "LeafRust")),
+        ("house_d", build_house(col, "house_d", 7.0, 8.0, "SidingBlue", 3, stories=1, door="DoorMain")),
+        ("house_e", build_house(col, "house_e", 8.5, 9.0, "BrickTan", 4, stories=2, door="DoorGreen", dormer=True)),
+        ("house_f", build_house(col, "house_f", 7.5, 9.0, "SidingGreen", 5, stories=2, door="DoorMain", shutters=True)),
+        ("house_g", build_house(col, "house_g", 8.0, 8.0, "SidingGrey", 6, stories=1, door="DoorBlue", dormer=True)),
+        ("shop_a", build_shop(col, "shop_a", 8.0, "Brick", "Awning1", kind=0)),
+        ("shop_b", build_shop(col, "shop_b", 7.0, "BrickTan", "Awning2", kind=1)),
+        ("shop_c", build_shop(col, "shop_c", 9.0, "BrickBrown", "Awning3", kind=2)),
+        ("shop_d", build_shop(col, "shop_d", 7.5, "Brick", "Awning2", kind=3)),
+        ("tree_a", make_tree(col, "tree_a", 1, "LeafOrange", height=8.4, angle=(38, 62), cards=7)),
+        ("tree_b", make_tree(col, "tree_b", 2, "LeafYellow", height=7.6, angle=(30, 50), cards=7, crown=3.1)),
+        ("tree_c", make_tree(col, "tree_c", 3, "LeafRust", height=7.2, angle=(50, 75), cards=7, crown=4.0, limbs_n=6)),
+        ("tree_d", make_tree(col, "tree_d", 4, "LeafGreen", height=8.8, angle=(28, 48), cards=7, crown=3.2)),
+        ("tree_e", make_tree(col, "tree_e", 5, "LeafYellow", height=7.0, angle=(40, 65), cards=7, density=0.38, crown=3.6)),
+        ("hydrant", build_hydrant(col)),
+        ("litter_bin", build_litter_bin(col)),
+        ("bench", build_bench(col)),
+        ("bike_ring", build_bike_ring(col)),
+        ("stop_sign", build_stop_sign(col)),
+        ("speed_sign", build_speed_sign(col)),
+        ("parking_sign", build_parking_sign(col)),
+        ("storm_drain", build_storm_drain(col)),
+        ("manhole", build_manhole(col)),
+        ("streetlight", build_streetlight(col)),
         ("bus_shelter", build_bus_shelter(col)),
         ("signs", build_signs(col)),
-        ("streetlight", build_streetlight(col)),
         ("utility_pole", build_utility_pole(col)),
         ("person_a", build_person(col, "person_a", "CoatNavy", "Jeans", "Skin")),
         ("person_b", build_person(col, "person_b", "CoatRed", "Black", "Skin2", scale=0.95)),

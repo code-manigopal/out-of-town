@@ -1,13 +1,20 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3]
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3]
 
-[ext_resource type="Texture2D" path="res://environments/windsor/exterior/textures/asphalt_c.png" id="1_tex"]
+[ext_resource type="Texture2D" path="res://environments/windsor/exterior/textures/ph/asphalt_02_diff.jpg" id="1_t"]
+[ext_resource type="Texture2D" path="res://environments/windsor/exterior/textures/ph/asphalt_02_nor.jpg" id="2_t"]
+[ext_resource type="Texture2D" path="res://environments/windsor/exterior/textures/ph/asphalt_02_rough.jpg" id="3_t"]
 
 [resource]
 resource_name = "Asphalt"
-albedo_color = Color(1, 1, 1, 1)
-albedo_texture = ExtResource("1_tex")
-roughness = 0.88
-uv1_scale = Vector3(0.25, 0.25, 0.25)
+albedo_color = Color(0.92, 0.92, 0.94, 1)
+albedo_texture = ExtResource("1_t")
+roughness = 1.0
+roughness_texture = ExtResource("3_t")
+normal_enabled = true
+normal_scale = 1
+normal_texture = ExtResource("2_t")
+uv1_scale = Vector3(0.3, 0.3, 0.3)
 uv1_triplanar = true
 uv1_world_triplanar = true
 texture_filter = 5
+

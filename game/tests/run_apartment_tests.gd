@@ -310,9 +310,20 @@ func _test_scene() -> void:
 	_check(why.size() == 2 and why[1] != why[0] and _exit_signals == 0, "front door gives the duffel reason now (%s)" % why[1])
 	# duffel becomes a pickup after the call
 	_check(not apt.duffel_ready, "duffel is not yet a pickup")
+	# opening objectives: Check the Phone first; opening the phone completes it and sets the packing goal
+	_check(StoryState.objective_current() == "e1_goal_phone", "the first objective is Check the Phone (%s)" % StoryState.objective_current())
+	apt.hud.phone.animate = false
+	apt.hud.phone.open()
+	_check(StoryState.objective_current() == "e1_goal_packing" and StoryState.objective_is_done("e1_goal_phone"), "opening the phone completes it and sets packing")
+	apt.hud.phone.close()
+	# the first gift in the duffel plays Mani's inner voice
+	apt.pack_item("sweets")
+	_check(apt.hud.thought.is_showing and apt.hud.thought.line_id == "e1_thought_pack1_000", "the first packed gift plays the inner voice")
+	apt.hud.thought.hide_now()
 	apt.pack_item("sweets")
 	apt.pack_item("diyas")
 	apt.pack_item("radio")
+	_check(not apt.hud.thought.is_showing, "the inner voice plays once, for the first gift only")
 	_check(apt.is_ringing, "packing 3/3 still rings the laptop")
 	apt._on_call_target_reached("e1_road")                    # the call is over
 	_check(apt.duffel_ready and apt.duffel.kind == OOTInteractable.Kind.PICKUP, "after the call the duffel is a PICKUP")

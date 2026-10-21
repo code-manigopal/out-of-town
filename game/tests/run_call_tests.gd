@@ -119,7 +119,8 @@ func _test_call() -> void:
 	await process_frame
 	var c: OOTCallCinematic = apt.call_cinematic
 	_check(c != null and c.active, "the cinematic starts with the call")
-	_check(c.current_shot == &"ots_laptop", "opening shot is the over-the-shoulder onto the laptop (%s)" % c.current_shot)
+	# Narration is no longer shown in the dialogue box, so the call opens on Amma's first line (a screen shot).
+	_check(c.SCREEN_SHOTS.has(c.current_shot), "opening shot favours the screen: Amma's first line (%s)" % c.current_shot)
 	_check(player.is_shot_active() or c._fallback_cam != null, "a fixed camera shot is active")
 	_check(player.is_locked(), "player input is locked during the call")
 	_check(c.seated == player.has_pose_override(), "Mani is in the seated pose when available (seated=%s)" % c.seated)
@@ -135,11 +136,11 @@ func _test_call() -> void:
 	_check(c.screen_light.light_energy > 1.0, "the screen glow lights up (%.2f)" % c.screen_light.light_energy)
 	_check((apt.get_node("MorningSun") as DirectionalLight3D).light_energy < lights_before * 0.7, "the room dims during the call")
 
-	# narration (line 0) -> Amma -> Mani -> Appa -> Mani -> Amma + choices
+	# (narration line 0 is skipped) Amma -> Mani -> Appa -> Mani -> Amma + choices
 	var shots: Array[StringName] = [c.current_shot]
 	var tiles: Array[String] = [c.screen.tile]
 	var speakers: Array[String] = [c.current_speaker]
-	for n: int in 5:
+	for n: int in 4:
 		d.advance()
 		await process_frame
 		await process_frame
@@ -147,16 +148,16 @@ func _test_call() -> void:
 		tiles.append(c.screen.tile)
 		speakers.append(c.current_speaker)
 	print("shots ", shots, " speakers ", speakers, " tiles ", tiles)
-	_check(speakers == ["", "AMMA", "MANI", "APPA", "MANI", "AMMA"], "line speakers followed: %s" % [speakers])
+	_check(speakers == ["AMMA", "MANI", "APPA", "MANI", "AMMA"], "line speakers followed: %s" % [speakers])
 	_check(shots[1] != shots[0], "the shot changes when the first line is advanced to")
-	for i: int in range(1, 5):
+	for i: int in range(1, 4):
 		_check(shots[i] != shots[i - 1], "shot changes on each line advance (line %d: %s -> %s)" % [i, shots[i - 1], shots[i]])
-	_check(c.SCREEN_SHOTS.has(shots[1]) and c.SCREEN_SHOTS.has(shots[3]), "Amma and Appa lines use screen-favouring shots")
-	_check(c.FACE_SHOTS.has(shots[2]) and c.FACE_SHOTS.has(shots[4]), "Mani lines use face shots")
-	_check(tiles[1] == "amma" and tiles[2] == "wide" and tiles[3] == "appa" and tiles[4] == "wide", "the call screen shows the speaker's tile (%s)" % [tiles])
+	_check(c.SCREEN_SHOTS.has(shots[0]) and c.SCREEN_SHOTS.has(shots[2]), "Amma and Appa lines use screen-favouring shots")
+	_check(c.FACE_SHOTS.has(shots[1]) and c.FACE_SHOTS.has(shots[3]), "Mani lines use face shots")
+	_check(tiles[0] == "amma" and tiles[1] == "wide" and tiles[2] == "appa" and tiles[3] == "wide", "the call screen shows the speaker's tile (%s)" % [tiles])
 	# the last line is shown together with the choices: the calm hold
 	_check(c.holding_choice and c.current_shot == &"choice_hold", "with the choice on screen the camera holds the calm shot (%s)" % c.current_shot)
-	_check(tiles[5] == "amma", "the remote tile stays on Amma while her question is up")
+	_check(tiles[4] == "amma", "the remote tile stays on Amma while her question is up")
 	var hold_xf: Transform3D = c._cam().global_transform
 	await _wait(0.6)
 	_check(c._cam().global_transform.origin.is_equal_approx(hold_xf.origin), "the choice hold does not move")

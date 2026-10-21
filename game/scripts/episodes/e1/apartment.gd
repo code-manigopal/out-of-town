@@ -11,6 +11,8 @@ signal call_started
 signal call_finished(scene_id: String)
 ## The front door was used with the car keys in the pocket and the duffel in hand: leave for the building exterior.
 signal exit_requested
+## The camera has come in through the blinds, circled Mani and handed over to his shoulder view; control is back.
+signal intro_finished
 
 const PART_ID: String = "p1"
 const INTRO_SCENE: String = "e1_apt"
@@ -25,10 +27,7 @@ const SND_PUTDOWN: String = "res://audio/sfx/kenney/impact/impactSoft_heavy_000.
 const SND_ZIP: String = "res://audio/sfx/kenney/interface/scratch_003.ogg"
 const SND_KEYS: String = "res://audio/sfx/apartment/keys_jingle.ogg"
 
-# Short UI hints for the locked front door.
-# TODO: move these into the story data once Mani's inner-voice lines are written (design doc section 11).
-const REASON_NEED_KEYS: String = "I need my car keys."
-const REASON_NEED_BAG: String = "I'm not leaving without the bag."
+# Player hints (the locked-door lines, toasts) live in data/ui/p1_hints.json; read them with OOTHints.text(id).
 ## Where Mani stands to look in the bathroom mirror (facing the glass, west).
 const MIRROR_STAND: Vector3 = Vector3(-0.62, 0.0, 1.8)
 
@@ -36,6 +35,9 @@ const MIRROR_STAND: Vector3 = Vector3(-0.62, 0.0, 1.8)
 @export var auto_answer_seconds: float = 90.0
 ## Play the e1_apt narration when the apartment loads.
 @export var play_intro: bool = true
+## Episode 1 opening: start with the camera outside the window, move in through the blinds, rotate around Mani and hand
+## over to the over-the-shoulder view (Phantom Camera follow). Off: the player starts in control, as in the tests.
+@export var intro_through_window: bool = false
 ## Show the floating object name tags (greybox debugging aid; the interaction prompt already names objects).
 @export var show_debug_labels: bool = false
 
@@ -54,6 +56,11 @@ var has_car_keys: bool = false
 ## True once the call is over: the zipped duffel can then be picked up (two hands) and carried out.
 var duffel_ready: bool = false
 
+## True while the through-the-blinds camera move runs (input locked).
+var intro_active: bool = false
+var _intro_overlay: ColorRect = null
+var _intro_layer: CanvasLayer = null
+var _thought_played: bool = false
 var _ring_player: AudioStreamPlayer3D
 var _room_player: AudioStreamPlayer
 var _sfx_player: AudioStreamPlayer
@@ -98,7 +105,15 @@ func _ready() -> void:
 	_on_carried_changed(null)
 	_setup_interactives()
 	OOTApartmentContent.apply(self)
-	OOTJournalData.grant("e1_goal_packing")
+	var st: Node = OOTServices.state()
+	if st != null:
+		st.set_flag("e1_apt_started")   # unlocks Mani's outgoing call to Nila in the phone's call log
+	if hud.phone != null:
+		hud.phone.opened.connect(_on_phone_opened)   # reading the phone completes "Check the Phone", then packing starts
+	if intro_through_window:
+		_begin_window_intro.call_deferred()
+	else:
+		OOTJournalData.grant("e1_goal_phone")
 	if runner == null:
 		_ensure_runner()
 	if play_intro:
@@ -149,6 +164,9 @@ func pack_item(item_id: String) -> bool:
 	if found == null:
 		return false
 	packed_ids.append(item_id)
+	if packed_ids.size() == 1 and not _thought_played:
+		_thought_played = true
+		hud.show_thought("e1_thought_pack1")   # Mani's inner voice, italic, no speaker frame
 	found.set_active(false)
 	_show_in_slot(found)
 	var total: int = get_pack_total()
@@ -211,7 +229,7 @@ func _zip_duffel() -> void:
 
 func _on_pickup_taken(target: OOTInteractable) -> void:
 	_play_sfx(SND_PICKUP)
-	hud.show_toast("Picked up: %s" % target.display_name)
+	hud.show_toast(OOTHints.fmt("picked_up", [target.display_name]))
 
 
 func _on_carried_changed(item: OOTInteractable) -> void:
@@ -340,6 +358,9 @@ func _on_call_target_reached(scene_id: String) -> void:
 	if call_cinematic != null and is_instance_valid(call_cinematic):
 		call_cinematic.finish()
 	_enable_duffel_pickup()
+	var st: Node = OOTServices.state()
+	if st != null:
+		st.set_flag("e1_call_taken")   # the Amma and Appa video call shows in the phone's call log
 	OOTJournalData.grant("e1_goal_leave")
 	call_finished.emit(scene_id)
 
@@ -379,7 +400,7 @@ func take_car_keys() -> bool:
 		state.set_flag("has_car_keys")
 	car_keys.set_active(false)
 	_play_sfx(SND_KEYS)
-	hud.show_toast("Car keys in your pocket")
+	hud.show_toast(OOTHints.text("car_keys_taken"))
 	_update_exit_lock()
 	return true
 
@@ -402,9 +423,9 @@ func is_carrying_duffel() -> bool:
 ## Locked with a reason until the keys are in the pocket and the duffel is in hand.
 func _update_exit_lock() -> void:
 	if not has_car_keys:
-		exit_door.set_locked(true, REASON_NEED_KEYS)
+		exit_door.set_locked(true, OOTHints.text("need_car_keys"))
 	elif not is_carrying_duffel():
-		exit_door.set_locked(true, REASON_NEED_BAG)
+		exit_door.set_locked(true, OOTHints.text("need_bag"))
 	else:
 		exit_door.set_locked(false)
 
@@ -431,3 +452,112 @@ func _on_mirror_view_entered() -> void:
 
 func _on_mirror_view_exited() -> void:
 	player.unlock_input()
+
+
+# --- Phone objective ----------------------------------------------------------------------------------
+
+func _on_phone_opened() -> void:
+	var st: Node = OOTServices.state()
+	if st != null and st.objective_current() == "e1_goal_phone":
+		OOTJournalData.grant("e1_goal_packing")
+
+
+# --- Intro: through the blinds ------------------------------------------------------------------------
+
+const INTRO_WINDOW_X: float = -0.75
+const INTRO_SECONDS: float = 6.2
+var _intro_end: Transform3D = Transform3D.IDENTITY
+var _intro_shot: Node3D = null
+
+
+## Camera path: dolly in from outside the window (the blinds are at z -3.86), then an orbit around Mani that lands on
+## his shoulder view. `u` is the move's progress 0..1 (already eased by the caller).
+func intro_pose(u: float) -> Transform3D:
+	var centre: Vector3 = player.global_position + Vector3(0, 1.35, 0)
+	var p0: Vector3 = Vector3(INTRO_WINDOW_X, 1.62, -6.4)
+	var p1: Vector3 = Vector3(INTRO_WINDOW_X + 0.1, 1.5, -3.1)
+	var split: float = 0.38
+	if u < split:
+		var k: float = u / split
+		k = k * k * (3.0 - 2.0 * k) * 0.5 + k * 0.5
+		var pos: Vector3 = p0.lerp(p1, k)
+		var target: Vector3 = centre.lerp(centre + Vector3(0.2, 0.0, 0.0), 0.5)
+		return Transform3D(Basis.looking_at(target - pos, Vector3.UP), pos)
+	var k2: float = (u - split) / (1.0 - split)
+	k2 = k2 * k2 * k2 * (k2 * (k2 * 6.0 - 15.0) + 10.0)
+	# orbit: from the window side (north of Mani) round to wherever the shoulder camera ends up
+	var a0: Vector3 = p1 - centre
+	var a1: Vector3 = _intro_end.origin - centre
+	var ang0: float = atan2(a0.x, a0.z)
+	var ang1: float = atan2(a1.x, a1.z)
+	var d: float = wrapf(ang1 - ang0, -PI, PI)
+	var ang: float = ang0 + d * k2
+	var r0: float = Vector2(a0.x, a0.z).length()
+	var r1: float = Vector2(a1.x, a1.z).length()
+	var r: float = lerpf(r0, r1, k2)
+	var h: float = lerpf(a0.y, a1.y, k2)
+	var pos2: Vector3 = centre + Vector3(sin(ang) * r, h, cos(ang) * r)
+	var look_here: Transform3D = Transform3D(Basis.looking_at(centre + Vector3(0, 0.15, 0) - pos2, Vector3.UP), pos2)
+	var blend: float = smoothstep(0.55, 1.0, k2)
+	var q: Quaternion = look_here.basis.get_rotation_quaternion().slerp(_intro_end.basis.get_rotation_quaternion(), blend)
+	return Transform3D(Basis(q), pos2.lerp(_intro_end.origin, blend * blend * blend))
+
+
+func _begin_window_intro() -> void:
+	intro_active = true
+	player.lock_input()
+	hud.visible = false
+	_intro_layer = CanvasLayer.new()
+	_intro_layer.layer = 30
+	add_child(_intro_layer)
+	_intro_overlay = ColorRect.new()
+	_intro_overlay.color = Color(1.0, 0.96, 0.86, 1.0)   # picks up the montage's flash of light through the blinds
+	_intro_overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_intro_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_intro_layer.add_child(_intro_overlay)
+	var frames: int = 0
+	while not player.phantom_camera_ready() and frames < 90:
+		await get_tree().process_frame
+		frames += 1
+	for i: int in 6:
+		await get_tree().process_frame
+	_intro_end = player.camera.global_transform
+	_intro_shot = Node3D.new()
+	add_child(_intro_shot)
+	_intro_shot.global_transform = intro_pose(0.0)
+	if not player.use_shot(_intro_shot):
+		_end_window_intro()
+		return
+	var tw: Tween = create_tween()
+	tw.tween_method(_intro_step, 0.0, 1.0, INTRO_SECONDS)
+	tw.tween_callback(_end_window_intro)
+	var fade: Tween = create_tween()
+	fade.tween_property(_intro_overlay, "color:a", 0.0, 1.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
+
+func _intro_step(u: float) -> void:
+	if player.shot_cam != null and is_instance_valid(player.shot_cam):
+		player.shot_cam.global_transform = intro_pose(u)
+
+
+## Skips the move (or ends it): control returns to the player on the shoulder view.
+func skip_window_intro() -> void:
+	if intro_active:
+		_end_window_intro()
+
+
+func _end_window_intro() -> void:
+	if not intro_active:
+		return
+	intro_active = false
+	player.release_shot()
+	if _intro_shot != null:
+		_intro_shot.queue_free()
+		_intro_shot = null
+	if _intro_layer != null:
+		_intro_layer.queue_free()
+		_intro_layer = null
+	hud.visible = true
+	player.unlock_input()
+	OOTJournalData.grant("e1_goal_phone")   # "Objective: Check the Phone [P]"
+	intro_finished.emit()

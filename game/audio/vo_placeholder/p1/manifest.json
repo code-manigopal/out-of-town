@@ -270,6 +270,15 @@
    "speaker": "TESS",
    "speaker_id": "af_nicole"
   },
+  "e1_thought_pack1_000": {
+   "channel": "THOUGHT",
+   "duration": 5.8,
+   "file": "e1_thought_pack1_000.ogg",
+   "filter": "clean",
+   "hash": "0b7ce7c7610510db",
+   "speaker": "MANI",
+   "speaker_id": "hm_psi"
+  },
   "e1_tp1_002": {
    "channel": "",
    "duration": 9.602,

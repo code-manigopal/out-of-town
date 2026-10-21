@@ -22,14 +22,18 @@ const ROAD_SCENE_ID: String = "e1_road"
 const SND_AMBIENCE: String = "res://audio/ambience/city_morning.ogg"
 const GRAFFITI_DIR: String = "res://environments/windsor/exterior/graffiti/"
 const DUFFEL_MODEL: String = "res://environments/windsor/apartment/models/duffel_zipped.glb"
+## Bay centres (x) of the two other cars in the back lot; Mani's sedan stands in the bay at x -0.8.
+## Mural slots on the alley wall: z along the wall, height of the centre, width in metres.
+const GRAFFITI_LAYOUT: Array[Vector4] = [Vector4(3.15, 1.55, 2.5, 0.0), Vector4(0.85, 2.0, 2.1, 0.0), Vector4(-1.55, 2.15, 2.3, 0.0), Vector4(-3.55, 1.75, 1.7, 0.0)]
+const LOT_BAY_X: Array[float] = [-6.4, 4.8]
 const FADE_SECONDS: float = 1.3
 const CARD_SECONDS: float = 2.6
 ## Where Mani stands to push the main door (the clip then walks him 0.86 m through it).
 const MAIN_DOOR_MARK: Vector3 = Vector3(-3.9, 0.0, 10.78)
 const PLAYER_START: Vector3 = Vector3(2.0, 2.93, 5.25)
-## Sun: altitude 30 degrees, azimuth 140 (south-east), 08:40 on a November morning.
-const SUN_ALT_DEG: float = 30.0
-const SUN_AZ_DEG: float = 140.0
+## Sun: altitude 28 degrees, azimuth 145 (south-east), 10:10 on an early-November morning (Windsor, EST); the HDRI sun is aligned to it.
+const SUN_ALT_DEG: float = 28.8
+const SUN_AZ_DEG: float = 145.0
 ## Placeholder hints (TODO: replace with Mani's inner-voice lines from the story data, design doc section 11).
 const HINT_CAR: String = "My car's out back."
 const HINT_DRIVE: String = "W / S throttle and brake, A / D steer"
@@ -129,14 +133,16 @@ func _setup_lot() -> void:
 	var lot: Node3D = Node3D.new()
 	lot.name = "LotCars"
 	add_child(lot)
-	var a: Node3D = world.place("traffic_hatchback", Vector3(-5.0, 0.0, -10.5), 180.0, lot)
-	var c: Node3D = world.place("traffic_suv", Vector3(3.4, 0.0, -10.5), 180.0, lot)
+	# nose-in bays 2.8 m wide (the white bay lines are drawn by the world): Mani's car in the middle bay, the two others
+	# a bay away on either side so the driver's door has room
+	var a: Node3D = world.place("traffic_hatchback", Vector3(LOT_BAY_X[0], 0.0, -10.5), 180.0, lot)
+	var c: Node3D = world.place("traffic_suv", Vector3(LOT_BAY_X[1], 0.0, -10.5), 180.0, lot)
 	if a != null:
 		world.paint(a, Color(0.55, 0.14, 0.12))
-		world.box_body(lot, "ParkedCol_A", Vector3(-5.0, 0.8, -10.5), Vector3(1.9, 1.6, 4.3))
+		world.box_body(lot, "ParkedCol_A", Vector3(LOT_BAY_X[0], 0.8, -10.5), Vector3(1.9, 1.6, 4.3))
 	if c != null:
 		world.paint(c, Color(0.86, 0.86, 0.84))
-		world.box_body(lot, "ParkedCol_C", Vector3(3.4, 0.9, -10.5), Vector3(1.95, 1.8, 4.7))
+		world.box_body(lot, "ParkedCol_C", Vector3(LOT_BAY_X[1], 0.9, -10.5), Vector3(1.95, 1.8, 4.7))
 
 
 func _setup_ui() -> void:
@@ -163,6 +169,11 @@ func _setup_audio() -> void:
 
 
 func _setup_player() -> void:
+	# traffic yields to Mani on foot and to his car (OOTTrafficCar looks for this group)
+	player.add_to_group(&"traffic_obstacle")
+	player.set_meta("traffic_radius", 0.4)
+	car.add_to_group(&"traffic_obstacle")
+	car.set_meta("traffic_radius", 1.1)
 	player.global_position = PLAYER_START
 	player.yaw = deg_to_rad(90.0)            # facing west along the verandah
 	player.body.rotation.y = player.yaw
@@ -577,24 +588,47 @@ func road_card_text() -> String:
 
 # --- graffiti slots ---------------------------------------------------------------------------------
 
-## Decal nodes Graffiti_1..4: graffiti/graffiti_N.png when present, otherwise a procedural placeholder tag.
+## Decal nodes Graffiti_1..4: the paint cut out of graffiti/graffiti_N.png (graffiti_N_alpha.png, brick and ground keyed
+## to alpha by art_source/environments/windsor/exterior/tools/key_graffiti.py), laid on the east alley wall (x 8.6) at mural
+## size; falls back to the original image, then to a procedural placeholder tag.
 func _setup_graffiti() -> void:
 	for i: int in range(1, 5):
 		var d: Decal = find_child("Graffiti_%d" % i, true, false) as Decal
 		if d == null:
 			continue
-		var path: String = "%sgraffiti_%d.png" % [GRAFFITI_DIR, i]
-		var tex: Texture2D = null
-		if ResourceLoader.exists(path):
-			tex = load(path) as Texture2D
-		elif FileAccess.file_exists(path):
-			var img: Image = Image.load_from_file(path)
-			if img != null:
-				tex = ImageTexture.create_from_image(img)
+		var tex: Texture2D = _load_graffiti("%sgraffiti_%d_alpha.png" % [GRAFFITI_DIR, i])
+		var alpha_cut: bool = tex != null
+		if tex == null:
+			tex = _load_graffiti("%sgraffiti_%d.png" % [GRAFFITI_DIR, i])
 		if tex == null:
 			tex = make_tag_texture(i)
 		d.texture_albedo = tex
 		_graffiti_tex[i] = tex
+		d.set_meta("alpha_cut", alpha_cut)
+		var spec: Vector4 = GRAFFITI_LAYOUT[i - 1]      # wall z, centre height, width, (unused)
+		var aspect: float = float(tex.get_height()) / float(tex.get_width())
+		var width: float = spec.z
+		var height: float = width * aspect
+		# decal basis: local X = +Z (along the wall, to the viewer's right), local Y = -X (the projection axis, into the
+		# wall), local Z = down; the box is a thin slab centred on the wall face so it never paints the dumpster or fences
+		d.global_transform = Transform3D(Basis(Vector3(0, 0, 1), Vector3(-1, 0, 0), Vector3(0, -1, 0)), Vector3(8.6, spec.y, spec.x))
+		d.size = Vector3(width, 0.14, height)
+		d.albedo_mix = 1.0
+		d.normal_fade = 0.2
+		d.modulate = Color(0.94, 0.94, 0.92)
+		d.upper_fade = 0.02
+		d.lower_fade = 0.02
+
+
+func _load_graffiti(path: String) -> Texture2D:
+	if ResourceLoader.exists(path):
+		return load(path) as Texture2D
+	if FileAccess.file_exists(path):
+		var img: Image = Image.load_from_file(path)
+		if img != null:
+			img.generate_mipmaps()
+			return ImageTexture.create_from_image(img)
+	return null
 
 
 ## A simple abstract spray-paint tag (strokes, drips, shapes), transparent background. No letters, no names.

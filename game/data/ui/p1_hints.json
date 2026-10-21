@@ -1,0 +1,7 @@
+{
+	"_note": "Short player hints and toasts for Part 1 (one-line, Mani's own voice where it is a thought). Accessor: OOTHints.text(id) / OOTHints.fmt(id, args). Windsor exterior scripts may add their own ids here.",
+	"need_car_keys": "I need my car keys.",
+	"need_bag": "I'm not leaving without the bag.",
+	"car_keys_taken": "Car keys in your pocket",
+	"picked_up": "Picked up: %s"
+}

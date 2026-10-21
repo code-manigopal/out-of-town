@@ -10,7 +10,8 @@ TAMIL = set("""anna naan dhaan dhaana amma appa kanna nee po vara enga ennai the
 oru vishayam kandupidichiruken solla mudiyaadhu inga vandhappo edhavadhu irundha irundhu kitta mattum pesu
 saaptiya saapten moonji ellam ilachu pochu moonu naala mela kovama irukkaala irukkaa irukkiradhu
 eduthutu kadai nalla poguthu kavala padaadhenu sonnaarnu sollu veetuku veetu innoru ponnu anupparen paaru
-ippo venaam varaadha vandhudu panna pannadha maadhiri ku la nu naam""".split())
+ippo venaam varaadha vandhudu panna pannadha maadhiri ku la nu naam
+enna vandhaa vela prachanaiya""".split())
 NAMES = {"preethi": "pɹˈiːðiː", "pongal": "pˈoŋɡɐl", "nila": "nˈiːlɐ", "mani": "mˈɐɳi"}
 
 RULES = [("aa", "ɑː"), ("ee", "iː"), ("ii", "iː"), ("oo", "uː"), ("ai", "ɑɪ"), ("au", "ɑʊ"),

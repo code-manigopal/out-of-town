@@ -80,7 +80,7 @@ func _test_state_journal() -> void:
 	_check(data.size() >= 8, "journal data loads")
 	for id: Variant in data:
 		var e: Dictionary = data[id]
-		_check(OOTJournalData.SECTIONS.has(str(e.get("section", ""))) and e.has("title") and e.has("text"),
+		_check((OOTJournalData.SECTIONS.has(str(e.get("section", ""))) or OOTJournalData.is_objective(str(id))) and e.has("title") and e.has("text"),
 				"entry %s has section/title/text" % id)
 	_check(OOTJournalData.entry_for_item("grad_photo") == "e1_grad_photo", "item_id maps to journal entry")
 	_state.start_part("p1")
@@ -191,9 +191,11 @@ func _test_journal() -> void:
 		_state.journal_add(id)
 	j.open()
 	_check(j.is_open and paused, "journal opens and pauses the game")
-	_check(j.spread_count() >= 4, "one spread per section at least")
-	_check(j.current_section() == "goal" and j.current_entry_ids() == ["e1_goal_ruth"], "goal page shows only the latest goal")
-	_check(j.next_page() and j.current_section() == "people", "turn page forward -> People")
+	_check(j.spread_count() >= 3, "one spread per section at least")
+	_check(not OOTJournalData.SECTIONS.has("goal") and not j._tabs.has("goal"), "the journal has no Current goal tab any more")
+	_check(j.current_section() == "people" and j.current_entry_ids().has("e1_person_nila"), "journal opens on People")
+	_check(not j.current_entry_ids().has("e1_goal_ruth"), "goal entries are not journal pages")
+	_check(j.next_page() and j.current_section() == "clues", "turn page forward -> Clues")
 	_check(j.prev_page() and j.spread_index == 0, "turn page back")
 	_check(not j.prev_page(), "cannot turn before the first page")
 	j.open("clues")

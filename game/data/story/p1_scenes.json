@@ -296,6 +296,23 @@
         ]
       }
     },
+    "e1_thought_pack1": {
+      "id": "e1_thought_pack1",
+      "ep": 1,
+      "place": "Mani's apartment, Windsor",
+      "time": "Tue 09:12",
+      "lines": [
+        {
+          "speaker": "MANI",
+          "channel": "THOUGHT",
+          "text": "Nila enna solla vandhaa? Oru vela edhavadhu prachanaiya?",
+          "subtitle": "What was Nila trying to tell me? Is something wrong?",
+          "narration": false
+        }
+      ],
+      "choices": [],
+      "next": "e1_apt"
+    },
     "e1_call": {
       "id": "e1_call",
       "ep": 1,

@@ -1,0 +1,78 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://rwb1v6d5hbhv"
+path="res://.godot/imported/maple_b.glb-a04e4f4279a5737beab0db886c569a7f.scn"
+
+[deps]
+
+source_file="res://environments/windsor/montage/trees/maple_b.glb"
+dest_files=["res://.godot/imported/maple_b.glb-a04e4f4279a5737beab0db886c569a7f.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+mesh_library/use_node_names_as_mesh_names=false
+array_mesh/deduplicate_surfaces=true
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"materials": {
+"MBark": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://environments/windsor/montage/trees/materials/MBark.tres",
+"use_external/path": "res://environments/windsor/montage/trees/materials/MBark.tres"
+},
+"MBirchBark": {
+"use_external/enabled": true,
+"use_external/path": "res://environments/windsor/montage/trees/materials/MBirchBark.tres"
+},
+"MLeafGreen": {
+"use_external/enabled": true,
+"use_external/path": "res://environments/windsor/montage/trees/materials/MLeafGreen.tres"
+},
+"MLeafOrange": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://environments/windsor/montage/trees/materials/MLeafOrange.tres",
+"use_external/path": "res://environments/windsor/montage/trees/materials/MLeafOrange.tres"
+},
+"MLeafRust": {
+"use_external/enabled": true,
+"use_external/path": "res://environments/windsor/montage/trees/materials/MLeafRust.tres"
+},
+"MLeafYellow": {
+"use_external/enabled": true,
+"use_external/path": "res://environments/windsor/montage/trees/materials/MLeafYellow.tres"
+},
+"MSpruce": {
+"use_external/enabled": true,
+"use_external/path": "res://environments/windsor/montage/trees/materials/MSpruce.tres"
+}
+}
+}
+gltf/naming_version=2
+gltf/embedded_image_handling=1
+gltf/texture_map_mode=1

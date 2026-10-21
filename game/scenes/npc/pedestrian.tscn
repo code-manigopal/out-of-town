@@ -1,0 +1,6 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/npc/oot_pedestrian.gd" id="1_ped"]
+
+[node name="Pedestrian" type="CharacterBody3D"]
+script = ExtResource("1_ped")

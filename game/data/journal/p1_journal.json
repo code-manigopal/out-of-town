@@ -1,5 +1,13 @@
 {
 	"_note": "Part 1 journal entries (Mani's notes). Text Mani would write; Tanglish carries an English subtitle. Episode 1 entries approved 2026-10-21; items marked design are not in the screenplay and may change.",
+	"e1_goal_phone": {
+		"section": "goal",
+		"episode": 1,
+		"title": "Check the Phone",
+		"text": "Amma messaged. Read what she sent.",
+		"key_action": "phone",
+		"toast_text": ""
+	},
 	"e1_goal_packing": {
 		"section": "goal",
 		"episode": 1,

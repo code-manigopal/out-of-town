@@ -1,0 +1,51 @@
+{
+	"_note": "Mani's phone, Part 1. Facts come from docs/story/part1-greyhaven-screenplay.md Ep 1 (voicemail Sun 23:52, Nila's 'not on the phone', Mani's text to Tess in Scene 3, Tess's reply in Scene 5, Amma and Appa calling, Nila's baby/first-broadcast/convocation photos). Entries marked design:true are short invented filler, not canon, and may change. Tanglish text carries a subtitle (shown under the bubble). 'unlock' is empty (always there), a flag name, or 'clue:<id>' / 'journal:<id>'; OOTPhone.notify_message(thread, id) delivers a message regardless.",
+	"owner": "Mani",
+	"threads": {
+		"nila": {"name": "Nila", "color": "#d98a3d", "order": 0},
+		"tess": {"name": "Tess", "color": "#4aa3a0", "order": 1},
+		"amma": {"name": "Amma", "color": "#c25a7c", "order": 2}
+	},
+	"messages": [
+		{"id": "nila_1", "thread": "nila", "from": "them", "time": "Fri 18:40", "episode": 1, "design": true,
+			"text": "Anna, diya ellam nee kondu vaa, inga kidaikaadhu.",
+			"subtitle": "Anna, bring the diyas yourself, you can't get them here."},
+		{"id": "nila_2", "thread": "nila", "from": "me", "time": "Fri 19:02", "episode": 1, "design": true,
+			"text": "Sari, Amma kitta vaangi vechiruken.",
+			"subtitle": "OK, I already got them from Amma."},
+		{"id": "nila_3", "thread": "nila", "from": "them", "time": "Sat 21:15", "episode": 1, "design": true,
+			"text": "Oru vishayam paakanum. Nerla solren, phone-la vendaam.",
+			"subtitle": "There's something I need you to see. I'll tell you in person, not on the phone."},
+		{"id": "nila_4", "thread": "nila", "from": "me", "time": "Sat 21:20", "episode": 1, "design": true,
+			"text": "Enna vishayam? Seri, Tuesday vandhuduren.",
+			"subtitle": "What is it? OK, I'll be there Tuesday."},
+		{"id": "tess_1", "thread": "tess", "from": "me", "status": "delivered", "time": "Tue 10:10", "episode": 1, "unlock": "tess_text_sent",
+			"text": "Hi Tess, it's Mani, Nila's brother. Is she around? Coming up today."},
+		{"id": "tess_2", "thread": "tess", "from": "them", "time": "Tue 12:30", "episode": 1, "unlock": "tess_replied",
+			"text": "haven't seen her since sunday night. thought she was with u?? her phone is here at the flat"},
+		{"id": "amma_1", "thread": "amma", "from": "them", "unread": true, "time": "Mon 21:40", "episode": 1, "design": true,
+			"text": "Kanna, call pannu. Nila phone edukkala.",
+			"subtitle": "Kanna, call me. Nila isn't picking up."},
+		{"id": "amma_2", "thread": "amma", "from": "them", "unread": true, "time": "Tue 09:12", "episode": 1, "design": true,
+			"text": "Kanna, laptop open pannu, Appa-vum irukkaar.",
+			"subtitle": "Kanna, open your laptop, Appa is here too."}
+	],
+	"photos": [
+		{"id": "photo_nila_first_broadcast", "file": "res://props/photos/photo_nila_first_broadcast.png",
+			"title": "Nila's first night on air", "caption": "Headphones crooked, grinning.", "episode": 1},
+		{"id": "photo_graduation", "file": "res://props/photos/photo_graduation.png",
+			"title": "Convocation", "caption": "University of Windsor. Master's in business data analytics, finished in August.", "episode": 1},
+		{"id": "photo_nila_baby", "file": "res://props/photos/photo_nila_baby.png",
+			"title": "Baby Nila", "caption": "An old print of Nila as a baby.", "episode": 1}
+	],
+	"calls": [
+		{"id": "call_voicemail", "name": "Nila", "kind": "voicemail", "time": "Sun 23:52", "note": "Voicemail", "episode": 1,
+			"lines": ["e1_open_001", "e1_open_002", "e1_open_003"]},
+		{"id": "call_out_nila", "name": "Nila", "kind": "outgoing", "time": "Tue 09:05", "note": "No answer, straight to voicemail", "episode": 1,
+			"unlock": "e1_apt_started"},
+		{"id": "call_amma_appa", "name": "Amma and Appa", "kind": "video", "time": "Tue 09:30", "note": "Video call, Vellore", "episode": 1,
+			"unlock": "e1_call_taken"},
+		{"id": "call_out_nila_2", "name": "Nila", "kind": "outgoing", "time": "Tue 12:35", "note": "No answer, straight to voicemail", "episode": 1,
+			"unlock": "tess_replied"}
+	]
+}

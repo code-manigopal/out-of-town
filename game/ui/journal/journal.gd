@@ -2,8 +2,8 @@ class_name OOTJournal
 extends Control
 ## Mani's notebook (J). Opens as a two-page spread on a lined notebook, pauses
 ## the game while open, and turns pages with A/D, the arrow keys, the mouse
-## wheel or a click on a page corner. Sections: Current goal, People, Clues,
-## Notes. Entries come from StoryState.journal_entries(); their text from
+## wheel or a click on a page corner. Sections: People, Clues, Notes (goals live in the
+## phone's Objectives app, not here). Entries come from StoryState.journal_entries(); their text from
 ## data/journal/*.json (OOTJournalData). Tanglish entries show text + subtitle.
 
 signal opened
@@ -18,6 +18,10 @@ const TOP_PAD: float = 34.0
 const CORNER: float = 80.0
 const INK: Color = Color(0.12, 0.17, 0.36)
 const INK_SOFT: Color = Color(0.32, 0.36, 0.5)
+const TITLE_SIZE: int = 30
+const TEXT_SIZE: int = 26
+const SUB_SIZE: int = 22
+const HAND_FONT: String = "res://ui/fonts/Caveat.ttf"
 const SFX_OPEN: String = "res://audio/sfx/kenney/interface/open_002.ogg"
 const SFX_CLOSE: String = "res://audio/sfx/kenney/interface/close_002.ogg"
 const SFX_TURN: String = "res://audio/sfx/kenney/interface/scroll_002.ogg"
@@ -75,8 +79,13 @@ func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	visible = false
 	_font = FontVariation.new()
-	_font.base_font = ThemeDB.fallback_font
-	_font.variation_transform = Transform2D(Vector2(1, 0), Vector2(-0.16, 1), Vector2.ZERO)
+	var hand: Font = load(HAND_FONT) as Font
+	if hand != null:
+		_font.base_font = hand
+		_font.variation_opentype = {"wght": 500}
+	else:
+		_font.base_font = ThemeDB.fallback_font
+		_font.variation_transform = Transform2D(Vector2(1, 0), Vector2(-0.16, 1), Vector2.ZERO)
 	_sfx = AudioStreamPlayer.new()
 	_sfx.bus = &"UI"
 	_sfx.volume_db = -6.0
@@ -168,7 +177,7 @@ func _small_label(parent: Control, pos: Vector2, align: HorizontalAlignment) -> 
 
 # --- Data / pagination --------------------------------------------------------
 
-## Entry ids held in StoryState for a section (the goal section keeps only the latest).
+## Entry ids held in StoryState for a section.
 func entries_for(section: String) -> Array[String]:
 	var out: Array[String] = []
 	var st: Node = OOTServices.state()
@@ -177,8 +186,6 @@ func entries_for(section: String) -> Array[String]:
 	for id: String in st.journal_entries():
 		if str(OOTJournalData.get_entry(id).get("section", "notes")) == section:
 			out.append(id)
-	if section == "goal" and out.size() > 1:
-		out = [out[out.size() - 1]]
 	return out
 
 
@@ -194,9 +201,9 @@ func _para_lines(text: String, size: int, width: float) -> int:
 func _block_lines(id: String) -> int:
 	var e: Dictionary = OOTJournalData.get_entry(id)
 	var w: float = PAGE_SIZE.x - MARGIN_X - 28.0
-	var n: int = _para_lines(str(e.get("title", id)), 24, w)
-	n += _para_lines(str(e.get("text", "")), 21, w)
-	n += _para_lines(str(e.get("subtitle", "")), 18, w)
+	var n: int = _para_lines(str(e.get("title", id)), TITLE_SIZE, w)
+	n += _para_lines(str(e.get("text", "")), TEXT_SIZE, w)
+	n += _para_lines(str(e.get("subtitle", "")), SUB_SIZE, w)
 	return n + 1  # blank line after
 
 
@@ -333,11 +340,11 @@ func _show_spread(animate: bool) -> void:
 				c.queue_free()
 	var sp: Dictionary = _spreads[spread_index]
 	var sec: String = str(sp["section"])
-	_text_line(_left, 0, str(OOTJournalData.SECTION_TITLES[sec]), 26, INK, true)
+	_text_line(_left, 0, str(OOTJournalData.SECTION_TITLES[sec]), 32, INK, true)
 	_fill(_left, sp["left"], 1)
 	_fill(_right, sp["right"], 0)
 	if bool(sp.get("empty", false)):
-		_text_line(_left, 2, "Nothing yet.", 21, INK_SOFT, false)
+		_text_line(_left, 2, "Nothing yet.", TEXT_SIZE, INK_SOFT, false)
 	_page_label_l.text = "%d" % (spread_index * 2 + 1)
 	_page_label_r.text = "%d" % (spread_index * 2 + 2)
 	for s: String in _tabs:
@@ -358,11 +365,11 @@ func _fill(page: _Paper, ids: Array, start_line: int) -> void:
 	var w: float = PAGE_SIZE.x - MARGIN_X - 28.0
 	for id: Variant in ids:
 		var e: Dictionary = OOTJournalData.get_entry(str(id))
-		line += _text_block(page, line, str(e.get("title", id)), 24, INK, true, w)
-		line += _text_block(page, line, str(e.get("text", "")), 21, INK, false, w)
+		line += _text_block(page, line, str(e.get("title", id)), TITLE_SIZE, INK, true, w)
+		line += _text_block(page, line, str(e.get("text", "")), TEXT_SIZE, INK, false, w)
 		var sub: String = str(e.get("subtitle", ""))
 		if not sub.is_empty():
-			line += _text_block(page, line, sub, 18, INK_SOFT, false, w)
+			line += _text_block(page, line, sub, SUB_SIZE, INK_SOFT, false, w)
 		line += 1
 
 

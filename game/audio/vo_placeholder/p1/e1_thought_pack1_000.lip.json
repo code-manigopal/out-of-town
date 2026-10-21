@@ -1,0 +1,152 @@
+{
+"line_id": "e1_thought_pack1_000",
+"source_hash": "685c09e494681697",
+"duration": 5.77,
+"mouthCues": [
+{
+"start": 0.0,
+"end": 0.46,
+"value": "X"
+},
+{
+"start": 0.46,
+"end": 0.68,
+"value": "B"
+},
+{
+"start": 0.68,
+"end": 0.82,
+"value": "C"
+},
+{
+"start": 0.82,
+"end": 1.24,
+"value": "B"
+},
+{
+"start": 1.24,
+"end": 1.45,
+"value": "F"
+},
+{
+"start": 1.45,
+"end": 1.53,
+"value": "A"
+},
+{
+"start": 1.53,
+"end": 1.6,
+"value": "B"
+},
+{
+"start": 1.6,
+"end": 1.66,
+"value": "G"
+},
+{
+"start": 1.66,
+"end": 1.8,
+"value": "C"
+},
+{
+"start": 1.8,
+"end": 1.88,
+"value": "A"
+},
+{
+"start": 1.88,
+"end": 2.04,
+"value": "C"
+},
+{
+"start": 2.04,
+"end": 2.11,
+"value": "E"
+},
+{
+"start": 2.11,
+"end": 3.14,
+"value": "X"
+},
+{
+"start": 3.14,
+"end": 3.2,
+"value": "B"
+},
+{
+"start": 3.2,
+"end": 3.25,
+"value": "E"
+},
+{
+"start": 3.25,
+"end": 3.39,
+"value": "F"
+},
+{
+"start": 3.39,
+"end": 3.53,
+"value": "G"
+},
+{
+"start": 3.53,
+"end": 3.74,
+"value": "C"
+},
+{
+"start": 3.74,
+"end": 4.2,
+"value": "B"
+},
+{
+"start": 4.2,
+"end": 4.27,
+"value": "G"
+},
+{
+"start": 4.27,
+"end": 4.35,
+"value": "A"
+},
+{
+"start": 4.35,
+"end": 4.48,
+"value": "F"
+},
+{
+"start": 4.48,
+"end": 4.63,
+"value": "A"
+},
+{
+"start": 4.63,
+"end": 4.69,
+"value": "B"
+},
+{
+"start": 4.69,
+"end": 4.75,
+"value": "C"
+},
+{
+"start": 4.75,
+"end": 4.89,
+"value": "B"
+},
+{
+"start": 4.89,
+"end": 5.03,
+"value": "C"
+},
+{
+"start": 5.03,
+"end": 5.31,
+"value": "B"
+},
+{
+"start": 5.31,
+"end": 5.77,
+"value": "X"
+}
+]
+}
