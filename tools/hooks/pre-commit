@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# Keeps Git LFS inside GitHub's free 1 GB: blocks staged LFS files over 5 MB
+# (models, .blend, textures, audio) unless they are approved finals.
+#
+#   ALLOW_BIG_ART=1 git commit ...   # commit an approved final version
+#
+# Installed per clone with:  git config core.hooksPath tools/hooks
+set -euo pipefail
+
+LIMIT=$((5 * 1024 * 1024))
+[[ "${ALLOW_BIG_ART:-0}" == "1" ]] && exit 0
+
+big=()
+while IFS= read -r -d '' path; do
+  [[ -f "$path" ]] || continue
+  [[ "$(git check-attr filter -- "$path" | awk '{print $NF}')" == "lfs" ]] || continue
+  size=$(wc -c < "$path" | tr -d ' ')
+  (( size > LIMIT )) && big+=("$(printf '%6.1f MB  %s' "$(echo "$size/1048576" | bc -l)" "$path")")
+done < <(git diff --cached --name-only --diff-filter=AM -z)
+
+if (( ${#big[@]} > 0 )); then
+  echo "pre-commit: these large art files are staged (Git LFS quota policy):" >&2
+  printf '  %s\n' "${big[@]}" >&2
+  echo "Keep work-in-progress rebuilds local:  git restore --staged <file>" >&2
+  echo "Commit only approved finals:           ALLOW_BIG_ART=1 git commit ..." >&2
+  exit 1
+fi

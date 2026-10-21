@@ -30,14 +30,26 @@ func _initialize() -> void:
 		_test_walk()
 		# Scene tests need nodes to be ready, which happens once the tree runs a frame.
 		await process_frame
-		_test_g1_apartment()
-		_test_g1_call()
-		_test_g1_inputs_and_flow()
-		await _test_mani_model()
-		await _test_carry()
-		await _test_apartment_layout()
+		if lfs_assets_present():
+			_test_g1_apartment()
+			_test_g1_call()
+			_test_g1_inputs_and_flow()
+			await _test_mani_model()
+			await _test_carry()
+			await _test_apartment_layout()
+		else:
+			print("SKIPPED scene and model tests: Git LFS assets are not checked out (CI).")
 	print("%d checks, %d failures" % [_checks, _failures])
 	quit(1 if _failures > 0 else 0)
+
+
+## False when big binary assets are Git LFS pointer files (CI checks out without
+## LFS to stay inside the free bandwidth quota), so asset-heavy tests are skipped.
+static func lfs_assets_present() -> bool:
+	var f: FileAccess = FileAccess.open("res://characters/mani/mani.glb", FileAccess.READ)
+	if f == null:
+		return false
+	return not f.get_buffer(24).get_string_from_ascii().begins_with("version https://git-lfs")
 
 
 func _check(cond: bool, msg: String) -> void:

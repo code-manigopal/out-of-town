@@ -53,12 +53,14 @@ The goal is the best result for the fewest usage credits and tokens.
 - Dialogue and scene data are read directly from `game/data/story/pN_scenes.json` by the `StoryDB` autoload. Don't hard-code dialogue in scenes or scripts.
 - `.tscn` and `.tres` are text and may be edited carefully. **Never hand-edit binary assets** (`.glb`, textures, audio); they are tracked with Git LFS. Commit `*.import` files.
 - Don't commit `game/.godot/` or export builds (see `.gitignore`).
+- **Git LFS quota (free 1 GB, no paid storage):** commit big binary art (models, `.blend`, textures, audio over 5 MB) only when it is an approved final. Keep work-in-progress rebuilds (e.g. each Mani iteration) local. The pre-commit hook `tools/hooks/pre-commit` enforces this (`git config core.hooksPath tools/hooks` once per clone; `ALLOW_BIG_ART=1 git commit` for approved finals). CI checks out without LFS, so asset tests skip there and run locally.
 - Add-ons, tools, versions and licences are listed in `docs/tech/tools.md`. Only use assets and tools whose licence allows a commercial Steam release; GPL tools are fine for development but never ship their code.
 
 ## Game commands
 
 ```bash
 tools/install_addons.sh                                           # once per checkout: binary add-ons (Terrain3D, LimboAI)
+git config core.hooksPath tools/hooks                             # once per clone: LFS quota guard
 godot --path game -e                                              # open the editor
 godot --headless --path game --import                             # import assets; must finish without script errors
 godot --headless --path game --script res://tests/run_tests.gd    # story/state tests (exit 1 on failure)
