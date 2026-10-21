@@ -25,3 +25,10 @@ node_modules/
 # Blender backups
 *.blend1
 *.blend2
+
+# Local Python tools environment
+tools/.venv/
+
+# Binary GDExtension add-ons: installed by tools/install_addons.sh, not committed
+game/addons/terrain_3d/
+game/addons/limboai/

@@ -1,0 +1,278 @@
+{
+ "source": "manual annotation (named points)",
+ "panels": {
+  "front": [
+   0,
+   0,
+   411,
+   825
+  ],
+  "profile": [
+   849,
+   0,
+   1253,
+   825
+  ]
+ },
+ "points": {
+  "front": {
+   "eye_r_out": [
+    115,
+    392
+   ],
+   "eye_r_in": [
+    168,
+    392
+   ],
+   "eye_l_in": [
+    233,
+    392
+   ],
+   "eye_l_out": [
+    283,
+    392
+   ],
+   "pupil_r": [
+    139,
+    388
+   ],
+   "pupil_l": [
+    260,
+    388
+   ],
+   "nose_tip": [
+    200,
+    443
+   ],
+   "alar_r": [
+    165,
+    458
+   ],
+   "alar_l": [
+    237,
+    458
+   ],
+   "subnasale": [
+    200,
+    470
+   ],
+   "mouth_r": [
+    158,
+    509
+   ],
+   "mouth_l": [
+    248,
+    509
+   ],
+   "stomion": [
+    200,
+    509
+   ],
+   "lip_up": [
+    200,
+    499
+   ],
+   "lip_low": [
+    200,
+    523
+   ],
+   "menton": [
+    200,
+    590
+   ],
+   "cheek_r": [
+    77,
+    463
+   ],
+   "cheek_l": [
+    325,
+    463
+   ],
+   "jaw1_r": [
+    103,
+    533
+   ],
+   "jaw1_l": [
+    297,
+    533
+   ],
+   "jaw2_r": [
+    140,
+    567
+   ],
+   "jaw2_l": [
+    267,
+    567
+   ],
+   "ear_r_out": [
+    49,
+    415
+   ],
+   "ear_l_out": [
+    353,
+    415
+   ]
+  },
+  "profile": {
+   "nose_tip": [
+    5,
+    440
+   ],
+   "subnasale": [
+    28,
+    465
+   ],
+   "lip_up": [
+    26,
+    491
+   ],
+   "stomion": [
+    31,
+    501
+   ],
+   "lip_low": [
+    27,
+    513
+   ],
+   "sulcus": [
+    33,
+    527
+   ],
+   "pogonion": [
+    32,
+    557
+   ],
+   "menton": [
+    52,
+    581
+   ],
+   "eye_l_out": [
+    85,
+    388
+   ],
+   "nasion": [
+    36,
+    385
+   ],
+   "ear_top": [
+    247,
+    382
+   ],
+   "ear_back": [
+    270,
+    417
+   ],
+   "ear_lobe": [
+    233,
+    482
+   ],
+   "tragus": [
+    222,
+    435
+   ]
+  }
+ },
+ "mapping": {
+  "front": {
+   "eye_l_in": 6887,
+   "eye_l_out": 6801,
+   "pupil_l": 6787,
+   "alar_l": 7099,
+   "eye_r_in": 103,
+   "eye_r_out": 17,
+   "pupil_r": 3,
+   "alar_r": 337,
+   "nose_tip": 5054,
+   "subnasale": 317,
+   "mouth_l": 7302,
+   "mouth_r": 561,
+   "stomion": 537,
+   "lip_up": 571,
+   "lip_low": 5337,
+   "menton": 747,
+   "cheek_l": 12050,
+   "cheek_r": 5451,
+   "jaw1_l": 7596,
+   "jaw1_r": 894,
+   "jaw2_l": 7483,
+   "jaw2_r": 764,
+   "ear_l_out": 12044,
+   "ear_r_out": 5445
+  },
+  "profile": {
+   "nose_tip": 5054,
+   "subnasale": 317,
+   "lip_up": 455,
+   "stomion": 537,
+   "lip_low": 496,
+   "sulcus": 625,
+   "pogonion": 5162,
+   "menton": 747,
+   "eye_l_out": 6801,
+   "nasion": 169,
+   "ear_top": 12012,
+   "ear_back": 12018,
+   "ear_lobe": 12340,
+   "tragus": 12333
+  }
+ },
+ "fit": {
+  "values": {
+   "head_width": -0.11,
+   "head_height": -0.4,
+   "head_depth": 0.63,
+   "head_back_depth": 0.0,
+   "head_fat": -0.24,
+   "nose_width1": 0.0,
+   "nose_width2": 0.0,
+   "nose_width3": 0.42,
+   "nose_flaring": 0.18,
+   "nose_height": -0.18,
+   "nose_depth": 0.19,
+   "nose_point": 0.54,
+   "nose_base": 0.23,
+   "nose_trans_v": 0.0,
+   "mouth_width": -0.08,
+   "mouth_height": -0.15,
+   "mouth_trans_v": -0.25,
+   "mouth_trans_d": -0.36,
+   "upperlip_height": -0.2,
+   "lowerlip_height": -0.3,
+   "upperlip_volume": -0.1,
+   "lowerlip_volume": -0.1,
+   "mouth_angles": -0.08,
+   "chin_height": 0.4,
+   "chin_width": 0.0,
+   "chin_prominent": 0.11,
+   "chin_prognathism": 0.38,
+   "jaw_drop": 0.0,
+   "chin_bones": 0.19,
+   "eye_scale": 0.24,
+   "eye_trans_v": 0.11,
+   "eye_trans_h": 0.6,
+   "eye_height": 0.0,
+   "cheek_bones": 0.0,
+   "cheek_volume": 0.16,
+   "forehead_height": 0.0,
+   "forehead_depth": 0.0,
+   "forehead_temple": 0.0,
+   "ear_scale": 0.0,
+   "ear_trans_v": -0.11,
+   "ear_trans_d": -0.7,
+   "ear_wing": 0.34
+  },
+  "error_px": {
+   "front": {
+    "macro_only": 8.87,
+    "before": 8.89,
+    "after": 6.2
+   },
+   "profile": {
+    "macro_only": 12.98,
+    "before": 12.75,
+    "after": 9.63
+   }
+  },
+  "lambda": 2.5
+ }
+}

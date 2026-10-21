@@ -10,6 +10,7 @@
 | design | [ep01-county-roads.md](design/ep01-county-roads.md) | Episode 1 walkthrough: beats, spaces, camera, light, systems, greybox milestones |
 | tech | [engine-decision.md](tech/engine-decision.md) | Why Godot 4.7 + GDScript |
 | tech | [technical-design.md](tech/technical-design.md) | Architecture: autoloads, story data pipeline, saves |
+| tech | [tools.md](tech/tools.md) | Add-ons, desktop tools, versions, licences, install commands |
 | tech | [coding-standards.md](tech/coding-standards.md) | GDScript conventions, asset naming, folders, Git |
 | art | [art-direction.md](art/art-direction.md) | Look and feel per part, lighting, camera, references |
 | art | [character-prompts.md](art/character-prompts.md) | Image-generation prompts for character sheets |

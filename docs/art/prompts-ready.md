@@ -257,3 +257,19 @@ Full-body character turnaround sheet for 3D modelling. A white man, age about 35
 ```
 Full-body character turnaround sheet for 3D modelling. A white man, age about 45, tall, a shaved head, stubble, a cold face, 190 cm tall. He wears a dark navy padded jacket, black cargo trousers, black boots, and holds a hunting rifle pointed at the ground. Four views side by side: front, left side, back, three-quarter front. Orthographic view, no perspective, standing in a relaxed A-pose with arms 45 degrees from the body, same height in every view, feet on one ground line, whole body visible from head to shoes. Plain clothes with no logos or brand marks. Photorealistic, flat even studio light, no shadows, plain mid-grey background, no text, 16:9.
 ```
+
+---
+
+# Props: photos in Mani's apartment
+
+These are pictures inside picture frames, so they should look like real printed snapshots, not studio portraits. Attach the approved face sheets so the faces match. Save to `docs/art/sheets/props/`.
+
+**39. `photo_graduation.png`** (attach `mani_p1_face.png`)
+```
+A real printed graduation photo, the official stage shot taken by the ceremony photographer. On a university convocation stage, the man from the attached reference, age 28, stands in the centre in a black graduation gown with a coloured honours cord around his neck and a black square cap with tassel, smiling a little shyly as he receives a rolled degree scroll with a ribbon. On his right, a university official in a red academic gown and black velvet cap hands him the degree and shakes his hand. On his left, a second official in a red academic gown rests a hand on his shoulder in congratulation. Behind them, the stage: dark wood panelling, a lectern with flowers, rows of seated faculty in academic robes, warm stage lighting, the audience out of focus. Realistic skin, candid but well framed. No logos, no crests, no readable text or banners. Landscape 4:3.
+```
+
+**40. `photo_nila_first_broadcast.png`** (attach `nila_p1_face.png`)
+```
+A real printed snapshot of the young woman in the attached reference, age 24, at her first night on air in a small-town radio studio: sitting at a worn mixing desk with a broadcast microphone on an arm, big over-ear headphones on crooked, grinning at the camera and giving a thumbs-up, a red ON AIR light glowing on the wall behind her (the only words in the picture), acoustic foam panels, old station posters with no readable text, warm desk lamp light at night. Candid phone photo, slight grain, realistic skin. Portrait 3:4.
+```

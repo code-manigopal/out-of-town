@@ -1,0 +1,16 @@
+{
+ "front": {
+  "eye_r_out": [115, 392], "eye_r_in": [168, 392], "eye_l_in": [233, 392], "eye_l_out": [283, 392],
+  "pupil_r": [139, 388], "pupil_l": [260, 388],
+  "nose_tip": [200, 443], "alar_r": [165, 458], "alar_l": [237, 458], "subnasale": [200, 470],
+  "mouth_r": [158, 509], "mouth_l": [248, 509], "stomion": [200, 509], "lip_up": [200, 499], "lip_low": [200, 523],
+  "menton": [200, 590], "cheek_r": [77, 463], "cheek_l": [325, 463],
+  "jaw1_r": [103, 533], "jaw1_l": [297, 533], "jaw2_r": [140, 567], "jaw2_l": [267, 567],
+  "ear_r_out": [49, 415], "ear_l_out": [353, 415]
+ },
+ "profile": {
+  "nose_tip": [5, 440], "subnasale": [28, 465], "lip_up": [26, 491], "stomion": [31, 501], "lip_low": [27, 513],
+  "sulcus": [33, 527], "pogonion": [32, 557], "menton": [52, 581], "eye_l_out": [85, 388], "nasion": [36, 385],
+  "ear_top": [247, 382], "ear_back": [270, 417], "ear_lobe": [233, 482], "tragus": [222, 435]
+ }
+}

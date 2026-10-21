@@ -258,6 +258,25 @@ def measure_height(obj):
     return max(zs) - min(zs)
 
 
+# legs: the sheet's jeans are slim-straight but fuller than the macro default (inseam ratio already matches, 47%)
+LEG_TARGETS = [("%s-upperleg-fat-incr" % k, 0.18) for k in "lr"] + [("%s-upperleg-muscle-incr" % k, 0.12) for k in "lr"] \
+    + [("%s-lowerleg-fat-incr" % k, 0.22) for k in "lr"] + [("%s-lowerleg-muscle-incr" % k, 0.12) for k in "lr"] \
+    + [("%s-upperleg-scale-horiz-incr" % k, 0.10) for k in "lr"]
+
+
+def face_target_list():
+    """Face targets from the likeness fit (tools/likeness/fit_face.py); falls back to the hand-tuned list."""
+    try:
+        sys.path.insert(0, os.path.join(REPO, "tools/likeness"))
+        import json
+        import face_vars
+        fit = json.load(open(os.path.join(REPO, "art_source/characters/mani/likeness/sheet_landmarks.json")))["fit"]
+        return face_vars.expand(fit["values"])
+    except Exception as e:  # noqa
+        log("likeness fit not available (%s); using hand-tuned FACE_TARGETS" % e)
+        return FACE_TARGETS
+
+
 def build_human():
     md = TargetService.get_default_macro_info_dict()
     md.update(MACRO)
@@ -265,7 +284,7 @@ def build_human():
     hm = HumanService.create_human(mask_helpers=True, detailed_helpers=True, extra_vertex_groups=True,
                                    feet_on_ground=True, scale=0.1, macro_detail_dict=md)
     hm.name = "Mani"
-    for stem, val in FACE_TARGETS:
+    for stem, val in face_target_list() + LEG_TARGETS:
         path = TargetService.target_full_path(stem)
         assert path, stem
         TargetService.load_target(hm, path, weight=val, name=stem)
@@ -1067,15 +1086,16 @@ class Animator:
         return ang - target_deg
 
     # --- the clips ------------------------------------------------------------------------
-    def clip(self, name, frames, fn):
+    def clip(self, name, frames, fn, bones=None):
         rig = self.rig
         act = bpy.data.actions.new(name)
         act.use_fake_user = True
         if rig.animation_data is None:
             rig.animation_data_create()
         rig.animation_data.action = act
-        driven = ["pelvis", "spine_01", "spine_02", "spine_03", "neck_01", "head", "clavicle_l", "clavicle_r",
-                  "upperarm_l", "upperarm_r", "lowerarm_l", "lowerarm_r", "hand_l", "hand_r"] + self.ik_names
+        driven = bones if bones is not None else (
+            ["pelvis", "spine_01", "spine_02", "spine_03", "neck_01", "head", "clavicle_l", "clavicle_r",
+             "upperarm_l", "upperarm_r", "lowerarm_l", "lowerarm_r", "hand_l", "hand_r"] + self.ik_names)
         fingers = [b for b in self.deform if any(k in b for k in ("index_", "middle_", "ring_", "pinky_", "thumb_"))]
         for f in range(frames + 1):
             self.reset()
@@ -1123,11 +1143,11 @@ class Animator:
                 for k, mult in ((1, 1.0), (2, 1.3), (3, 0.9)):
                     n = "%s_0%d_%s" % (fi, k, s)
                     if n in self.rig.pose.bones:
-                        self.rot(n, self.R("Y", sg * self.curl_sign * base * mult))
+                        self.rot(n, self.R("Y", sg * self.curl_sign * base * mult * getattr(self, "curl_scale", 1.0)))
             for k, a in ((1, 8), (2, 12), (3, 10)):
                 n = "thumb_0%d_%s" % (k, s)
                 if n in self.rig.pose.bones:
-                    self.rot(n, self.R("Y", sg * self.curl_sign * a))
+                    self.rot(n, self.R("Y", sg * self.curl_sign * a * getattr(self, "curl_scale", 1.0)))
 
     def calibrate_curl(self):
         """Curl direction: fingertips must move toward the palm side (toward the body midline)."""
@@ -1145,6 +1165,9 @@ class Animator:
         self.reset()
 
 
+CARRY = dict(fwd=14, inward=38, elbow=98, wrist_twist=0.0, wrist_flex=0.0, curl=1.7)
+
+
 def build_animations(objs):
     rig = objs["rig"]
     bpy.context.view_layer.objects.active = rig
@@ -1158,6 +1181,7 @@ def build_animations(objs):
     R = A.R
     add_l = A.arm_adduct_deg("l", 14)
     add_r = A.arm_adduct_deg("r", 14)
+    add0_l, add0_r = A.arm_adduct_deg("l", 0), A.arm_adduct_deg("r", 0)
     rb_l, rb_r = A.rest_bend("l"), A.rest_bend("r")
     log("rest elbow bend", rb_l, rb_r)
 
@@ -1174,68 +1198,136 @@ def build_animations(objs):
             A.rot("ik_foot_" + s, R("X", -pitch))
             A.set_loc("ik_pole_" + s, Vector((dx * 0.5, 0, 0)))
 
-    # ---------------- idle: 4 s, breathing + slow weight shift ----------------
+    # ---------------- idle: 4 s, calm breathing + very slow weight shift ----------------
     def idle(p):
         w = 2 * math.pi * p
         breath = math.sin(w)
-        A.set_loc("pelvis", Vector((0.006 * math.sin(w), 0, -0.004 + 0.0015 * breath)))
-        A.rot("pelvis", R("Y", 0.9 * math.sin(w)) @ R("Z", 0.8 * math.sin(w + 0.7)))
-        A.rot("spine_01", R("X", 0.4 * breath) @ R("Y", -0.5 * math.sin(w)))
-        A.rot("spine_02", R("X", 0.7 * breath) @ R("Y", -0.4 * math.sin(w)))
-        A.rot("spine_03", R("X", 1.1 * breath) @ R("Y", -0.3 * math.sin(w)))
-        A.rot("neck_01", R("X", -0.6 * breath))
-        A.rot("head", R("X", 1.2 * math.sin(w - 0.5) * 0.5 + 1.5) @ R("Z", 2.2 * math.sin(w + 1.2)) @ R("Y", 0.8 * math.sin(w)))
-        A.rot("clavicle_l", R("Z", 0.8 * breath)); A.rot("clavicle_r", R("Z", -0.8 * breath))
-        arms(1.5 * math.sin(w), -1.5 * math.sin(w), 16 + 1.5 * breath, 16 + 1.5 * breath)
+        A.set_loc("pelvis", Vector((0.003 * math.sin(w), 0, -0.002 + 0.001 * breath)))
+        A.rot("pelvis", R("Y", 0.5 * math.sin(w)) @ R("Z", 0.4 * math.sin(w + 0.7)))
+        A.rot("spine_01", R("X", 0.25 * breath) @ R("Y", -0.3 * math.sin(w)))
+        A.rot("spine_02", R("X", 0.45 * breath) @ R("Y", -0.25 * math.sin(w)))
+        A.rot("spine_03", R("X", 0.7 * breath) @ R("Y", -0.2 * math.sin(w)))
+        A.rot("neck_01", R("X", -0.4 * breath))
+        A.rot("head", R("X", 0.3 * math.sin(w - 0.5) + 0.8) @ R("Z", 0.9 * math.sin(w + 1.2)) @ R("Y", 0.3 * math.sin(w)))
+        A.rot("clavicle_l", R("Z", 0.5 * breath)); A.rot("clavicle_r", R("Z", -0.5 * breath))
+        arms(0.7 * math.sin(w), -0.7 * math.sin(w), 16 + 1.0 * breath, 16 + 1.0 * breath)
         legs(0, 0, 0, 0, 0, 0, 0.105)
 
     # ---------------- locomotion generator ----------------
-    def locomotion(T, sf, S, clearance, speed, bob, sway, yaw, arm_sw, elbow, lean, foot_x, knee_bias=0.0):
-        need = A.hip_h - math.sqrt((0.985 * A.leg_len) ** 2 - S * S)
-        drop = max(need - bob * 1.9, 0.0) + 0.006 + (A.hip_h - 0.985 * A.leg_len if A.hip_h > 0.985 * A.leg_len else 0)
-        log("loco D=%.3f need=%.3f" % (drop, need))
+    # Feet are planted, the pelvis rides the inverted pendulum of the stance leg(s): at every frame the pelvis
+    # height is the highest the legs can reach, so the stance knee stays near-straight (heel strike ~5 deg of
+    # flexion in the walk) and the knees only bend in swing / at toe-off. Heel-to-toe roll comes from pivoting
+    # the ankle about the heel (heel strike) and the ball of the foot (heel off).
+    HA, HEEL, TOE = 0.085, 0.07, 0.17          # ankle height, heel and ball-of-foot distances from the ankle
+
+    def pivot_z(th):
+        r = math.radians(th)
+        return (HEEL * math.sin(r) + HA * (math.cos(r) - 1)) if th >= 0 else (-TOE * math.sin(r) + HA * (math.cos(r) - 1))
+
+    def locomotion(sf, S0, S1, clearance, pitch_hs, pitch_to, flex_hs, compress, flex_lim, yaw, arm_sw, elbow, lean,
+                   foot_x, bob_gain=1.0, steady_head=True):
+        N = 120
 
         def foot(p):
             if p < sf:
                 u = p / sf
-                s = S - 2 * S * u
-                z = 0.028 * smoother((u - 0.72) / 0.28)
-                pitch = 14 * (1 - smoother(u / 0.2)) - 38 * smoother((u - 0.75) / 0.25)
+                th = pitch_hs * (1 - smoother(u / 0.18)) - pitch_to * smoother((u - 0.55) / 0.45)
+                s = S0 - (S0 + S1) * u + (TOE * (1 - math.cos(math.radians(th))) if th < 0 else 0.0)
+                return s, pivot_z(th), th, u
+            v = (p - sf) / (1 - sf)
+            th0, th1 = -pitch_to, pitch_hs
+            s0 = -S1 + TOE * (1 - math.cos(math.radians(th0)))
+            z0, z1 = pivot_z(th0), pivot_z(th1)
+            e = smoother(v)
+            th = th0 * (1 - smoother(v / 0.45)) + th1 * smoother((v - 0.55) / 0.45)
+            z = z0 + (z1 - z0) * e + clearance * math.sin(math.pi * v) ** 1.1
+            return s0 + (S0 - s0) * e, z, th, -1.0
+
+        lat = abs(A.hip_x - foot_x)
+
+        def bound(f, u):
+            s, z = f[0], f[1]
+            if 0 <= u <= 0.5:           # loading / mid stance: near-straight (flex_hs) ... compress at mid-stance
+                flex = flex_hs
+                comp = compress * math.sin(math.pi * u / 0.5) if u < 0.5 else 0.0
             else:
-                v = (p - sf) / (1 - sf)
-                s = -S + 2 * S * smoother(v)
-                z = 0.028 + clearance * math.sin(math.pi * min(v * 1.15, 1.0)) ** 0.8 * (1 - v * 0.15) - 0.028 * v
-                pitch = -38 * (1 - smoother(v / 0.35)) + 14 * smoother((v - 0.55) / 0.45)
-            return s, max(z, 0.0), pitch
+                flex, comp = flex_lim, 0.0
+            Lk = A.leg_len * math.cos(math.radians(flex) / 2)
+            return z + math.sqrt(max(Lk * Lk - s * s - lat * lat, 0.04)) - comp
+
+        raw = []
+        for i in range(N):
+            p = i / N
+            fl, fr = foot(p), foot((p + 0.5) % 1.0)
+            raw.append(min(bound(fl, fl[3]), bound(fr, fr[3])))
+        raw = np.array(raw)
+        k = max(int(0.07 * N), 1)
+        sm = np.zeros(N)
+        for i in range(N):
+            sm[i] = np.mean([raw[(i + j) % N] for j in range(-k, k + 1)])
+        hip = np.minimum(sm, raw + 0.004) - 0.004
+        hip_dz = hip - A.hip_h
+        mid = float(np.mean(hip_dz))
+        log("loco: hip height range %.3f..%.3f m (mean drop %.3f)" % (hip.min(), hip.max(), -mid))
 
         def fn(p):
             w = 2 * math.pi * p
-            sL, zL, pL = foot(p % 1.0)
-            sR, zR, pR = foot((p + 0.5) % 1.0)
+            sL, zL, pL, _ = foot(p % 1.0)
+            sR, zR, pR, _ = foot((p + 0.5) % 1.0)
             legs(sL, zL, pL, sR, zR, pR, foot_x)
-            if speed < 2.0:      # walk: pelvis highest at mid-stance, lowest at double support
-                dz = -drop - bob * (1 - math.cos(4 * math.pi * (p - sf / 2)))
-            else:                # jog: lowest at mid-stance, highest in flight
-                dz = -drop - bob * (1 + math.cos(4 * math.pi * (p - sf / 2)))
-            A.set_loc("pelvis", Vector((sway * math.cos(w - 2 * math.pi * 0.3), 0.0 + lean * -0.0, dz)))
+            dz = float(hip_dz[int(round(p * N)) % N]) * bob_gain + (1 - bob_gain) * mid
+            A.set_loc("pelvis", Vector((0.012 * math.cos(w - 2 * math.pi * 0.3), 0.0, dz)))
             yw = -yaw * math.cos(w)
-            A.rot("pelvis", R("Z", yw) @ R("X", -lean) @ R("Y", -2.0 * math.cos(w - 1.9)))
-            for n, k in (("spine_01", 0.3), ("spine_02", 0.35), ("spine_03", 0.35)):
-                A.rot(n, R("Z", -yw * k * 1.7) @ R("X", lean * 0.25 - 0.0) @ R("Y", 1.2 * math.cos(w - 1.9) * 0.5))
-            A.rot("neck_01", R("Z", -yw * 0.25) @ R("X", lean * 0.6))
-            A.rot("head", R("Z", -yw * 0.3) @ R("X", lean * 0.5))
+            A.rot("pelvis", R("Z", yw) @ R("X", -lean) @ R("Y", -1.6 * math.cos(w - 1.9)))
+            for n, kk in (("spine_01", 0.30), ("spine_02", 0.40), ("spine_03", 0.50)):
+                A.rot(n, R("Z", -yw * kk) @ R("X", lean * 0.18) @ R("Y", 0.9 * math.cos(w - 1.9) * 0.5))
+            # shoulders counter-rotate 0.5x the pelvis yaw; the head cancels the rest so it stays steady
+            if steady_head:
+                A.rot("neck_01", R("Z", yw * 0.35) @ R("X", -lean * 0.15))
+                A.rot("head", R("Z", yw * 0.35) @ R("X", -lean * 0.20))
             A.rot("clavicle_l", R("Z", 0.0)); A.rot("clavicle_r", R("Z", 0.0))
             sw = math.cos(w)
-            arms(-arm_sw * sw, arm_sw * sw, elbow + 8 * max(-sw, 0) + 6, elbow + 8 * max(sw, 0) + 6, add=1.0)
+            arms(-arm_sw * sw, arm_sw * sw, elbow + 5 * max(-sw, 0), elbow + 5 * max(sw, 0), add=1.0)
         return fn
 
-    walk = locomotion(T=1.0, sf=0.60, S=0.40, clearance=0.075, speed=1.4, bob=0.012, sway=0.014,
-                      yaw=4.5, arm_sw=22, elbow=14, lean=0.0, foot_x=0.108)
-    jog = locomotion(T=19 / 30, sf=0.38, S=0.34, clearance=0.17, speed=3.0, bob=0.020, sway=0.012,
-                     yaw=6.5, arm_sw=38, elbow=70, lean=5.0, foot_x=0.10)
+    walk = locomotion(sf=0.60, S0=0.333, S1=0.467, clearance=0.03, pitch_hs=18, pitch_to=38, flex_hs=7.0, compress=0.012,
+                      flex_lim=3.0, yaw=4.0, arm_sw=20, elbow=16, lean=0.0, foot_x=0.108)
+    jog = locomotion(sf=0.38, S0=0.27, S1=0.40, clearance=0.19, pitch_hs=6, pitch_to=40, flex_hs=20.0, compress=0.045,
+                     flex_lim=6.0, yaw=6.0, arm_sw=36, elbow=75, lean=-8.0, foot_x=0.10)
+
+    # ---------------- carry: upper-body-only hold (both hands in front of the waist, as if holding a small box) ----
+    def carry(p):
+        w = 2 * math.pi * p
+        breath = math.sin(w)
+        fwd, inward, elbow_ = CARRY["fwd"], CARRY["inward"], CARRY["elbow"]
+        A.rot("spine_02", R("X", 0.4 * breath + 1.0))
+        A.rot("spine_03", R("X", 0.6 * breath + 1.5))
+        A.rot("neck_01", R("X", -0.5 * breath - 1.0))
+        A.rot("head", R("X", 0.3))
+        A.rot("clavicle_l", R("Z", 0.4 * breath)); A.rot("clavicle_r", R("Z", -0.4 * breath))
+        # bring each arm to hang straight, raise it forward, then yaw it inward so the hands meet in front of the waist
+        A.rot("upperarm_l", R("Z", -inward) @ R("X", -fwd) @ R("Y", add0_l))
+        A.rot("upperarm_r", R("Z", inward) @ R("X", -fwd) @ R("Y", -add0_r))
+        A.rot("lowerarm_l", R("X", -(elbow_ - rb_l)))
+        A.rot("lowerarm_r", R("X", -(elbow_ - rb_r)))
+        A.rot("hand_l", R("Z", CARRY["wrist_twist"]) @ R("X", CARRY["wrist_flex"]))
+        A.rot("hand_r", R("Z", -CARRY["wrist_twist"]) @ R("X", CARRY["wrist_flex"]))
+        A.curl_scale = CARRY["curl"]
+        if p == 0.0:
+            bpy.context.view_layer.update()
+            pr = rig.matrix_world @ rig.pose.bones["pelvis"].head
+            hl = rig.matrix_world @ rig.pose.bones["hand_l"].head
+            hr = rig.matrix_world @ rig.pose.bones["hand_r"].head
+            log("carry hands (rel. pelvis; +x left, -y forward): L %s R %s  sep %.3f" % (
+                tuple(round(c, 3) for c in (hl - pr)), tuple(round(c, 3) for c in (hr - pr)), (hl - hr).length))
+
     A.clip("idle", 120, idle)
     A.clip("walk", 30, walk)
     A.clip("jog", 19, jog)          # 0.63 s at 30 fps, ~2.8 m/s
+    upper = ["spine_02", "spine_03", "neck_01", "head", "clavicle_l", "clavicle_r", "upperarm_l", "upperarm_r",
+             "lowerarm_l", "lowerarm_r", "hand_l", "hand_r"]
+    A.clip("carry", 120, carry, bones=upper)     # 4 s breathing loop, upper body only (legs untouched)
+    A.curl_scale = 1.0
     # tidy: remove IK helpers
     bpy.ops.object.mode_set(mode="POSE")
     for pb in rig.pose.bones:

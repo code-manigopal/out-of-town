@@ -25,7 +25,28 @@ extends CharacterBody3D
 @onready var camera: Camera3D = $CameraPivot/SpringArm3D/Camera3D
 @onready var interactor: OOTInteractor = $Interactor
 
+## Seconds to blend the carry pose in/out.
+const CARRY_BLEND_TIME: float = 0.25
+const HAND_BONE: String = "hand_r"
+## Per-item hold (tools/blender/build_mani.py CARRY pose: both hands in front of the waist, wrists ~0.26 m
+## apart). The visual is centred on its AABB and placed at `offset` (body space: +x right, -z forward, from the
+## right wrist) with `rot` (degrees). Unknown ids use the default.
+const CARRY_DEFAULT: Dictionary = {"offset": Vector3(-0.13, 0.03, -0.07), "rot": Vector3.ZERO}
+const CARRY_ITEMS: Dictionary = {
+	"sweets": {"offset": Vector3(-0.13, 0.04, -0.08), "rot": Vector3.ZERO},
+	"diyas": {"offset": Vector3(-0.13, 0.03, -0.07), "rot": Vector3.ZERO},
+	"radio": {"offset": Vector3(-0.13, 0.05, -0.08), "rot": Vector3.ZERO},
+}
+
 var anim: AnimationPlayer
+var skeleton: Skeleton3D
+var tree: AnimationTree
+var hand_attachment: BoneAttachment3D
+var carry_holder: Node3D = null
+var carry_offset: Vector3 = Vector3.ZERO
+var carry_rot: Vector3 = Vector3.ZERO
+var _carry_target: float = 0.0
+var _carry_blend: float = 0.0
 var _anim_state: StringName = &""
 var yaw: float = 0.0
 var pitch: float = -0.15
@@ -40,6 +61,7 @@ func _ready() -> void:
 	arm.position.x = shoulder_offset
 	arm.add_excluded_object(get_rid())
 	_setup_animation()
+	interactor.carried_changed.connect(_on_carried_changed)
 	_update_camera()
 	_apply_mouse_mode()
 
@@ -104,17 +126,76 @@ func _physics_process(delta: float) -> void:
 
 func _setup_animation() -> void:
 	anim = body.find_child("AnimationPlayer", true, false) as AnimationPlayer
+	skeleton = body.find_child("Skeleton3D", true, false) as Skeleton3D
 	if anim == null:
 		return
-	for clip: StringName in [&"idle", &"walk", &"jog"]:
+	for clip: StringName in [&"idle", &"walk", &"jog", &"carry"]:
 		if anim.has_animation(clip):
 			anim.get_animation(clip).loop_mode = Animation.LOOP_LINEAR
 	anim.playback_default_blend_time = 0.2
+	_build_tree()
 	_play(&"idle", 1.0)
+	if skeleton != null and skeleton.find_bone(HAND_BONE) >= 0:
+		hand_attachment = BoneAttachment3D.new()
+		hand_attachment.name = "RightHandAttachment"
+		hand_attachment.bone_name = HAND_BONE
+		skeleton.add_child(hand_attachment)
+
+
+## Locomotion (idle/walk/jog, cross-faded) -> time scale -> filtered blend with the upper-body carry clip.
+## The blend is filtered to exactly the bones the carry clip animates, so the legs keep walking.
+func _build_tree() -> void:
+	if not (anim.has_animation(&"idle") and anim.has_animation(&"walk") and anim.has_animation(&"jog")):
+		return
+	var bt: AnimationNodeBlendTree = AnimationNodeBlendTree.new()
+	var loco: AnimationNodeTransition = AnimationNodeTransition.new()
+	loco.input_count = 3
+	loco.xfade_time = 0.2
+	for i: int in 3:
+		var clip: StringName = [&"idle", &"walk", &"jog"][i]
+		loco.set_input_name(i, clip)
+		var n: AnimationNodeAnimation = AnimationNodeAnimation.new()
+		n.animation = clip
+		bt.add_node(StringName("A_" + clip), n)
+	bt.add_node(&"Loco", loco)
+	# connect_node needs both nodes present: wire the animation inputs after Loco exists
+	for i: int in 3:
+		var clip2: StringName = [&"idle", &"walk", &"jog"][i]
+		bt.connect_node(&"Loco", i, StringName("A_" + clip2))
+	bt.add_node(&"Speed", AnimationNodeTimeScale.new())
+	bt.connect_node(&"Speed", 0, &"Loco")
+	var out_node: StringName = &"Speed"
+	if anim.has_animation(&"carry"):
+		var cn: AnimationNodeAnimation = AnimationNodeAnimation.new()
+		cn.animation = &"carry"
+		bt.add_node(&"A_carry", cn)
+		var bl: AnimationNodeBlend2 = AnimationNodeBlend2.new()
+		bl.filter_enabled = true
+		var carry_anim: Animation = anim.get_animation(&"carry")
+		for t: int in carry_anim.get_track_count():
+			bl.set_filter_path(carry_anim.track_get_path(t), true)
+		bt.add_node(&"CarryBlend", bl)
+		bt.connect_node(&"CarryBlend", 0, &"Speed")
+		bt.connect_node(&"CarryBlend", 1, &"A_carry")
+		out_node = &"CarryBlend"
+	bt.connect_node(&"output", 0, out_node)
+	tree = AnimationTree.new()
+	tree.name = "AnimationTree"
+	add_child(tree)
+	tree.root_node = tree.get_path_to(anim.get_node(anim.root_node))
+	tree.tree_root = bt
+	tree.anim_player = tree.get_path_to(anim)
+	tree.active = true
 
 
 func _play(clip: StringName, speed: float) -> void:
 	if anim == null or not anim.has_animation(clip):
+		return
+	if tree != null:
+		if clip != _anim_state:
+			_anim_state = clip
+			tree.set("parameters/Loco/transition_request", String(clip))
+		tree.set("parameters/Speed/scale", speed)
 		return
 	if clip != _anim_state:
 		_anim_state = clip
@@ -131,6 +212,98 @@ func _update_animation() -> void:
 		_play(&"jog", clampf(speed / jog_anim_speed, 0.6, 1.8))
 	else:
 		_play(&"walk", clampf(speed / walk_anim_speed, 0.5, 1.9))
+
+
+# --- Carrying ------------------------------------------------------------------------
+
+func is_carrying() -> bool:
+	return carry_holder != null
+
+
+func get_carry_holder() -> Node3D:
+	return carry_holder
+
+
+func _on_carried_changed(item: OOTInteractable) -> void:
+	if item == null:
+		_drop_carry_visual()
+	else:
+		_attach_carry_visual(item)
+
+
+## Copies the item's Visual onto a holder under the right-hand BoneAttachment3D and blends the carry pose in.
+func _attach_carry_visual(item: OOTInteractable) -> void:
+	_drop_carry_visual()
+	if hand_attachment == null:
+		return
+	var visual: Node3D = item.get_visual()
+	if visual == null:
+		return
+	var cfg: Dictionary = CARRY_ITEMS.get(item.item_id, CARRY_DEFAULT)
+	carry_offset = cfg["offset"]
+	carry_rot = cfg["rot"]
+	carry_holder = Node3D.new()
+	carry_holder.name = "Carried_" + item.item_id
+	hand_attachment.add_child(carry_holder)
+	var dup: Node3D = visual.duplicate() as Node3D
+	dup.transform = Transform3D.IDENTITY
+	dup.visible = true
+	carry_holder.add_child(dup)
+	var box: AABB = _visual_aabb(dup, dup)
+	dup.position = -(box.position + box.size * 0.5)
+	_carry_target = 1.0
+	_update_carry_holder()
+
+
+func _drop_carry_visual() -> void:
+	if carry_holder != null:
+		if carry_holder.get_parent() != null:
+			carry_holder.get_parent().remove_child(carry_holder)
+		carry_holder.free()
+		carry_holder = null
+	_carry_target = 0.0
+
+
+func _visual_aabb(n: Node, root_node: Node3D) -> AABB:
+	var box: AABB = AABB()
+	var first: bool = true
+	var stack: Array[Node] = [n]
+	while not stack.is_empty():
+		var cur: Node = stack.pop_back()
+		stack.append_array(cur.get_children())
+		if cur is MeshInstance3D and (cur as MeshInstance3D).mesh != null:
+			var mi: MeshInstance3D = cur as MeshInstance3D
+			var rel: Transform3D = root_node.global_transform.affine_inverse() * mi.global_transform if root_node.is_inside_tree() else _local_chain(mi, root_node)
+			var b: AABB = rel * mi.mesh.get_aabb()
+			box = b if first else box.merge(b)
+			first = false
+	return box
+
+
+func _local_chain(n: Node3D, until: Node3D) -> Transform3D:
+	var t: Transform3D = Transform3D.IDENTITY
+	var cur: Node = n
+	while cur != null and cur != until:
+		if cur is Node3D:
+			t = (cur as Node3D).transform * t
+		cur = cur.get_parent()
+	return t
+
+
+func _update_carry_holder() -> void:
+	if carry_holder == null or not carry_holder.is_inside_tree():
+		return
+	var b: Basis = body.global_transform.basis.orthonormalized()
+	carry_holder.global_transform = Transform3D(
+		b * Basis.from_euler(carry_rot * (PI / 180.0)),
+		hand_attachment.global_position + b * carry_offset)
+
+
+func _process(delta: float) -> void:
+	_carry_blend = move_toward(_carry_blend, _carry_target, delta / CARRY_BLEND_TIME)
+	if tree != null and anim != null and anim.has_animation(&"carry"):
+		tree.set("parameters/CarryBlend/blend_amount", _carry_blend)
+	_update_carry_holder()
 
 
 func _update_camera() -> void:

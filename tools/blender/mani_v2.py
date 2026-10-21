@@ -325,6 +325,9 @@ def base_materials(objs, sk):
     hm.data.materials.append(make_material("Mani_body", base_path=sk["body_c"], rough=0.72, spec=0.06))
     hm.data.materials.append(make_material("Mani_head", base_path=sk["head_c"], rough=0.64, spec=0.12,
                                            normal_path=sk["head_n"], normal_strength=1.0, orm_path=sk["head_orm"]))
+    # materials.clear() resets every polygon to slot 0; put the head island back on the head material
+    for i in HEAD_POLYS:
+        hm.data.polygons[i].material_index = 1
     c, n = B.fabric_textures("mani_denim", (0.115, 0.115, 0.125), "denim")
     set_single_material(objs["jeans"], make_material("Mani_jeans", c, rough=0.85, normal_path=n, normal_strength=0.8))
     c, n = B.fabric_textures("mani_hoodie", (0.19, 0.19, 0.20), "knit")
@@ -344,12 +347,25 @@ def base_materials(objs, sk):
     set_single_material(objs["brows"], make_material("Mani_brows", p, rough=0.6, alpha_clip=True, spec=0.12, double_sided=True))
 
 
+def save_model_landmarks(L):
+    """Coordinates (m, final scale) of the sheet-landmark vertices, for tools/likeness/overlay.py."""
+    import json
+    jp = os.path.join(B.REPO, "art_source/characters/mani/likeness/sheet_landmarks.json")
+    try:
+        mp = json.load(open(jp))["mapping"]
+    except Exception:
+        return
+    out = {v: {k: [float(x) for x in L["co"][i]] for k, i in mp[v].items()} for v in mp}
+    json.dump(out, open(os.path.join(B.REPO, "art_source/characters/mani/likeness/model_landmarks.json"), "w"), indent=1)
+
+
 def main_entry():
     stage = [a for a in B.ARGS if a.startswith("--stage=")]
     stage = int(stage[0].split("=")[1]) if stage else 99
     B.clear_scene()
     hm = B.build_human()
     L = B.landmarks(hm)
+    save_model_landmarks(L)
     objs = dress(hm)
     objs["L"] = L
     sk = paint_skin_v2(hm, L)
@@ -362,7 +378,7 @@ def main_entry():
     B.finalize_meshes(objs, bake=False)
     atl = make_atlases()
     build_hair_cards(objs, atl)
-    build_beard(objs, atl)
+    # (beard / stubble now come from the sheet projection; build_beard() kept for reference, not called)
     B.build_accessories(objs, objs['rig'])
     build_lenses(objs)
     build_drawstrings(objs)
@@ -424,6 +440,21 @@ def beard_fields(L):
 # 4K head texture (+ normal, ORM) with remapped UVs; 2K body texture for neck and hands
 # ---------------------------------------------------------------------------------------------
 SKIN_RGB = np.array([0.345, 0.255, 0.195])
+HEAD_POLYS = []             # polygon indices of the head UV island (set by paint_skin_v2)
+SHEET_GAIN = 0.86          # the sheet is studio-lit; pull the albedo down a little for the game's lighting
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "tools/likeness"))
+import project_face as LP  # noqa: E402
+
+
+def vertex_normals(co, me):
+    N = np.zeros_like(co)
+    for p in me.polygons:
+        v = list(p.vertices)
+        a, b, c = co[v[0]], co[v[1]], co[v[2]]
+        n = np.cross(b - a, c - a)
+        for i in v:
+            N[i] += n
+    return N / np.maximum(np.linalg.norm(N, axis=1, keepdims=True), 1e-9)
 
 
 def zoom_array(arr, new_w, new_h):
@@ -463,6 +494,7 @@ def paint_skin_v2(hm, L):
         if min(us) > 0.60 and 0.10 < min(vs) and max(vs) < 0.92 and zc > 1.30:
             head_polys.append(p)
     log("head faces", len(head_polys))
+    HEAD_POLYS[:] = [p.index for p in head_polys]
     us = [uvl[l].uv[0] for p in head_polys for l in p.loop_indices]
     vs = [uvl[l].uv[1] for p in head_polys for l in p.loop_indices]
     pad = 8
@@ -503,6 +535,8 @@ def paint_skin_v2(hm, L):
             d = np.maximum(d, 0.35 * np.exp(-(dx * dx + dz2 * dz2)))     # heavy upper lids
         return d
 
+    vn = vertex_normals(co, me)
+    acc = []          # (ty, tx, position, normal) of every rasterised texel, for the sheet projection
     for p in head_polys:
         vs_ = list(p.vertices)
         li = list(p.loop_indices)
@@ -539,7 +573,27 @@ def paint_skin_v2(hm, L):
             fore = smoothstep(ez + 0.025, ez + 0.04, z) * (1 - smoothstep(ez + 0.075, ez + 0.095, z)) * (y < ear_y - 0.03)
             vals = np.stack([sh, tired(pp), lips, np.clip(flush, 0, 1), fore, np.ones_like(sh)], axis=-1)
             F[ty[ok], tx[ok]] = vals[ok]
+            N3 = vn[[vs_[i] for i in ids]]
+            nn = l1[m][:, None] * N3[0] + l2[m][:, None] * N3[1] + l3[m][:, None] * N3[2]
+            nn /= np.maximum(np.linalg.norm(nn, axis=1, keepdims=True), 1e-9)
+            acc.append((ty[ok].astype(np.int16), tx[ok].astype(np.int16), pp[ok].astype(np.float32), nn[ok].astype(np.float32)))
     log("skin: features rasterised")
+    # ---- sheet projection (front + profile panels -> head UVs) ------------------------------------
+    PR = np.zeros((HS, HS, 3), np.float32)
+    PA = np.zeros((HS, HS), np.float32)
+    if os.path.isfile(os.path.join(LP.LDIR, "clean_front.png")):
+        def load_up(path):
+            return load_raw(path)[::-1]          # Blender pixels are bottom-up
+        fp = LP.FaceProjector(co, load_up)
+        for ty, tx, pp, nn in acc:
+            rgb, al = fp.project(pp, nn)
+            PR[ty, tx] = rgb
+            PA[ty, tx] = al
+        log("skin: sheet projected, covered %.1f%% of head texels" % (100.0 * (PA > 0.05).sum() / max(F[..., 5].sum(), 1)))
+    del acc
+    # the photo already has the beard, lips, tired eyes and flush: drop the painted versions where it applies
+    keep = (1 - PA)
+    F[..., 0] *= keep; F[..., 1] *= keep; F[..., 2] *= keep; F[..., 3] *= keep
     # ---- compose colour ----------------------------------------------------------------------
     rng = np.random.RandomState(4)
     n_big = value_noise(HS, HS, 12, 31) - 0.5
@@ -564,6 +618,13 @@ def paint_skin_v2(hm, L):
     col = col * (1 - F[..., 2:3] * 0.6) + lipc * (0.9 + 0.2 * n_fine[..., None]) * F[..., 2:3] * 0.6
     shade = F[..., 0:1]
     col = col * (1 - 0.30 * shade) + np.array([0.12, 0.10, 0.10])[None, None, :] * 0.30 * shade   # beard shadow tone
+    if PA.max() > 0:
+        photo = PR * SHEET_GAIN * (1 + n_fine[..., None] * 0.10 - pore[..., None] * 0.06)
+        # photo is blended over the procedural skin; soft-edged so the seam to the unprojected back of the head is invisible
+        a = np.clip(PA, 0, 1)[..., None] * 0.97
+        col = col * (1 - a) + photo * a
+        del photo, a
+    del PR
     covered = F[..., 5] > 0.5
     out_c = save_raw("mani_head_c", np.where(covered[..., None], col, SKIN_RGB[None, None, :]), fmt="JPEG", quality=92)
     del col

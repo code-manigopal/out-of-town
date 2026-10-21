@@ -33,7 +33,8 @@ func _initialize() -> void:
 		_test_g1_apartment()
 		_test_g1_call()
 		_test_g1_inputs_and_flow()
-		_test_mani_model()
+		await _test_mani_model()
+		await _test_carry()
 	print("%d checks, %d failures" % [_checks, _failures])
 	quit(1 if _failures > 0 else 0)
 
@@ -292,7 +293,7 @@ func _test_mani_model() -> void:
 	var ap: AnimationPlayer = inst.find_child("AnimationPlayer", true, false) as AnimationPlayer
 	_check(ap != null, "mani has an AnimationPlayer")
 	if ap != null:
-		for clip: String in ["idle", "walk", "jog"]:
+		for clip: String in ["idle", "walk", "jog", "carry"]:
 			_check(ap.has_animation(clip), "mani has the %s animation" % clip)
 		if ap.has_animation("walk"):
 			var len: float = ap.get_animation("walk").length
@@ -306,3 +307,39 @@ func _test_mani_model() -> void:
 	await process_frame
 	_check(pl.anim != null, "player finds Mani's AnimationPlayer")
 	pl.queue_free()
+
+
+func _test_carry() -> void:
+	StoryState.start_part("p1")
+	var apt: OOTApartment = _make_apartment()
+	await process_frame
+	await process_frame
+	var pl: OOTPlayer = apt.player
+	_check(pl.hand_attachment != null and pl.hand_attachment.bone_name == "hand_r", "player has a BoneAttachment3D on the right hand")
+	_check(pl.tree != null and pl.tree.active, "player runs the AnimationTree (locomotion + carry blend)")
+	_check(not pl.is_carrying(), "not carrying at start")
+	var it: OOTInteractable = null
+	for p: OOTInteractable in apt.get_pack_items():
+		if p.item_id == "sweets":
+			it = p
+	_check(it != null, "sweets pickup exists")
+	if it == null or pl.hand_attachment == null:
+		apt.queue_free()
+		return
+	pl.interactor.target = it
+	_check(pl.interactor.interact() and pl.interactor.carried == it, "interact picks up the sweets box")
+	_check(pl.is_carrying() and pl.get_carry_holder().get_parent() == pl.hand_attachment, "carried visual hangs under the hand attachment")
+	_check(pl.get_carry_holder().get_child_count() > 0, "carried holder contains the item visual")
+	for i: int in 5:
+		pl._process(0.1)
+	_check(pl._carry_blend > 0.99, "carry pose is blended in")
+	var hid: bool = not it.visible
+	_check(hid, "the shelf copy is hidden while carried")
+	apt._on_used(apt.duffel)
+	_check(apt.get_packed_count() == 1 and pl.interactor.carried == null, "duffel packs the carried item")
+	_check(not pl.is_carrying() and pl.get_carry_holder() == null, "depositing detaches the item and clears the carry state")
+	_check(pl.hand_attachment.get_child_count() == 0, "nothing left under the hand attachment")
+	for i: int in 5:
+		pl._process(0.1)
+	_check(pl._carry_blend < 0.01, "carry pose blends out")
+	apt.queue_free()

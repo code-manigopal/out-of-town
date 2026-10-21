@@ -53,10 +53,12 @@ The goal is the best result for the fewest usage credits and tokens.
 - Dialogue and scene data are read directly from `game/data/story/pN_scenes.json` by the `StoryDB` autoload. Don't hard-code dialogue in scenes or scripts.
 - `.tscn` and `.tres` are text and may be edited carefully. **Never hand-edit binary assets** (`.glb`, textures, audio); they are tracked with Git LFS. Commit `*.import` files.
 - Don't commit `game/.godot/` or export builds (see `.gitignore`).
+- Add-ons, tools, versions and licences are listed in `docs/tech/tools.md`. Only use assets and tools whose licence allows a commercial Steam release; GPL tools are fine for development but never ship their code.
 
 ## Game commands
 
 ```bash
+tools/install_addons.sh                                           # once per checkout: binary add-ons (Terrain3D, LimboAI)
 godot --path game -e                                              # open the editor
 godot --headless --path game --import                             # import assets; must finish without script errors
 godot --headless --path game --script res://tests/run_tests.gd    # story/state tests (exit 1 on failure)
