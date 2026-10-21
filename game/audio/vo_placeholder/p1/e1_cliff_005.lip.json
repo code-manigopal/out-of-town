@@ -1,41 +1,66 @@
 {
 "line_id": "e1_cliff_005",
-"source_hash": "f1a13300ac2f01c2",
-"duration": 0.92,
+"source_hash": "affc72e9c06980e3",
+"duration": 2.92,
 "mouthCues": [
 {
 "start": 0.0,
-"end": 0.03,
+"end": 0.41,
 "value": "X"
 },
 {
-"start": 0.03,
-"end": 0.12,
+"start": 0.41,
+"end": 0.66,
 "value": "B"
 },
 {
-"start": 0.12,
-"end": 0.19,
-"value": "F"
+"start": 0.66,
+"end": 0.73,
+"value": "C"
 },
 {
-"start": 0.19,
-"end": 0.63,
+"start": 0.73,
+"end": 0.8,
+"value": "H"
+},
+{
+"start": 0.8,
+"end": 0.87,
+"value": "C"
+},
+{
+"start": 0.87,
+"end": 1.08,
 "value": "B"
 },
 {
-"start": 0.63,
-"end": 0.77,
-"value": "F"
+"start": 1.08,
+"end": 1.94,
+"value": "X"
 },
 {
-"start": 0.77,
-"end": 0.91,
+"start": 1.94,
+"end": 2.25,
 "value": "B"
 },
 {
-"start": 0.91,
-"end": 0.92,
+"start": 2.25,
+"end": 2.32,
+"value": "H"
+},
+{
+"start": 2.32,
+"end": 2.39,
+"value": "C"
+},
+{
+"start": 2.39,
+"end": 2.6,
+"value": "B"
+},
+{
+"start": 2.6,
+"end": 2.92,
 "value": "X"
 }
 ]

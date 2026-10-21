@@ -81,6 +81,7 @@ func _on_open_finished(_scene_id: String) -> void:
 	_opening_box.queue_free()
 	_card_title.text = title_text()
 	_card_sub.text = episode_text()
+	OOTJournalData.grant("e1_voicemail")
 	_card.visible = true
 	_card_skip = false
 	await get_tree().create_timer(TITLE_SECONDS).timeout
@@ -94,11 +95,13 @@ func _start_apartment() -> void:
 	_card.visible = false
 	apartment = (load(APARTMENT_SCENE) as PackedScene).instantiate() as OOTApartment
 	apartment.set_runner(runner)  # parked at e1_apt
-	apartment.call_finished.connect(_on_call_finished)
+	apartment.exit_requested.connect(_on_apartment_exit)
 	add_child(apartment)
 
 
-func _on_call_finished(_scene_id: String) -> void:
+## Mani leaves through the front door with the bag and the car keys. The building
+## exterior and drive are not built yet, so the slice ends here for now.
+func _on_apartment_exit() -> void:
 	stage = "end"
 	if apartment != null:
 		apartment.queue_free()

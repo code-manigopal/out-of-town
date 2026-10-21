@@ -1,0 +1,55 @@
+{
+	"_note": "Ep 1 apartment props: what is written on the whiteboard and pin board, and which journal entry or hidden detail each object gives. Applied by scripts/episodes/e1/apartment_content.gd. Text here is set dressing; journal text lives in p1_journal.json.",
+	"whiteboard": {
+		"node": "Props/Whiteboard",
+		"journal_entry": "e1_whiteboard",
+		"board_lines": [
+			"JOBS",
+			"~~Northgate Analytics~~   ~~Lakeshore Insurance~~",
+			"~~Riverline Logistics~~   ~~Maple Data Co.~~",
+			"Data Analytics Engineer - 2nd round THURS",
+			"",
+			"WORK",
+			"Auragle - Software Developer > Team Lead  2018-2024",
+			"Sri Valli Leathers - Store Manager  2013-2017"
+		]
+	},
+	"grad_photo": {
+		"node": "Props/GraduationPhoto",
+		"journal_entry": "e1_grad_photo",
+		"reveals": [
+			{"id": "back", "direction": [0, 0, -1], "journal_entry": "e1_grad_photo_back", "text": "On the back, in Nila's handwriting: \"Anna, proud of you. Now go get a real job!\""}
+		]
+	},
+	"nila_photo": {
+		"node": "Props/NilaPhoto",
+		"journal_entry": "e1_nila_photo"
+	},
+	"pins": [
+		{
+			"pin": "Interactive/PinBoard/Pin_1",
+			"item_id": "baby_photo",
+			"display_name": "Baby photo",
+			"photo": "res://props/photos/photo_nila_baby.png",
+			"stamp": "14 08 '01",
+			"journal_entry": "e1_baby_photo",
+			"reveals": [
+				{"id": "date_stamp", "direction": [0, 0, 1], "max_camera_distance": 1.5, "journal_entry": "e1_baby_photo_date", "text": "An orange camera date stamp in the corner: 14 08 '01."}
+			]
+		},
+		{
+			"pin": "Interactive/PinBoard/Pin_2",
+			"item_id": "note_interview",
+			"display_name": "Sticky note",
+			"note": "THURS 2nd round\nrevise SQL windows\nno \"synergy\"",
+			"journal_entry": "e1_note_interview"
+		},
+		{
+			"pin": "Interactive/PinBoard/Pin_3",
+			"item_id": "note_diwali",
+			"display_name": "Sticky note",
+			"note": "Diwali Sun -\ndiyas w/ Nila\n(promised Amma)",
+			"journal_entry": "e1_note_diwali"
+		}
+	]
+}

@@ -1,166 +1,256 @@
 {
 "line_id": "e1_tp1_002",
-"source_hash": "b47241510570e151",
-"duration": 5.54,
+"source_hash": "2a3252ea3b726c70",
+"duration": 9.51,
 "mouthCues": [
 {
 "start": 0.0,
-"end": 0.03,
+"end": 0.22,
 "value": "X"
 },
 {
-"start": 0.03,
-"end": 0.16,
+"start": 0.22,
+"end": 0.77,
+"value": "F"
+},
+{
+"start": 0.77,
+"end": 0.84,
 "value": "B"
 },
 {
-"start": 0.16,
-"end": 0.3,
+"start": 0.84,
+"end": 0.98,
 "value": "C"
 },
 {
-"start": 0.3,
-"end": 0.37,
-"value": "G"
-},
-{
-"start": 0.37,
-"end": 0.44,
+"start": 0.98,
+"end": 1.05,
 "value": "B"
 },
 {
-"start": 0.44,
-"end": 0.51,
+"start": 1.05,
+"end": 1.26,
+"value": "F"
+},
+{
+"start": 1.26,
+"end": 1.33,
+"value": "B"
+},
+{
+"start": 1.33,
+"end": 1.4,
 "value": "D"
 },
 {
-"start": 0.51,
-"end": 0.78,
+"start": 1.4,
+"end": 1.48,
+"value": "A"
+},
+{
+"start": 1.48,
+"end": 1.82,
 "value": "B"
 },
 {
-"start": 0.78,
-"end": 0.85,
+"start": 1.82,
+"end": 2.67,
+"value": "X"
+},
+{
+"start": 2.67,
+"end": 2.72,
+"value": "B"
+},
+{
+"start": 2.72,
+"end": 2.77,
 "value": "C"
 },
 {
-"start": 0.85,
-"end": 1.11,
+"start": 2.77,
+"end": 2.84,
 "value": "B"
 },
 {
-"start": 1.11,
-"end": 1.22,
+"start": 2.84,
+"end": 2.98,
 "value": "E"
 },
 {
-"start": 1.22,
-"end": 1.43,
+"start": 2.98,
+"end": 3.33,
 "value": "B"
 },
 {
-"start": 1.43,
-"end": 1.53,
-"value": "A"
-},
-{
-"start": 1.53,
-"end": 1.7,
-"value": "B"
-},
-{
-"start": 1.7,
-"end": 1.78,
-"value": "A"
-},
-{
-"start": 1.78,
-"end": 1.93,
+"start": 3.33,
+"end": 3.5,
 "value": "E"
 },
 {
-"start": 1.93,
-"end": 2.07,
-"value": "B"
-},
-{
-"start": 2.07,
-"end": 2.15,
-"value": "A"
-},
-{
-"start": 2.15,
-"end": 2.69,
-"value": "B"
-},
-{
-"start": 2.69,
-"end": 3.04,
-"value": "C"
-},
-{
-"start": 3.04,
-"end": 3.18,
-"value": "G"
-},
-{
-"start": 3.18,
-"end": 3.25,
-"value": "C"
-},
-{
-"start": 3.25,
-"end": 3.46,
-"value": "B"
-},
-{
-"start": 3.46,
+"start": 3.5,
 "end": 3.54,
 "value": "A"
 },
 {
 "start": 3.54,
-"end": 4.04,
+"end": 3.62,
 "value": "B"
 },
 {
-"start": 4.04,
-"end": 4.11,
-"value": "C"
+"start": 3.62,
+"end": 3.7,
+"value": "A"
 },
 {
-"start": 4.11,
-"end": 4.68,
+"start": 3.7,
+"end": 3.75,
 "value": "B"
 },
 {
-"start": 4.68,
-"end": 4.75,
-"value": "C"
-},
-{
-"start": 4.75,
-"end": 5.1,
-"value": "B"
-},
-{
-"start": 5.1,
-"end": 5.24,
-"value": "G"
-},
-{
-"start": 5.24,
-"end": 5.45,
+"start": 3.75,
+"end": 3.86,
 "value": "E"
 },
 {
-"start": 5.45,
-"end": 5.52,
+"start": 3.86,
+"end": 4.0,
+"value": "A"
+},
+{
+"start": 4.0,
+"end": 4.23,
 "value": "B"
 },
 {
-"start": 5.52,
-"end": 5.54,
+"start": 4.23,
+"end": 4.45,
+"value": "X"
+},
+{
+"start": 4.45,
+"end": 4.5,
+"value": "B"
+},
+{
+"start": 4.5,
+"end": 4.62,
+"value": "C"
+},
+{
+"start": 4.62,
+"end": 4.76,
+"value": "B"
+},
+{
+"start": 4.76,
+"end": 4.83,
+"value": "F"
+},
+{
+"start": 4.83,
+"end": 4.92,
+"value": "A"
+},
+{
+"start": 4.92,
+"end": 5.29,
+"value": "B"
+},
+{
+"start": 5.29,
+"end": 5.36,
+"value": "G"
+},
+{
+"start": 5.36,
+"end": 5.43,
+"value": "B"
+},
+{
+"start": 5.43,
+"end": 5.51,
+"value": "A"
+},
+{
+"start": 5.51,
+"end": 5.81,
+"value": "B"
+},
+{
+"start": 5.81,
+"end": 6.02,
+"value": "C"
+},
+{
+"start": 6.02,
+"end": 6.09,
+"value": "E"
+},
+{
+"start": 6.09,
+"end": 6.37,
+"value": "G"
+},
+{
+"start": 6.37,
+"end": 7.18,
+"value": "X"
+},
+{
+"start": 7.18,
+"end": 7.23,
+"value": "B"
+},
+{
+"start": 7.23,
+"end": 7.27,
+"value": "C"
+},
+{
+"start": 7.27,
+"end": 7.34,
+"value": "B"
+},
+{
+"start": 7.34,
+"end": 7.42,
+"value": "A"
+},
+{
+"start": 7.42,
+"end": 7.6,
+"value": "B"
+},
+{
+"start": 7.6,
+"end": 7.81,
+"value": "C"
+},
+{
+"start": 7.81,
+"end": 7.9,
+"value": "A"
+},
+{
+"start": 7.9,
+"end": 8.28,
+"value": "B"
+},
+{
+"start": 8.28,
+"end": 8.35,
+"value": "C"
+},
+{
+"start": 8.35,
+"end": 8.98,
+"value": "B"
+},
+{
+"start": 8.98,
+"end": 9.51,
 "value": "X"
 }
 ]

@@ -1,96 +1,81 @@
 {
 "line_id": "e1_open_003",
-"source_hash": "4388b6c39b133101",
-"duration": 2.42,
+"source_hash": "ff57e92687bb19ab",
+"duration": 3.07,
 "mouthCues": [
 {
 "start": 0.0,
-"end": 0.05,
-"value": "B"
-},
-{
-"start": 0.05,
-"end": 0.44,
-"value": "C"
-},
-{
-"start": 0.44,
-"end": 0.65,
-"value": "E"
-},
-{
-"start": 0.65,
-"end": 0.72,
-"value": "C"
-},
-{
-"start": 0.72,
-"end": 0.79,
-"value": "D"
-},
-{
-"start": 0.79,
-"end": 0.93,
-"value": "H"
-},
-{
-"start": 0.93,
-"end": 1.01,
-"value": "A"
-},
-{
-"start": 1.01,
-"end": 1.07,
-"value": "B"
-},
-{
-"start": 1.07,
-"end": 1.13,
-"value": "C"
-},
-{
-"start": 1.13,
-"end": 1.21,
-"value": "A"
-},
-{
-"start": 1.21,
-"end": 1.52,
-"value": "F"
-},
-{
-"start": 1.52,
-"end": 1.68,
+"end": 0.45,
 "value": "X"
 },
 {
-"start": 1.68,
-"end": 1.73,
+"start": 0.45,
+"end": 0.51,
 "value": "B"
 },
 {
-"start": 1.73,
-"end": 2.06,
+"start": 0.51,
+"end": 1.06,
 "value": "C"
 },
 {
-"start": 2.06,
-"end": 2.13,
+"start": 1.06,
+"end": 1.13,
+"value": "G"
+},
+{
+"start": 1.13,
+"end": 1.34,
 "value": "B"
 },
 {
-"start": 2.13,
-"end": 2.2,
+"start": 1.34,
+"end": 1.41,
+"value": "F"
+},
+{
+"start": 1.41,
+"end": 1.55,
 "value": "C"
 },
 {
-"start": 2.2,
-"end": 2.41,
+"start": 1.55,
+"end": 1.72,
+"value": "A"
+},
+{
+"start": 1.72,
+"end": 2.0,
 "value": "B"
 },
 {
-"start": 2.41,
-"end": 2.42,
+"start": 2.0,
+"end": 2.05,
+"value": "D"
+},
+{
+"start": 2.05,
+"end": 2.19,
+"value": "B"
+},
+{
+"start": 2.19,
+"end": 2.26,
+"value": "C"
+},
+{
+"start": 2.26,
+"end": 2.33,
+"value": "B"
+},
+{
+"start": 2.33,
+"end": 2.61,
+"value": "C"
+},
+{
+"start": 2.61,
+"end": 3.07,
 "value": "X"
 }
 ]

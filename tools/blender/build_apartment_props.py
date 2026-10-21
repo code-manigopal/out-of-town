@@ -365,7 +365,7 @@ def kitchen_base_run(col):
     for p0, p1 in zip(pts[:-1], pts[1:]):
         b.rod(p0, p1, 0.011, MET, 10)
     b.rod(pts[-1], pts[-1] + V((0, 0, -0.06)), 0.013, MET, 10)
-    b.rod((tx, ty, 1.0), (tx + 0.07, ty, 1.03), 0.006, MET, 6)
+    # (the lever is a separate animated asset: tap_lever)
     # tile splashback
     yb = 0.294
     b.box((0, yb + 0.003, 1.1), (L, 0.004, 0.4), W, 0.0)
@@ -395,22 +395,6 @@ def kitchen_wall_cabinets(col):
         b.box((x, yf + 0.009, H / 2), (0.596, 0.018, H - 0.004), W, 0.002, 2)
         handle_v(b, x + (0.25 if i % 2 else -0.25), yf, 0.12, 0.13)
     b.box((0, -0.12, 0.01), (L - 0.02, 0.04, 0.02), W, 0.001)
-    return b.finish(col)
-
-
-def fridge(col):
-    b = B("fridge")
-    W, MET = "mat_paint_white", "mat_metal_brushed"
-    b.box((0, 0.025, 0.915), (0.7, 0.65, 1.77), W, 0.004, 2)
-    for x in (-0.28, 0.28):
-        for y in (-0.22, 0.28):
-            b.cyl((x, y, 0.015), 0.02, 0.03, "mat_plastic_black", seg=10)
-    yc = -0.325
-    b.box((0, yc, 1.545), (0.696, 0.05, 0.505), W, 0.008, 3)
-    b.box((0, yc, 0.655), (0.696, 0.05, 1.205), W, 0.008, 3)
-    handle_v(b, -0.29, -0.35, 1.38, 0.28, stand=0.03)
-    handle_v(b, -0.29, -0.35, 1.0, 0.5, stand=0.03)
-    b.box((0, -0.352, 1.78), (0.1, 0.004, 0.012), MET, 0.001)
     return b.finish(col)
 
 
@@ -609,34 +593,17 @@ def bedside_table(col):
     return b.finish(col)
 
 
-def wardrobe(col):
-    b = B("wardrobe")
-    WD = "mat_wood_oak"
-    b.box((0, 0.0, 0.05), (0.88, 0.46, 0.1), "mat_plastic_black", 0.0)
-    b.box((0, 0.01, 0.95), (0.9, 0.48, 1.7), WD, 0.003)
-    b.box((0, 0, 1.78), (0.92, 0.5, 0.04), WD, 0.004)
-    yf = -0.25
-    for x in (-0.223, 0.223):
-        b.box((x, yf + 0.009, 1.2), (0.442, 0.018, 1.26), WD, 0.003, 2)
-    b.box((0, yf + 0.009, 0.4), (0.89, 0.018, 0.17), WD, 0.003, 2)
-    b.box((0, yf + 0.009, 0.595), (0.89, 0.014, 0.004), "mat_plastic_black", 0.0)
-    handle_v(b, -0.04, yf, 1.2, 0.2, stand=0.02)
-    handle_v(b, 0.04, yf, 1.2, 0.2, stand=0.02)
-    handle_h(b, 0, yf, 0.44, 0.14, stand=0.02)
-    return b.finish(col)
-
-
 # --------------------------------------------------------------------------------------
 # FIXTURES
 # --------------------------------------------------------------------------------------
 def door_assembly(col, name, slab_w, slab_h, jamb, depth, front, casing):
+    """Frame only (jambs, head, casing, threshold). The moving leaf is door_slab()."""
     b = B(name)
     W, MET = "mat_paint_white", "mat_metal_brushed"
     gap = 0.01
     cw = slab_w + 2 * gap
     ch = slab_h + gap + (0.02 if front else 0.012)
     oh = ch + jamb
-    thick = 0.045 if front else 0.04
     for s in (-1, 1):
         b.box((s * (cw / 2 + jamb / 2), 0, oh / 2), (jamb, depth, oh), W, 0.002)
     b.box((0, 0, ch + jamb / 2), (cw + 2 * jamb, depth, jamb), W, 0.002)
@@ -644,8 +611,24 @@ def door_assembly(col, name, slab_w, slab_h, jamb, depth, front, casing):
         b.box((0, 0, 0.01), (cw, depth, 0.02), MET, 0.003)
     for s in (-1, 1):
         b.box((s * (cw / 2 - 0.006), -depth / 2 + 0.01, ch / 2 + 0.01), (0.012, 0.02, ch - 0.02), W, 0.001)
+    if casing:
+        cwid, ct = 0.07, 0.014
+        for side in (-1, 1):
+            yy = side * (depth / 2 + ct / 2 - 0.002)
+            for s in (-1, 1):
+                b.box((s * (cw / 2 + jamb + cwid / 2), yy, (oh + cwid) / 2), (cwid, ct, oh + cwid), W, 0.002)
+            b.box((0, yy, oh + cwid / 2), (cw + 2 * jamb, ct, cwid), W, 0.002)
+    return b.finish(col)
+
+
+def door_slab(col, name, slab_w, slab_h, front):
+    """The moving leaf of a door. Origin = hinge axis (bottom, mid-thickness); the leaf extends along +X."""
+    b = B(name)
+    W, MET = "mat_paint_white", "mat_metal_brushed"
+    thick = 0.045 if front else 0.04
     z0 = 0.02 if front else 0.012
     sh = slab_h
+    b.stack.append(b.M @ T(slab_w / 2 + 0.004, thick / 2, 0))
     smat = "mat_wood_oak" if front else W
     b.box((0, 0.0, z0 + sh / 2), (slab_w, thick, sh), smat, 0.003, 2)
     for side in (-1, 1):
@@ -669,14 +652,16 @@ def door_assembly(col, name, slab_w, slab_h, jamb, depth, front, casing):
         b.cyl((0, -thick / 2 - 0.004, 1.55), 0.011, 0.008, MET, axis="y", seg=12)
         b.rod((hx - 0.03, thick / 2 + 0.01, hz + 0.28), (hx - 0.12, thick / 2 + 0.01, hz + 0.28), 0.003, MET, 5)
         b.box((hx - 0.15, thick / 2 + 0.008, hz + 0.28), (0.03, 0.01, 0.02), MET, 0.001)
-    if casing:
-        cwid, ct = 0.07, 0.014
-        for side in (-1, 1):
-            yy = side * (depth / 2 + ct / 2 - 0.002)
-            for s in (-1, 1):
-                b.box((s * (cw / 2 + jamb + cwid / 2), yy, (oh + cwid) / 2), (cwid, ct, oh + cwid), W, 0.002)
-            b.box((0, yy, oh + cwid / 2), (cw + 2 * jamb, ct, cwid), W, 0.002)
+    b.stack.pop()
     return b.finish(col)
+
+
+def door_interior_slab(col):
+    return door_slab(col, "door_interior_slab", 0.9, 2.03, False)
+
+
+def door_front_slab(col):
+    return door_slab(col, "door_front_slab", 0.9, 2.13, True)
 
 
 def door_interior(col):
@@ -1043,6 +1028,500 @@ def frame_nila(col):
 
 
 # --------------------------------------------------------------------------------------
+# INTERACTIVE PROPS (round 2): fridge with contents, wardrobe, taps, toilet, mirror, keys, pin board
+# Door leaves and lids are separate assets whose origin is their hinge axis, so Godot can rotate them.
+# --------------------------------------------------------------------------------------
+def extra_materials():
+    make_mat("mat_glass_shelf", "#cfe3ea", 0.1, alpha=0.42, spec=0.8)
+    make_mat("mat_gasket", "#cfcfca", 0.7, spec=0.2)
+    make_mat("mat_ceramic", "#f1f1ee", 0.12, spec=0.8)
+    make_mat("mat_tomato", "#c4301f", 0.32)
+    make_mat("mat_onion", "#b8793f", 0.55)
+    make_mat("mat_chilli", "#2f8a2a", 0.35)
+    make_mat("mat_cucumber", "#3f7b34", 0.4)
+    make_mat("mat_curry_leaf", "#2b5e2a", 0.5)
+    make_mat("mat_carrot", "#e0801f", 0.5)
+    make_mat("mat_pet", "#cfe6f2", 0.08, alpha=0.4, spec=0.8)
+    make_mat("mat_cap_blue", "#2d62b3", 0.4)
+    make_mat("mat_can_red", "#b32a2a", 0.3, metal=0.6)
+    make_mat("mat_can_blue", "#2b56a8", 0.3, metal=0.6)
+    make_mat("mat_can_green", "#2f8a4a", 0.3, metal=0.6)
+    make_mat("mat_carton_white", "#f1efe8", 0.6)
+    make_mat("mat_carton_blue", "#4673b5", 0.6)
+    make_mat("mat_egg", "#e4cfa8", 0.5)
+    make_mat("mat_egg_carton", "#a9a393", 0.95, spec=0.1)
+    make_mat("mat_curry", "#c98a2c", 0.6)
+    make_mat("mat_jar_red", "#8b2a22", 0.4)
+    make_mat("mat_tub_cream", "#efe6d0", 0.5)
+    make_mat("mat_lid_pink", "#d9708f", 0.45)
+    make_mat("mat_lid_brown", "#6b4630", 0.45)
+    make_mat("mat_lid_green", "#6aa86a", 0.45)
+    make_mat("mat_choc_wrap", "#5d2a1d", 0.35)
+    make_mat("mat_ice_tray", "#7fa6c9", 0.4)
+    make_mat("mat_ice", "#e9f4fa", 0.1, alpha=0.65, spec=0.8)
+    make_mat("mat_paratha", "#d8b777", 0.8)
+    make_mat("mat_brass", "#b8923a", 0.3, metal=1.0)
+    make_mat("mat_cork", "#b58d5c", 0.95, spec=0.1)
+    make_mat("mat_cork_dark", "#8f6a3f", 0.95, spec=0.1)
+    make_mat("mat_paper", "#f1eee3", 0.9, spec=0.1)
+    make_mat("mat_pin_red", "#c0262d", 0.3)
+    make_mat("mat_shirt_blue", "#4a6a9a", 0.9, spec=0.2)
+    make_mat("mat_shirt_check", "#8a5a4a", 0.9, spec=0.2)
+    make_mat("mat_towel", "#c9d3d6", 0.95, spec=0.1)
+
+
+def put(col, objs, name, fn, pos=(0, 0, 0), rz=0.0):
+    b = B(name, thresh=40)
+    with b.xf(T(*pos) @ Rz(rz)):
+        fn(b)
+    ob = b.finish(col)
+    ob.name = name
+    objs.append(ob)
+    return ob
+
+
+# ---- fridge ------------------------------------------------------------------------
+FR_X, FR_Y0, FR_Y1 = 0.35, -0.30, 0.35
+FR_HX, FR_HY = 0.348, -0.325          # hinge axis of both fridge doors (x, y); doors are 0.696 wide, 0.05 thick
+FR_BINS = {"fridge_door_top": [], "fridge_door_bottom": [0.36, 0.72, 1.06]}
+
+
+def fridge(col):
+    b = B("fridge")
+    W, PW, BK = "mat_paint_white", "mat_plastic_white", "mat_plastic_black"
+    t = 0.03
+    dep = FR_Y1 - FR_Y0
+    ym = (FR_Y0 + FR_Y1) / 2
+    for x in (-0.28, 0.28):
+        for y in (-0.22, 0.28):
+            b.cyl((x, y, 0.015), 0.02, 0.03, BK, seg=10)
+    for s in (-1, 1):
+        b.box((s * (FR_X - t / 2), ym, 0.915), (t, dep, 1.77), W, 0.004, 2)
+    b.box((0, FR_Y1 - t / 2, 0.915), (2 * FR_X, t, 1.77), W, 0.004, 2)
+    b.box((0, ym, 1.785), (2 * FR_X, dep, 0.03), W, 0.004, 2)
+    b.box((0, ym, 0.06), (2 * FR_X, dep, 0.06), W, 0.004, 2)
+    b.box((0, ym, 1.275), (2 * FR_X - 2 * t, dep, 0.05), W, 0.002)
+    li = 0.004
+    for z0, z1 in ((0.09, 1.25), (1.30, 1.77)):
+        h = z1 - z0
+        zc = (z0 + z1) / 2
+        for s in (-1, 1):
+            b.box((s * (0.32 - li / 2), 0.01, zc), (li, 0.62, h), PW, 0.0)
+        b.box((0, 0.32 - li / 2, zc), (0.64, li, h), PW, 0.0)
+        b.box((0, 0.01, z0 + li / 2), (0.64, 0.62, li), PW, 0.0)
+        b.box((0, 0.01, z1 - li / 2), (0.64, 0.62, li), PW, 0.0)
+    b.box((0, 0.3, 1.22), (0.12, 0.012, 0.04), "mat_plastic_white", 0.003)       # lamp cover
+    # glass shelves (front edge at y = -0.20 so the door bins clear them)
+    for zs in (0.34, 0.60, 0.86, 1.10):
+        b.box((0, 0.06, zs), (0.636, 0.52, 0.006), "mat_glass_shelf", 0.001)
+        b.box((0, -0.196, zs + 0.007), (0.636, 0.01, 0.02), PW, 0.002)
+    b.box((0, 0.06, 1.55), (0.636, 0.52, 0.008), PW, 0.002)                     # freezer shelf
+    # crisper drawer
+    cm = "mat_glass_shelf"
+    b.box((0, 0.02, 0.10), (0.60, 0.56, 0.006), cm, 0.001)
+    b.box((0, -0.26, 0.20), (0.60, 0.008, 0.2), cm, 0.001)
+    b.box((0, 0.29, 0.20), (0.60, 0.008, 0.2), cm, 0.001)
+    for s in (-1, 1):
+        b.box((s * 0.296, 0.015, 0.20), (0.008, 0.56, 0.2), cm, 0.001)
+    b.box((0, -0.27, 0.27), (0.2, 0.014, 0.018), PW, 0.004)
+    return b.finish(col)
+
+
+def _pet_bottle(b, c, h=0.17, r=0.032):
+    x, y, z = c
+    b.cyl((x, y, z + h / 2), r, h, "mat_pet", seg=14)
+    b.cyl((x, y, z + h + 0.0125), r, 0.025, "mat_pet", seg=14, r2=0.0145)
+    b.cyl((x, y, z + h + 0.031), 0.0145, 0.012, "mat_pet", seg=10)
+    b.cyl((x, y, z + h + 0.044), 0.0165, 0.014, "mat_cap_blue", seg=10)
+    b.cyl((x, y, z + h * 0.5), r + 0.0006, h * 0.38, "mat_plastic_white", seg=14)
+
+
+def _can(b, c, mat, r=0.033, h=0.122):
+    x, y, z = c
+    b.cyl((x, y, z + h / 2), r, h, mat, seg=16)
+    b.cyl((x, y, z + h - 0.002), r * 0.9, 0.004, "mat_metal_brushed", seg=16)
+    b.cyl((x, y, z + 0.0015), r * 0.92, 0.003, "mat_metal_brushed", seg=16)
+    b.box((x, y, z + h + 0.0005), (0.012, 0.008, 0.002), "mat_metal_brushed", 0.0005)
+
+
+def _fridge_door(col, name, zc, h, handle_z, handle_len):
+    b = B(name)
+    W, PW = "mat_paint_white", "mat_plastic_white"
+    with b.xf(T(-FR_HX, -FR_HY, 0)):
+        b.box((0, -0.325, zc), (0.696, 0.05, h), W, 0.008, 3)
+        handle_v(b, -0.29, -0.35, handle_z, handle_len, stand=0.03)
+        gz0, gz1 = zc - h / 2 + 0.016, zc + h / 2 - 0.016
+        gm = "mat_gasket"
+        for s in (-1, 1):
+            b.box((s * 0.322, -0.2985, zc), (0.02, 0.006, gz1 - gz0), gm, 0.001)
+        for z in (gz0, gz1):
+            b.box((0, -0.2985, z), (0.664, 0.006, 0.02), gm, 0.001)
+        for zb in FR_BINS[name]:
+            b.box((-0.02, -0.2625, zb), (0.55, 0.075, 0.006), "mat_glass_shelf", 0.001)
+            b.box((-0.02, -0.2265, zb + 0.032), (0.55, 0.006, 0.062), "mat_glass_shelf", 0.001)
+            for s in (-1, 1):
+                b.box((-0.02 + s * 0.2735, -0.2625, zb + 0.032), (0.006, 0.075, 0.062), "mat_glass_shelf", 0.001)
+        if name == "fridge_door_bottom":
+            zb = 0.363
+            for i, x in enumerate((-0.22, -0.13, -0.04)):
+                _pet_bottle(b, (x, -0.262, zb), h=0.2, r=0.034)
+            for i, (x, m) in enumerate(((0.06, "mat_can_blue"), (0.13, "mat_can_green"), (0.20, "mat_can_red"))):
+                _can(b, (x, -0.262, zb), m)
+            zj = 0.723
+            for x, m in ((-0.2, "mat_jar_red"), (-0.12, "mat_curry"), (-0.04, "mat_jar_red")):
+                b.cyl((x, -0.262, zj + 0.035), 0.028, 0.07, "mat_glass_shelf", seg=12)
+                b.cyl((x, -0.262, zj + 0.036), 0.0255, 0.05, m, seg=12)
+                b.cyl((x, -0.262, zj + 0.074), 0.029, 0.01, "mat_metal_brushed", seg=12)
+            zq = 1.063
+            for x, m in ((0.0, "mat_can_green"), (0.07, "mat_can_blue"), (0.14, "mat_can_red")):
+                _can(b, (x, -0.262, zq), m)
+        else:
+            b.box((0, -0.352, 1.80), (0.1, 0.004, 0.012), "mat_metal_brushed", 0.001)
+    return b.finish(col)
+
+
+def fridge_door_top(col):
+    return _fridge_door(col, "fridge_door_top", 1.545, 0.505, 1.38, 0.28)
+
+
+def fridge_door_bottom(col):
+    return _fridge_door(col, "fridge_door_bottom", 0.655, 1.205, 1.0, 0.5)
+
+
+def fridge_contents(col):
+    objs = []
+    zc = 0.103          # crisper floor
+    # vegetables in the crisper
+    for i, (x, y) in enumerate([(-0.24, -0.15), (-0.17, -0.15), (-0.10, -0.15), (-0.22, -0.08), (-0.15, -0.08), (-0.08, -0.07)]):
+        def tom(b):
+            b.sphere((0, 0, 0.029), 0.033, "mat_tomato", scale=(1, 1, 0.86), u=12, v=8)
+            b.sphere((0, 0, 0.0565), 0.012, "mat_curry_leaf", scale=(1, 1, 0.3), u=7, v=4)
+        put(col, objs, "Tomato_%d" % (i + 1), tom, (x, y, zc))
+    for i, (x, y) in enumerate([(0.0, -0.15), (0.09, -0.15), (0.02, -0.06), (0.11, -0.07)]):
+        def onion(b):
+            b.sphere((0, 0, 0.036), 0.04, "mat_onion", scale=(1, 1, 0.9), u=12, v=8)
+            b.cyl((0, 0, 0.074), 0.005, 0.02, "mat_onion", seg=6, r2=0.0015)
+        put(col, objs, "Onion_%d" % (i + 1), onion, (x, y, zc), rz=i * 40)
+
+    def chillies(b):
+        for k in range(7):
+            yaw = math.radians(-30 + k * 10)
+            L = 0.09 + 0.01 * (k % 3)
+            pts = []
+            for s in range(6):
+                t_ = s / 5
+                pts.append(V((L * t_ * math.cos(yaw) - 0.012 * math.sin(math.pi * t_) * math.sin(yaw),
+                              L * t_ * math.sin(yaw) + 0.012 * math.sin(math.pi * t_) * math.cos(yaw), 0.006 + 0.0035 * (k % 2))))
+            for s in range(5):
+                b.rod(pts[s], pts[s + 1], 0.0058 - 0.0009 * s, "mat_chilli", 6)
+            b.cyl(pts[0] - V((0.003, 0, 0)), 0.0065, 0.005, "mat_curry_leaf", seg=6)
+    put(col, objs, "GreenChillies", chillies, (0.17, -0.14, zc))
+
+    def cucumber(b):
+        pts = [V((-0.11 + 0.22 * s / 8, 0.012 * math.sin(math.pi * s / 8), 0.02)) for s in range(9)]
+        for s in range(8):
+            b.rod(pts[s], pts[s + 1], 0.02 if 0 < s < 7 else 0.017, "mat_cucumber", 10)
+        b.sphere(pts[0], 0.017, "mat_cucumber", u=9, v=6)
+        b.sphere(pts[-1], 0.017, "mat_cucumber", u=9, v=6)
+    put(col, objs, "Cucumber", cucumber, (-0.12, 0.06, zc))
+
+    def carrot_bag(b):
+        b.box((0, 0, 0.035), (0.21, 0.1, 0.07), "mat_cellophane", 0.012, 2)
+        for k in range(6):
+            yy = -0.028 + 0.0112 * k
+            zz = 0.022 + 0.018 * (k % 2)
+            b.cyl((0.0, yy, zz), 0.015, 0.19, "mat_carrot", axis="x", seg=8, r2=0.003)
+        b.cyl((0.112, 0, 0.035), 0.01, 0.025, "mat_ribbon", axis="x", seg=8, r2=0.004)
+    put(col, objs, "CarrotBag", carrot_bag, (0.17, 0.17, zc), rz=8)
+
+    def curry(b):
+        for k in range(7):
+            ang = math.radians(-24 + 8 * k)
+            ca, sa = math.cos(ang), math.sin(ang)
+            b.rod((0, 0, 0.012), (0.16 * ca, 0.16 * sa, 0.012), 0.0016, "mat_curry_leaf", 4)
+            for j in range(5):
+                tt = 0.32 + 0.14 * j
+                px, py = 0.16 * tt * ca, 0.16 * tt * sa
+                for sd in (-1, 1):
+                    b.sphere((px - sd * 0.011 * sa, py + sd * 0.011 * ca, 0.016), 0.011, "mat_curry_leaf",
+                             scale=(1.0, 0.5, 0.22), u=6, v=4, rot=Rz(math.degrees(ang) + sd * 38))
+        b.cyl((0.012, 0, 0.013), 0.007, 0.014, "mat_ribbon", axis="x", seg=8)
+    put(col, objs, "CurryLeaves", curry, (-0.28, 0.2, zc))
+
+    # shelf at 0.60 (top 0.603): milk, a takeaway tub, two water bottles
+    def milk(b):
+        b.box((0, 0, 0.085), (0.07, 0.07, 0.17), "mat_carton_white", 0.002)
+        b.box((0, 0, 0.075), (0.0712, 0.0712, 0.05), "mat_carton_blue", 0.0)
+        b.prism([(-0.035, 0.17), (0.035, 0.17), (0.0, 0.215)], -0.035, 0.035, "mat_carton_white")
+        b.box((0, 0, 0.221), (0.07, 0.01, 0.012), "mat_carton_white", 0.002)
+        b.cyl((0.0, -0.012, 0.201), 0.011, 0.012, "mat_cap_blue", seg=10, rot=Rx(-28))
+    put(col, objs, "MilkCarton", milk, (-0.22, 0.12, 0.603))
+
+    def takeaway(b):
+        b.box((0, 0, 0.0225), (0.17, 0.12, 0.045), "mat_plastic_black", 0.005)
+        b.box((0, 0, 0.041), (0.15, 0.1, 0.012), "mat_curry", 0.003)
+        b.box((0, 0, 0.0535), (0.176, 0.126, 0.012), "mat_cellophane", 0.004)
+    put(col, objs, "TakeawayContainer", takeaway, (0.05, -0.03, 0.603), rz=6)
+    for i, (x, y) in enumerate(((-0.05, 0.2), (0.03, 0.2))):
+        put(col, objs, "WaterBottle_%d" % (i + 1), lambda b: _pet_bottle(b, (0, 0, 0)), (x, y, 0.603))
+    # shelf at 0.86 (top 0.863): eggs, a lone bottle
+    def eggs(b):
+        b.box((0, 0, 0.012), (0.19, 0.10, 0.024), "mat_egg_carton", 0.004)
+        for i in range(3):
+            for j in range(2):
+                b.sphere(((i - 1) * 0.058, (j - 0.5) * 0.048, 0.042), 0.022, "mat_egg", scale=(1, 1, 1.28), u=10, v=7)
+        with b.xf(T(0, 0.05, 0.024) @ Rx(-100)):
+            b.box((0, -0.05, 0.002), (0.19, 0.10, 0.004), "mat_egg_carton", 0.002)
+    put(col, objs, "EggCarton", eggs, (-0.1, 0.06, 0.863))
+    put(col, objs, "WaterBottle_3", lambda b: _pet_bottle(b, (0, 0, 0)), (0.2, 0.14, 0.863))
+    put(col, objs, "WaterBottle_4", lambda b: _pet_bottle(b, (0, 0, 0)), (0.27, 0.14, 0.863))
+    # top shelf at 1.10 (top 1.103): soda cans
+    mats = ["mat_can_red", "mat_can_blue", "mat_can_green"]
+    for i in range(6):
+        x = -0.24 + 0.07 * (i % 6)
+        put(col, objs, "SodaCan_%d" % (i + 1), (lambda m: (lambda b: _can(b, (0, 0, 0), m)))(mats[i % 3]), (x, 0.1, 1.103))
+    for i in range(3):
+        put(col, objs, "SodaCan_%d" % (i + 7), (lambda m: (lambda b: _can(b, (0, 0, 0), m)))(mats[(i + 1) % 3]), (-0.2 + 0.07 * i, 0.19, 1.103))
+
+    # ---- freezer: floor top 1.304, shelf top 1.554
+    zf = 1.304
+    for i, (x, lid) in enumerate(((-0.2, "mat_lid_pink"), (-0.03, "mat_lid_brown"))):
+        def tub(b, lid=lid):
+            b.cyl((0, 0, 0.055), 0.075, 0.11, "mat_tub_cream", seg=20, r2=0.085)
+            b.cyl((0, 0, 0.104), 0.086, 0.012, lid, seg=20)
+            b.cyl((0, 0, 0.056), 0.0762, 0.05, lid, seg=20, r2=0.0795)
+        put(col, objs, "IceCreamTub_%d" % (i + 1), tub, (x, 0.08, zf))
+
+    def paratha(b):
+        b.box((0, 0, 0.0225), (0.22, 0.2, 0.045), "mat_cellophane", 0.012, 2)
+        for k in range(5):
+            b.cyl((0, 0, 0.01 + 0.0075 * k), 0.085, 0.007, "mat_paratha", seg=20)
+        for s in (-1, 1):
+            b.box((s * 0.108, 0, 0.0225), (0.008, 0.2, 0.03), "mat_plastic_white", 0.001)
+        b.box((0, 0, 0.0452), (0.12, 0.08, 0.001), "mat_plastic_white", 0.0)
+    put(col, objs, "ParathaPack", paratha, (0.19, 0.04, zf))
+
+    for i in range(5):
+        def bar(b):
+            b.box((0, 0, 0.0055), (0.16, 0.07, 0.011), "mat_choc_wrap", 0.002)
+            b.box((0, 0, 0.0095), (0.165, 0.02, 0.0045), "mat_ribbon", 0.0005)
+        put(col, objs, "ChocolateBar_%d" % (i + 1), bar, (-0.2 + 0.01 * (i % 2), 0.0 + 0.003 * i, 1.554 + 0.012 * i), rz=-6 + 3 * i)
+    for i in range(2):
+        def tray(b, full=(i == 0)):
+            b.box((0, 0, 0.012), (0.24, 0.11, 0.024), "mat_ice_tray", 0.004)
+            b.box((0, 0, 0.0245), (0.225, 0.095, 0.002), "mat_plastic_white", 0.0)
+            if full:
+                for a in range(6):
+                    for c in range(2):
+                        b.box(((a - 2.5) * 0.036, (c - 0.5) * 0.04, 0.03), (0.029, 0.029, 0.014), "mat_ice", 0.004)
+        put(col, objs, "IceTray_%d" % (i + 1), tray, (0.15, 0.12, 1.554 + 0.026 * i), rz=2)
+    return objs
+
+
+# ---- wardrobe ----------------------------------------------------------------------
+WD_HX, WD_HY = 0.446, -0.241          # door hinge axes (x = +-0.446, y)
+
+
+def _hung(b, x, ln, mat, kind="shirt", rail=1.66):
+    MET = "mat_metal_brushed"
+    with b.xf(T(x, 0, rail)):
+        b.rod((0, 0, 0.0), (0, 0, -0.03), 0.0012, MET, 4)
+        b.rod((0, -0.2, -0.075), (0, 0, -0.03), 0.0015, MET, 4)
+        b.rod((0, 0.2, -0.075), (0, 0, -0.03), 0.0015, MET, 4)
+        b.rod((0, -0.2, -0.075), (0, 0.2, -0.075), 0.0015, MET, 4)
+        if kind == "trousers":
+            for s in (-1, 1):
+                b.box((0, s * 0.085, -0.08 - ln / 2), (0.03, 0.15, ln), mat, 0.006, 2)
+        else:
+            b.box((0, 0, -0.085 - ln / 2), (0.034, 0.36, ln), mat, 0.007, 2)
+            b.box((0, 0, -0.095), (0.036, 0.43, 0.05), mat, 0.01, 2)
+            for s in (-1, 1):
+                b.box((0, s * 0.205, -0.085 - ln * 0.4), (0.03, 0.07, ln * 0.8), mat, 0.008, 2)
+
+
+def wardrobe(col):
+    b = B("wardrobe")
+    WD, BK = "mat_wood_oak", "mat_plastic_black"
+    b.box((0, 0.0, 0.05), (0.88, 0.46, 0.1), BK, 0.0)
+    b.box((0, 0.01, 0.35), (0.9, 0.48, 0.5), WD, 0.003)                     # lower block (drawers)
+    for s in (-1, 1):
+        b.box((s * 0.44, 0.01, 1.18), (0.02, 0.48, 1.16), WD, 0.002)
+    b.box((0, 0.245, 1.18), (0.9, 0.01, 1.16), WD, 0.002)
+    b.box((0, 0.01, 0.605), (0.86, 0.48, 0.01), WD, 0.002)
+    b.box((0, 0, 1.78), (0.92, 0.5, 0.04), WD, 0.004)
+    yf = -0.25
+    b.box((0, yf + 0.009, 0.4), (0.89, 0.018, 0.17), WD, 0.003, 2)
+    b.box((0, yf + 0.009, 0.595), (0.89, 0.014, 0.004), BK, 0.0)
+    handle_h(b, 0, yf, 0.44, 0.14, stand=0.02)
+    # inside: rail and clothes
+    b.cyl((0, 0.0, 1.66), 0.008, 0.86, "mat_metal_brushed", axis="x", seg=10)
+    cols = ["mat_shirt_blue", "mat_paint_white", "mat_shirt_check", "mat_duvet", "mat_fabric", "mat_denim", "mat_leather_dark", "mat_shirt_blue", "mat_fabric", "mat_paint_white"]
+    xs = [-0.38 + 0.062 * i for i in range(10)]
+    kinds = ["shirt", "shirt", "shirt", "shirt", "jacket", "trousers", "jacket", "shirt", "trousers", "shirt"]
+    for x, m, k in zip(xs, cols, kinds):
+        _hung(b, x, {"shirt": 0.62, "jacket": 0.78, "trousers": 0.5}[k], m, k)
+    # on the floor of the hanging space: towels and two pairs of shoes
+    for i in range(3):
+        b.box((-0.28, 0.1, 0.62 + 0.034 * i + 0.017), (0.3, 0.3, 0.032), "mat_towel", 0.012, 2)
+    for x in (0.12, 0.3):
+        for y in (-0.05, 0.1):
+            b.box((x, y, 0.64), (0.09, 0.26, 0.05), "mat_leather_dark", 0.012, 2)
+    return b.finish(col)
+
+
+def _wardrobe_door(col, name, side):
+    b = B(name)
+    WD, MET = "mat_wood_oak", "mat_metal_brushed"
+    d = -side                     # leaf extends from the hinge toward the centre
+    b.box((d * 0.225, 0, 1.19), (0.442, 0.018, 1.18), WD, 0.003, 2)
+    handle_v(b, d * 0.40, -0.009, 1.19, 0.2, stand=0.02)
+    for z in (0.8, 1.2, 1.6):
+        b.cyl((0, -0.009, z), 0.005, 0.06, MET, seg=8)
+    return b.finish(col)
+
+
+def wardrobe_door_l(col):
+    return _wardrobe_door(col, "wardrobe_door_l", -1)
+
+
+def wardrobe_door_r(col):
+    return _wardrobe_door(col, "wardrobe_door_r", 1)
+
+
+# ---- bathroom + kitchen fittings -----------------------------------------------------
+def tap_lever(col):
+    """Single lever; origin = pivot. The arm points to -Y (Godot +Z); lift it (rotate about X) to turn the water on."""
+    b = B("tap_lever")
+    MET = "mat_metal_brushed"
+    b.cyl((0, 0, 0), 0.0095, 0.022, MET, axis="x", seg=12)
+    b.rod((0, 0, 0), (0, -0.075, 0), 0.0055, MET, 8)
+    b.sphere((0, -0.078, 0), 0.009, MET, u=10, v=7)
+    return b.finish(col)
+
+
+def bath_faucet(col):
+    """Basin mixer for a vessel sink: base at the origin, spout reaches toward -Y, tip at (0, -0.18, 0.135)."""
+    b = B("bath_faucet")
+    MET = "mat_metal_brushed"
+    b.cyl((0, 0, 0.006), 0.03, 0.012, MET, seg=20)
+    b.cyl((0, 0, 0.09), 0.015, 0.16, MET, seg=14)
+    pts = [V((0, -0.09 + 0.09 * math.cos(math.radians(a)), 0.17 + 0.045 * math.sin(math.radians(a)))) for a in range(0, 181, 22)]
+    pts[-1] = V((0, -0.18, 0.17))
+    for p0, p1 in zip(pts[:-1], pts[1:]):
+        b.rod(p0, p1, 0.0115, MET, 10)
+    b.rod(pts[-1], V((0, -0.18, 0.135)), 0.0125, MET, 10)
+    b.cyl((0, -0.18, 0.133), 0.0105, 0.004, "mat_plastic_black", seg=10)
+    return b.finish(col)
+
+
+def bath_basin(col):
+    """Vessel sink bowl, 0.34 m across, 0.12 m tall. Origin = bottom centre."""
+    b = B("bath_basin", thresh=50)
+    prof = [(0.065, 0.0), (0.09, 0.004), (0.125, 0.02), (0.155, 0.06), (0.168, 0.105), (0.17, 0.118), (0.162, 0.12),
+            (0.155, 0.108), (0.14, 0.07), (0.1, 0.035), (0.05, 0.026), (0.0, 0.025)]
+    n = len(prof)
+
+    def fn(u, v):
+        k = v * (n - 1)
+        i = min(int(k), n - 2)
+        f = k - i
+        r = prof[i][0] * (1 - f) + prof[i + 1][0] * f
+        z = prof[i][1] * (1 - f) + prof[i + 1][1] * f
+        a = 2 * math.pi * u
+        return (r * math.cos(a), r * math.sin(a), z)
+    b.surf(fn, 36, n, "mat_ceramic", cu=True)
+    b.cyl((0, 0, 0.0265), 0.02, 0.003, "mat_metal_brushed", seg=14)
+    b.cyl((0, 0, 0.0285), 0.011, 0.002, "mat_plastic_black", seg=10)
+    return b.finish(col)
+
+
+def toilet_seat(col):
+    b = B("toilet_seat", thresh=50)
+    ro, ri = (0.185, 0.215), (0.115, 0.155)
+    before = set(b.bm.faces)
+
+    def fn(u, v):
+        a = 2 * math.pi * u
+        return ((ri[0] + (ro[0] - ri[0]) * v) * math.cos(a), (ri[1] + (ro[1] - ri[1]) * v) * math.sin(a), 0.03)
+    b.surf(fn, 40, 2, "mat_plastic_white", cu=True)
+    b.solidify(before, -0.028)
+    for s in (-1, 1):
+        b.cyl((s * 0.08, 0.2, 0.034), 0.012, 0.01, "mat_metal_brushed", seg=10)
+    return b.finish(col)
+
+
+def flush_button(col):
+    b = B("flush_button")
+    b.cyl((0, 0, 0.003), 0.036, 0.006, "mat_metal_brushed", seg=24)
+    b.cyl((0, 0, 0.011), 0.026, 0.01, "mat_plastic_white", seg=24, bevel=0.003)
+    return b.finish(col)
+
+
+def mirror_frame(col):
+    """Frame + dark backing for a 0.50 x 0.70 m mirror. Origin = bottom centre of the back plane; front = -Y."""
+    b = B("mirror_frame")
+    MET, BK = "mat_metal_brushed", "mat_plastic_black"
+    ow, oh, fw, d = 0.56, 0.76, 0.03, 0.02
+    b.box((0, -d / 2, fw / 2), (ow, d, fw), MET, 0.003)
+    b.box((0, -d / 2, oh - fw / 2), (ow, d, fw), MET, 0.003)
+    for s in (-1, 1):
+        b.box((s * (ow / 2 - fw / 2), -d / 2, oh / 2), (fw, d, oh - 2 * fw), MET, 0.003)
+    b.box((0, -0.002, oh / 2), (ow - 0.02, 0.004, oh - 0.02), BK, 0.0)
+    return b.finish(col)
+
+
+# ---- keys ---------------------------------------------------------------------------
+def car_keys(col):
+    """A key fob and two keys on a ring, lying flat. Origin = bottom centre of the ring."""
+    b = B("car_keys", thresh=40)
+    MET, BR, BK = "mat_metal_brushed", "mat_brass", "mat_plastic_black"
+    n = 18
+    for k in range(n):
+        a0, a1 = 2 * math.pi * k / n, 2 * math.pi * (k + 1) / n
+        b.rod((0.018 * math.cos(a0), 0.018 * math.sin(a0), 0.006), (0.018 * math.cos(a1), 0.018 * math.sin(a1), 0.006), 0.0014, MET, 5)
+    b.box((0, 0.04, 0.006), (0.034, 0.062, 0.012), BK, 0.005, 2)
+    for i, y in enumerate((0.03, 0.043, 0.056)):
+        b.box((0, y, 0.0125), (0.012 if i != 1 else 0.016, 0.009, 0.002), "mat_plastic_white", 0.0005)
+    for ang, m in ((-24, MET), (22, BR)):
+        with b.xf(T(0, -0.014, 0.0035) @ Rz(ang)):
+            b.cyl((0, -0.012, 0), 0.0115, 0.003, m, seg=14)
+            b.box((0, -0.045, 0), (0.0095, 0.052, 0.003), m, 0.0005)
+            for j in range(4):
+                b.box((0.0065 * (1 if j % 2 else -1), -0.034 - 0.009 * j, 0), (0.005, 0.004, 0.003), m, 0.0004)
+    return b.finish(col)
+
+
+# ---- pin board ----------------------------------------------------------------------
+def pin_board(col):
+    """Cork board, 0.90 x 0.60 m, 0.03 m deep. Origin = bottom centre, y = 0 mid-depth (back at +0.015), front = -Y."""
+    b = B("pin_board", thresh=40)
+    WD = "mat_wood_oak"
+    w, h, d, f = 0.9, 0.6, 0.03, 0.03
+    b.box((0, 0, f / 2), (w, d, f), WD, 0.003)
+    b.box((0, 0, h - f / 2), (w, d, f), WD, 0.003)
+    for s in (-1, 1):
+        b.box((s * (w / 2 - f / 2), 0, h / 2), (f, d, h - 2 * f), WD, 0.003)
+    b.box((0, 0.0, h / 2), (w - 2 * f + 0.002, 0.02, h - 2 * f + 0.002), "mat_cork", 0.0)
+    rnd = random.Random(7)
+    y = -0.0101
+    for i in range(160):
+        cx = rnd.uniform(-w / 2 + f + 0.01, w / 2 - f - 0.01)
+        cz = rnd.uniform(f + 0.01, h - f - 0.01)
+        s = rnd.uniform(0.003, 0.009)
+        b.quad([(cx - s, y, cz - s), (cx + s, y, cz - s), (cx + s, y, cz + s), (cx - s, y, cz + s)], "mat_cork_dark")
+    return b.finish(col)
+
+
+def pin_card(col):
+    """A blank index card with a red pin. Origin = card centre; front = -Y."""
+    b = B("pin_card", thresh=40)
+    b.box((0, 0, 0), (0.12, 0.002, 0.08), "mat_paper", 0.0005)
+    b.sphere((0, -0.0055, 0.03), 0.0055, "mat_pin_red", u=10, v=7)
+    b.cyl((0, -0.0025, 0.03), 0.0012, 0.006, "mat_metal_brushed", axis="y", seg=6)
+    return b.finish(col)
+
+
+# --------------------------------------------------------------------------------------
 # Driver
 # --------------------------------------------------------------------------------------
 ASSETS = [
@@ -1052,9 +1531,15 @@ ASSETS = [
     "door_interior", "door_front", "window_frame", "window_blinds", "skirting_1m", "ceiling_light", "light_switch",
     "duffel_open", "duffel_zipped", "sweets_box", "diya", "diyas_packet", "radio_gift", "laptop",
     "whiteboard", "frame_graduation", "frame_nila",
+    "door_interior_slab", "door_front_slab", "fridge_door_top", "fridge_door_bottom",
+    "wardrobe_door_l", "wardrobe_door_r", "tap_lever", "bath_faucet", "bath_basin", "toilet_seat",
+    "flush_button", "mirror_frame", "car_keys", "pin_board", "pin_card",
 ]
+GROUPS = {"fridge_contents": "fridge_contents"}   # one glb holding many named mesh objects, already placed in the fridge frame
 SMALL = {"duffel_open", "duffel_zipped", "sweets_box", "diya", "diyas_packet", "radio_gift", "laptop",
-         "whiteboard", "frame_graduation", "frame_nila", "light_switch", "ceiling_light", "skirting_1m"}
+         "whiteboard", "frame_graduation", "frame_nila", "light_switch", "ceiling_light", "skirting_1m",
+         "tap_lever", "bath_faucet", "bath_basin", "toilet_seat", "flush_button", "mirror_frame", "car_keys", "pin_board", "pin_card",
+         "wardrobe_door_l", "wardrobe_door_r", "fridge_door_top", "fridge_door_bottom", "door_interior_slab", "door_front_slab"}
 
 
 def stats(ob):
@@ -1079,6 +1564,7 @@ def export(ob, path):
 def main():
     bpy.ops.wm.read_factory_settings(use_empty=True)
     build_materials()
+    extra_materials()
     os.makedirs(OUT_GLB, exist_ok=True)
     os.makedirs(os.path.dirname(OUT_BLEND), exist_ok=True)
     sc = bpy.context.scene
@@ -1098,6 +1584,23 @@ def main():
         path = os.path.join(OUT_GLB, ob.name + ".glb")
         export(ob, path)
         report.append((ob.name, tris, mx - mn, mn, mx, [m.name for m in ob.data.materials], os.path.getsize(path)))
+    for gname, fnname in GROUPS.items():
+        gobs = globals()[fnname](col)
+        bpy.ops.object.select_all(action="DESELECT")
+        for o in gobs:
+            o.select_set(True)
+        bpy.context.view_layer.objects.active = gobs[0]
+        gpath = os.path.join(OUT_GLB, gname + ".glb")
+        bpy.ops.export_scene.gltf(filepath=gpath, export_format="GLB", use_selection=True, export_apply=True,
+                                  export_yup=True, export_cameras=False, export_lights=False, export_animations=False,
+                                  export_materials="EXPORT")
+        tris = sum(stats(o)[0] for o in gobs)
+        mn = V((min(stats(o)[1].x for o in gobs), min(stats(o)[1].y for o in gobs), min(stats(o)[1].z for o in gobs)))
+        mx = V((max(stats(o)[2].x for o in gobs), max(stats(o)[2].y for o in gobs), max(stats(o)[2].z for o in gobs)))
+        report.append((gname + " (%d objects)" % len(gobs), tris, mx - mn, mn, mx,
+                       sorted({m.name for o in gobs for m in o.data.materials}), os.path.getsize(gpath)))
+        for o in gobs:
+            o.location = (-3.0, 0.0, 0.0)   # parked beside the rows in the .blend
     # lay out in rows for the .blend (after export; exported files are at the origin)
     x = y = rowh = 0.0
     for ob in objs:

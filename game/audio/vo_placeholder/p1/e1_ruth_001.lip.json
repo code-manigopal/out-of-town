@@ -1,61 +1,71 @@
 {
 "line_id": "e1_ruth_001",
-"source_hash": "6b116616080c92c7",
-"duration": 1.21,
+"source_hash": "e5afea7a64458a37",
+"duration": 2.42,
 "mouthCues": [
 {
 "start": 0.0,
-"end": 0.03,
+"end": 0.17,
 "value": "X"
 },
 {
-"start": 0.03,
-"end": 0.09,
+"start": 0.17,
+"end": 0.24,
 "value": "B"
 },
 {
-"start": 0.09,
-"end": 0.22,
-"value": "F"
+"start": 0.24,
+"end": 0.3,
+"value": "A"
 },
 {
-"start": 0.22,
-"end": 0.29,
-"value": "B"
-},
-{
-"start": 0.29,
+"start": 0.3,
 "end": 0.36,
-"value": "E"
+"value": "B"
 },
 {
 "start": 0.36,
-"end": 0.57,
-"value": "G"
-},
-{
-"start": 0.57,
-"end": 0.64,
-"value": "E"
-},
-{
-"start": 0.64,
-"end": 0.78,
-"value": "B"
-},
-{
-"start": 0.78,
-"end": 0.99,
+"end": 0.42,
 "value": "C"
 },
 {
-"start": 0.99,
-"end": 1.2,
+"start": 0.42,
+"end": 0.7,
 "value": "B"
 },
 {
-"start": 1.2,
-"end": 1.21,
+"start": 0.7,
+"end": 0.77,
+"value": "E"
+},
+{
+"start": 0.77,
+"end": 0.91,
+"value": "G"
+},
+{
+"start": 0.91,
+"end": 1.05,
+"value": "F"
+},
+{
+"start": 1.05,
+"end": 1.26,
+"value": "B"
+},
+{
+"start": 1.26,
+"end": 1.47,
+"value": "C"
+},
+{
+"start": 1.47,
+"end": 1.82,
+"value": "B"
+},
+{
+"start": 1.82,
+"end": 2.42,
 "value": "X"
 }
 ]

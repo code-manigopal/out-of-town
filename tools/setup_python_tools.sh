@@ -4,7 +4,8 @@
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 [[ -x "$ROOT/tools/.venv/bin/python" ]] || /opt/homebrew/bin/python3.12 -m venv "$ROOT/tools/.venv"
-"$ROOT/tools/.venv/bin/pip" install -q mediapipe piper-tts
+command -v espeak-ng >/dev/null || brew install espeak-ng
+"$ROOT/tools/.venv/bin/pip" install -q mediapipe piper-tts kokoro soundfile
 mkdir -p "$ROOT/tools/likeness/models"
 cd "$ROOT/tools/likeness/models"
 for u in face_landmarker/face_landmarker/float16/latest/face_landmarker.task \

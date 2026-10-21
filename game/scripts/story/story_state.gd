@@ -10,6 +10,7 @@ signal trust_changed(character: String, value: int)
 signal clue_added(clue_id: String)
 signal danger_changed(new_danger: int)
 signal nila_health_changed(value: int)
+signal journal_added(entry_id: String)
 
 const TRUST_MIN: int = -3
 const TRUST_MAX: int = 3
@@ -29,6 +30,7 @@ var danger: int = 0
 var clues: Array[String] = []
 var nila_health: int = 100
 var vars: Dictionary = {}    # prototype "vars" (set / add effects)
+var journal: Array[String] = []  # journal entry ids in the order they were added
 
 
 ## Clears all state for a new playthrough of a part ("p1" or "p2").
@@ -38,6 +40,7 @@ func start_part(part_id: String) -> void:
 	flags.clear()
 	trust.clear()
 	clues.clear()
+	journal.clear()
 	vars.clear()
 	danger = 0
 	nila_health = 100
@@ -119,6 +122,25 @@ func get_proof_count() -> int:
 	return count
 
 
+# Journal (Mani's notes). Text lives in data/journal/*.json, keyed by entry id.
+## Adds an entry; false if it was already there.
+func journal_add(entry_id: String) -> bool:
+	if entry_id.is_empty() or journal.has(entry_id):
+		return false
+	journal.append(entry_id)
+	journal_added.emit(entry_id)
+	return true
+
+
+func journal_has(entry_id: String) -> bool:
+	return journal.has(entry_id)
+
+
+## Entry ids in the order they were added.
+func journal_entries() -> Array[String]:
+	return journal
+
+
 # Nila's health (story clock, 0 to 100)
 func set_nila_health(value: int) -> void:
 	var v: int = clampi(value, HEALTH_MIN, HEALTH_MAX)
@@ -195,6 +217,7 @@ func to_dict() -> Dictionary:
 		"trust": trust,
 		"danger": danger,
 		"clues": clues,
+		"journal": journal.duplicate(),
 		"nila_health": nila_health,
 		"vars": vars,
 	}
@@ -214,6 +237,9 @@ func from_dict(data: Dictionary) -> void:
 	clues.clear()
 	for c: Variant in data.get("clues", []):
 		clues.append(str(c))
+	journal.clear()
+	for j: Variant in data.get("journal", []):
+		journal.append(str(j))
 	nila_health = int(data.get("nila_health", 100))
 	vars = (data.get("vars", {}) as Dictionary).duplicate(true)
 

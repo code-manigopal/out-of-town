@@ -1,91 +1,146 @@
 {
 "line_id": "e1_tp2_002",
-"source_hash": "5913ba185b9309ba",
-"duration": 2.61,
+"source_hash": "75b81a2fb645b6fc",
+"duration": 4.59,
 "mouthCues": [
 {
 "start": 0.0,
-"end": 0.02,
+"end": 0.17,
 "value": "X"
 },
 {
-"start": 0.02,
-"end": 0.09,
-"value": "C"
-},
-{
-"start": 0.09,
-"end": 0.29,
+"start": 0.17,
+"end": 0.23,
 "value": "B"
 },
 {
-"start": 0.29,
-"end": 0.36,
+"start": 0.23,
+"end": 0.28,
+"value": "C"
+},
+{
+"start": 0.28,
+"end": 0.42,
+"value": "H"
+},
+{
+"start": 0.42,
+"end": 0.49,
+"value": "C"
+},
+{
+"start": 0.49,
+"end": 0.56,
 "value": "G"
 },
 {
-"start": 0.36,
-"end": 0.85,
+"start": 0.56,
+"end": 0.77,
+"value": "F"
+},
+{
+"start": 0.77,
+"end": 0.98,
 "value": "E"
 },
 {
-"start": 0.85,
-"end": 0.95,
-"value": "A"
-},
-{
-"start": 0.95,
-"end": 1.17,
-"value": "B"
-},
-{
-"start": 1.17,
-"end": 1.24,
-"value": "G"
-},
-{
-"start": 1.24,
-"end": 1.45,
-"value": "F"
-},
-{
-"start": 1.45,
-"end": 1.53,
-"value": "A"
-},
-{
-"start": 1.53,
-"end": 1.59,
-"value": "B"
-},
-{
-"start": 1.59,
-"end": 1.64,
+"start": 0.98,
+"end": 1.05,
 "value": "C"
 },
 {
-"start": 1.64,
-"end": 1.85,
+"start": 1.05,
+"end": 1.33,
 "value": "B"
 },
 {
-"start": 1.85,
-"end": 2.06,
+"start": 1.33,
+"end": 1.47,
+"value": "G"
+},
+{
+"start": 1.47,
+"end": 1.54,
+"value": "E"
+},
+{
+"start": 1.54,
+"end": 1.75,
 "value": "F"
 },
 {
-"start": 2.06,
-"end": 2.14,
+"start": 1.75,
+"end": 1.85,
 "value": "A"
 },
 {
-"start": 2.14,
-"end": 2.58,
+"start": 1.85,
+"end": 1.95,
 "value": "B"
 },
 {
-"start": 2.58,
-"end": 2.61,
+"start": 1.95,
+"end": 2.02,
+"value": "F"
+},
+{
+"start": 2.02,
+"end": 2.09,
+"value": "B"
+},
+{
+"start": 2.09,
+"end": 2.23,
+"value": "C"
+},
+{
+"start": 2.23,
+"end": 2.44,
+"value": "B"
+},
+{
+"start": 2.44,
+"end": 3.25,
+"value": "X"
+},
+{
+"start": 3.25,
+"end": 3.43,
+"value": "F"
+},
+{
+"start": 3.43,
+"end": 3.52,
+"value": "A"
+},
+{
+"start": 3.52,
+"end": 3.59,
+"value": "B"
+},
+{
+"start": 3.59,
+"end": 3.65,
+"value": "C"
+},
+{
+"start": 3.65,
+"end": 3.73,
+"value": "A"
+},
+{
+"start": 3.73,
+"end": 3.94,
+"value": "C"
+},
+{
+"start": 3.94,
+"end": 4.15,
+"value": "B"
+},
+{
+"start": 4.15,
+"end": 4.59,
 "value": "X"
 }
 ]

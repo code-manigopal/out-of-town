@@ -1,66 +1,126 @@
 {
 "line_id": "e1_victor_001",
-"source_hash": "9d31d829ef959a37",
-"duration": 1.98,
+"source_hash": "7c63c6124447e006",
+"duration": 5.11,
 "mouthCues": [
 {
 "start": 0.0,
-"end": 0.05,
+"end": 0.4,
 "value": "X"
 },
 {
-"start": 0.05,
-"end": 0.14,
+"start": 0.4,
+"end": 0.53,
 "value": "B"
 },
 {
-"start": 0.14,
-"end": 0.28,
+"start": 0.53,
+"end": 0.6,
 "value": "E"
 },
 {
-"start": 0.28,
-"end": 0.35,
-"value": "G"
+"start": 0.6,
+"end": 0.68,
+"value": "A"
 },
 {
-"start": 0.35,
-"end": 0.42,
-"value": "B"
+"start": 0.68,
+"end": 0.84,
+"value": "F"
 },
 {
-"start": 0.42,
-"end": 0.7,
-"value": "E"
-},
-{
-"start": 0.7,
-"end": 1.33,
-"value": "B"
-},
-{
-"start": 1.33,
-"end": 1.4,
+"start": 0.84,
+"end": 0.91,
 "value": "C"
 },
 {
-"start": 1.4,
-"end": 1.47,
+"start": 0.91,
+"end": 1.12,
 "value": "B"
 },
 {
-"start": 1.47,
-"end": 1.61,
+"start": 1.12,
+"end": 1.99,
+"value": "X"
+},
+{
+"start": 1.99,
+"end": 2.08,
+"value": "B"
+},
+{
+"start": 2.08,
+"end": 2.22,
+"value": "C"
+},
+{
+"start": 2.22,
+"end": 2.29,
+"value": "B"
+},
+{
+"start": 2.29,
+"end": 2.43,
+"value": "C"
+},
+{
+"start": 2.43,
+"end": 2.5,
 "value": "E"
 },
 {
-"start": 1.61,
-"end": 1.96,
+"start": 2.5,
+"end": 2.71,
 "value": "B"
 },
 {
-"start": 1.96,
-"end": 1.98,
+"start": 2.71,
+"end": 3.57,
+"value": "X"
+},
+{
+"start": 3.57,
+"end": 3.65,
+"value": "A"
+},
+{
+"start": 3.65,
+"end": 3.74,
+"value": "B"
+},
+{
+"start": 3.74,
+"end": 3.87,
+"value": "A"
+},
+{
+"start": 3.87,
+"end": 3.93,
+"value": "F"
+},
+{
+"start": 3.93,
+"end": 4.34,
+"value": "B"
+},
+{
+"start": 4.34,
+"end": 4.41,
+"value": "D"
+},
+{
+"start": 4.41,
+"end": 4.57,
+"value": "A"
+},
+{
+"start": 4.57,
+"end": 4.75,
+"value": "B"
+},
+{
+"start": 4.75,
+"end": 5.11,
 "value": "X"
 }
 ]

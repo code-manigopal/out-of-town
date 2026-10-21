@@ -1,46 +1,66 @@
 {
 "line_id": "e1_call_002",
-"source_hash": "bd87ac79b943f570",
-"duration": 0.78,
+"source_hash": "f339d16232d6f0c4",
+"duration": 1.87,
 "mouthCues": [
 {
 "start": 0.0,
-"end": 0.04,
+"end": 0.41,
 "value": "X"
 },
 {
-"start": 0.04,
-"end": 0.23,
-"value": "B"
-},
-{
-"start": 0.23,
-"end": 0.31,
-"value": "A"
-},
-{
-"start": 0.31,
-"end": 0.35,
-"value": "B"
-},
-{
-"start": 0.35,
+"start": 0.41,
 "end": 0.53,
-"value": "C"
+"value": "B"
 },
 {
 "start": 0.53,
-"end": 0.61,
+"end": 0.6,
+"value": "D"
+},
+{
+"start": 0.6,
+"end": 0.68,
 "value": "A"
 },
 {
-"start": 0.61,
-"end": 0.77,
+"start": 0.68,
+"end": 0.89,
+"value": "F"
+},
+{
+"start": 0.89,
+"end": 0.96,
 "value": "B"
 },
 {
-"start": 0.77,
-"end": 0.78,
+"start": 0.96,
+"end": 1.04,
+"value": "A"
+},
+{
+"start": 1.04,
+"end": 1.2,
+"value": "C"
+},
+{
+"start": 1.2,
+"end": 1.3,
+"value": "A"
+},
+{
+"start": 1.3,
+"end": 1.35,
+"value": "C"
+},
+{
+"start": 1.35,
+"end": 1.53,
+"value": "B"
+},
+{
+"start": 1.53,
+"end": 1.87,
 "value": "X"
 }
 ]

@@ -38,6 +38,8 @@ Project settings: **Jolt Physics** is the 3D physics engine; Godot's own `.blend
 | MediaPipe | 1.1.1 | Apache-2.0 | `tools/.venv` (Python 3.12, gitignored) | Face landmarks for likeness fitting; Pose for motion capture from phone video |
 | ffmpeg | 9.0.2 | LGPL/GPL (tool) | `brew install ffmpeg` | Audio filters (phone, radio, video call), encoding to Ogg |
 | Piper TTS | 1.8.0 | GPL-3.0 (tool) | `tools/.venv` (`pip install piper-tts`) | **Placeholder** voice lines for timing; never shipped |
+| Kokoro | 0.9.4 (model Kokoro-82M) | Apache-2.0 | `tools/.venv` + `tools/voice/models/kokoro/` (gitignored, ~319 MB) | **Default placeholder VO**; Hindi voices + `tools/voice/tanglish.py` phonemes for the Tamil family, English voices for others; never final VO |
+| espeak-ng | latest | GPL (tool) | `brew install espeak-ng` | Fallback phonemes for Kokoro |
 | Piper voice LibriTTS-R medium | — | CC BY 4.0 (dataset) | `tools/voice/models/` (gitignored, ~79 MB) | Multi-speaker placeholder voices, one speaker id per character |
 
 Recreate the Python environment and download the MediaPipe models (`face_landmarker.task` 3.8 MB, `pose_landmarker_heavy.task` 30.7 MB, Apache-2.0) into `tools/likeness/models/`:

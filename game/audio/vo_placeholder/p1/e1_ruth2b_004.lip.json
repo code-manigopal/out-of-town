@@ -1,156 +1,176 @@
 {
 "line_id": "e1_ruth2b_004",
-"source_hash": "ca3e5e38bc08d958",
-"duration": 3.9,
+"source_hash": "8e96a382533544eb",
+"duration": 7.26,
 "mouthCues": [
 {
 "start": 0.0,
-"end": 0.04,
+"end": 0.2,
 "value": "X"
 },
 {
-"start": 0.04,
-"end": 0.09,
+"start": 0.2,
+"end": 0.26,
 "value": "B"
 },
 {
-"start": 0.09,
-"end": 0.14,
-"value": "H"
+"start": 0.26,
+"end": 0.38,
+"value": "G"
 },
 {
-"start": 0.14,
-"end": 0.21,
+"start": 0.38,
+"end": 0.52,
 "value": "C"
 },
 {
-"start": 0.21,
-"end": 0.35,
+"start": 0.52,
+"end": 0.59,
 "value": "B"
 },
 {
-"start": 0.35,
-"end": 0.42,
+"start": 0.59,
+"end": 0.66,
+"value": "E"
+},
+{
+"start": 0.66,
+"end": 0.73,
+"value": "F"
+},
+{
+"start": 0.73,
+"end": 0.81,
+"value": "A"
+},
+{
+"start": 0.81,
+"end": 0.98,
 "value": "C"
 },
 {
-"start": 0.42,
-"end": 0.63,
-"value": "B"
-},
-{
-"start": 0.63,
-"end": 0.77,
-"value": "C"
-},
-{
-"start": 0.77,
-"end": 0.91,
-"value": "B"
-},
-{
-"start": 0.91,
-"end": 1.12,
-"value": "C"
-},
-{
-"start": 1.12,
+"start": 0.98,
 "end": 1.19,
 "value": "B"
 },
 {
 "start": 1.19,
-"end": 1.33,
-"value": "E"
-},
-{
-"start": 1.33,
-"end": 1.69,
-"value": "B"
-},
-{
-"start": 1.69,
-"end": 1.83,
+"end": 1.47,
 "value": "C"
 },
 {
-"start": 1.83,
-"end": 2.04,
+"start": 1.47,
+"end": 1.75,
 "value": "B"
 },
 {
-"start": 2.04,
-"end": 2.11,
+"start": 1.75,
+"end": 2.7,
+"value": "X"
+},
+{
+"start": 2.7,
+"end": 2.88,
+"value": "B"
+},
+{
+"start": 2.88,
+"end": 3.02,
 "value": "C"
 },
 {
-"start": 2.11,
-"end": 2.18,
-"value": "E"
+"start": 3.02,
+"end": 3.09,
+"value": "B"
 },
 {
-"start": 2.18,
-"end": 2.25,
-"value": "F"
-},
-{
-"start": 2.25,
-"end": 2.34,
+"start": 3.09,
+"end": 3.17,
 "value": "A"
 },
 {
-"start": 2.34,
-"end": 2.63,
+"start": 3.17,
+"end": 3.27,
 "value": "B"
 },
 {
-"start": 2.63,
-"end": 2.77,
+"start": 3.27,
+"end": 3.55,
 "value": "C"
 },
 {
-"start": 2.77,
-"end": 2.84,
+"start": 3.55,
+"end": 4.25,
 "value": "B"
 },
 {
-"start": 2.84,
-"end": 2.98,
+"start": 4.25,
+"end": 4.32,
 "value": "C"
 },
 {
-"start": 2.98,
-"end": 3.33,
+"start": 4.32,
+"end": 4.53,
 "value": "B"
 },
 {
-"start": 3.33,
-"end": 3.4,
-"value": "E"
+"start": 4.53,
+"end": 5.5,
+"value": "X"
 },
 {
-"start": 3.4,
-"end": 3.47,
-"value": "H"
-},
-{
-"start": 3.47,
-"end": 3.68,
+"start": 5.5,
+"end": 5.61,
 "value": "B"
 },
 {
-"start": 3.68,
-"end": 3.82,
+"start": 5.61,
+"end": 5.68,
+"value": "C"
+},
+{
+"start": 5.68,
+"end": 5.82,
+"value": "B"
+},
+{
+"start": 5.82,
+"end": 5.96,
 "value": "F"
 },
 {
-"start": 3.82,
-"end": 3.89,
+"start": 5.96,
+"end": 6.03,
+"value": "E"
+},
+{
+"start": 6.03,
+"end": 6.1,
+"value": "H"
+},
+{
+"start": 6.1,
+"end": 6.17,
 "value": "B"
 },
 {
-"start": 3.89,
-"end": 3.9,
+"start": 6.17,
+"end": 6.42,
+"value": "C"
+},
+{
+"start": 6.42,
+"end": 6.49,
+"value": "E"
+},
+{
+"start": 6.49,
+"end": 6.73,
+"value": "F"
+},
+{
+"start": 6.73,
+"end": 7.26,
 "value": "X"
 }
 ]

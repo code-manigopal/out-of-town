@@ -38,3 +38,9 @@ jobs:
         run: godot --headless --path game --script res://tests/run_tests.gd
       - name: Audio tests
         run: godot --headless --path game --script res://tests/run_audio_tests.gd
+      - name: UI tests
+        run: godot --headless --path game --script res://tests/run_ui_tests.gd
+      - name: Apartment tests
+        run: godot --headless --path game --script res://tests/run_apartment_tests.gd
+      - name: Player tests
+        run: godot --headless --path game --script res://tests/run_player_tests.gd

@@ -1,0 +1,104 @@
+{
+	"_note": "Part 1 journal entries (Mani's notes). Text Mani would write; Tanglish carries an English subtitle. Episode 1 entries approved 2026-10-21; items marked design are not in the screenplay and may change.",
+	"e1_goal_packing": {
+		"section": "goal",
+		"episode": 1,
+		"title": "Pack, then go",
+		"text": "Pack the sweets, the diyas and the radio for Nila. Then drive to Greyhaven."
+	},
+	"e1_goal_leave": {
+		"section": "goal",
+		"episode": 1,
+		"title": "Get on the road",
+		"text": "Take the bag and the car keys. The car is out back. Greyhaven by tonight."
+	},
+	"e1_goal_ruth": {
+		"section": "goal",
+		"episode": 1,
+		"title": "Find Nila",
+		"text": "Get to Greyhaven. Talk only to Ruth."
+	},
+	"e1_voicemail": {
+		"section": "clues",
+		"episode": 1,
+		"title": "Nila's voicemail (Sunday 23:52)",
+		"text": "Station-ku call pannadha. Naan oru vishayam kandupidichiruken. Ruth kitta mattum pesu. Yaara venaalum nambu, aana andha--",
+		"subtitle": "Don't call the station. I found something. Talk only to Ruth. Trust anyone, but don't trust the-- (It cuts off there.)",
+		"adds": ["e1_person_ruth", "e1_person_nila"]
+	},
+	"e1_person_ruth": {
+		"section": "people",
+		"episode": 1,
+		"title": "Ruth",
+		"text": "Nila says talk only to her. Haven't met her."
+	},
+	"e1_person_nila": {
+		"section": "people",
+		"episode": 1,
+		"title": "Nila",
+		"text": "My sister, 25. Criminology degree, chose radio: night host of After Hours on Lake Merrow 94.1 FM. Hasn't picked up since Sunday."
+	},
+	"e1_whiteboard": {
+		"section": "notes",
+		"episode": 1,
+		"item": "whiteboard",
+		"title": "My whiteboard",
+		"text": "Data Analytics Engineer: 2nd round, Thursday. Work so far: Auragle, Software Developer to Team Lead, 2018-2024. Before that, Sri Valli Leathers (Appa's shop), Store Manager, 2013-2017."
+	},
+	"e1_gift_radio": {
+		"section": "notes",
+		"episode": 1,
+		"item": "radio",
+		"title": "The gift radio",
+		"text": "New handheld ham radio for Nila. Her old one is held together with tape."
+	},
+	"e1_grad_photo": {
+		"section": "notes",
+		"episode": 1,
+		"item": "grad_photo",
+		"title": "Convocation photo",
+		"text": "Master's in business data analytics, University of Windsor. Finished in August."
+	},
+	"e1_grad_photo_back": {
+		"section": "notes",
+		"episode": 1,
+		"design": true,
+		"title": "Back of the convocation photo",
+		"text": "Nila's handwriting: \"Anna, proud of you. Now go get a real job!\""
+	},
+	"e1_nila_photo": {
+		"section": "notes",
+		"episode": 1,
+		"item": "nila_photo",
+		"title": "Nila's first night on air",
+		"text": "Headphones crooked, grinning. Appa didn't speak to her for a week after she chose radio. Then he listened to every show."
+	},
+	"e1_baby_photo": {
+		"section": "notes",
+		"episode": 1,
+		"item": "baby_photo",
+		"title": "Baby Nila",
+		"text": "Old print of Nila as a baby, pinned on my board."
+	},
+	"e1_baby_photo_date": {
+		"section": "clues",
+		"episode": 1,
+		"design": true,
+		"title": "Nila's birth year",
+		"text": "The camera's date stamp on her baby photo: 14 08 2001. Nila was born in 2001."
+	},
+	"e1_note_interview": {
+		"section": "notes",
+		"episode": 1,
+		"item": "note_interview",
+		"title": "Sticky note",
+		"text": "Thursday, 2nd round. Revise SQL window functions. Don't say \"synergy\"."
+	},
+	"e1_note_diwali": {
+		"section": "notes",
+		"episode": 1,
+		"item": "note_diwali",
+		"title": "Sticky note",
+		"text": "Diwali Sunday: light the diyas with Nila. Promised Amma."
+	}
+}

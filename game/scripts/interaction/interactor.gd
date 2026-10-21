@@ -8,6 +8,8 @@ signal pickup_taken(target: OOTInteractable)
 signal inspect_requested(target: OOTInteractable)
 signal used(target: OOTInteractable)
 signal carried_changed(item: OOTInteractable)
+## Emitted when the targeted interactable changes (null = nothing in reach).
+signal target_changed(target: OOTInteractable)
 
 @export var reach: float = 2.0
 @export var min_facing_dot: float = 0.2
@@ -19,11 +21,17 @@ var _last_prompt: String = ""
 var _prompt_sent: bool = false
 
 
+func _ready() -> void:
+	add_to_group("oot_interactor")
+
+
 func _physics_process(_delta: float) -> void:
 	var best: OOTInteractable = null
 	if enabled:
 		best = _find_target()
-	target = best
+	if best != target:
+		target = best
+		target_changed.emit(best)
 	var text: String = best.get_prompt() if best != null else ""
 	if text != _last_prompt or not _prompt_sent:
 		_prompt_sent = true

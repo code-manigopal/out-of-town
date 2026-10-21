@@ -2,437 +2,437 @@
  "lines": {
   "e1_call2_000": {
    "channel": "",
-   "duration": 6.9,
+   "duration": 11.102,
    "file": "e1_call2_000.ogg",
    "filter": "video",
-   "hash": "4576cd3f8b5d53e9",
+   "hash": "f23263af13dee955",
    "speaker": "APPA",
-   "speaker_id": 22
+   "speaker_id": "hm_omega"
   },
   "e1_call2_001": {
    "channel": "",
-   "duration": 5.8,
+   "duration": 11.703,
    "file": "e1_call2_001.ogg",
    "filter": "video",
-   "hash": "c056c8d6e0b639a7",
+   "hash": "ef7cb0db78dbf8ee",
    "speaker": "AMMA",
-   "speaker_id": 440
+   "speaker_id": "hf_alpha"
   },
   "e1_call2_002": {
    "channel": "",
-   "duration": 1.115,
+   "duration": 3.301,
    "file": "e1_call2_002.ogg",
    "filter": "video",
-   "hash": "0d444a676ba18e51",
+   "hash": "5857642a8cf5516e",
    "speaker": "MANI",
-   "speaker_id": 286
+   "speaker_id": "hm_psi"
   },
   "e1_call_001": {
    "channel": "",
-   "duration": 2.392,
+   "duration": 5.401,
    "file": "e1_call_001.ogg",
    "filter": "video",
-   "hash": "82bb9d73d3206443",
+   "hash": "0fa147455e2d72e7",
    "speaker": "AMMA",
-   "speaker_id": 440
+   "speaker_id": "hf_alpha"
   },
   "e1_call_002": {
    "channel": "",
-   "duration": 0.836,
+   "duration": 1.875,
    "file": "e1_call_002.ogg",
    "filter": "video",
-   "hash": "688ad450ac2aa69f",
+   "hash": "7c17e7cb6ce568cb",
    "speaker": "MANI",
-   "speaker_id": 286
+   "speaker_id": "hm_psi"
   },
   "e1_call_003": {
    "channel": "",
-   "duration": 4.3,
+   "duration": 6.501,
    "file": "e1_call_003.ogg",
    "filter": "video",
-   "hash": "57d7221805999750",
+   "hash": "d3a049f9e515ff9a",
    "speaker": "APPA",
-   "speaker_id": 22
+   "speaker_id": "hm_omega"
   },
   "e1_call_004": {
    "channel": "",
-   "duration": 1.939,
+   "duration": 4.301,
    "file": "e1_call_004.ogg",
    "filter": "video",
-   "hash": "bb03349e44446a24",
+   "hash": "1236ce1d799eef94",
    "speaker": "MANI",
-   "speaker_id": 286
+   "speaker_id": "hm_psi"
   },
   "e1_call_005": {
    "channel": "",
-   "duration": 3.599,
+   "duration": 8.002,
    "file": "e1_call_005.ogg",
    "filter": "video",
-   "hash": "1676bb30349c451e",
+   "hash": "06d87c729235a54e",
    "speaker": "AMMA",
-   "speaker_id": 440
+   "speaker_id": "hf_alpha"
   },
   "e1_cliff_003": {
    "channel": "ON AIR",
-   "duration": 2.473,
+   "duration": 4.901,
    "file": "e1_cliff_003.ogg",
    "filter": "radio",
-   "hash": "fe932226ad20802d",
+   "hash": "047dbb3c408160c6",
    "speaker": "NILA",
-   "speaker_id": 154
+   "speaker_id": "hf_beta"
   },
   "e1_cliff_004": {
    "channel": "ON AIR",
-   "duration": 4.6,
+   "duration": 8.701,
    "file": "e1_cliff_004.ogg",
    "filter": "radio",
-   "hash": "e02ac8c55d53e3ac",
+   "hash": "7bcb6d8cd45f57af",
    "speaker": "NILA",
-   "speaker_id": 154
+   "speaker_id": "hf_beta"
   },
   "e1_cliff_005": {
    "channel": "",
-   "duration": 0.894,
+   "duration": 2.923,
    "file": "e1_cliff_005.ogg",
    "filter": "clean",
-   "hash": "c263161a2e41f552",
+   "hash": "4cd686aed67242f3",
    "speaker": "MANI",
-   "speaker_id": 286
+   "speaker_id": "hm_psi"
   },
   "e1_cliff_007": {
    "channel": "ON AIR",
-   "duration": 0.987,
+   "duration": 2.725,
    "file": "e1_cliff_007.ogg",
    "filter": "radio",
-   "hash": "3bda93dc089069f9",
+   "hash": "9becf4421d8a0558",
    "speaker": "MAN'S VOICE",
-   "speaker_id": 506
+   "speaker_id": "bm_lewis"
   },
   "e1_flat_002": {
    "channel": "",
-   "duration": 3.9,
+   "duration": 9.0,
    "file": "e1_flat_002.ogg",
    "filter": "clean",
-   "hash": "e3029df2d38a148a",
+   "hash": "475cd26f3e041c2e",
    "speaker": "TESS",
-   "speaker_id": 66
+   "speaker_id": "af_nicole"
   },
   "e1_flat_003": {
    "channel": "",
-   "duration": 4.6,
+   "duration": 9.003,
    "file": "e1_flat_003.ogg",
    "filter": "clean",
-   "hash": "897735c6a27ab4d2",
+   "hash": "2f8dfea322ab53bf",
    "speaker": "TESS",
-   "speaker_id": 66
+   "speaker_id": "af_nicole"
   },
   "e1_open_001": {
    "channel": "V.O.",
-   "duration": 5.8,
+   "duration": 7.802,
    "file": "e1_open_001.ogg",
    "filter": "phone",
-   "hash": "735e36186a265fae",
+   "hash": "0ef0953cf9ae0ced",
    "speaker": "NILA",
-   "speaker_id": 154
+   "speaker_id": "hf_beta"
   },
   "e1_open_002": {
    "channel": "V.O.",
-   "duration": 8.2,
+   "duration": 10.502,
    "file": "e1_open_002.ogg",
    "filter": "phone",
-   "hash": "4b165b1db1172e84",
+   "hash": "0dc68f0f8cb6127a",
    "speaker": "NILA",
-   "speaker_id": 154
+   "speaker_id": "hf_beta"
   },
   "e1_open_003": {
    "channel": "V.O.",
-   "duration": 2.426,
+   "duration": 3.102,
    "file": "e1_open_003.ogg",
    "filter": "phone",
-   "hash": "f440b71c6de10826",
+   "hash": "7e6930823b10aef7",
    "speaker": "NILA",
-   "speaker_id": 154
+   "speaker_id": "hf_beta"
   },
   "e1_ruth2_000": {
    "channel": "",
-   "duration": 1.091,
+   "duration": 2.052,
    "file": "e1_ruth2_000.ogg",
    "filter": "clean",
-   "hash": "22b12f0314b4b78c",
+   "hash": "e39db081f4938c33",
    "speaker": "RUTH",
-   "speaker_id": 462
+   "speaker_id": "bf_emma"
   },
   "e1_ruth2_002": {
    "channel": "",
-   "duration": 7.8,
+   "duration": 14.001,
    "file": "e1_ruth2_002.ogg",
    "filter": "clean",
-   "hash": "c7e460c54c3d9a79",
+   "hash": "3dc5a600d597f977",
    "speaker": "RUTH",
-   "speaker_id": 462
+   "speaker_id": "bf_emma"
   },
   "e1_ruth2_004": {
    "channel": "",
-   "duration": 5.4,
+   "duration": 9.803,
    "file": "e1_ruth2_004.ogg",
    "filter": "clean",
-   "hash": "5be7f9fa629e2fa5",
+   "hash": "467480fa2ad97dfb",
    "speaker": "RUTH",
-   "speaker_id": 462
+   "speaker_id": "bf_emma"
   },
   "e1_ruth2b_001": {
    "channel": "",
-   "duration": 2.125,
+   "duration": 3.2,
    "file": "e1_ruth2b_001.ogg",
    "filter": "clean",
-   "hash": "45401a7d67f670dd",
+   "hash": "24da12f1f937f9db",
    "speaker": "RUTH",
-   "speaker_id": 462
+   "speaker_id": "bf_emma"
   },
   "e1_ruth2b_002": {
    "channel": "",
-   "duration": 1.567,
+   "duration": 4.001,
    "file": "e1_ruth2b_002.ogg",
    "filter": "clean",
-   "hash": "66baf2558e26b83e",
+   "hash": "8d93b994d2f62e6a",
    "speaker": "MANI",
-   "speaker_id": 286
+   "speaker_id": "hm_psi"
   },
   "e1_ruth2b_004": {
    "channel": "",
-   "duration": 4.0,
+   "duration": 7.303,
    "file": "e1_ruth2b_004.ogg",
    "filter": "clean",
-   "hash": "5fb02951d965c7f7",
+   "hash": "af75bb83eb7f2737",
    "speaker": "RUTH",
-   "speaker_id": 462
+   "speaker_id": "bf_emma"
   },
   "e1_ruth_001": {
    "channel": "",
-   "duration": 1.219,
+   "duration": 2.426,
    "file": "e1_ruth_001.ogg",
    "filter": "clean",
-   "hash": "1a062f6bd45ed39c",
+   "hash": "50db3b45d4d7bc70",
    "speaker": "RUTH",
-   "speaker_id": 462
+   "speaker_id": "bf_emma"
   },
   "e1_ruth_002": {
    "channel": "",
-   "duration": 2.438,
+   "duration": 6.0,
    "file": "e1_ruth_002.ogg",
    "filter": "clean",
-   "hash": "b0efca675ea0a784",
+   "hash": "30472a08a80039ec",
    "speaker": "MANI",
-   "speaker_id": 286
+   "speaker_id": "hm_psi"
   },
   "e1_shoulder_004": {
    "channel": "",
-   "duration": 1.834,
+   "duration": 4.503,
    "file": "e1_shoulder_004.ogg",
    "filter": "clean",
-   "hash": "0a278629d0b7c978",
+   "hash": "57c419b6d8eff3fa",
    "speaker": "MANI",
-   "speaker_id": 286
+   "speaker_id": "hm_psi"
   },
   "e1_tess2_001": {
    "channel": "",
-   "duration": 2.473,
+   "duration": 4.502,
    "file": "e1_tess2_001.ogg",
    "filter": "clean",
-   "hash": "cdd30ac083fa72ec",
+   "hash": "edc22a7becfb18c0",
    "speaker": "TESS",
-   "speaker_id": 66
+   "speaker_id": "af_nicole"
   },
   "e1_tess_000": {
    "channel": "",
-   "duration": 7.2,
+   "duration": 13.701,
    "file": "e1_tess_000.ogg",
    "filter": "clean",
-   "hash": "5d3983890bc56af1",
+   "hash": "d390157831a5a175",
    "speaker": "TESS",
-   "speaker_id": 66
+   "speaker_id": "af_nicole"
   },
   "e1_tess_001": {
    "channel": "",
-   "duration": 10.3,
+   "duration": 20.703,
    "file": "e1_tess_001.ogg",
    "filter": "clean",
-   "hash": "da2511b387af5d49",
+   "hash": "41fa23bc67516a7f",
    "speaker": "TESS",
-   "speaker_id": 66
+   "speaker_id": "af_nicole"
   },
   "e1_tess_003": {
    "channel": "",
-   "duration": 1.44,
+   "duration": 3.367,
    "file": "e1_tess_003.ogg",
    "filter": "clean",
-   "hash": "140f9ac74b4cf976",
+   "hash": "9570a0c1a9e0c627",
    "speaker": "TESS",
-   "speaker_id": 66
+   "speaker_id": "af_nicole"
   },
   "e1_tp1_002": {
    "channel": "",
-   "duration": 5.6,
+   "duration": 9.602,
    "file": "e1_tp1_002.ogg",
    "filter": "clean",
-   "hash": "b55784cb8f7a731d",
+   "hash": "d0b946584f0a0113",
    "speaker": "HAROLD",
-   "speaker_id": 418
+   "speaker_id": "bm_george"
   },
   "e1_tp1done_000": {
    "channel": "",
-   "duration": 3.448,
+   "duration": 5.402,
    "file": "e1_tp1done_000.ogg",
    "filter": "clean",
-   "hash": "c32bc2d8d5a54c95",
+   "hash": "ce4f6670a7dde7fe",
    "speaker": "JUNE",
-   "speaker_id": 242
+   "speaker_id": "af_sarah"
   },
   "e1_tp1done_001": {
    "channel": "",
-   "duration": 2.577,
+   "duration": 6.001,
    "file": "e1_tp1done_001.ogg",
    "filter": "clean",
-   "hash": "401be746583f07e6",
+   "hash": "0057e7548fc4ab95",
    "speaker": "HAROLD",
-   "speaker_id": 418
+   "speaker_id": "bm_george"
   },
   "e1_tp1done_002": {
    "channel": "",
-   "duration": 3.2,
+   "duration": 3.872,
    "file": "e1_tp1done_002.ogg",
    "filter": "clean",
-   "hash": "2351a54d76927b40",
+   "hash": "94b05c1d7741bd71",
    "speaker": "JUNE",
-   "speaker_id": 242
+   "speaker_id": "af_sarah"
   },
   "e1_tp1done_004": {
    "channel": "",
-   "duration": 1.184,
+   "duration": 2.003,
    "file": "e1_tp1done_004.ogg",
    "filter": "clean",
-   "hash": "072e2aa71aec2b0f",
+   "hash": "bb1a95535b27144e",
    "speaker": "PRIYA",
-   "speaker_id": 550
+   "speaker_id": "af_bella"
   },
   "e1_tp1done_005": {
    "channel": "",
-   "duration": 2.009,
+   "duration": 4.101,
    "file": "e1_tp1done_005.ogg",
    "filter": "clean",
-   "hash": "f5ba0b2d8781168c",
+   "hash": "c7367552fc599087",
    "speaker": "MANI",
-   "speaker_id": 286
+   "speaker_id": "hm_psi"
   },
   "e1_tp1skip_001": {
    "channel": "",
-   "duration": 0.964,
+   "duration": 2.2,
    "file": "e1_tp1skip_001.ogg",
    "filter": "clean",
-   "hash": "182f69517e2d4a0c",
+   "hash": "3cf090e0081e224c",
    "speaker": "MANI",
-   "speaker_id": 286
+   "speaker_id": "hm_psi"
   },
   "e1_tp2_002": {
    "channel": "",
-   "duration": 2.612,
+   "duration": 4.603,
    "file": "e1_tp2_002.ogg",
    "filter": "clean",
-   "hash": "61874faae1af1bf9",
+   "hash": "26c7c4ac7147f428",
    "speaker": "GUS",
-   "speaker_id": 594
+   "speaker_id": "am_fenrir"
   },
   "e1_tp2b_001": {
    "channel": "",
-   "duration": 2.159,
+   "duration": 4.5,
    "file": "e1_tp2b_001.ogg",
    "filter": "clean",
-   "hash": "171bab95a18a53be",
+   "hash": "df22596280f1d26a",
    "speaker": "VICTOR",
-   "speaker_id": 132
+   "speaker_id": "am_onyx"
   },
   "e1_tp2b_003": {
    "channel": "",
-   "duration": 1.834,
+   "duration": 4.103,
    "file": "e1_tp2b_003.ogg",
    "filter": "clean",
-   "hash": "941a7ebda43c179b",
+   "hash": "d6a7eb5cb0845c4a",
    "speaker": "VICTOR",
-   "speaker_id": 132
+   "speaker_id": "am_onyx"
   },
   "e1_tp2b_004": {
    "channel": "",
-   "duration": 0.848,
+   "duration": 2.397,
    "file": "e1_tp2b_004.ogg",
    "filter": "clean",
-   "hash": "8b13061ff2be2ab4",
+   "hash": "ae2dddfe38b0aeef",
    "speaker": "GUS",
-   "speaker_id": 594
+   "speaker_id": "am_fenrir"
   },
   "e1_victor2_001": {
    "channel": "",
-   "duration": 4.2,
+   "duration": 9.5,
    "file": "e1_victor2_001.ogg",
    "filter": "clean",
-   "hash": "7376f564c399d336",
+   "hash": "e82080aa816f5b50",
    "speaker": "VICTOR",
-   "speaker_id": 132
+   "speaker_id": "am_onyx"
   },
   "e1_victor2_002": {
    "channel": "",
-   "duration": 5.5,
+   "duration": 9.603,
    "file": "e1_victor2_002.ogg",
    "filter": "clean",
-   "hash": "019a4ca733053a48",
+   "hash": "def8e505171b70e7",
    "speaker": "VICTOR",
-   "speaker_id": 132
+   "speaker_id": "am_onyx"
   },
   "e1_victor2_004": {
    "channel": "ON PHONE",
-   "duration": 2.972,
+   "duration": 6.101,
    "file": "e1_victor2_004.ogg",
    "filter": "phone",
-   "hash": "9f2a60bbe6b39d0f",
+   "hash": "f31c5304b8fe4e02",
    "speaker": "VICTOR",
-   "speaker_id": 132
+   "speaker_id": "am_onyx"
   },
   "e1_victor2_006": {
    "channel": "",
-   "duration": 5.3,
+   "duration": 10.601,
    "file": "e1_victor2_006.ogg",
    "filter": "clean",
-   "hash": "2bf73e586b0c10f0",
+   "hash": "4528728bf7fe9a9a",
    "speaker": "VICTOR",
-   "speaker_id": 132
+   "speaker_id": "am_onyx"
   },
   "e1_victor_000": {
    "channel": "",
-   "duration": 1.393,
+   "duration": 2.795,
    "file": "e1_victor_000.ogg",
    "filter": "clean",
-   "hash": "39c6d5a093072ce3",
+   "hash": "3d38e452e3b6ffba",
    "speaker": "VICTOR",
-   "speaker_id": 132
+   "speaker_id": "am_onyx"
   },
   "e1_victor_001": {
    "channel": "",
-   "duration": 1.985,
+   "duration": 5.202,
    "file": "e1_victor_001.ogg",
    "filter": "clean",
-   "hash": "1b80382ec9acf9b0",
+   "hash": "d72617b874735f24",
    "speaker": "MANI",
-   "speaker_id": 286
+   "speaker_id": "hm_psi"
   },
   "e1_victor_002": {
    "channel": "",
-   "duration": 4.0,
+   "duration": 9.0,
    "file": "e1_victor_002.ogg",
    "filter": "clean",
-   "hash": "33881fc10a9167f0",
+   "hash": "dfd61bd304d6c20e",
    "speaker": "VICTOR",
-   "speaker_id": 132
+   "speaker_id": "am_onyx"
   }
  },
- "model": "en_US-libritts_r-medium",
+ "model": "Kokoro-82M",
  "placeholder": true
 }

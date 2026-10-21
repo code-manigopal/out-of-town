@@ -72,27 +72,31 @@ def wav_duration(path):
         return w.getnframes() / float(w.getframerate())
 
 
+def process(raw, kind, out_ogg):
+    """Channel filter + loudness + Vorbis encode a raw wav; returns duration (s)."""
+    dur = wav_duration(raw)
+    norm = "loudnorm=I=-19:LRA=9:TP=-4"
+    limit = "alimiter=limit=0.8"
+    if kind == "radio":
+        fc = ("[0:a]%s,%s[v];%s[n];[v][n]amix=inputs=2:duration=first:normalize=0,%s,%s[o]"
+              % (HP_LP + ",asoftclip=type=tanh:param=1.3", "anull", RADIO_STATIC.format(dur=dur + 0.5), norm, limit))
+        cmd = ["ffmpeg", "-y", "-loglevel", "error", "-i", raw, "-filter_complex", fc, "-map", "[o]"]
+    else:
+        fc = "%s,%s,%s" % (FILTERS[kind], norm, limit)
+        cmd = ["ffmpeg", "-y", "-loglevel", "error", "-i", raw, "-af", fc]
+    # ffmpeg's native vorbis encoder only accepts stereo (no libvorbis here): dual-mono at 22.05 kHz.
+    cmd += ["-ac", "2", "-ar", "22050", "-c:a", "vorbis", "-strict", "-2", "-b:a", "64k", out_ogg]
+    run(cmd)
+    out = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", out_ogg],
+                         capture_output=True, text=True).stdout.strip()
+    return float(out)
+
+
 def render(line_text, speaker_id, kind, out_ogg):
     with tempfile.TemporaryDirectory() as tmp:
         raw = os.path.join(tmp, "raw.wav")
         run([PIPER, "-m", MODEL, "-s", str(speaker_id), "-f", raw], input=line_text.encode("utf-8"))
-        dur = wav_duration(raw)
-        norm = "loudnorm=I=-21:LRA=9:TP=-4"
-        limit = "alimiter=limit=0.8"
-        if kind == "radio":
-            fc = ("[0:a]%s,%s[v];%s[n];[v][n]amix=inputs=2:duration=first:normalize=0,%s,%s[o]"
-                  % (HP_LP + ",asoftclip=type=tanh:param=1.3", "anull", RADIO_STATIC.format(dur=dur + 0.5),
-                     norm, limit))
-            cmd = ["ffmpeg", "-y", "-loglevel", "error", "-i", raw, "-filter_complex", fc, "-map", "[o]"]
-        else:
-            fc = "%s,%s,%s" % (FILTERS[kind], norm, limit)
-            cmd = ["ffmpeg", "-y", "-loglevel", "error", "-i", raw, "-af", fc]
-        # ffmpeg's native vorbis encoder only accepts stereo (no libvorbis here): dual-mono at 22.05 kHz.
-        cmd += ["-ac", "2", "-ar", "22050", "-c:a", "vorbis", "-strict", "-2", "-b:a", "64k", out_ogg]
-        run(cmd)
-        out = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", out_ogg],
-                             capture_output=True, text=True).stdout.strip()
-        return float(out)
+        return process(raw, kind, out_ogg)
 
 
 def main():
