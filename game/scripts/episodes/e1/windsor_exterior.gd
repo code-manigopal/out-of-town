@@ -501,6 +501,21 @@ func _seat_player() -> void:
 	player.use_shot(_seat_shot)
 
 
+## E works for the car steps without aiming the reticle: seated, the camera sits outside the
+## windshield and the player's interactor is off, and the driver's door is easy to miss.
+func _unhandled_input(event: InputEvent) -> void:
+	if busy or car == null or player == null or not event.is_action_pressed("interact"):
+		return
+	if is_seated and not engine_is_on:
+		_on_ignition_used(null)
+		get_viewport().set_input_as_handled()
+	elif stage == &"lot" and trunk_done and not is_seated:
+		var door: Vector3 = car.to_global(OOTCar.SEAT_ANCHOR_POS) + car.global_basis.x.normalized() * 0.75
+		if player.global_position.distance_to(door) < 3.0:
+			_run_enter_car()
+			get_viewport().set_input_as_handled()
+
+
 func _on_ignition_used(_by: Node) -> void:
 	if not is_seated or engine_is_on or car.starting:
 		return
