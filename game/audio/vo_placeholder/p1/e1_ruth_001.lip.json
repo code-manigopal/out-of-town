@@ -1,0 +1,62 @@
+{
+"line_id": "e1_ruth_001",
+"source_hash": "6b116616080c92c7",
+"duration": 1.21,
+"mouthCues": [
+{
+"start": 0.0,
+"end": 0.03,
+"value": "X"
+},
+{
+"start": 0.03,
+"end": 0.09,
+"value": "B"
+},
+{
+"start": 0.09,
+"end": 0.22,
+"value": "F"
+},
+{
+"start": 0.22,
+"end": 0.29,
+"value": "B"
+},
+{
+"start": 0.29,
+"end": 0.36,
+"value": "E"
+},
+{
+"start": 0.36,
+"end": 0.57,
+"value": "G"
+},
+{
+"start": 0.57,
+"end": 0.64,
+"value": "E"
+},
+{
+"start": 0.64,
+"end": 0.78,
+"value": "B"
+},
+{
+"start": 0.78,
+"end": 0.99,
+"value": "C"
+},
+{
+"start": 0.99,
+"end": 1.2,
+"value": "B"
+},
+{
+"start": 1.2,
+"end": 1.21,
+"value": "X"
+}
+]
+}

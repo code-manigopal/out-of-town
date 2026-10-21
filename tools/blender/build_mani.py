@@ -17,6 +17,7 @@ What it does
 """
 import bpy
 import bmesh
+import json
 import math
 import os
 import sys
@@ -1016,26 +1017,36 @@ class Animator:
         self.calibrate_pole()
 
     def calibrate_pole(self):
-        """Pick the pole angle that bends the knee forward (-Y)."""
+        """Per leg: pick the pole angle that bends the knee forward (-Y) inside the vertical hip-ankle plane
+        (v4: refined per side, the mirrored right leg needs its own angle)."""
         rig = self.rig
         bpy.ops.object.mode_set(mode="POSE")
-        best = None
-        for deg in (-90, 0, 90, 180):
-            for s in ("l", "r"):
-                rig.pose.bones["calf_" + s].constraints["IK"].pole_angle = math.radians(deg)
-            self.set_loc("ik_foot_l", Vector((0, -0.10, 0.28)))
-            bpy.context.view_layer.update()
-            knee = rig.matrix_world @ rig.pose.bones["calf_l"].head
-            hip = rig.matrix_world @ rig.pose.bones["thigh_l"].head
-            ank = rig.matrix_world @ rig.pose.bones["calf_l"].tail
-            fwd = ((hip + ank) / 2).y - knee.y          # positive when the knee is in front (-Y)
-            if best is None or fwd > best[0]:
-                best = (fwd, deg)
-        log("pole angle", best)
-        self.pole = math.radians(best[1])
+        self.pole_by = {}
         for s in ("l", "r"):
-            rig.pose.bones["calf_" + s].constraints["IK"].pole_angle = self.pole
-        self.set_loc("ik_foot_l", Vector((0, 0, 0)))
+            sg = 1 if s == "l" else -1
+            cs = rig.pose.bones["calf_" + s].constraints["IK"]
+            best = None
+            for deg in np.arange(-180, 180, 3.0):
+                cs.pole_angle = math.radians(deg)
+                self.set_loc("ik_foot_" + s, Vector((0, -0.10, 0.28)))
+                bpy.context.view_layer.update()
+                knee = rig.matrix_world @ rig.pose.bones["calf_" + s].head
+                hip = rig.matrix_world @ rig.pose.bones["thigh_" + s].head
+                ank = rig.matrix_world @ rig.pose.bones["calf_" + s].tail
+                t_ = (knee.z - ank.z) / max(hip.z - ank.z, 1e-6)
+                # distance of the knee from the plane through hip, ankle and straight forward (-Y)
+                n_ = (hip - ank).cross(Vector((0, -1, 0)))
+                n_.normalize()
+                lat = abs((knee - hip).dot(n_))
+                fwd = ((hip + ank) / 2).y - knee.y
+                cost = lat * 4.0 - fwd
+                if best is None or cost < best[0]:
+                    best = (cost, deg, lat, fwd)
+            log("pole angle", s, best)
+            self.pole_by[s] = math.radians(best[1])
+            cs.pole_angle = self.pole_by[s]
+            self.set_loc("ik_foot_" + s, Vector((0, 0, 0)))
+        self.pole = self.pole_by["l"]
 
     # --- keyframing helpers ---------------------------------------------------------------
     def set_loc(self, name, d):
@@ -1086,7 +1097,7 @@ class Animator:
         return ang - target_deg
 
     # --- the clips ------------------------------------------------------------------------
-    def clip(self, name, frames, fn, bones=None):
+    def clip(self, name, frames, fn, bones=None, keep_const=False):
         rig = self.rig
         act = bpy.data.actions.new(name)
         act.use_fake_user = True
@@ -1123,7 +1134,9 @@ class Animator:
                         vals = [kp.co[1] for kp in fc.keyframe_points]
                         const = (max(vals) - min(vals)) < 1e-5
                         drop = bn in self.ik_names
-                        if const and not drop:
+                        if keep_const and bn not in driven + fingers:
+                            drop = True
+                        elif const and not drop and not keep_const:
                             v0 = vals[0]
                             if "location" in fc.data_path and abs(v0) < 1e-5: drop = True
                             elif "scale" in fc.data_path and abs(v0 - 1) < 1e-5: drop = True
@@ -1138,16 +1151,25 @@ class Animator:
         return act
 
     def relax_hands(self):
+        g = getattr(self, "grip", None)
         for s, sg in (("l", 1), ("r", -1)):
             for fi, base in (("index", 14), ("middle", 18), ("ring", 22), ("pinky", 26)):
                 for k, mult in ((1, 1.0), (2, 1.3), (3, 0.9)):
                     n = "%s_0%d_%s" % (fi, k, s)
                     if n in self.rig.pose.bones:
-                        self.rot(n, self.R("Y", sg * self.curl_sign * base * mult * getattr(self, "curl_scale", 1.0)))
+                        a = base * mult * getattr(self, "curl_scale", 1.0) if g is None else g[fi][k - 1]
+                        self.rot(n, self.R("Y", sg * self.curl_sign * a))
             for k, a in ((1, 8), (2, 12), (3, 10)):
                 n = "thumb_0%d_%s" % (k, s)
                 if n in self.rig.pose.bones:
-                    self.rot(n, self.R("Y", sg * self.curl_sign * a * getattr(self, "curl_scale", 1.0)))
+                    if g is None:
+                        self.rot(n, self.R("Y", sg * self.curl_sign * a * getattr(self, "curl_scale", 1.0)))
+                    else:
+                        m = self.R("Y", sg * self.curl_sign * g["thumb"][k - 1])
+                        if k == 1:
+                            rx, ry, rz = g["thumb_rot"]
+                            m = self.R("X", rx) @ self.R("Y", sg * ry) @ self.R("Z", sg * rz) @ m
+                        self.rot(n, m)
 
     def calibrate_curl(self):
         """Curl direction: fingertips must move toward the palm side (toward the body midline)."""
@@ -1165,6 +1187,8 @@ class Animator:
         self.reset()
 
 
+# lateral foot offset from the midline in the walk/idle (v4: 0.13 m, the knees track over the feet; v3 was 0.108)
+STEP_X = 0.13
 CARRY = dict(fwd=14, inward=38, elbow=98, wrist_twist=0.0, wrist_flex=0.0, curl=1.7)
 
 
@@ -1196,7 +1220,8 @@ def build_animations(objs):
             dx = sg * (foot_x - A.foot_x)
             A.set_loc("ik_foot_" + s, Vector((dx, -off, z)))
             A.rot("ik_foot_" + s, R("X", -pitch))
-            A.set_loc("ik_pole_" + s, Vector((dx * 0.5, 0, 0)))
+            # knee pole straight ahead of the foot (+5 mm outward): the knee tracks over the foot, never crossing inward
+            A.set_loc("ik_pole_" + s, Vector((sg * (foot_x + 0.005 - abs(A.rest_head["calf_" + s].x)), 0, 0)))
 
     # ---------------- idle: 4 s, calm breathing + very slow weight shift ----------------
     def idle(p):
@@ -1211,7 +1236,7 @@ def build_animations(objs):
         A.rot("head", R("X", 0.3 * math.sin(w - 0.5) + 0.8) @ R("Z", 0.9 * math.sin(w + 1.2)) @ R("Y", 0.3 * math.sin(w)))
         A.rot("clavicle_l", R("Z", 0.5 * breath)); A.rot("clavicle_r", R("Z", -0.5 * breath))
         arms(0.7 * math.sin(w), -0.7 * math.sin(w), 16 + 1.0 * breath, 16 + 1.0 * breath)
-        legs(0, 0, 0, 0, 0, 0, 0.105)
+        legs(0, 0, 0, 0, 0, 0, STEP_X)
 
     # ---------------- locomotion generator ----------------
     # Feet are planted, the pelvis rides the inverted pendulum of the stance leg(s): at every frame the pelvis
@@ -1291,42 +1316,63 @@ def build_animations(objs):
         return fn
 
     walk = locomotion(sf=0.60, S0=0.333, S1=0.467, clearance=0.03, pitch_hs=18, pitch_to=38, flex_hs=7.0, compress=0.012,
-                      flex_lim=3.0, yaw=4.0, arm_sw=20, elbow=16, lean=0.0, foot_x=0.108)
+                      flex_lim=3.0, yaw=4.0, arm_sw=20, elbow=16, lean=0.0, foot_x=STEP_X)
     jog = locomotion(sf=0.38, S0=0.27, S1=0.40, clearance=0.19, pitch_hs=6, pitch_to=40, flex_hs=20.0, compress=0.045,
-                     flex_lim=6.0, yaw=6.0, arm_sw=36, elbow=75, lean=-8.0, foot_x=0.10)
+                     flex_lim=6.0, yaw=6.0, arm_sw=36, elbow=75, lean=-8.0, foot_x=STEP_X - 0.005)
 
     # ---------------- carry: upper-body-only hold (both hands in front of the waist, as if holding a small box) ----
-    def carry(p):
+    def carry_body(prm, p):
         w = 2 * math.pi * p
         breath = math.sin(w)
-        fwd, inward, elbow_ = CARRY["fwd"], CARRY["inward"], CARRY["elbow"]
         A.rot("spine_02", R("X", 0.4 * breath + 1.0))
         A.rot("spine_03", R("X", 0.6 * breath + 1.5))
         A.rot("neck_01", R("X", -0.5 * breath - 1.0))
         A.rot("head", R("X", 0.3))
         A.rot("clavicle_l", R("Z", 0.4 * breath)); A.rot("clavicle_r", R("Z", -0.4 * breath))
-        # bring each arm to hang straight, raise it forward, then yaw it inward so the hands meet in front of the waist
-        A.rot("upperarm_l", R("Z", -inward) @ R("X", -fwd) @ R("Y", add0_l))
-        A.rot("upperarm_r", R("Z", inward) @ R("X", -fwd) @ R("Y", -add0_r))
-        A.rot("lowerarm_l", R("X", -(elbow_ - rb_l)))
-        A.rot("lowerarm_r", R("X", -(elbow_ - rb_r)))
-        A.rot("hand_l", R("Z", CARRY["wrist_twist"]) @ R("X", CARRY["wrist_flex"]))
-        A.rot("hand_r", R("Z", -CARRY["wrist_twist"]) @ R("X", CARRY["wrist_flex"]))
-        A.curl_scale = CARRY["curl"]
-        if p == 0.0:
-            bpy.context.view_layer.update()
-            pr = rig.matrix_world @ rig.pose.bones["pelvis"].head
-            hl = rig.matrix_world @ rig.pose.bones["hand_l"].head
-            hr = rig.matrix_world @ rig.pose.bones["hand_r"].head
-            log("carry hands (rel. pelvis; +x left, -y forward): L %s R %s  sep %.3f" % (
-                tuple(round(c, 3) for c in (hl - pr)), tuple(round(c, 3) for c in (hr - pr)), (hl - hr).length))
+        # bring each arm to hang straight, raise it forward, then yaw it inward (the spread sets the hand spacing)
+        A.rot("upperarm_l", R("Z", -prm["inward"]) @ R("X", -prm["fwd"]) @ R("Y", add0_l))
+        A.rot("upperarm_r", R("Z", prm["inward"]) @ R("X", -prm["fwd"]) @ R("Y", -add0_r))
+        A.rot("lowerarm_l", R("X", -(prm["elbow"] - rb_l)))
+        A.rot("lowerarm_r", R("X", -(prm["elbow"] - rb_r)))
+        A.rot("hand_l", R("Z", prm["twist"]) @ R("X", prm["flex"]))
+        A.rot("hand_r", R("Z", -prm["twist"]) @ R("X", prm["flex"]))
+
+    def carry_fn(prm):
+        def fn(p):
+            carry_body(prm, p)
+            A.grip = grip_v4.grip_from(prm)
+        return fn
+
+    def pose_for_search(prm):
+        A.reset()
+        carry_body(prm, 0.0)
+        A.grip = grip_v4.grip_from(prm)
+        A.relax_hands()
+        bpy.context.view_layer.update()
+
+    import grip_v4
+    grips = {}
+    A.grip = None
+    for item in grip_v4.ITEMS:
+        res = grip_v4.optimize(rig, pose_for_search, item, log=log)
+        grips[item] = res
+        log("GRIP %s %s" % (item, res))
+    try:
+        gp = os.path.join(REPO, "art_source/characters/mani/grip.json")
+        os.makedirs(os.path.dirname(gp), exist_ok=True)
+        json.dump(grips, open(gp, "w"), indent=1)
+    except Exception as e:  # noqa
+        log("grip.json not written", e)
 
     A.clip("idle", 120, idle)
     A.clip("walk", 30, walk)
     A.clip("jog", 19, jog)          # 0.63 s at 30 fps, ~2.8 m/s
     upper = ["spine_02", "spine_03", "neck_01", "head", "clavicle_l", "clavicle_r", "upperarm_l", "upperarm_r",
              "lowerarm_l", "lowerarm_r", "hand_l", "hand_r"]
-    A.clip("carry", 120, carry, bones=upper)     # 4 s breathing loop, upper body only (legs untouched)
+    for item, res in grips.items():              # 4 s breathing loops, upper body only (legs untouched)
+        A.clip("carry_" + item, 120, carry_fn(res["params"]), bones=upper, keep_const=True)
+    A.clip("carry", 120, carry_fn(grips["sweets"]["params"]), bones=upper, keep_const=True)    # generic two-hand box hold
+    A.grip = None
     A.curl_scale = 1.0
     # tidy: remove IK helpers
     bpy.ops.object.mode_set(mode="POSE")

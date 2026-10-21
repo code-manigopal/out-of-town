@@ -1,0 +1,42 @@
+{
+"line_id": "e1_cliff_005",
+"source_hash": "f1a13300ac2f01c2",
+"duration": 0.92,
+"mouthCues": [
+{
+"start": 0.0,
+"end": 0.03,
+"value": "X"
+},
+{
+"start": 0.03,
+"end": 0.12,
+"value": "B"
+},
+{
+"start": 0.12,
+"end": 0.19,
+"value": "F"
+},
+{
+"start": 0.19,
+"end": 0.63,
+"value": "B"
+},
+{
+"start": 0.63,
+"end": 0.77,
+"value": "F"
+},
+{
+"start": 0.77,
+"end": 0.91,
+"value": "B"
+},
+{
+"start": 0.91,
+"end": 0.92,
+"value": "X"
+}
+]
+}

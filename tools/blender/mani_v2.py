@@ -298,7 +298,7 @@ def build_hair_cards(objs, atl, count=1650):
 # ---------------------------------------------------------------------------------------------
 # dressing (rig, hoodie, jeans, eyes, brows, scalp cap)
 # ---------------------------------------------------------------------------------------------
-SCRATCH = "/private/tmp/claude-501/-Users-kamanika-Downloads-out-of-town/5498a04d-a1fe-4ca0-a447-3242544418f6/scratchpad/mani/w/stage2.blend"
+SCRATCH = "/private/tmp/claude-501/-Users-kamanika-Downloads-out-of-town/5498a04d-a1fe-4ca0-a447-3242544418f6/scratchpad/mani_v4/w/stage2.blend"
 
 
 def dress(hm):
@@ -332,13 +332,33 @@ def base_materials(objs, sk):
     set_single_material(objs["jeans"], make_material("Mani_jeans", c, rough=0.85, normal_path=n, normal_strength=0.8))
     c, n = B.fabric_textures("mani_hoodie", (0.19, 0.19, 0.20), "knit")
     set_single_material(objs["hoodie"], make_material("Mani_hoodie", c, rough=0.95, normal_path=n, normal_strength=0.9, spec=0.2))
-    e = load_raw(os.path.join(DATA, "eyes/materials/brown_eye.png"))[..., :3]
-    sat = e.max(-1, keepdims=True) - e.min(-1, keepdims=True)
-    iris = np.clip((sat - 0.10) / 0.12, 0, 1)
-    e = e * (1 - iris) + (e * np.array([0.42, 0.40, 0.40])) * iris
-    lum = e.mean(-1, keepdims=True)
-    e = e * (1 - 0.45 * (1 - iris)) + lum * 0.45 * (1 - iris)
-    set_single_material(objs["eyes"], make_material("Mani_eyes", save_raw("mani_eyes_c", e), rough=0.2, spec=0.5))
+    # eyes: the pack atlas does not match the eyeball UVs (grey / pale-blue patches = the glassy blue eye), so the eyeballs
+    # get a planar front UV and an own painted texture: dark brown iris with limbal ring and pupil, dull warm sclera.
+    L = objs["L"]
+    emesh = objs["eyes"].data
+    uvl = emesh.uv_layers.active or emesh.uv_layers.new(name="UVMap")
+    for poly in emesh.polygons:
+        for li in poly.loop_indices:
+            v = emesh.vertices[emesh.loops[li].vertex_index].co
+            c = L["eye_l"] if v.x > 0 else L["eye_r"]
+            d = np.array(v[:]) - np.array(c)
+            d /= max(np.linalg.norm(d), 1e-9)
+            uvl.data[li].uv = (0.5 + 0.5 * d[0], 0.5 + 0.5 * d[2])
+    S = 512
+    yy, xx = np.mgrid[0:S, 0:S].astype(np.float32) / S
+    u_, v_ = xx - 0.5, yy - 0.5
+    r = np.hypot(u_, v_)
+    ang = np.arctan2(v_, u_)
+    fib = value_noise(S, S, 48, 71) * 0.6 + 0.4 * (0.5 + 0.5 * np.sin(ang * 44 + value_noise(S, S, 20, 72) * 6))
+    iris_r, pupil_r = 0.235, 0.088
+    t = smoothstep(pupil_r, iris_r, r)[..., None]
+    iris_c = (np.array([0.165, 0.080, 0.036]) * (1 - t) + np.array([0.080, 0.036, 0.018]) * t) * (0.72 + 0.55 * fib[..., None])
+    iris_c = iris_c * (0.50 + 0.50 * (1 - smoothstep(iris_r * 0.82, iris_r, r)))[..., None]     # limbal ring
+    iris_c = iris_c * smoothstep(pupil_r * 0.8, pupil_r * 1.15, r)[..., None] + np.array([0.008, 0.006, 0.005]) * (1 - smoothstep(pupil_r * 0.8, pupil_r * 1.15, r))[..., None]
+    sclera_c = np.array([0.60, 0.54, 0.48])[None, None, :] * (0.94 + 0.10 * value_noise(S, S, 30, 73))[..., None]
+    m_ = smoothstep(iris_r - 0.004, iris_r + 0.004, r)[..., None]
+    e = iris_c * (1 - m_) + sclera_c * m_
+    set_single_material(objs["eyes"], make_material("Mani_eyes", save_raw("mani_eyes_c", e), rough=0.5, spec=0.10))
     a = load_raw(os.path.join(DATA, "eyebrows/eyebrow009/eyebrow009.png"))
     lum = a[..., :3].mean(-1, keepdims=True)
     lum = lum / max(lum.mean(), 1e-3)
@@ -371,13 +391,18 @@ def main_entry():
     sk = paint_skin_v2(hm, L)
     base_materials(objs, sk)
     bake_shapes(hm)
+    legs_in(objs)
     build_parka(objs)
     build_parka_parts(objs)
     build_boots(objs)
     fit_jeans(objs)
     B.finalize_meshes(objs, bake=False)
-    atl = make_atlases()
-    build_hair_cards(objs, atl)
+    if "--legacy-hair" in B.ARGS:
+        atl = make_atlases()
+        build_hair_cards(objs, atl)
+    else:
+        import hair_v4
+        hair_v4.build(objs)
     # (beard / stubble now come from the sheet projection; build_beard() kept for reference, not called)
     B.build_accessories(objs, objs['rig'])
     build_lenses(objs)
@@ -441,7 +466,7 @@ def beard_fields(L):
 # ---------------------------------------------------------------------------------------------
 SKIN_RGB = np.array([0.345, 0.255, 0.195])
 HEAD_POLYS = []             # polygon indices of the head UV island (set by paint_skin_v2)
-SHEET_GAIN = 0.86          # the sheet is studio-lit; pull the albedo down a little for the game's lighting
+SHEET_GAIN = 0.76          # the sheet is studio-lit; pull the albedo down a little for the game's lighting
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "tools/likeness"))
 import project_face as LP  # noqa: E402
 
@@ -584,13 +609,69 @@ def paint_skin_v2(hm, L):
     if os.path.isfile(os.path.join(LP.LDIR, "clean_front.png")):
         def load_up(path):
             return load_raw(path)[::-1]          # Blender pixels are bottom-up
-        fp = LP.FaceProjector(co, load_up)
-        for ty, tx, pp, nn in acc:
-            rgb, al = fp.project(pp, nn)
-            PR[ty, tx] = rgb
-            PA[ty, tx] = al
+        sjd = LP.json.load(open(LP.JSON))
+        if "mp" in sjd:
+            from mathutils.bvhtree import BVHTree
+            bi = hm.vertex_groups["body"].index
+            in_body = np.zeros(len(me.vertices), bool)
+            for v_ in me.vertices:
+                for g_ in v_.groups:
+                    if g_.group == bi and g_.weight > 0.5:
+                        in_body[v_.index] = True
+            tri_l = [(p.vertices[0], p.vertices[k], p.vertices[k + 1]) for p in me.polygons
+                     if all(in_body[i] for i in p.vertices) for k in range(1, len(p.vertices) - 1)]
+            bvh = BVHTree.FromPolygons([tuple(v) for v in co], tri_l)
+
+            def visible(origin, target):
+                d = Vector(target) - Vector(origin)
+                dist = d.length
+                hit = bvh.ray_cast(Vector(origin), d / dist, dist)
+                return hit[0] is None or hit[3] > dist - 0.004
+            fp = LP.FaceProjectorMP(co, load_up, visible)
+            log("skin: MediaPipe projection (%s)" % ", ".join("%s %d lm" % (k, len(v["idx"])) for k, v in sjd["mp"].items()))
+        else:
+            fp = LP.FaceProjector(co, load_up)
+        TY = np.concatenate([a[0] for a in acc]); TX = np.concatenate([a[1] for a in acc])
+        PP = np.concatenate([a[2] for a in acc]); NN = np.concatenate([a[3] for a in acc])
+        log("skin: %d texels to project" % len(TY))
+        PZ = np.zeros((HS, HS), np.float16); PX = np.zeros((HS, HS), np.float16)
+        for s0 in range(0, len(TY), 150000):
+            sl = slice(s0, s0 + 150000)
+            rgb, al = fp.project(PP[sl].astype(np.float64), NN[sl].astype(np.float64))
+            PR[TY[sl], TX[sl]] = rgb
+            PA[TY[sl], TX[sl]] = al
+            PZ[TY[sl], TX[sl]] = PP[sl][:, 2]
+            PX[TY[sl], TX[sl]] = PP[sl][:, 0]
+        del TY, TX, PP, NN
         log("skin: sheet projected, covered %.1f%% of head texels" % (100.0 * (PA > 0.05).sum() / max(F[..., 5].sum(), 1)))
     del acc
+    GAIN = np.full(3, SHEET_GAIN, np.float32)
+    TONE = np.ones(3, np.float32)
+    if PA.max() > 0:
+        pz = PZ.astype(np.float32); px_ = np.abs(PX.astype(np.float32))
+        # lens glare in the photo tints the eyelids teal: pull it back to skin at the same luminance
+        peri = (px_ < 0.075) & (pz > ez - 0.035) & (pz < ez + 0.06) & (PA > 0.05)
+        teal = np.clip((PR[..., 2] - 0.80 * PR[..., 0]) / 0.10, 0, 1) * peri
+        lum_ = PR.mean(-1, keepdims=True)
+        repl = lum_ * (SKIN_RGB / SKIN_RGB.mean())[None, None, :]
+        PR = PR * (1 - teal[..., None]) + repl * teal[..., None]
+        del repl, lum_, teal, peri
+        # photo skin -> game albedo: gain chosen so the photographed cheeks equal the procedural skin (neck, body, hands),
+        # hence no colour step between the head island and the neck
+        cheek = (PA > 0.9) & (px_ > 0.02) & (px_ < 0.06) & (pz > float(L["chin_z"]) + 0.02) & (pz < ez - 0.01)
+        if cheek.sum() > 1000:
+            TONE[:] = np.clip(PR[cheek].mean(0) * SHEET_GAIN / SKIN_RGB, 0.6, 1.6)
+            log("procedural skin tone matched to the photographed cheeks: x%s" % np.round(TONE, 3))
+        # grey studio background / hoodie that leaks through the panel edges onto the neck: drop it
+        greyish = ((PR.max(-1) - PR.min(-1)) < 0.07) & (PR.mean(-1) > 0.28) & (pz > float(L["chin_z"]) - 0.12)
+        PA = PA * (1 - greyish)
+        del greyish
+        # the photo fades out toward the neck (no hoodie / collar colours on the neck)
+        PA = PA * smoothstep(float(L["chin_z"]) - 0.06, float(L["chin_z"]) + 0.035, pz)
+        del pz, px_
+    del PZ, PX
+    skin = skin * TONE[None, None, :]
+    canvas *= TONE[None, None, :]
     # the photo already has the beard, lips, tired eyes and flush: drop the painted versions where it applies
     keep = (1 - PA)
     F[..., 0] *= keep; F[..., 1] *= keep; F[..., 2] *= keep; F[..., 3] *= keep
@@ -619,14 +700,53 @@ def paint_skin_v2(hm, L):
     shade = F[..., 0:1]
     col = col * (1 - 0.30 * shade) + np.array([0.12, 0.10, 0.10])[None, None, :] * 0.30 * shade   # beard shadow tone
     if PA.max() > 0:
-        photo = PR * SHEET_GAIN * (1 + n_fine[..., None] * 0.10 - pore[..., None] * 0.06)
+        photo = PR * GAIN[None, None, :] * (1 + n_fine[..., None] * 0.10 - pore[..., None] * 0.06)
         # photo is blended over the procedural skin; soft-edged so the seam to the unprojected back of the head is invisible
         a = np.clip(PA, 0, 1)[..., None] * 0.97
         col = col * (1 - a) + photo * a
         del photo, a
     del PR
+    # ---- hairline: the scalp above it is dense dark hair, never skin (no bald gap under the curls) -------
+    import hair_v4
+    hs = hair_v4.HairShape(ez, ear_y, float(L["chin_z"]), 0.0)
+    hair_a = np.zeros((HS, HS), np.float32)
+    rngh = np.random.RandomState(8)
+    for p in head_polys:
+        vs_ = list(p.vertices)
+        li = list(p.loop_indices)
+        for k in range(1, len(vs_) - 1):
+            ids = [0, k, k + 1]
+            P3 = co[[vs_[i] for i in ids]]
+            if P3[:, 2].max() < ez - 0.02 or P3[:, 2].min() > ez + 0.2:
+                continue
+            uv = np.array([[uvl[li[i]].uv[0] * (HS - 1), uvl[li[i]].uv[1] * (HS - 1)] for i in ids])
+            x0, x1 = int(np.floor(uv[:, 0].min())), int(np.ceil(uv[:, 0].max()))
+            y0, y1 = int(np.floor(uv[:, 1].min())), int(np.ceil(uv[:, 1].max()))
+            if x1 - x0 > 400 or y1 - y0 > 400:
+                continue
+            gx, gy = np.meshgrid(np.arange(x0, x1 + 1), np.arange(y0, y1 + 1))
+            a, b, c = uv
+            den = (b[1] - c[1]) * (a[0] - c[0]) + (c[0] - b[0]) * (a[1] - c[1])
+            if abs(den) < 1e-9:
+                continue
+            l1 = ((b[1] - c[1]) * (gx - c[0]) + (c[0] - b[0]) * (gy - c[1])) / den
+            l2 = ((c[1] - a[1]) * (gx - c[0]) + (a[0] - c[0]) * (gy - c[1])) / den
+            l3 = 1 - l1 - l2
+            m = (l1 >= -0.03) & (l2 >= -0.03) & (l3 >= -0.03)
+            if not m.any():
+                continue
+            pp = l1[m][:, None] * P3[0] + l2[m][:, None] * P3[1] + l3[m][:, None] * P3[2]
+            hl = hs.hairline_z(pp[:, 0], pp[:, 1])
+            ty, tx = gy[m], gx[m]
+            ok = (ty >= 0) & (ty < HS) & (tx >= 0) & (tx < HS)
+            hair_a[ty[ok], tx[ok]] = np.maximum(hair_a[ty[ok], tx[ok]], smoothstep(hl - 0.012, hl + 0.014, pp[:, 2])[ok])
+    stip = 0.55 + 0.45 * value_noise(HS, HS, 700, 51)
+    ha = (hair_a * np.clip(0.30 + 1.1 * value_noise(HS, HS, 900, 52) + 1.2 * hair_a - 0.6, 0, 1) ** 0.6)[..., None]
+    ha = np.where(hair_a[..., None] > 0.97, 1.0, ha) * 0.97
+    col = col * (1 - ha) + (np.array([0.020, 0.016, 0.015])[None, None, :] * stip[..., None]) * ha
+    del ha, stip, hair_a
     covered = F[..., 5] > 0.5
-    out_c = save_raw("mani_head_c", np.where(covered[..., None], col, SKIN_RGB[None, None, :]), fmt="JPEG", quality=92)
+    out_c = save_raw("mani_head_c", np.where(covered[..., None], col, (SKIN_RGB * TONE)[None, None, :]), fmt="JPEG", quality=92)
     del col
     # ---- normal map -----------------------------------------------------------------------------
     hmap = -pore * 0.55 + n_fine * 0.18 + n_mid * 0.10
@@ -745,6 +865,63 @@ def bake_shapes(hm):
     bpy.context.view_layer.objects.active = hm
     hm.select_set(True)
     bpy.ops.object.shape_key_remove(all=True, apply_mix=True)
+
+
+LEG_IN_DEG = 3.2      # v4: bring the A-pose feet in so thighs and calves line up as in the turnaround
+
+
+def legs_in(objs, deg=LEG_IN_DEG):
+    """Rotate both thighs toward the midline about the hips and bake it as the new rest pose
+    (meshes skinned to the legs are deformed with the armature modifier, then the pose becomes the rest pose)."""
+    rig = objs["rig"]
+    log("legs: feet x before", [round(abs((rig.matrix_world @ rig.data.bones["foot_" + s].head_local).x), 3) for s in "lr"])
+    bpy.ops.object.select_all(action="DESELECT")
+    bpy.context.view_layer.objects.active = rig
+    bpy.ops.object.mode_set(mode="POSE")
+    for s, sg in (("l", 1), ("r", -1)):
+        pb = rig.pose.bones["thigh_" + s]
+        Br = rig.data.bones["thigh_" + s].matrix_local.to_3x3()
+        R = Matrix.Rotation(math.radians(sg * deg), 3, "Y")      # +Y rotation moves a downward leg toward -x
+        pb.rotation_mode = "QUATERNION"
+        pb.rotation_quaternion = (Br.inverted() @ R @ Br).to_quaternion()
+    for s, sg in (("l", 1), ("r", -1)):          # keep the soles level: counter-roll the feet
+        pb = rig.pose.bones["foot_" + s]
+        Br = rig.data.bones["foot_" + s].matrix_local.to_3x3()
+        R = Matrix.Rotation(math.radians(-sg * deg), 3, "Y")
+        pb.rotation_mode = "QUATERNION"
+        pb.rotation_quaternion = (Br.inverted() @ R @ Br).to_quaternion()
+    bpy.context.view_layer.update()
+    # check direction: the foot must have moved toward the midline
+    fx = abs((rig.matrix_world @ rig.pose.bones["foot_l"].head).x)
+    bpy.ops.object.mode_set(mode="OBJECT")
+    if fx > abs((rig.matrix_world @ rig.data.bones["foot_l"].head_local).x):
+        for s, sg in (("l", 1), ("r", -1)):
+            pb = rig.pose.bones["thigh_" + s]
+            Br = rig.data.bones["thigh_" + s].matrix_local.to_3x3()
+            R = Matrix.Rotation(math.radians(-sg * deg), 3, "Y")
+            pb.rotation_quaternion = (Br.inverted() @ R @ Br).to_quaternion()
+            pf = rig.pose.bones["foot_" + s]
+            Bf = rig.data.bones["foot_" + s].matrix_local.to_3x3()
+            pf.rotation_quaternion = (Bf.inverted() @ Matrix.Rotation(math.radians(sg * deg), 3, "Y") @ Bf).to_quaternion()
+    for ob in [o for o in bpy.data.objects if o.type == "MESH" and o.parent == rig or (o.type == "MESH" and any(m.type == "ARMATURE" for m in o.modifiers))]:
+        mod = next((m for m in ob.modifiers if m.type == "ARMATURE"), None)
+        if mod is None or ob.data.shape_keys:
+            continue
+        if not any(vg.name in ("thigh_l", "thigh_r", "calf_l", "calf_r", "foot_l", "foot_r") for vg in ob.vertex_groups):
+            continue
+        bpy.ops.object.select_all(action="DESELECT")
+        bpy.context.view_layer.objects.active = ob
+        ob.select_set(True)
+        bpy.ops.object.modifier_apply(modifier=mod.name)
+        m2 = ob.modifiers.new("Armature", "ARMATURE")
+        m2.object = rig
+    bpy.ops.object.select_all(action="DESELECT")
+    bpy.context.view_layer.objects.active = rig
+    rig.select_set(True)
+    bpy.ops.object.mode_set(mode="POSE")
+    bpy.ops.pose.armature_apply(selected=False)
+    bpy.ops.object.mode_set(mode="OBJECT")
+    log("legs: feet x after", [round(abs((rig.matrix_world @ rig.data.bones["foot_" + s].head_local).x), 3) for s in "lr"])
 
 
 def vgroup_names(ob):
@@ -944,7 +1121,7 @@ def build_parka_parts(objs):
     hp.data.materials.append(par_mat)
     bind_rigid(hp, rig, "spine_03")
     # funnel collar, open at the front
-    col = B.frustum("Mani_parka_collar", (cx, cy + 0.004, 0), zn - 0.020, zn + 0.046, 0.078, 0.080, 0.084, 0.088, seg=28, gap_deg=44, thickness=0.012)
+    col = B.frustum("Mani_parka_neckband", (cx, cy + 0.004, 0), zn - 0.020, zn + 0.046, 0.078, 0.080, 0.084, 0.088, seg=28, gap_deg=44, thickness=0.012)
     col.data.materials.append(par_mat)
     for p in col.data.polygons:
         p.use_smooth = True
@@ -1321,7 +1498,7 @@ def build_lenses(objs):
         me = bpy.data.meshes.new("lens"); bm.to_mesh(me); bm.free()
         meshes.append(me)
     ob = join_meshes("Mani_lenses", meshes)
-    mat = make_material("Mani_lens", color=(0.55, 0.62, 0.68), rough=0.02, spec=0.6, alpha_const=0.07, double_sided=True)
+    mat = make_material("Mani_lens", color=(0.55, 0.62, 0.68), rough=0.12, spec=0.12, alpha_const=0.03, double_sided=True)
     ob.data.materials.append(mat)
     bind_rigid(ob, rig, "head")
     objs["lenses"] = ob

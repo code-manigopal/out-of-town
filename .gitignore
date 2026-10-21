@@ -32,3 +32,5 @@ tools/.venv/
 # Binary GDExtension add-ons: installed by tools/install_addons.sh, not committed
 game/addons/terrain_3d/
 game/addons/limboai/
+tools/likeness/models/
+tools/voice/models/

@@ -1,0 +1,47 @@
+{
+"line_id": "e1_ruth2_000",
+"source_hash": "d7c3eb69cde9f81c",
+"duration": 1.09,
+"mouthCues": [
+{
+"start": 0.0,
+"end": 0.05,
+"value": "X"
+},
+{
+"start": 0.05,
+"end": 0.35,
+"value": "B"
+},
+{
+"start": 0.35,
+"end": 0.49,
+"value": "E"
+},
+{
+"start": 0.49,
+"end": 0.56,
+"value": "C"
+},
+{
+"start": 0.56,
+"end": 0.63,
+"value": "B"
+},
+{
+"start": 0.63,
+"end": 0.7,
+"value": "C"
+},
+{
+"start": 0.7,
+"end": 1.05,
+"value": "B"
+},
+{
+"start": 1.05,
+"end": 1.09,
+"value": "X"
+}
+]
+}

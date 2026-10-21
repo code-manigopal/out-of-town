@@ -54,7 +54,17 @@ def main():
     img, out, m = clean("profile", (30, 340, 285, 440), [(60, 372, 100, 400)], 9)
     cv2.imwrite(os.path.join(D, "clean_profile.png"), out)
     cv2.imwrite(os.path.join(D, "mask_profile.png"), m * 255)
-    print("wrote clean_front.png clean_profile.png")
+    # three-quarter panels (MediaPipe-based projection): crop from the sheet, same glasses-line removal
+    sheet = cv2.imread(os.path.join(REPO, "docs/art/sheets/mani/mani_p1_face.png"))
+    for name, box, region, keeps in (
+            ("q34L", (411, 0, 849, 825), (15, 340, 345, 450), [(65, 368, 140, 406), (150, 368, 215, 406)]),
+            ("q34R", (1253, 0, 1672, 825), (95, 340, 410, 450), [(225, 368, 295, 408), (315, 368, 380, 408)])):
+        x0, y0, x1, y1 = box
+        cv2.imwrite(os.path.join(D, "panel_%s.png" % name), sheet[y0:y1, x0:x1])
+        img, out, m = clean(name, region, keeps, 7)
+        cv2.imwrite(os.path.join(D, "clean_%s.png" % name), out)
+        cv2.imwrite(os.path.join(D, "mask_%s.png" % name), m * 255)
+    print("wrote clean_front/profile/q34L/q34R.png")
 
 
 main()

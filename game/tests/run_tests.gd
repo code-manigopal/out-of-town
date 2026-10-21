@@ -35,6 +35,7 @@ func _initialize() -> void:
 		_test_g1_inputs_and_flow()
 		await _test_mani_model()
 		await _test_carry()
+		await _test_apartment_layout()
 	print("%d checks, %d failures" % [_checks, _failures])
 	quit(1 if _failures > 0 else 0)
 
@@ -293,7 +294,7 @@ func _test_mani_model() -> void:
 	var ap: AnimationPlayer = inst.find_child("AnimationPlayer", true, false) as AnimationPlayer
 	_check(ap != null, "mani has an AnimationPlayer")
 	if ap != null:
-		for clip: String in ["idle", "walk", "jog", "carry"]:
+		for clip: String in ["idle", "walk", "jog", "carry", "carry_sweets", "carry_diyas", "carry_radio"]:
 			_check(ap.has_animation(clip), "mani has the %s animation" % clip)
 		if ap.has_animation("walk"):
 			var len: float = ap.get_animation("walk").length
@@ -330,6 +331,7 @@ func _test_carry() -> void:
 	_check(pl.interactor.interact() and pl.interactor.carried == it, "interact picks up the sweets box")
 	_check(pl.is_carrying() and pl.get_carry_holder().get_parent() == pl.hand_attachment, "carried visual hangs under the hand attachment")
 	_check(pl.get_carry_holder().get_child_count() > 0, "carried holder contains the item visual")
+	_check(pl.carry_node != null and pl.carry_node.animation == &"carry_sweets", "sweets box uses its own two-hand grip clip")
 	for i: int in 5:
 		pl._process(0.1)
 	_check(pl._carry_blend > 0.99, "carry pose is blended in")
@@ -342,4 +344,66 @@ func _test_carry() -> void:
 	for i: int in 5:
 		pl._process(0.1)
 	_check(pl._carry_blend < 0.01, "carry pose blends out")
+	apt.queue_free()
+
+
+func _capsule_hits(space: PhysicsDirectSpaceState3D, p: Vector3) -> int:
+	var cap: CapsuleShape3D = CapsuleShape3D.new()
+	cap.radius = 0.35
+	cap.height = 1.7
+	var q: PhysicsShapeQueryParameters3D = PhysicsShapeQueryParameters3D.new()
+	q.shape = cap
+	q.transform = Transform3D(Basis(), Vector3(p.x, 0.12 + 0.85, p.z))  # feet 12 cm up so the floor is not hit
+	return space.intersect_shape(q, 8).size()
+
+
+func _test_apartment_layout() -> void:
+	StoryState.start_part("p1")
+	var apt: OOTApartment = _make_apartment()
+	for i: int in 4:
+		await physics_frame
+	await process_frame
+	# Duffel slots: one per packing item, deposit shows the item there, zipping hides them.
+	for id: String in ["sweets", "diyas", "radio"]:
+		_check(apt.get_slot(id) is Marker3D, "duffel has Slot_%s" % id)
+	var duffel_box: AABB = apt._world_aabb(apt.duffel.get_node("Visual/ModelOpen") as Node3D)
+	_check(duffel_box.size.x > 0.7 and duffel_box.size.y > 0.35 and duffel_box.size.z > 0.35, "duffel is a weekend bag (%.2f x %.2f x %.2f)" % [duffel_box.size.x, duffel_box.size.y, duffel_box.size.z])
+	for id: String in ["sweets", "diyas", "radio"]:
+		_check(not apt.slot_items.has(id), "%s is not in its slot before packing" % id)
+	var count: int = 0
+	for id: String in ["sweets", "diyas", "radio"]:
+		_check(apt.pack_item(id), "pack %s" % id)
+		count += 1
+		var shown: Node3D = apt.slot_items.get(id) as Node3D
+		_check(shown != null and shown.get_parent() == apt.get_slot(id), "%s model sits in its slot" % id)
+		if shown != null and count < 3:
+			var box: AABB = apt._world_aabb(shown)
+			var at: Vector3 = apt.get_slot(id).global_position
+			_check(absf(box.position.y - at.y) < 0.002 and absf(box.get_center().x - at.x) < 0.002, "%s rests on its slot marker" % id)
+			_check(shown.visible, "%s visible in the open bag" % id)
+	_check(apt.slot_items.size() == 3, "bag holds 3 items at 3/3")
+	_check(not (apt.duffel.get_node("Visual/ModelOpen") as Node3D).visible and (apt.duffel.get_node("Visual/ModelZipped") as Node3D).visible, "zipped model replaces the open bag at 3/3")
+	var all_hidden: bool = true
+	for c: Node3D in apt.slot_items.values():
+		all_hidden = all_hidden and not c.visible
+	_check(all_hidden, "slot items are hidden once zipped")
+	# Kitchen props rest on the counter top (0.90 m), clear of the sink hole.
+	for id: String in ["Sweets", "Diyas", "Radio"]:
+		var it: Node3D = apt.get_node("Props/%s" % id) as Node3D
+		var b: AABB = apt._world_aabb(it.get_node("Visual") as Node3D)
+		_check(absf(b.position.y - 0.90) < 0.005, "%s rests on the counter top (base %.3f)" % [id, b.position.y])
+		_check(it.global_position.z > -2.0 and it.global_position.z < -0.9, "%s is on the flat counter, not the sink (z %.2f)" % [id, it.global_position.z])
+	# Bedroom doorway (x 0.5..1.5 at z 0.5) and the paths to bed, duffel, wardrobe and bathroom door are clear.
+	var space: PhysicsDirectSpaceState3D = apt.get_world_3d().direct_space_state
+	var path: Dictionary = {
+		"living room approach": Vector3(1.0, 0, -0.4), "doorway": Vector3(1.0, 0, 0.5), "inside doorway": Vector3(1.0, 0, 1.0),
+		"beside bed": Vector3(1.05, 0, 1.65), "bed foot": Vector3(1.05, 0, 2.7), "wardrobe front": Vector3(0.7, 0, 3.0),
+		"bathroom door": Vector3(0.45, 0, 1.6), "duffel side": Vector3(1.05, 0, 2.0),
+	}
+	for k: String in path:
+		_check(_capsule_hits(space, path[k]) == 0, "bedroom path clear for the player: %s" % k)
+	var door_z: Array[float] = [0.3, 0.5, 0.7]
+	for x: float in [0.9, 1.0, 1.05]:
+		for z: float in door_z:
+			_check(_capsule_hits(space, Vector3(x, 0, z)) == 0, "doorway clear at (%.1f, %.1f)" % [x, z])
 	apt.queue_free()

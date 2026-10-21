@@ -1,0 +1,117 @@
+{
+"line_id": "e1_tp1done_000",
+"source_hash": "b24b4782fd3ce497",
+"duration": 3.4,
+"mouthCues": [
+{
+"start": 0.0,
+"end": 0.09,
+"value": "B"
+},
+{
+"start": 0.09,
+"end": 0.23,
+"value": "D"
+},
+{
+"start": 0.23,
+"end": 0.44,
+"value": "F"
+},
+{
+"start": 0.44,
+"end": 0.51,
+"value": "B"
+},
+{
+"start": 0.51,
+"end": 0.58,
+"value": "C"
+},
+{
+"start": 0.58,
+"end": 0.65,
+"value": "G"
+},
+{
+"start": 0.65,
+"end": 0.72,
+"value": "E"
+},
+{
+"start": 0.72,
+"end": 0.93,
+"value": "B"
+},
+{
+"start": 0.93,
+"end": 1.0,
+"value": "G"
+},
+{
+"start": 1.0,
+"end": 1.07,
+"value": "B"
+},
+{
+"start": 1.07,
+"end": 1.28,
+"value": "C"
+},
+{
+"start": 1.28,
+"end": 1.56,
+"value": "B"
+},
+{
+"start": 1.56,
+"end": 1.77,
+"value": "E"
+},
+{
+"start": 1.77,
+"end": 2.53,
+"value": "B"
+},
+{
+"start": 2.53,
+"end": 2.6,
+"value": "C"
+},
+{
+"start": 2.6,
+"end": 2.7,
+"value": "A"
+},
+{
+"start": 2.7,
+"end": 2.75,
+"value": "B"
+},
+{
+"start": 2.75,
+"end": 2.8,
+"value": "C"
+},
+{
+"start": 2.8,
+"end": 3.22,
+"value": "E"
+},
+{
+"start": 3.22,
+"end": 3.29,
+"value": "F"
+},
+{
+"start": 3.29,
+"end": 3.36,
+"value": "B"
+},
+{
+"start": 3.36,
+"end": 3.4,
+"value": "X"
+}
+]
+}

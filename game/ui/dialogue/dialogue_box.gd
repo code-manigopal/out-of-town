@@ -10,6 +10,11 @@ signal opened
 signal closed
 ## Emitted when the box hands control back. scene_id is the scene it stopped at.
 signal finished(scene_id: String)
+## Emitted when a line appears. has_audio is false when no VO file exists (the line is silent).
+signal voice_requested(line_id: String, has_audio: bool)
+
+const CLICK_SOUND: String = "res://audio/sfx/kenney/interface/click_001.ogg"
+const CHOICE_SOUND: String = "res://audio/sfx/kenney/interface/select_001.ogg"
 
 @export var opaque_background: bool = false
 
@@ -17,7 +22,11 @@ var runner: OOTStoryRunner = null
 var stop_at: String = ""
 var is_open: bool = false
 
+## Id ("<scene>_<NNN>") of the line currently shown; empty for none / narration.
+var current_line_id: String = ""
 var _line_index: int = 0
+var _vo_player: AudioStreamPlayer
+var _ui_player: AudioStreamPlayer
 var _bg: ColorRect
 var _panel: PanelContainer
 var _speaker: Label
@@ -29,6 +38,14 @@ var _hint: Label
 
 func _ready() -> void:
 	_build_ui()
+	_vo_player = AudioStreamPlayer.new()
+	_vo_player.name = "VoicePlayer"
+	_vo_player.bus = OOTVoiceLines.VO_BUS
+	add_child(_vo_player)
+	_ui_player = AudioStreamPlayer.new()
+	_ui_player.name = "UiSoundPlayer"
+	_ui_player.bus = &"UI"
+	add_child(_ui_player)
 	visible = false
 	set_anchors_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -132,6 +149,7 @@ func _unbind() -> void:
 func _finish(scene_id: String) -> void:
 	_unbind()
 	_clear_choices()
+	_stop_vo()
 	var was_open: bool = is_open
 	is_open = false
 	visible = false
@@ -155,6 +173,7 @@ func _show_line() -> void:
 		_speaker.text = ""
 		_text.text = ""
 		_subtitle.text = ""
+		_stop_vo()
 		_after_lines()
 		return
 	var line: OOTDialogueLine = scene.lines[_line_index]
@@ -163,6 +182,7 @@ func _show_line() -> void:
 	_subtitle.text = line.get_subtitle()
 	_subtitle.visible = not _subtitle.text.is_empty()
 	_hint.text = "Click / Enter to continue"
+	_play_vo(line)
 	if _line_index == scene.lines.size() - 1:
 		var opts: Array[OOTChoice] = runner.get_choices()
 		if not opts.is_empty():
@@ -204,7 +224,10 @@ func _show_choices(opts: Array[OOTChoice]) -> void:
 		b.text = label
 		b.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		b.disabled = not ok
-		b.pressed.connect(func() -> void: runner.choose(choice))
+		b.pressed.connect(func() -> void:
+			_play_ui(CHOICE_SOUND)
+			_stop_vo()
+			runner.choose(choice))
 		_choices.add_child(b)
 		if first == null and ok:
 			first = b
@@ -226,9 +249,13 @@ func advance() -> void:
 		return
 	var scene: OOTScene = runner.scene
 	if _line_index < scene.lines.size() - 1:
+		_play_ui(CLICK_SOUND)
+		_stop_vo()
 		_line_index += 1
 		_show_line()
 	elif _line_index == scene.lines.size() - 1 and _choices.get_child_count() == 0:
+		_play_ui(CLICK_SOUND)
+		_stop_vo()
 		_line_index += 1
 		_after_lines()
 
@@ -261,3 +288,30 @@ func _to_bbcode(s: String) -> String:
 	var re: RegEx = RegEx.new()
 	re.compile("\\*([^*]+)\\*")
 	return re.sub(escaped, "[i]$1[/i]", true)
+
+
+## Plays the line's placeholder VO on the VO bus. Subtitles are never touched;
+## a line with no audio is simply silent.
+func _play_vo(line: OOTDialogueLine) -> void:
+	_stop_vo()
+	current_line_id = ""
+	if line.is_narration:
+		return
+	current_line_id = OOTVoiceLines.make_id(line.scene_id, line.order)
+	var stream: AudioStream = OOTVoiceLines.get_stream(current_line_id, runner.part_id if runner != null and not runner.part_id.is_empty() else OOTVoiceLines.DEFAULT_PART)
+	voice_requested.emit(current_line_id, stream != null)
+	if stream != null and _vo_player != null:
+		_vo_player.stream = stream
+		_vo_player.play()
+
+
+func _stop_vo() -> void:
+	if _vo_player != null and _vo_player.playing:
+		_vo_player.stop()
+
+
+func _play_ui(path: String) -> void:
+	if _ui_player == null or not ResourceLoader.exists(path):
+		return
+	_ui_player.stream = load(path) as AudioStream
+	_ui_player.play()

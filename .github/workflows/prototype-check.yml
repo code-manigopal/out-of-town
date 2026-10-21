@@ -36,3 +36,5 @@ jobs:
         run: godot --headless --path game --import
       - name: Story tests
         run: godot --headless --path game --script res://tests/run_tests.gd
+      - name: Audio tests
+        run: godot --headless --path game --script res://tests/run_audio_tests.gd

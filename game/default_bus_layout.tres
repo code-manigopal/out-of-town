@@ -1,0 +1,53 @@
+[gd_resource type="AudioBusLayout" format=3 uid="uid://iafunfs07ajy"]
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_duck_amb"]
+resource_name = "DuckForVO"
+threshold = -26.0
+ratio = 3.0
+attack_us = 40.0
+release_ms = 600.0
+sidechain = &"VO"
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_duck_mus"]
+resource_name = "DuckForVO"
+threshold = -26.0
+ratio = 3.0
+attack_us = 40.0
+release_ms = 600.0
+sidechain = &"VO"
+
+[resource]
+bus/1/name = &"VO"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/2/name = &"SFX"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = 0.0
+bus/2/send = &"Master"
+bus/3/name = &"Ambience"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = 0.0
+bus/3/send = &"Master"
+bus/3/effect/0/effect = SubResource("AudioEffectCompressor_duck_amb")
+bus/3/effect/0/enabled = true
+bus/4/name = &"Music"
+bus/4/solo = false
+bus/4/mute = false
+bus/4/bypass_fx = false
+bus/4/volume_db = 0.0
+bus/4/send = &"Master"
+bus/4/effect/0/effect = SubResource("AudioEffectCompressor_duck_mus")
+bus/4/effect/0/enabled = true
+bus/5/name = &"UI"
+bus/5/solo = false
+bus/5/mute = false
+bus/5/bypass_fx = false
+bus/5/volume_db = 0.0
+bus/5/send = &"Master"

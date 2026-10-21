@@ -1,0 +1,42 @@
+{
+"line_id": "e1_tp1skip_001",
+"source_hash": "39d8c1e29decf1e3",
+"duration": 0.97,
+"mouthCues": [
+{
+"start": 0.0,
+"end": 0.1,
+"value": "B"
+},
+{
+"start": 0.1,
+"end": 0.17,
+"value": "C"
+},
+{
+"start": 0.17,
+"end": 0.45,
+"value": "F"
+},
+{
+"start": 0.45,
+"end": 0.52,
+"value": "B"
+},
+{
+"start": 0.52,
+"end": 0.59,
+"value": "G"
+},
+{
+"start": 0.59,
+"end": 0.94,
+"value": "B"
+},
+{
+"start": 0.94,
+"end": 0.97,
+"value": "X"
+}
+]
+}

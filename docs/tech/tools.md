@@ -36,14 +36,19 @@ Project settings: **Jolt Physics** is the 3D physics engine; Godot's own `.blend
 | Audacity | 4.0.1 | GPL (tool) | `brew install --cask audacity` | Voice and sound editing |
 | Rhubarb Lip Sync | 1.14.0 | MIT | `~/Applications/Tools/Rhubarb-Lip-Sync-1.14.0-macOS/rhubarb` | Mouth shapes from voice audio; use `--recognizer phonetic` for Tanglish |
 | MediaPipe | 1.1.1 | Apache-2.0 | `tools/.venv` (Python 3.12, gitignored) | Face landmarks for likeness fitting; Pose for motion capture from phone video |
+| ffmpeg | 9.0.2 | LGPL/GPL (tool) | `brew install ffmpeg` | Audio filters (phone, radio, video call), encoding to Ogg |
+| Piper TTS | 1.8.0 | GPL-3.0 (tool) | `tools/.venv` (`pip install piper-tts`) | **Placeholder** voice lines for timing; never shipped |
+| Piper voice LibriTTS-R medium | — | CC BY 4.0 (dataset) | `tools/voice/models/` (gitignored, ~79 MB) | Multi-speaker placeholder voices, one speaker id per character |
 
-Recreate the Python environment:
+Recreate the Python environment and download the MediaPipe models (`face_landmarker.task` 3.8 MB, `pose_landmarker_heavy.task` 30.7 MB, Apache-2.0) into `tools/likeness/models/`:
 
 ```bash
-/opt/homebrew/bin/python3.12 -m venv tools/.venv && tools/.venv/bin/pip install mediapipe
+tools/setup_python_tools.sh
 ```
 
 ## Asset sources
+
+- Sound effects: [Kenney](https://kenney.nl) Impact Sounds and Interface Sounds (CC0), in `game/audio/sfx/kenney/` with `SOURCES.md`.
 
 - Textures: [Poly Haven](https://polyhaven.com) (CC0), [ambientCG](https://ambientcg.com) (CC0). Record each download in a `SOURCES.md` next to the files.
 - Sounds: [Freesound](https://freesound.org), **CC0 filter only**.

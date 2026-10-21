@@ -1,0 +1,42 @@
+{
+"line_id": "e1_tp2b_004",
+"source_hash": "6b8034c5e9dcfd46",
+"duration": 0.88,
+"mouthCues": [
+{
+"start": 0.0,
+"end": 0.04,
+"value": "X"
+},
+{
+"start": 0.04,
+"end": 0.1,
+"value": "B"
+},
+{
+"start": 0.1,
+"end": 0.23,
+"value": "C"
+},
+{
+"start": 0.23,
+"end": 0.3,
+"value": "G"
+},
+{
+"start": 0.3,
+"end": 0.53,
+"value": "C"
+},
+{
+"start": 0.53,
+"end": 0.87,
+"value": "B"
+},
+{
+"start": 0.87,
+"end": 0.88,
+"value": "X"
+}
+]
+}

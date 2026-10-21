@@ -1,0 +1,67 @@
+{
+"line_id": "e1_victor_001",
+"source_hash": "9d31d829ef959a37",
+"duration": 1.98,
+"mouthCues": [
+{
+"start": 0.0,
+"end": 0.05,
+"value": "X"
+},
+{
+"start": 0.05,
+"end": 0.14,
+"value": "B"
+},
+{
+"start": 0.14,
+"end": 0.28,
+"value": "E"
+},
+{
+"start": 0.28,
+"end": 0.35,
+"value": "G"
+},
+{
+"start": 0.35,
+"end": 0.42,
+"value": "B"
+},
+{
+"start": 0.42,
+"end": 0.7,
+"value": "E"
+},
+{
+"start": 0.7,
+"end": 1.33,
+"value": "B"
+},
+{
+"start": 1.33,
+"end": 1.4,
+"value": "C"
+},
+{
+"start": 1.4,
+"end": 1.47,
+"value": "B"
+},
+{
+"start": 1.47,
+"end": 1.61,
+"value": "E"
+},
+{
+"start": 1.61,
+"end": 1.96,
+"value": "B"
+},
+{
+"start": 1.96,
+"end": 1.98,
+"value": "X"
+}
+]
+}

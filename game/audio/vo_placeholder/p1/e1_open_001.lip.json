@@ -1,0 +1,202 @@
+{
+"line_id": "e1_open_001",
+"source_hash": "8700688f643b6164",
+"duration": 5.74,
+"mouthCues": [
+{
+"start": 0.0,
+"end": 0.03,
+"value": "A"
+},
+{
+"start": 0.03,
+"end": 0.29,
+"value": "C"
+},
+{
+"start": 0.29,
+"end": 0.43,
+"value": "B"
+},
+{
+"start": 0.43,
+"end": 0.7,
+"value": "C"
+},
+{
+"start": 0.7,
+"end": 0.76,
+"value": "B"
+},
+{
+"start": 0.76,
+"end": 0.89,
+"value": "D"
+},
+{
+"start": 0.89,
+"end": 1.52,
+"value": "B"
+},
+{
+"start": 1.52,
+"end": 1.59,
+"value": "C"
+},
+{
+"start": 1.59,
+"end": 1.73,
+"value": "B"
+},
+{
+"start": 1.73,
+"end": 1.8,
+"value": "C"
+},
+{
+"start": 1.8,
+"end": 2.01,
+"value": "B"
+},
+{
+"start": 2.01,
+"end": 2.22,
+"value": "F"
+},
+{
+"start": 2.22,
+"end": 2.36,
+"value": "D"
+},
+{
+"start": 2.36,
+"end": 2.43,
+"value": "C"
+},
+{
+"start": 2.43,
+"end": 2.51,
+"value": "A"
+},
+{
+"start": 2.51,
+"end": 2.85,
+"value": "C"
+},
+{
+"start": 2.85,
+"end": 2.92,
+"value": "B"
+},
+{
+"start": 2.92,
+"end": 2.99,
+"value": "C"
+},
+{
+"start": 2.99,
+"end": 3.06,
+"value": "B"
+},
+{
+"start": 3.06,
+"end": 3.2,
+"value": "A"
+},
+{
+"start": 3.2,
+"end": 3.44,
+"value": "C"
+},
+{
+"start": 3.44,
+"end": 3.74,
+"value": "B"
+},
+{
+"start": 3.74,
+"end": 3.81,
+"value": "H"
+},
+{
+"start": 3.81,
+"end": 3.88,
+"value": "C"
+},
+{
+"start": 3.88,
+"end": 3.96,
+"value": "A"
+},
+{
+"start": 3.96,
+"end": 4.18,
+"value": "C"
+},
+{
+"start": 4.18,
+"end": 4.25,
+"value": "B"
+},
+{
+"start": 4.25,
+"end": 4.35,
+"value": "A"
+},
+{
+"start": 4.35,
+"end": 4.39,
+"value": "C"
+},
+{
+"start": 4.39,
+"end": 4.43,
+"value": "B"
+},
+{
+"start": 4.43,
+"end": 4.5,
+"value": "G"
+},
+{
+"start": 4.5,
+"end": 4.64,
+"value": "F"
+},
+{
+"start": 4.64,
+"end": 5.06,
+"value": "B"
+},
+{
+"start": 5.06,
+"end": 5.13,
+"value": "G"
+},
+{
+"start": 5.13,
+"end": 5.27,
+"value": "C"
+},
+{
+"start": 5.27,
+"end": 5.41,
+"value": "F"
+},
+{
+"start": 5.41,
+"end": 5.62,
+"value": "E"
+},
+{
+"start": 5.62,
+"end": 5.71,
+"value": "A"
+},
+{
+"start": 5.71,
+"end": 5.74,
+"value": "X"
+}
+]
+}

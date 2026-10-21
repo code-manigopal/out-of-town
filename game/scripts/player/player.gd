@@ -28,20 +28,22 @@ extends CharacterBody3D
 ## Seconds to blend the carry pose in/out.
 const CARRY_BLEND_TIME: float = 0.25
 const HAND_BONE: String = "hand_r"
-## Per-item hold (tools/blender/build_mani.py CARRY pose: both hands in front of the waist, wrists ~0.26 m
-## apart). The visual is centred on its AABB and placed at `offset` (body space: +x right, -z forward, from the
-## right wrist) with `rot` (degrees). Unknown ids use the default.
-const CARRY_DEFAULT: Dictionary = {"offset": Vector3(-0.13, 0.03, -0.07), "rot": Vector3.ZERO}
+## Per-item hold, fitted in Blender (tools/blender/grip_v4.py -> art_source/characters/mani/grip.json): each item has
+## its own `carry_<item>` clip (arm spread, finger curls, thumb on top) so no finger intersects it. The visual is
+## centred on its AABB and placed at `offset` (body space: +x right, -z forward, from the right wrist) with `rot`
+## (degrees). Unknown ids use the default (generic two-hand box hold, clip `carry`).
+const CARRY_DEFAULT: Dictionary = {"offset": Vector3(-0.1543, 0.0545, -0.1099), "rot": Vector3.ZERO}
 const CARRY_ITEMS: Dictionary = {
-	"sweets": {"offset": Vector3(-0.13, 0.04, -0.08), "rot": Vector3.ZERO},
-	"diyas": {"offset": Vector3(-0.13, 0.03, -0.07), "rot": Vector3.ZERO},
-	"radio": {"offset": Vector3(-0.13, 0.05, -0.08), "rot": Vector3.ZERO},
+	"sweets": {"offset": Vector3(-0.1543, 0.0545, -0.1099), "rot": Vector3.ZERO, "clip": "carry_sweets"},
+	"diyas": {"offset": Vector3(-0.1603, 0.0304, -0.0824), "rot": Vector3.ZERO, "clip": "carry_diyas"},
+	"radio": {"offset": Vector3(-0.0898, 0.0401, -0.0489), "rot": Vector3.ZERO, "clip": "carry_radio"},
 }
 
 var anim: AnimationPlayer
 var skeleton: Skeleton3D
 var tree: AnimationTree
 var hand_attachment: BoneAttachment3D
+var carry_node: AnimationNodeAnimation
 var carry_holder: Node3D = null
 var carry_offset: Vector3 = Vector3.ZERO
 var carry_rot: Vector3 = Vector3.ZERO
@@ -53,6 +55,13 @@ var pitch: float = -0.15
 var _lock_count: int = 0
 var _unlock_frame: int = -1
 var _gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity", 9.8)
+## Footsteps: one step every half stride of the authored clips (walk 1.0 s at 1.33 m/s,
+## jog 0.63 s at 2.8 m/s). The floor collider may carry a "surface" meta ("tile", "snow"…).
+@export var default_surface: String = "wood"
+const WALK_STEP_LENGTH: float = 0.665
+const JOG_STEP_LENGTH: float = 0.88
+var _step_distance: float = 0.0
+var _footstep_player: AudioStreamPlayer3D
 
 
 func _ready() -> void:
@@ -62,6 +71,12 @@ func _ready() -> void:
 	arm.add_excluded_object(get_rid())
 	_setup_animation()
 	interactor.carried_changed.connect(_on_carried_changed)
+	_footstep_player = AudioStreamPlayer3D.new()
+	_footstep_player.name = "Footsteps"
+	_footstep_player.bus = &"SFX"
+	_footstep_player.volume_db = -8.0
+	_footstep_player.unit_size = 4.0
+	add_child(_footstep_player)
 	_update_camera()
 	_apply_mouse_mode()
 
@@ -120,8 +135,35 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	if dir.length() > 0.1:
 		body.rotation.y = lerp_angle(body.rotation.y, atan2(-dir.x, -dir.z), turn_rate * delta)
+	_update_footsteps(delta, speed)
 	_update_animation()
 	_update_camera()
+
+
+func _update_footsteps(delta: float, speed: float) -> void:
+	var ground_speed: float = Vector2(velocity.x, velocity.z).length()
+	if not is_on_floor() or ground_speed < 0.3:
+		_step_distance = 0.0
+		return
+	_step_distance += ground_speed * delta
+	var step_length: float = JOG_STEP_LENGTH if speed > walk_speed else WALK_STEP_LENGTH
+	if _step_distance >= step_length:
+		_step_distance -= step_length
+		var stream: AudioStream = OOTFootsteps.pick(_floor_surface())
+		if stream != null:
+			_footstep_player.stream = stream
+			_footstep_player.pitch_scale = randf_range(0.95, 1.05)
+			_footstep_player.play()
+
+
+func _floor_surface() -> String:
+	var query: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(
+		global_position + Vector3.UP * 0.2, global_position + Vector3.DOWN * 0.3, collision_mask, [get_rid()])
+	var hit: Dictionary = get_world_3d().direct_space_state.intersect_ray(query)
+	var collider: Object = hit.get("collider")
+	if collider != null and collider.has_meta("surface"):
+		return str(collider.get_meta("surface"))
+	return default_surface
 
 
 func _setup_animation() -> void:
@@ -129,7 +171,7 @@ func _setup_animation() -> void:
 	skeleton = body.find_child("Skeleton3D", true, false) as Skeleton3D
 	if anim == null:
 		return
-	for clip: StringName in [&"idle", &"walk", &"jog", &"carry"]:
+	for clip: StringName in [&"idle", &"walk", &"jog", &"carry", &"carry_sweets", &"carry_diyas", &"carry_radio"]:
 		if anim.has_animation(clip):
 			anim.get_animation(clip).loop_mode = Animation.LOOP_LINEAR
 	anim.playback_default_blend_time = 0.2
@@ -169,6 +211,7 @@ func _build_tree() -> void:
 		var cn: AnimationNodeAnimation = AnimationNodeAnimation.new()
 		cn.animation = &"carry"
 		bt.add_node(&"A_carry", cn)
+		carry_node = cn
 		var bl: AnimationNodeBlend2 = AnimationNodeBlend2.new()
 		bl.filter_enabled = true
 		var carry_anim: Animation = anim.get_animation(&"carry")
@@ -242,6 +285,9 @@ func _attach_carry_visual(item: OOTInteractable) -> void:
 	var cfg: Dictionary = CARRY_ITEMS.get(item.item_id, CARRY_DEFAULT)
 	carry_offset = cfg["offset"]
 	carry_rot = cfg["rot"]
+	if carry_node != null:
+		var clip_name: StringName = StringName(cfg.get("clip", "carry"))
+		carry_node.animation = clip_name if anim != null and anim.has_animation(clip_name) else &"carry"
 	carry_holder = Node3D.new()
 	carry_holder.name = "Carried_" + item.item_id
 	hand_attachment.add_child(carry_holder)

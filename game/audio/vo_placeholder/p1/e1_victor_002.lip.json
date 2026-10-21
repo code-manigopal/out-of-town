@@ -1,0 +1,167 @@
+{
+"line_id": "e1_victor_002",
+"source_hash": "676e15fa85396042",
+"duration": 3.91,
+"mouthCues": [
+{
+"start": 0.0,
+"end": 0.03,
+"value": "X"
+},
+{
+"start": 0.03,
+"end": 0.1,
+"value": "B"
+},
+{
+"start": 0.1,
+"end": 0.16,
+"value": "C"
+},
+{
+"start": 0.16,
+"end": 0.23,
+"value": "G"
+},
+{
+"start": 0.23,
+"end": 0.32,
+"value": "C"
+},
+{
+"start": 0.32,
+"end": 0.4,
+"value": "B"
+},
+{
+"start": 0.4,
+"end": 0.48,
+"value": "A"
+},
+{
+"start": 0.48,
+"end": 0.53,
+"value": "E"
+},
+{
+"start": 0.53,
+"end": 0.57,
+"value": "F"
+},
+{
+"start": 0.57,
+"end": 0.85,
+"value": "B"
+},
+{
+"start": 0.85,
+"end": 0.92,
+"value": "E"
+},
+{
+"start": 0.92,
+"end": 1.2,
+"value": "C"
+},
+{
+"start": 1.2,
+"end": 1.28,
+"value": "A"
+},
+{
+"start": 1.28,
+"end": 1.47,
+"value": "E"
+},
+{
+"start": 1.47,
+"end": 1.68,
+"value": "B"
+},
+{
+"start": 1.68,
+"end": 1.89,
+"value": "G"
+},
+{
+"start": 1.89,
+"end": 1.97,
+"value": "A"
+},
+{
+"start": 1.97,
+"end": 2.03,
+"value": "F"
+},
+{
+"start": 2.03,
+"end": 2.16,
+"value": "B"
+},
+{
+"start": 2.16,
+"end": 2.23,
+"value": "C"
+},
+{
+"start": 2.23,
+"end": 2.3,
+"value": "E"
+},
+{
+"start": 2.3,
+"end": 2.38,
+"value": "A"
+},
+{
+"start": 2.38,
+"end": 2.5,
+"value": "B"
+},
+{
+"start": 2.5,
+"end": 2.58,
+"value": "A"
+},
+{
+"start": 2.58,
+"end": 2.84,
+"value": "C"
+},
+{
+"start": 2.84,
+"end": 3.05,
+"value": "E"
+},
+{
+"start": 3.05,
+"end": 3.26,
+"value": "B"
+},
+{
+"start": 3.26,
+"end": 3.33,
+"value": "F"
+},
+{
+"start": 3.33,
+"end": 3.4,
+"value": "B"
+},
+{
+"start": 3.4,
+"end": 3.68,
+"value": "C"
+},
+{
+"start": 3.68,
+"end": 3.89,
+"value": "B"
+},
+{
+"start": 3.89,
+"end": 3.91,
+"value": "X"
+}
+]
+}

@@ -110,6 +110,7 @@ def build_materials():
     make_mat("mat_photo_nila", "#94908a", 0.3)
     # extras (not in the requested list; Godot can remap or ignore)
     make_mat("mat_fabric_duffel", "#2e3a33", 0.95, spec=0.2)
+    make_mat("mat_denim", "#2d3f5e", 0.9, spec=0.15)
     make_mat("mat_bedding", "#dcd9d0", 0.95, spec=0.2)
     make_mat("mat_duvet", "#566679", 0.95, spec=0.2)
     make_mat("mat_glass_frosted", "#f1efe8", 0.45)
@@ -757,7 +758,13 @@ def light_switch(col):
 # --------------------------------------------------------------------------------------
 # STORY PROPS
 # --------------------------------------------------------------------------------------
-def _duffel_scale(x, L=0.3, dome=0.07):
+# Weekend duffel: 0.75 long (X) x 0.38 wide (Y) x 0.38 tall (Z) body, handles rise above.
+DUF_HL = 0.375      # half length
+DUF_R = 0.19        # half width and half height (body is 0.38 x 0.38)
+DUF_FILL_TOP = 0.165  # top of the packed layer inside the open bag (items rest here)
+
+
+def _duffel_scale(x, L=DUF_HL, dome=0.09):
     ax = abs(x)
     if ax <= L - dome:
         return 1.0
@@ -773,40 +780,48 @@ def _sup(t, y_half, z_half, n=3.4):
 
 
 def _strap(b, x, mat, ytop=0.0):
-    p0, p1, top = V((x, -0.045, 0.298)), V((x, 0.045, 0.298)), V((x, 0, 0.375))
+    zt = 2 * DUF_R - 0.002
+    p0, p1, top = V((x, -0.055, zt)), V((x, 0.055, zt)), V((x, 0, zt + 0.095))
     arc = []
     for k in range(11):
         t = k / 10
         arc.append((1 - t) ** 2 * p0 + 2 * (1 - t) * t * top + t * t * p1)
     for q0, q1 in zip(arc[:-1], arc[1:]):
-        b.rod(q0, q1, 0.011, mat, 6)
-    b.box((x, -0.045, 0.3), (0.03, 0.02, 0.012), mat, 0.002)
-    b.box((x, 0.045, 0.3), (0.03, 0.02, 0.012), mat, 0.002)
+        b.rod(q0, q1, 0.013, mat, 6)
+    b.box((x, -0.055, zt + 0.002), (0.036, 0.024, 0.014), mat, 0.002)
+    b.box((x, 0.055, zt + 0.002), (0.036, 0.024, 0.014), mat, 0.002)
 
 
 def duffel_zipped(col):
     b = B("duffel_zipped")
     F, BK, LT = "mat_fabric_duffel", "mat_plastic_black", "mat_leather_dark"
     nu, nv = 28, 22
+    R = DUF_R
 
     def fn(u, v):
-        x = -0.3 + 0.6 * v
+        x = -DUF_HL + 2 * DUF_HL * v
         sc = _duffel_scale(x)
-        y, z = _sup(u, 0.15, 0.15)
-        return (x, y * sc, 0.15 + z * sc)
+        y, z = _sup(u, R, R)
+        return (x, y * sc, R + z * sc)
     vs = b.surf(fn, nu, nv, F, cu=True, fix=False)
     for ri in (0, nv - 1):
         f = b.bm.faces.new([vs[i][ri] for i in range(nu)])
         f.material_index = b.mi(F)
     bmesh.ops.recalc_face_normals(b.bm, faces=list(b.bm.faces))
-    b.box((0, 0, 0.2995), (0.46, 0.014, 0.006), BK, 0.001)
-    b.box((0.16, 0, 0.304), (0.03, 0.02, 0.008), "mat_metal_brushed", 0.002)
-    for x in (-0.11, 0.11):
+    b.box((0, 0, 2 * R - 0.001), (0.58, 0.017, 0.007), BK, 0.001)                 # zip run
+    b.box((0.2, 0, 2 * R + 0.003), (0.036, 0.024, 0.01), "mat_metal_brushed", 0.002)  # zip pull
+    for x in (-0.14, 0.14):
         _strap(b, x, LT)
-    b.box((0, -0.155, 0.11), (0.26, 0.022, 0.14), F, 0.01, 2)
-    b.box((0, -0.168, 0.15), (0.24, 0.004, 0.008), BK, 0.0)
-    b.box((0.11, -0.05, 0.33), (0.04, 0.003, 0.06), "mat_cardboard", 0.001)
+    b.box((0, -R - 0.004, 0.14), (0.34, 0.026, 0.18), F, 0.012, 2)               # end pocket on the front
+    b.box((0, -R - 0.018, 0.19), (0.31, 0.005, 0.01), BK, 0.0)
+    b.box((0.14, -0.06, 2 * R + 0.035), (0.05, 0.004, 0.075), "mat_cardboard", 0.001)  # luggage tag
     return b.finish(col)
+
+
+def _folded(b, c, size, mat, rz=0.0):
+    """A folded garment: bevelled slab with a fold crease line."""
+    with b.xf(T(*c) @ Rz(rz)):
+        b.box((0, 0, 0), size, mat, 0.01, 3)
 
 
 def duffel_open(col):
@@ -814,6 +829,8 @@ def duffel_open(col):
     F, BK, LT = "mat_fabric_duffel", "mat_plastic_black", "mat_leather_dark"
     n_ = 3.4
     nv = 22
+    R = DUF_R
+    CAP = 0.33
 
     def cross(sc):
         pts = []
@@ -822,36 +839,39 @@ def duffel_open(col):
         for k in range(steps + 1):
             a = a0 + (a1 - a0) * k / steps
             c, s = math.cos(a), math.sin(a)
-            y = 0.15 * math.copysign(abs(c) ** p, c)
-            z = 0.15 + 0.15 * math.copysign(abs(s) ** p, s)
-            pts.append((y * sc, min(z, 0.26)))
+            y = R * math.copysign(abs(c) ** p, c)
+            z = R + R * math.copysign(abs(s) ** p, s)
+            pts.append((y * sc, min(z, CAP)))
         l, r = pts[0], pts[-1]
-        return ([(l[0] - 0.045 * sc, l[1] - 0.02), (l[0] - 0.02 * sc, l[1] + 0.01)] + pts[1:-1] +
-                [(r[0] + 0.02 * sc, r[1] + 0.01), (r[0] + 0.045 * sc, r[1] - 0.02)])
+        return ([(l[0] - 0.057 * sc, l[1] - 0.025), (l[0] - 0.025 * sc, l[1] + 0.012)] + pts[1:-1] +
+                [(r[0] + 0.025 * sc, r[1] + 0.012), (r[0] + 0.057 * sc, r[1] - 0.025)])
     npts = len(cross(1.0))
     before = set(b.bm.faces)
 
     def fn(u, v):
-        x = -0.3 + 0.6 * v
+        x = -DUF_HL + 2 * DUF_HL * v
         pts = cross(_duffel_scale(x))
         k = u * (len(pts) - 1)
         i = min(int(k), len(pts) - 2)
         f = k - i
         return (x, pts[i][0] * (1 - f) + pts[i + 1][0] * f, pts[i][1] * (1 - f) + pts[i + 1][1] * f)
     b.surf(fn, npts, nv, F, fix=False)
-    b.solidify(before, -0.008)
-    for mat, c, sc_, rz in (("mat_fabric", (-0.12, 0.0, 0.25), (0.13, 0.11, 0.06), 12),
-                            ("mat_paint_white", (0.1, 0.02, 0.255), (0.12, 0.1, 0.05), -20),
-                            ("mat_duvet", (0.0, -0.02, 0.22), (0.2, 0.12, 0.07), 5)):
-        b.sphere(c, 1.0, mat, scale=sc_, u=16, v=9, rot=Rz(rz))
-    b.cyl((0.2, -0.06, 0.255), 0.035, 0.16, "mat_fabric", axis="y", seg=12)
-    b.box((-0.2, 0.05, 0.255), (0.14, 0.07, 0.05), LT, 0.02, 2)
-    b.box((0, 0.176, 0.235), (0.5, 0.012, 0.004), BK, 0.001)
-    b.box((0, -0.176, 0.235), (0.5, 0.012, 0.004), BK, 0.001)
-    for x in (-0.11, 0.11):
-        arc = [V((x, -0.03 + 0.06 * k / 10, 0.29 + 0.07 * math.sin(math.pi * k / 10))) for k in range(11)]
+    b.solidify(before, -0.01)
+    # packed layer: a soft hoodie spread across the bag floor; the three item slots rest on it
+    b.box((0, 0, 0.09), (0.60, 0.32, 0.15), "mat_fabric", 0.035, 3)
+    # clothes already packed at the left end: jeans, then three shirts, folded and stacked
+    _folded(b, (-0.245, 0.0, 0.195), (0.16, 0.31, 0.06), "mat_denim", 2)
+    _folded(b, (-0.245, 0.005, 0.238), (0.15, 0.29, 0.03), "mat_paint_white", -3)
+    _folded(b, (-0.245, -0.004, 0.268), (0.15, 0.285, 0.03), "mat_duvet", 4)
+    _folded(b, (-0.24, 0.002, 0.298), (0.145, 0.28, 0.03), "mat_fabric", -2)
+    # tuck a sock ball and a rolled belt beside the stack so the end reads as packed, not stacked
+    b.sphere((-0.15, -0.12, 0.2), 1.0, "mat_leather_dark", scale=(0.03, 0.04, 0.03), u=10, v=7)
+    b.box((0, 0.2, 0.245), (0.62, 0.012, 0.004), BK, 0.001)
+    b.box((0, -0.2, 0.245), (0.62, 0.012, 0.004), BK, 0.001)
+    for x in (-0.14, 0.14):
+        arc = [V((x, -0.04 + 0.08 * k / 10, 0.335 + 0.095 * math.sin(math.pi * k / 10))) for k in range(11)]
         for q0, q1 in zip(arc[:-1], arc[1:]):
-            b.rod(q0, q1, 0.011, LT, 6)
+            b.rod(q0, q1, 0.013, LT, 6)
     return b.finish(col)
 
 

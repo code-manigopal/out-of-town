@@ -55,6 +55,34 @@ FACE_VARS = [
     ("forehead_height", ["forehead-scale-vert-incr"], ["forehead-scale-vert-decr"], -1, 1),
     ("forehead_depth", ["forehead-trans-forward"], ["forehead-trans-backward"], -1, 1),
     ("forehead_temple", ["forehead-temple-incr"], ["forehead-temple-decr"], -1, 1),
+    # extra shape controls for the MediaPipe fit
+    ("head_round", ["head-round"], [], 0, 1),
+    ("head_oval", ["head-oval"], [], 0, 1),
+    ("head_rect", ["head-rectangular"], [], 0, 1),
+    ("head_square", ["head-square"], [], 0, 1),
+    ("head_tri", ["head-triangular"], [], 0, 1),
+    ("head_invtri", ["head-invertedtriangular"], [], 0, 1),
+    ("head_angle", ["head-angle-out"], ["head-angle-in"], -1, 1),
+    ("cheek_inner", _lr("cheek-inner-incr"), _lr("cheek-inner-decr"), -1, 1),
+    ("cheek_trans_v", _lr("cheek-trans-up"), _lr("cheek-trans-down"), -1, 1),
+    ("chin_triangle", ["chin-triangle"], [], 0, 1),
+    ("nose_hump", ["nose-hump-incr"], ["nose-hump-decr"], -1, 1),
+    ("nose_greek", ["nose-greek-incr"], ["nose-greek-decr"], -1, 1),
+    ("nose_curve", ["nose-curve-convex"], ["nose-curve-concave"], -1, 1),
+    ("nose_scale_h", ["nose-scale-horiz-incr"], ["nose-scale-horiz-decr"], -1, 1),
+    ("nostril_width", ["nose-nostrils-width-incr"], ["nose-nostrils-width-decr"], -1, 1),
+    ("nose_volume", ["nose-volume-incr"], ["nose-volume-decr"], -1, 1),
+    ("eye_height1", _lr("eye-height1-incr"), _lr("eye-height1-decr"), -1, 1),
+    ("eye_height3", _lr("eye-height3-incr"), _lr("eye-height3-decr"), -1, 1),
+    ("eye_push1", _lr("eye-push1-out"), _lr("eye-push1-in"), -1, 1),
+    ("eye_push2", _lr("eye-push2-out"), _lr("eye-push2-in"), -1, 1),
+    ("eye_corner1", _lr("eye-corner1-up"), _lr("eye-corner1-down"), -1, 1),
+    ("brow_v", ["eyebrows-trans-up"], ["eyebrows-trans-down"], -1, 1),
+    ("brow_d", ["eyebrows-trans-forward"], ["eyebrows-trans-backward"], -1, 1),
+    ("brow_angle", ["eyebrows-angle-up"], ["eyebrows-angle-down"], -1, 1),
+    ("mouth_depth", ["mouth-scale-depth-incr"], ["mouth-scale-depth-decr"], -1, 1),
+    ("philtrum", ["mouth-philtrum-volume-incr"], ["mouth-philtrum-volume-decr"], -1, 1),
+    ("forehead_nubian", ["forehead-nubian-incr"], ["forehead-nubian-decr"], -1, 1),
     # ears
     ("ear_scale", _lr("ear-scale-incr"), _lr("ear-scale-decr"), -1, 1),
     ("ear_trans_v", _lr("ear-trans-up"), _lr("ear-trans-down"), -1, 1),
@@ -63,7 +91,7 @@ FACE_VARS = [
 ]
 
 # not fitted (no landmarks): the tired-eyes / brow look from the earlier hand pass
-FIXED_TARGETS = [("l-eye-bag-incr", 0.35), ("r-eye-bag-incr", 0.35), ("eyebrows-trans-down", 0.20)]
+FIXED_TARGETS = [("l-eye-bag-incr", 0.35), ("r-eye-bag-incr", 0.35)]
 
 
 def expand(values):
